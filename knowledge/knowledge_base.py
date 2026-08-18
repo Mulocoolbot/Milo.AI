@@ -163,8 +163,8 @@ class KnowledgeBase:
                 # 2. Kata kunci ada di bagian key
                 elif kw_clean in key_parts:
                     score += 6
-                # 3. Substring match pada key
-                elif kw_clean in key_lower or key_lower in kw_clean:
+                # 3. Substring match pada key (hanya jika panjang kata >= 3)
+                elif len(kw_clean) >= 3 and len(key_lower) >= 3 and (kw_clean in key_lower or key_lower in kw_clean):
                     score += 3
                 
                 # 4. Cek value jika string

@@ -48,6 +48,7 @@
         },
         "teknologi": {
           "ai": "Artificial Intelligence, teknologi yang memungkinkan mesin untuk belajar dan berpikir seperti manusia",
+          "kecerdasan_buatan": "Kecerdasan Buatan (Artificial Intelligence) adalah teknologi yang memungkinkan komputer atau mesin untuk meniru kemampuan berpikir, belajar, dan memecahkan masalah layaknya manusia",
           "python": "Bahasa pemrograman populer yang sering digunakan untuk AI, data science, dan web development",
           "internet": "Jaringan komputer global yang menghubungkan miliaran perangkat di seluruh dunia",
           "machine_learning": "Cabang AI yang memungkinkan komputer belajar dari data tanpa diprogram secara eksplisit",

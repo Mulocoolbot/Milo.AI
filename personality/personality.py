@@ -91,17 +91,6 @@ class Personality:
         # Update style berdasarkan emosi
         self._update_style(current_emotion, sentiment)
         
-        # Tambahkan filler word sesekali (untuk kesan natural)
-        if random.random() < 0.15 and not response.startswith(("Hmm", "Nah", "Jadi", "Oke", "Wah")):
-            filler_type = "casual"
-            if current_emotion in ("empathetic", "concerned"):
-                filler_type = "empathy"
-            elif current_emotion == "curious":
-                filler_type = "thinking"
-            
-            fillers = self.FILLERS.get(filler_type, self.FILLERS["casual"])
-            response = random.choice(fillers) + response[0].lower() + response[1:]
-        
         return response
     
     def _update_style(self, emotion, sentiment):

@@ -64,18 +64,20 @@ class Preprocessor:
         
         final = self._remove_extra_punctuation(expanded)
         
+        clean_tokens = [re.sub(r'[^\w]', '', w).lower() for w in final.split() if re.sub(r'[^\w]', '', w)]
+        
         return {
             "original": original,
             "cleaned": cleaned,
             "normalized": normalized,
             "expanded": expanded,
             "final": final,
-            "tokens_raw": final.split(),
+            "tokens_raw": clean_tokens,
             "metadata": {
                 "has_question": has_question,
                 "has_exclamation": has_exclamation,
                 "has_ellipsis": has_ellipsis,
-                "word_count": len(final.split()),
+                "word_count": len(clean_tokens),
                 "char_count": len(final),
             }
         }

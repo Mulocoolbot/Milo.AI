@@ -16,8 +16,6 @@
         "siang",
         "sore",
         "malam",
-        "apa kabar",
-        "gimana kabarnya",
         "hei",
         "yo",
         "woi",
@@ -31,6 +29,22 @@
         "good evening",
         "whats up",
         "howdy"
+      ],
+      "context": []
+    },
+    {
+      "tag": "clarification_ask",
+      "patterns": [
+        "maksud kamu gimana",
+        "maksudnya gimana",
+        "maksud kamu apa",
+        "apa maksudmu",
+        "maksudnya apa",
+        "gimana maksudnya",
+        "maksudmu gimana",
+        "maksudnya",
+        "maksud kamu",
+        "apa artinya itu"
       ],
       "context": []
     },
