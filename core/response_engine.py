@@ -81,7 +81,13 @@ class ResponseEngine:
         if intent == "seeking_permission" or self._is_seeking_permission(user_input):
             return self._handle_seeking_permission(user_input, context, context_manager)
         
-        # === 7. Handle User Membagikan Fakta Personal (Makanan, Hobi, Profesi) ===
+        # === 7. Handle Curhat Emosi & Patah Hati (feeling_sad, feeling_happy, feeling_angry, heartbreak) ===
+        if intent in ("feeling_sad", "feeling_happy", "feeling_angry") or any(w in user_input.lower() for w in ["sakit hati", "patah hati", "mencintai seseorang", "sedih banget", "kecewa berat"]):
+            feeling_response = self._handle_feeling(intent, user_input, keywords, context)
+            if feeling_response:
+                return self._substitute_variables(feeling_response, context)
+        
+        # === 8. Handle User Membagikan Fakta Personal (Makanan, Hobi, Profesi) ===
         if any(w in user_input.lower() for w in ["makanan favorit", "hobiku", "hobi saya", "pekerjaanku", "aku mahasiswa"]):
             facts = context_manager.extract_personal_facts(user_input) if context_manager else {}
             if facts and intent not in ("user_profile_query", "need_advice"):
@@ -99,7 +105,7 @@ class ResponseEngine:
                     raw_msg = f"Wah, asik banget! Milo catat di memori ya kalau " + " dan ".join(fact_desc) + f"! 🧠✨ Senang bisa kenal kamu lebih dekat{name_suffix}!"
                     return self._substitute_variables(raw_msg, context)
         
-        # === 8. Handle User Mengajari Pengetahuan Baru ("tahu ga kalau X adalah Y") ===
+        # === 9. Handle User Mengajari Pengetahuan Baru ("tahu ga kalau X adalah Y") ===
         teach_match = re.search(r'\b(?:tahu ga|tau ga|kamu tahu ga|faktanya|sebenarnya)\s+(?:kalau|bahwa)?\s*([a-zA-Z0-9\s]{2,30})\s+(?:adalah|itu|merupakan|artinya)\s+([^\n.]+)', user_input, re.IGNORECASE)
         if teach_match:
             concept = teach_match.group(1).strip().title()
@@ -110,68 +116,62 @@ class ResponseEngine:
                 knowledge_base.add_entry("pengetahuan_user", concept.lower().replace(" ", "_"), explanation)
             return self._substitute_variables(f"Wah, ilmu baru nih! 💡 Milo simpan di memori ya kalau **{concept}** adalah {explanation}. Makasih banyak sudah mengajari Milo{name_suffix}! 🧠✨", context)
         
-        # === 9. Handle Pertanyaan Kabar (how_are_you) ===
+        # === 10. Handle Pertanyaan Kabar (how_are_you) ===
         if intent == "how_are_you" or any(w in user_input.lower() for w in ["apa kabar", "gimana kabar", "bagaimana kabar", "kabarmu"]):
             return self.synthesizer.synthesize_how_are_you(user_name)
         
-        # === 10. Handle Pertanyaan Sedang Apa (current_activity_ask) ===
+        # === 11. Handle Pertanyaan Sedang Apa (current_activity_ask) ===
         if intent == "current_activity_ask" or any(w in user_input.lower() for w in ["lagi apa", "lagi ngapain", "sedang apa"]):
             return self._handle_current_activity(context)
         
-        # === 11. Handle Greeting Murni (hai, halo, pagi, siang, malam) ===
+        # === 12. Handle Greeting Murni (hai, halo, pagi, siang, malam) ===
         if intent == "greeting":
             return self.synthesizer.synthesize_greeting(user_name)
         
-        # === 12. Handle Farewell (bye, sampai jumpa, pamit) ===
+        # === 13. Handle Farewell (bye, sampai jumpa, pamit) ===
         if intent == "farewell":
             return self._handle_farewell(user_input, context)
         
-        # === 13. Handle Thanks (terima kasih, makasih) ===
+        # === 14. Handle Thanks (terima kasih, makasih) ===
         if intent == "thanks":
             return self._handle_thanks(user_input, context)
         
-        # === 14. Handle Pertanyaan Nama User (user_name_ask) ===
+        # === 15. Handle Pertanyaan Nama User (user_name_ask) ===
         if intent == "user_name_ask" or self._is_asking_user_name(user_input):
             return self._handle_user_name_ask(context, memory)
         
-        # === 15. Handle User Menyebutkan Nama (user_name_tell) ===
+        # === 16. Handle User Menyebutkan Nama (user_name_tell) ===
         if intent == "user_name_tell":
             if user_name:
                 return f"Salam kenal, {user_name}! 😊 Senang bisa kenalan sama kamu! Mulai sekarang Milo bakal ingat nama kamu ya! 🤝✨"
         
-        # === 16. Handle Pertanyaan Fakta Profil User (user_profile_query) ===
+        # === 17. Handle Pertanyaan Fakta Profil User (user_profile_query) ===
         if intent == "user_profile_query":
             profile_resp = self._handle_user_profile_query(user_input, memory, context)
             if profile_resp:
                 return self._substitute_variables(profile_resp, context)
         
-        # === 17. Handle Curhat & Kebutuhan Cerita (curhat_need) ===
+        # === 18. Handle Curhat & Kebutuhan Cerita (curhat_need) ===
         if intent == "curhat_need" or self._is_curhat_intent(user_input):
             return self.synthesizer.synthesize_curhat_reassurance(user_name)
         
-        # === 18. Handle Kondisi Bingung / Overthinking (confused_state) ===
+        # === 19. Handle Kondisi Bingung / Overthinking (confused_state) ===
         if intent == "confused_state":
             return self._substitute_variables(self._handle_confused_state(user_input, context), context)
         
-        # === 19. Handle Permintaan Saran / Pendapat (need_advice) ===
+        # === 20. Handle Permintaan Saran / Pendapat (need_advice) ===
         if intent == "need_advice":
             return self._substitute_variables(self._handle_need_advice(user_input, context), context)
         
-        # === 20. Handle Rasa Kesepian (lonely_state) ===
+        # === 21. Handle Rasa Kesepian (lonely_state) ===
         if intent == "lonely_state":
             return self._substitute_variables(self._handle_lonely_state(user_input, context), context)
         
-        # === 21. Handle Smalltalk Makanan / Musik / Hobi ===
-        if intent in ("smalltalk_food", "smalltalk_music", "smalltalk_hobby") or self._is_food_or_music_input(user_input):
+        # === 22. Handle Smalltalk Makanan / Musik / Hobi ===
+        if intent in ("smalltalk_food", "smalltalk_music", "smalltalk_hobby"):
             entity_response = self._handle_specific_smalltalk(intent, user_input, keywords, context)
             if entity_response:
                 return self._substitute_variables(entity_response, context)
-        
-        # === 22. Handle Curhat Emosi (feeling_sad, feeling_happy, feeling_angry) ===
-        if intent in ("feeling_sad", "feeling_happy", "feeling_angry"):
-            feeling_response = self._handle_feeling(intent, user_input, keywords, context)
-            if feeling_response:
-                return self._substitute_variables(feeling_response, context)
         
         # === 23. Handle Follow-up Percakapan ("terus?", "lalu?") ===
         if intent == "follow_up" or self._is_follow_up_phrase(user_input):
@@ -501,12 +501,17 @@ class ResponseEngine:
         reason_match = re.search(r'(?:karena|gara-gara|soal|abis|karna|lantaran)\s+([^.?!]+)', user_input, re.IGNORECASE)
         reason = reason_match.group(1).strip() if reason_match else ""
         
-        if intent == "feeling_sad":
+        # Cek apakah ada unsur sakit hati, patah hati, atau cinta tak berbalas
+        if any(w in user_input.lower() for w in ["mencintai", "sakit hati", "patah hati", "tidak mencintaiku", "cinta bertepuk", "ditolak", "cintaku", "putus cinta", "cinta tak berbalas"]):
+            return self.synthesizer.synthesize_heartbreak(user_name, user_input)
+            
+        if intent == "feeling_sad" or "sedih" in user_input.lower() or "kecewa" in user_input.lower():
             if reason:
                 templates = [
                     f"Aw, {name_prefix}Milo turut sedih dengernya... 🥺 Soal {reason}, hal itu memang bisa bikin down. Tapi ingat ya, kamu lebih kuat dari yang kamu kira! 💪 Cerita aja kalau butuh teman ngobrol.",
                     f"Milo paham banget perasaanmu 😔 {reason.capitalize()} memang berat ya... Jangan dipendam sendirian ya, Milo selalu ada di sini buat dengerin kamu! 🫂💕"
                 ]
+                return random.choice(templates)
             else:
                 templates = [
                     f"Milo di sini buat kamu ya{name_suffix} 🤗 Kalau lagi sedih, jangan dipendam sendiri. Cerita aja ke Milo apa yang lagi bikin kamu ganjal di hati 💕",
@@ -546,38 +551,36 @@ class ResponseEngine:
         """Menangani topik smalltalk makanan, musik, hobi secara kontekstual."""
         user_name = context.get("user_name") or ""
         salutation = f"{user_name}, " if user_name and random.random() < 0.4 else ""
-        
-        ignored_for_entities = {
-            "aku", "saya", "gue", "gw", "kamu", "lu", "lo", "lagi", "sedang", "suka",
-            "dengar", "dengerin", "mendengarkan", "musik", "lagu", "makan", "makanan",
-            "hobi", "kegiatan", "favorit", "banget", "dong", "nih", "ya", "deh", "kan"
-        }
-        
         text_lower = user_input.lower()
         
-        if intent == "smalltalk_food" or "makan" in text_lower:
-            food_items = [kw for kw in keywords if kw not in ignored_for_entities]
-            if food_items:
-                food_name = " ".join(food_items).title()
-                return f"Wah, **{food_name}**! 😋 Itu makanan yang enak banget! {salutation}kamu sering makan {food_name} ya? Milo jadi penasaran nih! 🍳"
-            else:
-                return f"{salutation}sebagai AI, Milo ga butuh makan fisik 🤖 Tapi kalau ditanya soal kuliner, rendang atau nasi goreng Indonesia juara banget! 🥩✨ Kamu makanan favoritnya apa?"
+        known_foods = ["nasi padang", "nasi goreng", "rendang", "sate", "bakso", "mie ayam", "soto", "pizza", "burger", "seblak", "martabak", "ayam goreng"]
+        matched_food = None
+        for kf in known_foods:
+            if re.search(r'\b' + re.escape(kf) + r'\b', text_lower):
+                matched_food = kf.title()
+                break
         
-        elif intent == "smalltalk_music" or "musik" in text_lower or "lagu" in text_lower:
-            music_terms = [kw for kw in keywords if kw not in ignored_for_entities]
-            if music_terms:
-                music_name = " ".join(music_terms).title()
-                return f"Wah, **{music_name}**! 🎵 Selera musik yang keren tuh! {salutation}Milo sendiri suka nada-nada lo-fi atau instrumental santai buat nemenin mikir. 🎧 Lagu apa yang paling sering kamu putar?"
+        if intent == "smalltalk_food":
+            if matched_food:
+                return f"Wah, **{matched_food}**! 😋 Itu makanan yang enak banget! {salutation}kamu sering makan {matched_food} ya? Milo jadi penasaran nih! 🍳"
+            else:
+                return f"{salutation}sebagai AI, Milo ga butuh makan fisik 🤖 Tapi kalau ditanya soal kuliner khas, rendang atau nasi goreng Indonesia juara banget! 🥩✨ Kamu makanan favoritnya apa?"
+        
+        elif intent == "smalltalk_music":
+            known_genres = ["pop", "rock", "jazz", "lofi", "lo-fi", "klasik", "kpop", "k-pop", "dangdut", "r&b", "indie"]
+            matched_music = None
+            for km in known_genres:
+                if re.search(r'\b' + re.escape(km) + r'\b', text_lower):
+                    matched_music = km.upper() if km in ("lofi", "kpop", "r&b") else km.title()
+                    break
+                    
+            if matched_music:
+                return f"Wah, musik **{matched_music}**! 🎵 Selera musik yang keren tuh! {salutation}Milo sendiri suka nada-nada santai buat nemenin mikir. 🎧 Lagu apa yang paling sering kamu putar?"
             else:
                 return f"{salutation}Milo suka berbagai jenis musik! 🎶 Dari lo-fi, pop, sampai jazz! 🎧 Kamu genre musik favoritnya apa nih?"
         
-        elif intent == "smalltalk_hobby" or "hobi" in text_lower:
-            hobbies = [kw for kw in keywords if kw not in ignored_for_entities]
-            if hobbies:
-                hobby_name = " ".join(hobbies).title()
-                return f"Wah, hobi **{hobby_name}** seru banget tuh! 🌟 Pasti asik banget ngelakuin itu. Cerita dong, sejak kapan kamu mulai suka {hobby_name}?"
-            else:
-                return f"Hobi utama Milo itu belajar hal baru dari obrolan kita dan bantu teman-teman! 📚✨ Kalau kamu sendiri, hobi favoritmu apa saat waktu luang?"
+        elif intent == "smalltalk_hobby":
+            return f"Hobi utama Milo itu belajar hal baru dari obrolan kita dan bantu teman-teman! 📚✨ Kalau kamu sendiri, hobi favoritmu apa saat waktu luang?"
         
         return None
     

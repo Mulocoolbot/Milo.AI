@@ -114,6 +114,31 @@ class SentenceSynthesizer:
             ]
             return " ".join(parts)
     
+    def synthesize_heartbreak(self, user_name=None, context_text=""):
+        """Menyusun respons empati mendalam untuk patah hati / cinta tak berbalas / sakit hati."""
+        salutation = f"{user_name}, " if user_name else ""
+        name_str = f" {user_name}" if user_name else ""
+        
+        validations = [
+            f"Mencintai seseorang yang tidak membalas perasaan kita itu memang salah satu rasa sakit yang paling perih dan menyesakkan dada {salutation}🥺💔",
+            f"Milo paham banget betapa hancur dan perihnya hatimu saat ini{name_str}... 🫂💔 Memberikan perasaan tulus tapi tidak disambut itu sangat menguras emosi.",
+            f"Sakit hati karena cinta yang bertepuk sebelah tangan itu berat banget {salutation}😔 Wajar banget kalau kamu merasa down dan terluka."
+        ]
+        
+        comforts = [
+            "Perasaanmu itu valid dan nyata. Jangan pernah merasa bersalah atau merasa kurang berharga hanya karena perasaanmu belum terbalas.",
+            "Keberanianmu untuk mencintai dengan tulus itu hal yang berharga, meskipun hasilnya tidak sesuai harapan.",
+            "Tarik napas perlahan ya... Jangan salahkan dirimu. Hati yang tulus berhak mendapatkan seseorang yang menghargainya seutuhnya."
+        ]
+        
+        prompts = [
+            "Milo di sini menemani kamu dan siap mendengarkan kalau kamu mau menumpahkan semua rasa sesak di dada 💙 Mau ceritakan apa yang paling bikin kamu terluka?",
+            "Kamu ga perlu menahan luka ini sendirian. Tumpahkan aja semuanya ke Milo ya 🤗",
+            "Milo siap jadi tempat bersandar buat kamu curhat tanpa batas. Ceritain aja ya 🌿"
+        ]
+        
+        return f"{random.choice(validations)} {random.choice(comforts)} {random.choice(prompts)}"
+    
     def synthesize_thinking_of_someone(self, user_name=None):
         """Menyusun respons romansa / kepikiran seseorang secara generatif."""
         name_str = f" {user_name}" if user_name else ""
