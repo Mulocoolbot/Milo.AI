@@ -1,0 +1,450 @@
+{
+  "milo": {
+    "word": "milo",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787072516.6284773
+  },
+  "kamu": {
+    "word": "kamu",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787072468.736957
+  },
+  "kabar": {
+    "word": "kabar",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787072468.3757873
+  },
+  "maksud": {
+    "word": "maksud",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787072468.3761582
+  },
+  "gimana": {
+    "word": "gimana",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787072468.3783653
+  },
+  "nyoba": {
+    "word": "nyoba",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787072468.3786914
+  },
+  "menyempurnakan": {
+    "word": "menyempurnakan",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787072468.7336433
+  },
+  "arsitektur": {
+    "word": "arsitektur",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787072468.7340949
+  },
+  "sumpah": {
+    "word": "sumpah",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787072468.7350748
+  },
+  "bingung": {
+    "word": "bingung",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787072468.7358422
+  },
+  "banget": {
+    "word": "banget",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787072468.7365177
+  },
+  "saran": {
+    "word": "saran",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787072468.7373266
+  },
+  "tidak": {
+    "word": "tidak",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787072469.4118361
+  },
+  "buat": {
+    "word": "buat",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787072468.7381394
+  },
+  "emang": {
+    "word": "emang",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787072468.738673
+  },
+  "boleh": {
+    "word": "boleh",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787072468.7404273
+  },
+  "kepikiran": {
+    "word": "kepikiran",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787072469.0233207
+  },
+  "seseorang": {
+    "word": "seseorang",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787072468.8737063
+  },
+  "ntah": {
+    "word": "ntah",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787072468.8740723
+  },
+  "kenapa": {
+    "word": "kenapa",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787072468.8745437
+  },
+  "orang": {
+    "word": "orang",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787072468.8750834
+  },
+  "selalu": {
+    "word": "selalu",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787072468.8757052
+  },
+  "pikiran": {
+    "word": "pikiran",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787072468.8765056
+  },
+  "bukan": {
+    "word": "bukan",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787072468.8770502
+  },
+  "gitu": {
+    "word": "gitu",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787072468.8787954
+  },
+  "konteks": {
+    "word": "konteks",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787072468.8792224
+  },
+  "kepikirannya": {
+    "word": "kepikirannya",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787072468.8834977
+  },
+  "maksudku": {
+    "word": "maksudku",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787072468.884532
+  },
+  "kemarin": {
+    "word": "kemarin",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787072469.023953
+  },
+  "kecelakaan": {
+    "word": "kecelakaan",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787072469.0246344
+  },
+  "masuk": {
+    "word": "masuk",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787072469.025918
+  },
+  "rumah": {
+    "word": "rumah",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787072469.0272799
+  },
+  "sakit": {
+    "word": "sakit",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787072469.02826
+  },
+  "temen": {
+    "word": "temen",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787072469.029409
+  },
+  "sekelasku": {
+    "word": "sekelasku",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787072469.1258163
+  },
+  "sekarang": {
+    "word": "sekarang",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787072469.126605
+  },
+  "ruang": {
+    "word": "ruang",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787072469.1273108
+  },
+  "rawat": {
+    "word": "rawat",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787072469.1280072
+  },
+  "inap": {
+    "word": "inap",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787072469.128698
+  },
+  "makasih": {
+    "word": "makasih",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787072469.1293998
+  },
+  "dengerin": {
+    "word": "dengerin",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787072469.1957855
+  },
+  "kecerdasan": {
+    "word": "kecerdasan",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787072469.1965215
+  },
+  "buatan": {
+    "word": "buatan",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787072469.2518034
+  },
+  "arti": {
+    "word": "arti",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787072520.3062606
+  },
+  "kata": {
+    "word": "kata",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787072520.3090932
+  },
+  "serendipitas": {
+    "word": "serendipitas",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787072520.311366
+  },
+  "quantum computing": {
+    "word": "quantum computing",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "komputasi berbasis qubit",
+    "sentiment": 0.0,
+    "learned_at": 1787072469.3037808
+  },
+  "tahu": {
+    "word": "tahu",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787072469.4102955
+  },
+  "kalau": {
+    "word": "kalau",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787072469.4127355
+  },
+  "quantum": {
+    "word": "quantum",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787072469.4182987
+  },
+  "computing": {
+    "word": "computing",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787072469.464681
+  },
+  "komputasi": {
+    "word": "komputasi",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787072469.4153123
+  },
+  "berbasis": {
+    "word": "berbasis",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787072469.4163501
+  },
+  "qubit": {
+    "word": "qubit",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787072469.417393
+  },
+  "metamorfosis": {
+    "word": "metamorfosis",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787072516.2071784
+  },
+  "fotosintesis": {
+    "word": "fotosintesis",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787072516.6253397
+  }
+}

@@ -20,6 +20,8 @@ from core.response_engine import ResponseEngine
 from core.context_manager import ContextManager
 from knowledge.knowledge_base import KnowledgeBase
 from knowledge.memory import Memory
+from knowledge.word_bank import WordBank
+from knowledge.web_fetcher import WebFetcher
 from personality.personality import Personality
 from utils.config import Config
 from utils.logger import MiloLogger
@@ -34,6 +36,8 @@ class Milo:
     - Tokenizer: memecah teks menjadi token
     - IntentRecognizer: mengenali maksud user
     - ResponseEngine: menghasilkan respons
+    - WordBank: bank kata semantik & WSD
+    - WebFetcher: pencari definisi & fakta web real-time
     - ContextManager: mengelola konteks percakapan
     - KnowledgeBase: basis pengetahuan
     - Memory: sistem memori (short-term & long-term)
@@ -46,10 +50,12 @@ class Milo:
         Config.ensure_directories()
         
         # Inisialisasi modul-modul
+        self.word_bank = WordBank()
+        self.web_fetcher = WebFetcher()
         self.preprocessor = Preprocessor()
         self.tokenizer = Tokenizer()
         self.intent_recognizer = IntentRecognizer()
-        self.response_engine = ResponseEngine()
+        self.response_engine = ResponseEngine(word_bank=self.word_bank, web_fetcher=self.web_fetcher)
         self.context_manager = ContextManager()
         self.knowledge_base = KnowledgeBase()
         self.memory = Memory()
@@ -196,6 +202,11 @@ class Milo:
             
         # 4. Continuous Learning: Pelajari pengetahuan baru yang disampaikan user
         self._learn_knowledge(user_input)
+        
+        # 5. Continuous Learning: Pelajari kosakata baru ke Word Bank
+        for w in preprocessed.get("tokens_raw", []):
+            if len(w) > 3 and w not in self.response_engine._stopwords:
+                self.word_bank.learn_word(w, pos="noun", domain="general")
     
     def _learn_knowledge(self, text):
         """Mengekstrak dan menyimpan pengetahuan baru yang diajarkan user."""
@@ -227,6 +238,7 @@ class Milo:
             "memory": {
                 "short_term_count": len(self.memory.get_short_term_all()),
                 "user_profile": self.memory.get_user_profile(),
+                "word_bank_count": self.word_bank.get_word_count()
             }
         }
     
@@ -242,6 +254,9 @@ class Milo:
         # Konsolidasi memori
         consolidated = self.memory.consolidate()
         self.logger.info(f"Consolidated {consolidated} memory entries")
+        
+        # Simpan Word Bank
+        self.word_bank.save_learned_words()
         
         # Simpan conversation log
         self.logger.save_conversation()

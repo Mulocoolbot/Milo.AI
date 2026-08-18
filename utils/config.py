@@ -26,6 +26,11 @@ class Config:
     # === Memory Files ===
     LONG_TERM_MEMORY_FILE = os.path.join(MEMORY_DIR, "long_term.json")
     USER_PROFILE_FILE = os.path.join(MEMORY_DIR, "user_profile.json")
+    WORD_BANK_FILE = os.path.join(MEMORY_DIR, "word_bank.json")
+    
+    # === Web & Lexicon Settings ===
+    ENABLE_WEB_SEARCH = True          # Gunakan internet untuk mencari definisi/fakta baru
+    WEB_TIMEOUT = 3.0                 # Timeout (detik) untuk HTTP requests
     
     # === Milo Identity ===
     MILO_NAME = "Milo"

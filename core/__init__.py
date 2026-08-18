@@ -8,6 +8,7 @@ from .tokenizer import Tokenizer
 from .intent_recognizer import IntentRecognizer
 from .response_engine import ResponseEngine
 from .context_manager import ContextManager
+from .sentence_synthesizer import SentenceSynthesizer
 
 __all__ = [
     'Preprocessor',
@@ -15,4 +16,5 @@ __all__ = [
     'IntentRecognizer',
     'ResponseEngine',
     'ContextManager',
+    'SentenceSynthesizer',
 ]
