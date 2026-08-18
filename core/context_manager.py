@@ -166,6 +166,31 @@ class ContextManager:
             return self._conversation_history[-1].get("intent", None)
         return None
     
+    def get_last_user_input(self):
+        """Mengembalikan input user dari giliran terakhir."""
+        if self._conversation_history:
+            return self._conversation_history[-1].get("user_input", "")
+        return ""
+    
+    def get_last_response(self):
+        """Mengembalikan respons Milo dari giliran terakhir."""
+        if self._conversation_history:
+            return self._conversation_history[-1].get("response", "")
+        return ""
+    
+    def get_recent_exchanges(self, count=3):
+        """Mengembalikan pertukaran pesan terakhir dalam format ringkas."""
+        history = list(self._conversation_history)[-count:]
+        return [
+            {
+                "user": turn.get("user_input", ""),
+                "milo": turn.get("response", ""),
+                "intent": turn.get("intent", ""),
+                "turn": turn.get("turn", 0)
+            }
+            for turn in history
+        ]
+    
     def get_user_name(self):
         """Mengembalikan nama user jika diketahui."""
         return self._user_name

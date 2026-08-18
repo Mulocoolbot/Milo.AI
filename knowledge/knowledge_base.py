@@ -104,6 +104,118 @@ class KnowledgeBase:
         
         return results
     
+    def search_by_keywords(self, keywords, max_results=5):
+        """
+        Mencari informasi di knowledge base berdasarkan list kata kunci.
+        Mengembalikan hasil yang paling relevan dengan scoring.
+        
+        Args:
+            keywords: list of string kata kunci
+            max_results: jumlah maksimal hasil
+        
+        Returns:
+            list of dict dengan key: category, key, value, score
+        """
+        if not keywords:
+            return []
+        
+        results = []
+        keywords_lower = [k.lower() for k in keywords]
+        
+        for cat_name, cat_data in self._knowledge.items():
+            entries = cat_data.get("entries", {})
+            
+            if isinstance(entries, dict):
+                results.extend(
+                    self._score_dict_entries(entries, keywords_lower, cat_name)
+                )
+            elif isinstance(entries, list):
+                results.extend(
+                    self._score_list_entries(entries, keywords_lower, cat_name)
+                )
+        
+        # Urutkan berdasarkan score tertinggi
+        results.sort(key=lambda x: x["score"], reverse=True)
+        
+        # Filter hasil yang scorenya > 0
+        results = [r for r in results if r["score"] > 0]
+        
+        return results[:max_results]
+    
+    def _score_dict_entries(self, entries, keywords, category, parent_key=None):
+        """Memberi skor pada dictionary entries berdasarkan keyword match."""
+        results = []
+        
+        for key, value in entries.items():
+            key_lower = key.lower()
+            key_parts = set(key_lower.replace('_', ' ').split())
+            score = 0
+            
+            # Hitung scoring
+            for kw in keywords:
+                kw_clean = kw.lower().strip()
+                if not kw_clean:
+                    continue
+                
+                # 1. Exact match pada key (prioritas tertinggi)
+                if kw_clean == key_lower or kw_clean == key_lower.replace('_', ' '):
+                    score += 10
+                # 2. Kata kunci ada di bagian key
+                elif kw_clean in key_parts:
+                    score += 6
+                # 3. Substring match pada key
+                elif kw_clean in key_lower or key_lower in kw_clean:
+                    score += 3
+                
+                # 4. Cek value jika string
+                if isinstance(value, str):
+                    val_lower = value.lower()
+                    if f" {kw_clean} " in f" {val_lower} ":
+                        score += 2
+                    elif kw_clean in val_lower:
+                        score += 1
+            
+            if score > 0:
+                display_key = f"{parent_key} > {key}" if parent_key else key
+                results.append({
+                    "category": category,
+                    "key": display_key,
+                    "value": value,
+                    "score": score,
+                })
+            
+            # Recursive search untuk nested dict
+            if isinstance(value, dict):
+                nested = self._score_dict_entries(value, keywords, category, parent_key=key)
+                results.extend(nested)
+        
+        return results
+    
+    def _score_list_entries(self, entries, keywords, category):
+        """Memberi skor pada list entries berdasarkan keyword match."""
+        results = []
+        
+        for entry in entries:
+            if not isinstance(entry, str):
+                continue
+            
+            entry_lower = entry.lower()
+            score = 0
+            
+            for kw in keywords:
+                if kw in entry_lower:
+                    score += 1
+            
+            if score > 0:
+                results.append({
+                    "category": category,
+                    "key": None,
+                    "value": entry,
+                    "score": score,
+                })
+        
+        return results
+    
     def get_random_entry(self, category):
         """Mengambil entri acak dari kategori tertentu."""
         import random

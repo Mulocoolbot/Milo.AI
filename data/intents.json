@@ -128,13 +128,16 @@
       "tag": "how_are_you",
       "patterns": [
         "apa kabar",
+        "bagaimana kabarmu",
+        "bagaimana kabar",
+        "bagaimana kabarmu hari ini",
+        "kabar kamu",
+        "gimana kabarmu",
         "gimana kabar",
         "kabar baik",
         "how are you",
         "how do you do",
-        "gimana",
         "baik-baik aja",
-        "sehat",
         "kamu sehat",
         "lu sehat",
         "sehat ga",
@@ -155,7 +158,7 @@
         "lagi seneng",
         "lagi happy",
         "gue seneng",
-        "aku suka",
+        "aku suka banget",
         "aku gembira",
         "senang sekali",
         "bahagia banget",
@@ -354,12 +357,8 @@
         "minta tolong",
         "butuh bantuan",
         "aku butuh bantuan",
-        "gimana caranya",
-        "cara",
-        "ajarin",
-        "ajarin dong",
-        "ajarkan",
-        "bagaimana caranya"
+        "tolong bantu aku",
+        "bisa tolongin ga"
       ],
       "context": []
     },
@@ -387,7 +386,11 @@
         "lagi makan apa",
         "udah makan belum",
         "makan apa hari ini",
-        "lapar ga"
+        "lapar ga",
+        "aku suka makan",
+        "aku lagi makan",
+        "lagi pengen makan",
+        "suka makan"
       ],
       "context": []
     },
@@ -401,7 +404,12 @@
         "favorite song",
         "suka genre apa",
         "band favorit kamu",
-        "penyanyi favorit"
+        "penyanyi favorit",
+        "aku lagi dengerin musik",
+        "aku lagi dengerin lagu",
+        "aku suka dengerin musik",
+        "lagi dengerin lagu",
+        "lagi dengerin musik"
       ],
       "context": []
     },
@@ -423,17 +431,116 @@
     {
       "tag": "user_name_tell",
       "patterns": [
+        "nama saya adalah",
         "nama saya",
         "namaku",
         "nama gue",
+        "nama gw",
         "panggil aku",
         "panggil saya",
+        "panggil gue",
         "my name is",
-        "call me"
+        "call me",
+        "kenalin nama saya",
+        "kenalin namaku",
+        "nama saya mullo"
       ],
       "context": [
         "awaiting_name"
       ]
+    },
+    {
+      "tag": "user_name_ask",
+      "patterns": [
+        "siapa nama saya",
+        "nama saya siapa",
+        "siapa namaku",
+        "namaku siapa",
+        "siapa nama aku",
+        "nama aku siapa",
+        "nama gue siapa",
+        "siapa nama gue",
+        "kamu tau nama saya",
+        "kamu tahu nama saya",
+        "kamu ingat nama saya",
+        "kamu inget namaku",
+        "apakah kamu tahu nama saya",
+        "what is my name",
+        "whats my name",
+        "who am i",
+        "do you know my name",
+        "inget nama aku ga",
+        "ingat nama saya ga"
+      ],
+      "context": []
+    },
+    {
+      "tag": "knowledge_query",
+      "patterns": [
+        "apa yang kamu ketahui tentang",
+        "apa yang kamu tahu tentang",
+        "apa itu",
+        "apa sih",
+        "jelaskan tentang",
+        "ceritakan tentang",
+        "kasih tahu tentang",
+        "tahu tentang",
+        "tau tentang",
+        "apa maksud dari",
+        "apa arti dari",
+        "apa fungsi dari",
+        "apa kegunaan dari",
+        "siapa presiden",
+        "ibukota dari",
+        "ibukota",
+        "planet terbesar",
+        "planet terdekat",
+        "bagaimana cara kerja",
+        "cara kerja",
+        "gimana cara kerja",
+        "tell me about",
+        "what is",
+        "explain about"
+      ],
+      "context": []
+    },
+    {
+      "tag": "current_activity_ask",
+      "patterns": [
+        "lagi ngapain",
+        "kamu lagi ngapain",
+        "sedang apa",
+        "kamu sedang apa",
+        "lagi apa",
+        "kamu lagi apa",
+        "lu lagi ngapain",
+        "what are you doing",
+        "whats up",
+        "lagi sibuk apa",
+        "ngapain aja sekarang"
+      ],
+      "context": []
+    },
+    {
+      "tag": "follow_up",
+      "patterns": [
+        "terus",
+        "lalu",
+        "terus gimana",
+        "lalu bagaimana",
+        "kenapa begitu",
+        "kenapa bisa gitu",
+        "contohnya",
+        "kasih contoh",
+        "bisa jelaskan lagi",
+        "jelaskan lebih lanjut",
+        "maksudnya",
+        "maksud kamu",
+        "ceritain lagi",
+        "ada lagi",
+        "apa lagi"
+      ],
+      "context": []
     },
     {
       "tag": "affirmative",

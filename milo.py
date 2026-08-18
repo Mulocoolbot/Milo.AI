@@ -105,7 +105,14 @@ class Milo:
         context = self.context_manager.get_context()
         
         # === Step 5: Response Generation ===
-        response = self.response_engine.generate(intent_result, context)
+        response = self.response_engine.generate(
+            intent_result=intent_result,
+            context=context,
+            preprocessed=preprocessed,
+            knowledge_base=self.knowledge_base,
+            memory=self.memory,
+            context_manager=self.context_manager
+        )
         
         # === Step 6: Personality Processing ===
         response = self.personality.process(response, intent_result["intent"], context)
@@ -128,21 +135,22 @@ class Milo:
     def _apply_context_adjustments(self, intent_result, context, preprocessed):
         """Menyesuaikan intent berdasarkan konteks percakapan."""
         intent = intent_result["intent"]
+        original_text = preprocessed.get("original", "")
         
-        # Jika greeting tapi bukan turn pertama, mungkin maksudnya lain
+        # Cek apakah ada penyebutan nama di input (misal "Halo namaku Mullo", "Hai nama saya...")
+        extracted_name = self.context_manager._extract_name(original_text)
+        if extracted_name:
+            self.context_manager.set_user_name(extracted_name)
+            self.memory.set_user_info("name", extracted_name)
+            intent_result["intent"] = "user_name_tell"
+            intent_result["confidence"] = 1.0
+            return intent_result
+        
+        # Jika greeting tapi bukan turn pertama
         if intent == "greeting" and context["turn_count"] > 3:
-            # Cek apakah ini beneran greeting atau cuma sapa biasa
             words = preprocessed.get("final", "").split()
             if len(words) <= 1 and words[0] in ("hai", "halo", "hey", "hi"):
-                # Masih dianggap greeting tapi casual
                 pass
-        
-        # Jika user memberitahu nama
-        if intent == "user_name_tell":
-            name = self.context_manager._extract_name(preprocessed.get("original", ""))
-            if name:
-                self.context_manager.set_user_name(name)
-                self.memory.set_user_info("name", name)
         
         return intent_result
     

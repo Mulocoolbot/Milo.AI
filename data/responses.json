@@ -132,6 +132,26 @@
       "Oh, {user_name} ya! Nama yang bagus! 💫 Milo senang banget bisa kenal kamu! 😄",
       "Hai {user_name}! 👋 Mulai sekarang Milo akan panggil kamu {user_name} ya! Salam kenal! 🎉"
     ],
+    "user_name_ask": [
+      "Nama kamu kan {user_name}! Milo ga bakal lupa kok! 😉✨",
+      "Tentu saja Milo ingat, kamu {user_name} kan? 😊",
+      "Halo {user_name}! Nama kamu selalu tersimpan di memori Milo kok! 🧠💫"
+    ],
+    "knowledge_query": [
+      "Berikut info yang Milo ketahui tentang itu! 🧠✨",
+      "Nah, soal itu Milo punya beberapa info menarik nih! 📚",
+      "Milo tahu tentang hal ini! Yuk simak penjelasannya! 💡"
+    ],
+    "current_activity_ask": [
+      "Milo lagi standby dan semangat banget buat ngobrol sama kamu nih! 🚀 Kamu sendiri lagi sibuk apa?",
+      "Lagi siap sedia menemani kamu ngobrol dan belajar hal baru! 🤖✨ Kamu lagi ngapain?",
+      "Milo lagi fokus dengerin dan nemenin kamu! 😄 Ada hal seru apa hari ini?"
+    ],
+    "follow_up": [
+      "Ada yang ingin kamu eksplor lebih jauh soal ini? Cerita aja! 💬",
+      "Mau Milo jelaskan bagian mana lagi yang bikin penasaran? 🤔",
+      "Bisa banget! Bagian mana yang mau kita bahas lebih dalam? ✨"
+    ],
     "affirmative": [
       "Oke, siap! 👍",
       "Mantap! Milo ngerti! 😊",

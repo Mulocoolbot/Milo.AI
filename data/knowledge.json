@@ -25,17 +25,73 @@
           "bahasa_resmi": "Bahasa Indonesia",
           "mata_uang": "Rupiah (IDR)",
           "pulau_terbesar": "Kalimantan",
-          "jumlah_provinsi": "38 provinsi"
+          "jumlah_provinsi": "38 provinsi",
+          "jumlah_pulau": "Lebih dari 17.000 pulau",
+          "benua": "Asia Tenggara",
+          "presiden_pertama": "Ir. Soekarno",
+          "kemerdekaan": "17 Agustus 1945",
+          "semboyan": "Bhinneka Tunggal Ika (Berbeda-beda tetapi tetap satu)",
+          "lagu_kebangsaan": "Indonesia Raya"
         },
         "planet": {
+          "merkurius": "Planet terdekat dengan matahari, planet terkecil di tata surya",
+          "venus": "Planet ke-2 dari matahari, disebut juga Bintang Kejora",
           "bumi": "Planet ke-3 dari matahari, satu-satunya planet yang diketahui memiliki kehidupan",
           "mars": "Planet ke-4 dari matahari, disebut juga Planet Merah",
-          "jupiter": "Planet terbesar di tata surya kita"
+          "jupiter": "Planet terbesar di tata surya kita, memiliki 95 bulan yang diketahui",
+          "planet_terbesar": "Jupiter adalah planet terbesar di tata surya kita dengan diameter sekitar 139.820 km",
+          "planet_terkecil": "Merkurius adalah planet terkecil di tata surya kita",
+          "saturnus": "Planet ke-6 dari matahari, terkenal dengan cincinnya yang indah",
+          "uranus": "Planet ke-7, berotasi menyamping",
+          "neptunus": "Planet terjauh dari matahari, disebut juga Planet Biru Es",
+          "tata_surya": "Tata surya kita terdiri dari 8 planet utama yang mengorbit matahari: Merkurius, Venus, Bumi, Mars, Jupiter, Saturnus, Uranus, dan Neptunus"
         },
         "teknologi": {
-          "ai": "Artificial Intelligence, teknologi yang memungkinkan mesin untuk belajar dan berpikir",
-          "python": "Bahasa pemrograman populer yang sering digunakan untuk AI dan data science",
-          "internet": "Jaringan komputer global yang menghubungkan miliaran perangkat"
+          "ai": "Artificial Intelligence, teknologi yang memungkinkan mesin untuk belajar dan berpikir seperti manusia",
+          "python": "Bahasa pemrograman populer yang sering digunakan untuk AI, data science, dan web development",
+          "internet": "Jaringan komputer global yang menghubungkan miliaran perangkat di seluruh dunia",
+          "machine_learning": "Cabang AI yang memungkinkan komputer belajar dari data tanpa diprogram secara eksplisit",
+          "deep_learning": "Teknik machine learning yang menggunakan neural network berlapis untuk memproses data kompleks",
+          "nlp": "Natural Language Processing, teknologi AI untuk memahami dan memproses bahasa manusia",
+          "chatbot": "Program komputer yang dirancang untuk mensimulasikan percakapan dengan manusia",
+          "neural_network": "Model komputasi yang terinspirasi dari cara kerja otak manusia",
+          "big_data": "Kumpulan data yang sangat besar dan kompleks yang memerlukan teknologi khusus untuk diolah",
+          "cloud_computing": "Penggunaan server jarak jauh di internet untuk menyimpan, mengelola, dan memproses data",
+          "blockchain": "Teknologi pencatatan digital terdesentralisasi yang aman dan transparan",
+          "iot": "Internet of Things, jaringan perangkat fisik yang saling terhubung melalui internet",
+          "mobil_listrik": "Mobil listrik (EV) bekerja menggunakan motor listrik yang ditenagai oleh baterai isi ulang, mengubah energi kimia baterai menjadi energi mekanik tanpa menghasilkan emisi gas buang langsung"
+        },
+        "sains": {
+          "fisika": "Ilmu yang mempelajari materi, energi, dan interaksi di antara keduanya",
+          "kimia": "Ilmu yang mempelajari komposisi, struktur, dan perubahan materi",
+          "biologi": "Ilmu yang mempelajari makhluk hidup dan proses kehidupan",
+          "matematika": "Ilmu tentang bilangan, kuantitas, struktur, dan perubahan",
+          "astronomi": "Ilmu yang mempelajari benda-benda langit dan fenomena luar angkasa",
+          "geologi": "Ilmu yang mempelajari bumi, termasuk batuan, mineral, dan proses geologi"
+        },
+        "sejarah": {
+          "perang_dunia_1": "Perang global pertama yang berlangsung dari 1914 hingga 1918",
+          "perang_dunia_2": "Perang global terbesar dalam sejarah, berlangsung dari 1939 hingga 1945",
+          "kemerdekaan_indonesia": "Indonesia merdeka pada tanggal 17 Agustus 1945, diproklamasikan oleh Soekarno dan Hatta",
+          "revolusi_industri": "Perubahan besar dalam industri dan teknologi yang dimulai di Inggris pada abad ke-18"
+        },
+        "geografi": {
+          "gunung_tertinggi": "Gunung Everest dengan ketinggian 8.849 meter di perbatasan Nepal dan Tibet",
+          "sungai_terpanjang": "Sungai Nil di Afrika dengan panjang sekitar 6.650 km",
+          "samudra_terbesar": "Samudra Pasifik, mencakup sepertiga permukaan bumi",
+          "benua": "Ada 7 benua: Asia, Afrika, Amerika Utara, Amerika Selatan, Antarktika, Eropa, dan Australia",
+          "gunung_tertinggi_indonesia": "Puncak Jaya (Carstensz Pyramid) di Papua dengan ketinggian 4.884 meter"
+        },
+        "bahasa_pemrograman": {
+          "javascript": "Bahasa pemrograman utama untuk web development, bisa digunakan di browser dan server",
+          "java": "Bahasa pemrograman yang sangat populer untuk aplikasi enterprise dan Android",
+          "c": "Bahasa pemrograman tingkat rendah yang sangat cepat, banyak digunakan untuk system programming",
+          "cpp": "Ekstensi dari bahasa C dengan fitur object-oriented, digunakan untuk game dan software performa tinggi",
+          "rust": "Bahasa pemrograman modern yang fokus pada keamanan memori dan performa",
+          "go": "Bahasa pemrograman dari Google yang sederhana dan efisien untuk backend",
+          "typescript": "Superset dari JavaScript yang menambahkan static typing",
+          "swift": "Bahasa pemrograman dari Apple untuk membuat aplikasi iOS dan macOS",
+          "kotlin": "Bahasa pemrograman modern untuk Android, alternatif Java yang lebih ringkas"
         }
       }
     },
@@ -48,7 +104,10 @@
         "Kamu lebih kuat dari yang kamu pikirkan! 🔥",
         "Langkah kecil hari ini bisa jadi lompatan besar esok hari! 🚀",
         "Jangan bandingkan prosesmu dengan orang lain. Setiap orang punya timeline sendiri! 🕐",
-        "Yang penting bukan seberapa cepat, tapi seberapa konsisten! 💫"
+        "Yang penting bukan seberapa cepat, tapi seberapa konsisten! 💫",
+        "Hidup itu bukan tentang menunggu badai berlalu, tapi belajar menari di tengah hujan! 🌧️✨",
+        "Sukses tidak datang kepada yang menunggu, tapi kepada yang berani mencoba! 🎯",
+        "Setiap ahli dulunya pernah jadi pemula. Terus belajar! 📚"
       ]
     },
     "fakta_menarik": {
@@ -60,7 +119,12 @@
         "Otak manusia bisa menyimpan informasi setara 2.5 juta GB! 🧠",
         "Lebah bisa mengenali wajah manusia! 🐝",
         "Lumba-lumba tidur dengan satu mata terbuka! 🐬",
-        "Indonesia punya lebih dari 17.000 pulau! 🏝️"
+        "Indonesia punya lebih dari 17.000 pulau! 🏝️",
+        "Cahaya matahari butuh sekitar 8 menit untuk sampai ke bumi! ☀️",
+        "DNA manusia 99.9% sama satu sama lain! 🧬",
+        "Semut bisa mengangkat beban 50 kali berat tubuhnya! 🐜",
+        "Petir bisa mencapai suhu 30.000 Kelvin, lebih panas dari permukaan matahari! ⚡",
+        "Bumi berputar dengan kecepatan sekitar 1.670 km/jam! 🌍"
       ]
     }
   }
