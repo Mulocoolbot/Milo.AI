@@ -1,6 +1,18 @@
 {
   "name": {
     "value": "Mullo",
-    "updated_at": "2026-08-18 23:16:17"
+    "updated_at": "2026-08-18 23:33:17"
+  },
+  "current_project": {
+    "value": "nyoba menyempurnakan arsitektur kamu nih",
+    "updated_at": "2026-08-18 23:33:17"
+  },
+  "favorite_food": {
+    "value": "rendang",
+    "updated_at": "2026-08-18 23:33:17"
+  },
+  "hobby": {
+    "value": "main catur",
+    "updated_at": "2026-08-18 23:33:17"
   }
 }

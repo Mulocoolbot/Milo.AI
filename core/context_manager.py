@@ -1,7 +1,7 @@
 """
 Milo AI — Context Manager
-Mengelola konteks percakapan, termasuk tracking topik, sentimen,
-dan entitas yang disebutkan oleh user.
+Mengelola konteks percakapan bertingkat, tracking topik, sentimen,
+dialogue acts, dan entitas/fakta personal user.
 """
 
 import re
@@ -11,15 +11,14 @@ from utils.config import Config
 
 
 class ContextManager:
-    """Context Manager — mengelola konteks dan state percakapan."""
+    """Context Manager — mengelola konteks dan state percakapan secara cerdas."""
     
-    # Kata-kata kunci untuk deteksi sentimen sederhana
     POSITIVE_WORDS = {
         'senang', 'suka', 'bahagia', 'gembira', 'happy', 'seru', 'asik',
         'keren', 'bagus', 'mantap', 'oke', 'baik', 'hebat', 'luar biasa',
         'amazing', 'great', 'good', 'love', 'cinta', 'sayang', 'yeay',
         'hore', 'wow', 'top', 'jago', 'pintar', 'lucu', 'makasih',
-        'terima kasih', 'thanks', 'semangat',
+        'terima kasih', 'thanks', 'semangat', 'lega', 'puas'
     }
     
     NEGATIVE_WORDS = {
@@ -28,6 +27,7 @@ class ContextManager:
         'tolol', 'goblok', 'bego', 'sad', 'angry', 'hate', 'bad',
         'stress', 'depresi', 'nangis', 'takut', 'capek', 'lelah',
         'males', 'suntuk', 'sebel', 'jengkel', 'gondok', 'dongkol',
+        'pusing', 'overthinking', 'bingung', 'kacau', 'buntu'
     }
     
     def __init__(self):
@@ -35,11 +35,12 @@ class ContextManager:
         self._current_topic = None
         self._previous_topic = None
         self._current_sentiment = "neutral"
-        self._entities = {}              # Entitas yang terdeteksi (nama, tempat, dll)
+        self._entities = {}              # Entitas yang terdeteksi (nama, tempat, fakta, dll)
         self._turn_count = 0             # Jumlah giliran percakapan
         self._session_start = datetime.now()
         self._awaiting_context = []      # Konteks yang sedang ditunggu
         self._user_name = None           # Nama user jika sudah diketahui
+        self._last_milo_act = None       # Tindakan percakapan terakhir Milo (offer_listen, ask_question, dll)
     
     def update(self, user_input, preprocessed_data, intent_result, response):
         """
@@ -53,6 +54,10 @@ class ContextManager:
         """
         self._turn_count += 1
         
+        # Deteksi dialogue act dari respons Milo
+        milo_act = self._detect_milo_act(response)
+        self._last_milo_act = milo_act
+        
         # Update history
         turn = {
             "turn": self._turn_count,
@@ -61,20 +66,41 @@ class ContextManager:
             "intent": intent_result.get("intent", "unknown"),
             "confidence": intent_result.get("confidence", 0.0),
             "response": response,
+            "milo_act": milo_act
         }
         self._conversation_history.append(turn)
         
         # Update topic
         new_topic = intent_result.get("intent", None)
-        if new_topic and new_topic != "fallback":
+        if new_topic and new_topic not in ("fallback", "affirmative", "negative"):
             self._previous_topic = self._current_topic
             self._current_topic = new_topic
         
         # Update sentiment
         self._update_sentiment(preprocessed_data)
         
-        # Extract entities
+        # Extract entities & personal facts
         self._extract_entities(user_input, intent_result)
+    
+    def _detect_milo_act(self, response):
+        """Mendeteksi tipe tindakan percakapan yang baru saja dilakukan Milo."""
+        res_lower = response.lower()
+        
+        # Menawarkan mendengarkan curhat / cerita
+        if any(w in res_lower for w in ["ceritakan uneg-unegmu", "siap dengerin", "cerita aja", "mau cerita", "tempat yang aman", "tumpahkan"]):
+            return "offer_listen"
+        
+        # Menanyakan pertanyaan langsung
+        if "?" in response:
+            if any(w in res_lower for w in ["makanan favorit", "hobi", "lagu apa", "lagi ngerjain apa", "lagi sibuk"]):
+                return "ask_personal_question"
+            return "ask_question"
+        
+        # Memberikan saran
+        if any(w in res_lower for w in ["saran", "solusi", "coba urai", "langkah"]):
+            return "give_advice"
+            
+        return "general_statement"
     
     def _update_sentiment(self, preprocessed_data):
         """Mendeteksi dan update sentimen user berdasarkan kata-kata."""
@@ -89,15 +115,14 @@ class ContextManager:
         elif negative_count > positive_count:
             self._current_sentiment = "negative"
         else:
-            # Perlahan kembali ke neutral
             self._current_sentiment = "neutral"
     
     def _extract_entities(self, text, intent_result):
-        """Mengekstrak entitas sederhana dari input (nama, waktu, dll)."""
+        """Mengekstrak entitas sederhana dan fakta personal dari input."""
         intent = intent_result.get("intent", "")
         
         # Ekstrak nama user
-        if intent == "user_name_tell":
+        if intent == "user_name_tell" or not self._user_name:
             name = self._extract_name(text)
             if name:
                 self._user_name = name
@@ -109,15 +134,44 @@ class ContextManager:
             r'\b(senin|selasa|rabu|kamis|jumat|sabtu|minggu)\b',
             r'\b(besok|kemarin|lusa|sekarang|nanti|tadi)\b',
         ]
-        
         for pattern in time_patterns:
             match = re.search(pattern, text.lower())
             if match:
                 self._entities["time_reference"] = match.group()
+        
+        # Deteksi fakta personal (pekerjaan/kampus/hobi/project)
+        facts = self.extract_personal_facts(text)
+        self._entities.update(facts)
+    
+    def extract_personal_facts(self, text):
+        """Mengekstrak fakta profil personal dari percakapan."""
+        facts = {}
+        text_lower = text.lower()
+        
+        # 1. Pekerjaan / Status / Mahasiswa
+        mhs_match = re.search(r'\b(?:aku|saya|gue|gw)\s+(?:seorang\s+|adalah\s+)?(mahasiswa[^\n,.]*|kuliah di[^\n,.]*|jurusan[^\n,.]*|programmer[^\n,.]*|software engineer[^\n,.]*)', text_lower)
+        if mhs_match:
+            facts["occupation"] = mhs_match.group(1).strip()
+        
+        # 2. Project / Aktivitas saat ini
+        proj_match = re.search(r'\b(?:aku lagi|lagi nyoba|sedang)\s+([^\n,.]+?(?:arsitektur|skripsi|tugas|aplikasi|proyek|project|koding|coding)[^\n,.]*)', text_lower)
+        if proj_match:
+            facts["current_project"] = proj_match.group(1).strip()
+            
+        # 3. Makanan Favorit
+        food_match = re.search(r'\b(?:makanan favorit(?:ku| saya)?|suka makan)\s+(?:adalah\s+)?([a-zA-Z\s]{3,25}?)(?=\s+(?:dan|serta|karena|tapi|hobiku|hobi)|[.,]|$)', text_lower)
+        if food_match:
+            facts["favorite_food"] = food_match.group(1).strip()
+            
+        # 4. Hobi
+        hobby_match = re.search(r'\b(?:hobi(?:ku| saya)?|suka banget)\s+(?:adalah\s+)?([a-zA-Z\s]{3,25}?)(?=\s+(?:dan|serta|karena|tapi|makanan)|[.,]|$)', text_lower)
+        if hobby_match:
+            facts["hobby"] = hobby_match.group(1).strip()
+            
+        return facts
     
     def _extract_name(self, text):
         """Mengekstrak nama dari input user."""
-        # Pattern umum untuk menyebutkan nama
         name_patterns = [
             r'(?:nama\s*(?:saya|aku|gue|gw)\s+(?:adalah\s+)?)([\w]+)',
             r'(?:(?:namaku|nama\s*ku)\s+(?:adalah\s+)?)([\w]+)',
@@ -131,13 +185,20 @@ class ContextManager:
             match = re.search(pattern, text.lower())
             if match:
                 name = match.group(1).capitalize()
-                # Filter kata-kata yang bukan nama
                 non_names = {'adalah', 'itu', 'ini', 'dong', 'deh', 'ya', 'sih',
-                            'aja', 'banget', 'bisa', 'mau', 'milo'}
+                            'aja', 'banget', 'bisa', 'mau', 'milo', 'lagi', 'sedang',
+                            'baik', 'capek', 'bingung', 'senang', 'sedih'}
                 if name.lower() not in non_names:
                     return name
-        
         return None
+    
+    def get_last_milo_act(self):
+        """Mengembalikan tindakan percakapan terakhir Milo."""
+        return self._last_milo_act
+    
+    def set_last_milo_act(self, act):
+        """Menyimpan tindakan percakapan terakhir Milo."""
+        self._last_milo_act = act
     
     def get_context(self):
         """Mengembalikan konteks percakapan saat ini."""
@@ -148,6 +209,7 @@ class ContextManager:
             "entities": self._entities.copy(),
             "turn_count": self._turn_count,
             "user_name": self._user_name,
+            "last_milo_act": self._last_milo_act,
             "session_duration": str(datetime.now() - self._session_start),
             "history_size": len(self._conversation_history),
             "awaiting_context": self._awaiting_context,
@@ -186,7 +248,8 @@ class ContextManager:
                 "user": turn.get("user_input", ""),
                 "milo": turn.get("response", ""),
                 "intent": turn.get("intent", ""),
-                "turn": turn.get("turn", 0)
+                "turn": turn.get("turn", 0),
+                "milo_act": turn.get("milo_act", "")
             }
             for turn in history
         ]
@@ -222,4 +285,4 @@ class ContextManager:
         self._turn_count = 0
         self._session_start = datetime.now()
         self._awaiting_context = []
-        # Tetap simpan user_name
+        self._last_milo_act = None

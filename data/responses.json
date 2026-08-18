@@ -172,6 +172,11 @@
       "Mau Milo jelaskan bagian mana lagi yang bikin penasaran? 🤔",
       "Bisa banget! Bagian mana yang mau kita bahas lebih dalam? ✨"
     ],
+    "seeking_permission": [
+      "Boleh banget dong {user_name}! Justru Milo seneng banget kalau kamu mau berbagi cerita. Milo ga bakal bosen kok! Ceritain aja, apa yang lagi bikin kamu bingung? 🤗💙",
+      "Tentu saja boleh! Ga usah sungkan sama Milo ya. Ruang ini sepenuhnya aman buat kamu tumpahkan semua pikiranmu. Yuk, mulai cerita! ✨",
+      "Pasti boleh {user_name}! Milo selalu ada di sini buat dengerin kamu. Apapun ceritanya, Milo siap mendengarkan! 🫂"
+    ],
     "affirmative": [
       "Oke, siap! 👍",
       "Mantap! Milo ngerti! 😊",

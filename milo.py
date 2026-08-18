@@ -167,25 +167,45 @@ class Milo:
         return response
     
     def _update_memory(self, user_input, intent_result, preprocessed):
-        """Update memori berdasarkan percakapan."""
+        """Update memori & continuous learning berdasarkan percakapan."""
         intent = intent_result["intent"]
+        turn_count = self.context_manager.get_context()['turn_count']
         
-        # Simpan topik percakapan ke short-term
+        # 1. Simpan giliran percakapan ke short-term
         self.memory.remember_short(
-            f"turn_{self.context_manager.get_context()['turn_count']}",
+            f"turn_{turn_count}",
             {
                 "input": user_input,
                 "intent": intent,
             },
-            importance=0.5 if intent != "fallback" else 0.2
+            importance=0.6 if intent != "fallback" else 0.2
         )
         
-        # Jika user memberikan nama, simpan ke long-term
-        if intent == "user_name_tell":
-            name = self.context_manager.get_user_name()
-            if name:
-                self.memory.remember_long("user_name", name, "user_info")
-                self.memory.set_user_info("name", name)
+        # 2. Ekstrak dan simpan nama jika ada
+        name = self.context_manager.get_user_name()
+        if name:
+            self.memory.remember_long("user_name", name, "user_info")
+            self.memory.set_user_info("name", name)
+        
+        # 3. Continuous Learning: Ekstrak fakta profil personal user
+        facts = self.context_manager.extract_personal_facts(user_input)
+        for fact_key, fact_val in facts.items():
+            self.memory.set_user_info(fact_key, fact_val)
+            self.memory.remember_long(fact_key, fact_val, "user_profile")
+            self.logger.debug(f"Learned user fact: {fact_key} = {fact_val}")
+            
+        # 4. Continuous Learning: Pelajari pengetahuan baru yang disampaikan user
+        self._learn_knowledge(user_input)
+    
+    def _learn_knowledge(self, text):
+        """Mengekstrak dan menyimpan pengetahuan baru yang diajarkan user."""
+        import re
+        teach_match = re.search(r'\b(?:tahu ga|kamu tahu ga|faktanya|sebenarnya)\s+(?:kalau|bahwa)?\s*([a-zA-Z0-9\s]{3,30})\s+(?:adalah|itu|merupakan|artinya)\s+([^\n.]+)', text, re.IGNORECASE)
+        if teach_match:
+            key = teach_match.group(1).strip().lower().replace(" ", "_")
+            value = teach_match.group(2).strip()
+            self.knowledge_base.add_entry("pengetahuan_user", key, value)
+            self.logger.debug(f"Learned new knowledge: {key} = {value}")
     
     def get_status(self):
         """Mengembalikan status Milo saat ini."""

@@ -4,10 +4,11 @@ Otak utama yang menghasilkan respons yang dinamis, kontekstual, dan nyambung
 dengan apa yang dibicarakan oleh user sampai ke level pemikiran dan empati mendalam.
 
 Milo menyusun respons berdasarkan:
-1. Analisis Klausa & Intent yang terdeteksi
-2. Konten spesifik dan kata kunci dari input user
-3. Konteks emosional & history percakapan sebelumnya
-4. Basis pengetahuan (Knowledge Base)
+1. Multi-Discourse & Analisis Klausa Majemuk
+2. Dialogue Act State Machine (Pelacakan alur aksi percakapan sebelumnya)
+3. Konten spesifik dan kata kunci dari input user
+4. Konteks emosional & history percakapan sebelumnya
+5. Basis pengetahuan (Knowledge Base)
 """
 
 import json
@@ -19,11 +20,11 @@ from utils.text_utils import TextUtils
 
 
 class ResponseEngine:
-    """Contextual Response Engine — menghasilkan respons cerdas, empatik, dan nyambung."""
+    """Contextual Response Engine — cerdas, empatik, terstruktur, dan multi-konteks."""
     
     def __init__(self):
         self._responses = {}
-        self._last_responses = {}  # Track respons terakhir per intent (anti-repetisi)
+        self._last_responses = {}
         self._stopwords = set()
         self._load_responses()
         self._load_stopwords()
@@ -52,7 +53,7 @@ class ResponseEngine:
         Menghasilkan respons kontekstual berdasarkan input user, intent, history, dan knowledge.
         
         Args:
-            intent_result: dict hasil pengenalan intent
+            intent_result: dict hasil pengenalan intent (bisa multi-segment)
             context: dict konteks percakapan saat ini
             preprocessed: dict hasil preprocessing teks user
             knowledge_base: instance KnowledgeBase
@@ -74,81 +75,117 @@ class ResponseEngine:
         # Ekstrak kata kunci penting
         keywords = self._extract_keywords(user_input, user_words)
         
-        # === 1. Handle Pertanyaan Nama User (user_name_ask) ===
+        # === 0. Handle Multi-Segment Compound Inputs (Kalimat Majemuk Multi-Konteks) ===
+        if intent_result.get("is_compound") and len(intent_result.get("segments", [])) >= 2:
+            compound_resp = self._handle_compound_input(intent_result, user_input, keywords, context, knowledge_base, memory, context_manager)
+            if compound_resp:
+                return self._substitute_variables(compound_resp, context)
+        
+        # === 0b. Handle User Membagikan Fakta Personal (Makanan, Hobi, Profesi) ===
+        if any(w in user_input.lower() for w in ["makanan favorit", "hobiku", "hobi saya", "pekerjaanku", "aku mahasiswa", "lagi nyoba"]):
+            facts = context_manager.extract_personal_facts(user_input) if context_manager else {}
+            if facts and intent not in ("user_profile_query", "need_advice"):
+                fact_desc = []
+                if "favorite_food" in facts:
+                    fact_desc.append(f"makanan favoritmu itu **{facts['favorite_food'].title()}**")
+                if "hobby" in facts:
+                    fact_desc.append(f"hobimu **{facts['hobby'].title()}**")
+                if "occupation" in facts:
+                    fact_desc.append(f"kamu {facts['occupation']}")
+                if "current_project" in facts:
+                    fact_desc.append(f"kamu lagi fokus {facts['current_project']}")
+                
+                if fact_desc:
+                    user_name = context.get("user_name") or "teman"
+                    raw_msg = f"Wah, asik banget! Milo catat di memori ya kalau " + " dan ".join(fact_desc) + "! 🧠✨ Senang bisa kenal kamu lebih dekat, {user_name}!"
+                    return self._substitute_variables(raw_msg, context)
+        
+        # === 1. Handle Pertanyaan Izin / Ragu ("emang boleh ya?") dengan Dialogue State ===
+        if intent == "seeking_permission" or self._is_seeking_permission(user_input):
+            perm_resp = self._handle_seeking_permission(user_input, context, context_manager)
+            if perm_resp:
+                return self._substitute_variables(perm_resp, context)
+        
+        # === 2. Handle Pertanyaan Nama User (user_name_ask) ===
         if intent == "user_name_ask" or self._is_asking_user_name(user_input):
             return self._handle_user_name_ask(context, memory)
         
-        # === 2. Handle User Menyebutkan Nama (user_name_tell) ===
+        # === 3. Handle User Menyebutkan Nama (user_name_tell) ===
         if intent == "user_name_tell":
             user_name = context.get("user_name")
             if user_name:
                 return f"Salam kenal, {user_name}! 😊 Senang bisa kenalan sama kamu! Mulai sekarang Milo bakal ingat nama kamu ya! 🤝✨"
         
-        # === 3. Handle Kebutuhan Curhat & Ruang Cerita (curhat_need) ===
+        # === 3b. Handle Pertanyaan Fakta Profil User (user_profile_query) ===
+        if intent == "user_profile_query":
+            profile_resp = self._handle_user_profile_query(user_input, memory, context)
+            if profile_resp:
+                return self._substitute_variables(profile_resp, context)
+        
+        # === 4. Handle Kebutuhan Curhat & Ruang Cerita (curhat_need) ===
         if intent == "curhat_need" or self._is_curhat_intent(user_input):
             return self._substitute_variables(self._handle_curhat_need(user_input, context), context)
         
-        # === 4. Handle Kondisi Bingung / Overthinking / Banyak Pikiran (confused_state) ===
+        # === 5. Handle Kondisi Bingung / Overthinking / Banyak Pikiran (confused_state) ===
         if intent == "confused_state":
             return self._substitute_variables(self._handle_confused_state(user_input, context), context)
         
-        # === 5. Handle Permintaan Saran / Pendapat (need_advice) ===
+        # === 6. Handle Permintaan Saran / Pendapat (need_advice) ===
         if intent == "need_advice":
             return self._substitute_variables(self._handle_need_advice(user_input, context), context)
         
-        # === 6. Handle Rasa Kesepian (lonely_state) ===
+        # === 7. Handle Rasa Kesepian (lonely_state) ===
         if intent == "lonely_state":
             return self._substitute_variables(self._handle_lonely_state(user_input, context), context)
         
-        # === 7. Handle Pertanyaan Kabar & Keadaan (how_are_you, current_activity_ask) ===
+        # === 8. Handle Pertanyaan Kabar & Keadaan (how_are_you, current_activity_ask) ===
         if intent == "how_are_you":
             return self._handle_how_are_you(user_input, context)
         
         if intent == "current_activity_ask":
             return self._handle_current_activity(context)
         
-        # === 8. Handle Smalltalk Spesifik (Makanan, Musik, Hobi) dengan deteksi entitas ===
+        # === 9. Handle Smalltalk Spesifik (Makanan, Musik, Hobi) dengan deteksi entitas ===
         if intent in ("smalltalk_food", "smalltalk_music", "smalltalk_hobby") or self._is_food_or_music_input(user_input):
             entity_response = self._handle_specific_smalltalk(intent, user_input, keywords, context)
             if entity_response:
                 return self._substitute_variables(entity_response, context)
         
-        # === 9. Handle Curhat & Emosi (feeling_sad, feeling_happy, feeling_angry) ===
+        # === 10. Handle Curhat & Emosi (feeling_sad, feeling_happy, feeling_angry) ===
         if intent in ("feeling_sad", "feeling_happy", "feeling_angry"):
             feeling_response = self._handle_feeling(intent, user_input, keywords, context)
             if feeling_response:
                 return self._substitute_variables(feeling_response, context)
         
-        # === 10. Handle Follow-up Percakapan ("terus?", "lalu?", "kenapa begitu?") ===
+        # === 11. Handle Follow-up Percakapan ("terus?", "lalu?", "kenapa begitu?") ===
         if intent == "follow_up" or self._is_follow_up_phrase(user_input):
             follow_response = self._handle_follow_up(user_input, context, context_manager, knowledge_base)
             if follow_response:
                 return self._substitute_variables(follow_response, context)
         
-        # === 11. Handle Pertanyaan Pengetahuan (knowledge_query) atau Pertanyaan Faktual ===
+        # === 12. Handle Pertanyaan Pengetahuan (knowledge_query) atau Pertanyaan Faktual ===
         if intent == "knowledge_query" or (knowledge_base and self._is_factual_question(user_input)):
             kb_response = self._handle_knowledge_query(user_input, keywords, knowledge_base, context)
             if kb_response:
                 return self._substitute_variables(kb_response, context)
         
-        # === 12. Handle Affirmative / Negative dengan Konteks Percakapan Terakhir ===
+        # === 13. Handle Affirmative / Negative dengan Konteks Percakapan Terakhir ===
         if intent in ("affirmative", "negative"):
             reply = self._handle_affirmation_or_negation(intent, user_input, context, context_manager)
             if reply:
                 return self._substitute_variables(reply, context)
         
-        # === 13. Cek Knowledge Base jika intent adalah fallback atau confidence rendah ===
+        # === 14. Cek Knowledge Base jika intent adalah fallback atau confidence rendah ===
         if intent == "fallback" and knowledge_base:
             kb_response = self._handle_knowledge_query(user_input, keywords, knowledge_base, context)
             if kb_response:
                 return self._substitute_variables(kb_response, context)
             
-            # Jika tidak ada di KB, coba generate respons dinamis berbasis kata kunci user
             dynamic_fallback = self._handle_dynamic_fallback(user_input, keywords, context)
             if dynamic_fallback:
                 return self._substitute_variables(dynamic_fallback, context)
         
-        # === 14. Fallback ke Template Engine Standar dengan Personalisasi ===
+        # === 15. Fallback ke Template Engine Standar dengan Personalisasi ===
         response_templates = self._responses.get(intent, self._responses.get("fallback", []))
         if not response_templates:
             response_templates = ["Hmm, Milo bingung nih 🤔 Coba ceritain lebih banyak ya!"]
@@ -158,6 +195,85 @@ class ResponseEngine:
         response = self._personalize(response, context, intent)
         
         return response
+    
+    def _handle_compound_input(self, intent_result, user_input, keywords, context, knowledge_base, memory, context_manager):
+        """
+        Menyusun respons terpadu untuk kalimat majemuk panjang yang memiliki
+        beberapa konteks (misal: aktivitas/proyek + rasa bingung/emosi + minta saran).
+        """
+        segments = intent_result.get("segments", [])
+        user_name = context.get("user_name")
+        name_suffix = f" {user_name}" if user_name else ""
+        
+        text_lower = user_input.lower()
+        
+        has_advice_request = any(s["intent"] == "need_advice" or any(w in s["text"].lower() for w in ["saran", "pendapat", "masukan", "harus gimana"]) for s in segments)
+        has_confusion = any(s["intent"] == "confused_state" or any(w in s["text"].lower() for w in ["bingung", "pusing", "overthinking", "kacau", "buntu"]) for s in segments)
+        has_architecture_topic = any(any(w in s["text"].lower() for w in ["arsitektur", "kode", "program", "koding", "coding", "milo", "fitur", "modul"]) for s in segments)
+        has_curhat = any(s["intent"] == "curhat_need" or "curhat" in s["text"].lower() for s in segments)
+        
+        # Skenario 1: User membahas arsitektur/coding + bingung + minta saran
+        if has_architecture_topic and (has_confusion or has_advice_request):
+            parts = []
+            parts.append(f"Wah, seru banget kamu lagi nyoba nyempurnain arsitektur Milo{name_suffix}! 🧠✨")
+            
+            if has_confusion:
+                parts.append("Tapi kalau rasanya bikin bingung banget, wajar kok! Mengembangkan arsitektur sistem AI dari nol memang kompleks dan butuh memetakan banyak alur berpikir.")
+            
+            if has_advice_request:
+                parts.append("Saran dari Milo: Coba urai secara modular dulu. Pisahkan dengan jelas antara (1) segmentasi kalimat & intent recognition, (2) pelacakan context & dialogue state, dan (3) response synthesis. Jangan langsung coba selesaikan semua kemungkinan sekaligus.")
+            
+            parts.append("Bagian modul atau logika mana yang paling bikin kamu mentok sekarang? Cerita aja, kita bedah bareng-bareng! 🚀")
+            return " ".join(parts)
+            
+        # Skenario 2: User curhat/emosi + minta saran umum
+        if has_advice_request and (has_confusion or has_curhat):
+            parts = []
+            parts.append(f"Milo paham banget perasaanmu{name_suffix} 🤗 Wajar kalau situasi ini bikin kamu overthinking dan bingung.")
+            parts.append("Buat saran awal: Tarik napas sejenak dan coba petakan apa hal yang paling penting untuk diselesaikan hari ini versus hal yang bisa ditunda.")
+            parts.append("Mau coba ceritakan apa hal paling spesifik yang lagi bikin kamu bimbang saat ini? Biar Milo bantu analisa bareng! 💡")
+            return " ".join(parts)
+            
+        return None
+    
+    def _is_seeking_permission(self, text):
+        """Mengecek apakah input menanyakan izin/keraguan."""
+        text_lower = text.lower()
+        patterns = [
+            r"\bemang boleh( ya)?\b",
+            r"\bboleh emang( ya)?\b",
+            r"\bbeneran boleh\b",
+            r"\bapakah boleh\b",
+            r"\bserius boleh\b",
+            r"\bbisa emang\b",
+            r"\bkamu ga keberatan\b",
+            r"\bkamu ga bosen\b"
+        ]
+        return any(re.search(p, text_lower) for p in patterns)
+    
+    def _handle_seeking_permission(self, user_input, context, context_manager):
+        """Merespons pertanyaan izin / keraguan user seperti 'emang boleh ya?'."""
+        user_name = context.get("user_name")
+        salutation = f"{user_name}, " if user_name else ""
+        name_suffix = f" {user_name}" if user_name else ""
+        
+        last_milo_act = context_manager.get_last_milo_act() if context_manager else None
+        last_milo_response = context_manager.get_last_response() if context_manager else ""
+        
+        # Jika Milo sebelumnya menawarkan untuk mendengarkan curhat/cerita
+        if last_milo_act == "offer_listen" or any(w in last_milo_response.lower() for w in ["ceritakan", "dengerin", "beban", "curhat", "uneg-uneg"]):
+            options = [
+                f"Boleh banget dong{name_suffix}! Justru Milo seneng banget kalau kamu mau berbagi cerita. Milo siap dengerin 100% tanpa nge-judge sama sekali 🤗 Ceritain aja, apa yang lagi bikin kamu bingung? 💙",
+                f"Tentu saja boleh{name_suffix}! Milo ga bakal bosen kok. Ruang ini sepenuhnya aman buat kamu tumpahkan semua uneg-uneg. Mau mulai dari mana? ✨",
+                f"Pasti boleh banget! Ga usah sungkan atau ragu sama Milo ya 🤝 Milo di sini standby buat dengerin apapun yang mau kamu sampaikan. Yuk, ceritakan! 🌿"
+            ]
+            return random.choice(options)
+        else:
+            options = [
+                f"Boleh banget dong{name_suffix}! Milo selalu terbuka buat ngobrol atau bantu apapun yang kamu butuhkan 😊 Ada apa nih?",
+                f"Tentu boleh! Ga usah sungkan ya {salutation}Milo siap menemani! ✨"
+            ]
+            return random.choice(options)
     
     def _extract_keywords(self, text, words=None):
         """Mengekstrak kata kunci dari teks input."""
@@ -169,7 +285,7 @@ class ResponseEngine:
             "apa", "siapa", "dimana", "kapan", "mengapa", "kenapa", "bagaimana", "gimana",
             "apakah", "berapa", "yang", "kamu", "tahu", "tau", "tentang", "mengenai",
             "tolong", "bisa", "jelaskan", "ceritakan", "kasih", "adalah", "itu", "ini",
-            "dong", "sih", "kan", "nih", "ya", "deh", "kah", "kok", "aku", "saya", "gue", "gw"
+            "dong", "sih", "kan", "nih", "ya", "deh", "kah", "kok", "aku", "saya", "gue", "gw", "emang"
         }
         
         all_ignored = self._stopwords | question_words
@@ -192,7 +308,6 @@ class ResponseEngine:
             r"who am i",
             r"what is my name"
         ]
-        # Jangan anggap sebagai tanya nama jika ada 'ke siapa', 'sama siapa'
         if re.search(r'\b(ke|sama|dengan|pada)\s+siapa\b', text_lower):
             return False
         return any(re.search(p, text_lower) for p in patterns)
@@ -223,7 +338,7 @@ class ResponseEngine:
             "apa kabar", "gimana kabar", "bagaimana kabar", "lagi apa", "lagi ngapain",
             "kamu lagi", "siapa kamu", "siapa namamu", "nama kamu siapa", "siapa nama saya",
             "kamu sehat", "apa yang bisa kamu lakukan", "bisa apa kamu", "hobi kamu apa",
-            "makanan favorit kamu", "musik favorit kamu", "mau curhat", "pengen curhat"
+            "makanan favorit kamu", "musik favorit kamu", "mau curhat", "pengen curhat", "emang boleh"
         ]
         if any(nf in text_lower for nf in non_factual):
             return False
@@ -261,6 +376,44 @@ class ResponseEngine:
         else:
             return "Hmm, sepertinya kamu belum kasih tahu nama kamu ke Milo nih 🤔 Siapa nama panggilanmu? Biar Milo bisa panggil dengan akrab! 😊"
     
+    def _handle_user_profile_query(self, user_input, memory, context):
+        """Merespons pertanyaan user tentang profil/fakta yang pernah diceritakan."""
+        if not memory:
+            return "Milo belum punya catatan lengkap soal itu. Ceritain dong lebih banyak tentang kamu! 😊"
+        
+        user_name = context.get("user_name")
+        salutation = f"{user_name}, " if user_name else ""
+        text_lower = user_input.lower()
+        
+        # 1. Tanya Hobi
+        if "hobi" in text_lower:
+            hobby = memory.get_user_info("hobby")
+            if hobby:
+                return f"{salutation}kamu pernah cerita kalau hobi kamu itu **{hobby.title()}**! 🎨 Masih sering ngelakuin itu?"
+            return f"{salutation}kamu belum pernah kasih tahu hobi kamu ke Milo nih. Hobi kamu apa sih? Biar Milo catat di memori! 😊"
+            
+        # 2. Tanya Makanan Favorit
+        if "makan" in text_lower or "kuliner" in text_lower:
+            food = memory.get_user_info("favorite_food")
+            if food:
+                return f"{salutation}makanan favorit kamu kan **{food.title()}**! 😋 Milo masih ingat kok!"
+            return f"{salutation}Milo belum tahu makanan favorit kamu. Kamu paling suka makan apa nih? 🍲"
+            
+        # 3. Tanya Pekerjaan / Kuliah / Aktivitas
+        if "kuliah" in text_lower or "kerja" in text_lower or "profesi" in text_lower or "proyek" in text_lower or "project" in text_lower:
+            occ = memory.get_user_info("occupation") or memory.get_user_info("current_project")
+            if occ:
+                return f"{salutation}kamu kan lagi sibuk dengan {occ}! 💼 Semangat terus ya dengan aktivitasmu!"
+            return f"{salutation}kamu belum pernah cerita soal kuliah atau pekerjaanmu. Cerita dong sekarang kamu lagi sibuk apa? 🎓"
+            
+        # 4. Ringkasan apa yang Milo tahu tentang user
+        all_info = memory.get_user_profile()
+        if all_info:
+            points = [f"• **{k.replace('_', ' ').title()}**: {v}" for k, v in all_info.items()]
+            return f"{salutation}ini beberapa hal yang Milo ingat tentang kamu:\n" + "\n".join(points) + "\n\nAda hal baru yang mau kamu ceritakan? 🧠✨"
+            
+        return f"{salutation}Milo baru tahu nama kamu! Ceritain dong lebih banyak hal tentang kamu, misalnya hobi atau hal yang kamu sukai! ✨"
+    
     def _handle_curhat_need(self, user_input, context):
         """Menghasilkan respons empati dan ruang aman saat user ingin curhat/bercerita."""
         user_name = context.get("user_name")
@@ -296,7 +449,6 @@ class ResponseEngine:
     def _handle_need_advice(self, user_input, context):
         """Merespons permintaan saran / sudut pandang."""
         user_name = context.get("user_name")
-        salutation = f"{user_name}, " if user_name else ""
         name_suffix = f" {user_name}" if user_name else ""
         
         options = [
@@ -323,10 +475,8 @@ class ResponseEngine:
         if not knowledge_base:
             return None
         
-        # 1. Cari berdasarkan keyword matching dengan scoring
         results = knowledge_base.search_by_keywords(keywords, max_results=3)
         
-        # 2. Jika belum ketemu, coba pencarian kata kunci individual
         if not results:
             clean_input = re.sub(r'[^\w\s]', '', user_input.lower())
             for word in clean_input.split():
@@ -506,8 +656,8 @@ class ResponseEngine:
         last_user_msg = context_manager.get_last_user_input()
         last_intent = context_manager.get_last_intent()
         
-        if last_intent in ("curhat_need", "feeling_sad"):
-            return "Yang terpenting sekarang, jangan terlalu membebani dirimu ya... Tarik napas dalam-dalam, istirahat dulu, lalu kita susun langkah pelan-pelan 💪 Milo yakin kamu bisa bangkit lagi! 💙 Mau cerita kelanjutannya?"
+        if last_intent in ("curhat_need", "feeling_sad", "confused_state"):
+            return "Yang terpenting sekarang, jangan terlalu membebani dirimu ya... Tarik napas dalam-dalam, istirahat dulu, lalu kita susun langkah pelan-pelan 💪 Milo yakin kamu bisa melewatinya! 💙 Mau cerita kelanjutannya?"
         
         if last_intent == "feeling_happy":
             return "Terus nikmati momen bahagianya! 🎉 Semoga hal baik berikutnya segera menyusul ya! Ada rencana apa lagi nih?"

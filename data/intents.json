@@ -558,6 +558,26 @@
       "context": []
     },
     {
+      "tag": "user_profile_query",
+      "patterns": [
+        "hobi aku apa",
+        "hobiku apa",
+        "apa hobi saya",
+        "makanan favoritku apa",
+        "makanan kesukaanku apa",
+        "aku kuliah dimana",
+        "aku kerja apa",
+        "pekerjaanku apa",
+        "kamu tahu hobi aku",
+        "kamu ingat hobiku",
+        "kamu tahu makanan favoritku",
+        "kamu tahu aku kuliah dimana",
+        "kamu tahu kerjaanku apa",
+        "kamu tahu tentang aku apa aja"
+      ],
+      "context": []
+    },
+    {
       "tag": "knowledge_query",
       "patterns": [
         "apa yang kamu ketahui tentang",
@@ -626,6 +646,26 @@
       "context": []
     },
     {
+      "tag": "seeking_permission",
+      "patterns": [
+        "emang boleh ya",
+        "emang boleh",
+        "boleh emang",
+        "boleh ya",
+        "beneran boleh",
+        "bisa emang",
+        "beneran bisa",
+        "serius boleh",
+        "apakah boleh",
+        "kamu ga keberatan",
+        "ga ngerepotin kamu",
+        "kamu ga bosen",
+        "is it okay",
+        "can i"
+      ],
+      "context": []
+    },
+    {
       "tag": "affirmative",
       "patterns": [
         "ya",
@@ -643,7 +683,8 @@
         "setuju",
         "sure",
         "of course",
-        "boleh",
+        "boleh deh",
+        "boleh dong",
         "siap",
         "ayo",
         "gas",
