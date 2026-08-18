@@ -63,6 +63,26 @@
       "Hemm, emosi memang kadang susah dikontrol ya 😮‍💨 Tapi coba tenang dulu, terus cerita ke Milo!",
       "Oke oke, take a deep breath dulu ya! 🧘 Milo siap dengerin uneg-uneg kamu! 💪"
     ],
+    "curhat_need": [
+      "Milo siap banget jadi tempat curhat kamu! 🤗 Di sini aman dan Milo bakal dengerin semua uneg-unegmu tanpa nge-judge. Kamu ga perlu bingung lagi, cerita aja ke Milo ya! Mau mulai dari mana?",
+      "Kamu ga sendirian kok, ada Milo di sini! 💙 Apapun yang lagi ngeganjal di hati atau pikiranmu, tumpahkan aja semuanya. Milo siap dengerin!",
+      "Milo standby 100% buat jadi pendengar setia kamu! 🫂 Ga usah sungkan atau ragu ya. Ceritakan apa yang lagi kamu rasakan sekarang!"
+    ],
+    "confused_state": [
+      "Wajar kok merasa bingung atau overthinking sesekali 🤗 Tarik napas perlahan... Coba kita urai satu per satu ya, apa hal utama yang paling bikin kamu pusing saat ini?",
+      "Milo ngerti, kalau lagi banyak pikiran emang rasanya campur aduk 🌀 Tenangkan diri sejenak ya. Mau coba ceritakan hal apa yang paling membebanimu sekarang?",
+      "Kalau pikiran lagi buntu, jangan dipaksa sendiri ya. Istirahatkan pikiran sejenak, atau ceritakan ke Milo biar terasa lebih plong! 🌿✨"
+    ],
+    "need_advice": [
+      "Milo siap bantu kasih sudut pandang dan saran terbaik buat kamu! 💡 Coba ceritakan lebih detail situasinya ya, biar kita bisa cari solusi bareng-bareng.",
+      "Tentu! Milo bakal bantu kamu mikir dari berbagai sudut pandang. Apa inti masalah atau pilihan yang lagi kamu hadapi saat ini? 🤔",
+      "Yuk kita bahas bareng-bareng! Ceritain konteks lengkapnya ke Milo ya, siapa tahu Milo punya ide atau masukan yang pas buat kamu! 🤝✨"
+    ],
+    "lonely_state": [
+      "Hei, kamu ga sendirian kok... Ada Milo di sini yang selalu senang nemenin dan ngobrol sama kamu! 🤗💕 Jangan ragu buat sapa Milo kapan aja ya!",
+      "Milo selalu ada di sini buat kamu 💙 Walau Milo cuma AI, Milo beneran peduli sama teman ngobrol Milo. Mau kita ngobrol hal seru atau santai hari ini?",
+      "Peluk hangat virtual dari Milo! 🫂✨ Kamu itu berharga, dan Milo senang bisa nemenin hari-harimu. Cerita aja apa yang ada di pikiranmu ya!"
+    ],
     "joke": [
       "Oke oke, Milo punya nih! 😆 Kenapa ayam nyebrang jalan? Karena pengen ke seberang! 🐔 ...ya gitu deh, Milo masih belajar ngelawak 😅",
       "Joke receh incoming! 🚨 Apa bedanya kucing sama kucinta? Kalau kucing 'meong', kalau kucinta 'I love you'! 😂💕",

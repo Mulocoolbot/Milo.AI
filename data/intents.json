@@ -222,6 +222,89 @@
       "context": []
     },
     {
+      "tag": "curhat_need",
+      "patterns": [
+        "mau curhat",
+        "pengen curhat",
+        "aku mau curhat",
+        "aku pengen curhat",
+        "curhat dong",
+        "bingung mau curhat ke siapa",
+        "bingung mau cerita ke siapa",
+        "bingung ke siapa",
+        "mau cerita tapi bingung ke siapa",
+        "mau curhat tapi bingung ke siapa",
+        "butuh teman curhat",
+        "butuh teman cerita",
+        "butuh tempat cerita",
+        "bisa dengerin aku cerita",
+        "dengerin ceritaku",
+        "dengerin curhatanku",
+        "ada yang mau aku ceritain",
+        "boleh curhat ga",
+        "mau numpahin uneg uneg",
+        "mau cerita sesuatu",
+        "lagi pengen cerita",
+        "butuh teman ngobrol serius",
+        "i need to talk",
+        "need someone to talk"
+      ],
+      "context": []
+    },
+    {
+      "tag": "confused_state",
+      "patterns": [
+        "aku lagi bingung",
+        "lagi bingung",
+        "bingung banget",
+        "banyak pikiran",
+        "lagi banyak pikiran",
+        "overthinking",
+        "lagi overthinking",
+        "pusing banget",
+        "ga tahu harus gimana",
+        "ga tau harus gimana",
+        "serba salah",
+        "capek pikiran",
+        "lagi buntu",
+        "pikiranku lagi kacau"
+      ],
+      "context": []
+    },
+    {
+      "tag": "need_advice",
+      "patterns": [
+        "menurut kamu gimana",
+        "menurutmu gimana",
+        "kasih saran dong",
+        "enaknya gimana ya",
+        "aku harus gimana",
+        "minta pendapat",
+        "ada masukan ga",
+        "kasih saran",
+        "saran kamu apa",
+        "menurutmu apa yang harus aku lakukan",
+        "apa yang harus kulakukan"
+      ],
+      "context": []
+    },
+    {
+      "tag": "lonely_state",
+      "patterns": [
+        "aku kesepian",
+        "merasa sendiri",
+        "merasa sendirian",
+        "ga ada teman",
+        "sendirian",
+        "butuh teman",
+        "ga ada yang paham aku",
+        "merasa hampa",
+        "im lonely",
+        "feeling lonely"
+      ],
+      "context": []
+    },
+    {
       "tag": "joke",
       "patterns": [
         "ceritain joke",
