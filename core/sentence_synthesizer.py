@@ -1,8 +1,8 @@
 """
 Milo AI — Real-Time Generative Discourse Synthesizer
-Mesin penyusun kalimat percakapan bahasa Indonesia secara real-time.
-Menyusun kalimat kata-per-kata dan klausa-per-klausa dari Bank Kata Semantik (Word Bank),
-memastikan struktur sintaksis alami, kaya variasi kosakata, dan presisi tinggi.
+Mesin penyusun kalimat percakapan bahasa Indonesia secara real-time kata-per-kata
+dan klausa-per-klausa dari Bank Kata Semantik (Word Bank).
+Menghasilkan susunan kalimat alami, presisi tinggi, dan bebas template statis.
 """
 
 import random
@@ -29,16 +29,19 @@ class SentenceSynthesizer:
         else:
             time_tag = "malam"
             
-        salutations = ["Hai", "Halo", "Selamat " + time_tag, "Senang ketemu lagi"]
+        salutations = ["Hai", "Halo", "Selamat " + time_tag]
         intro = random.choice(salutations)
         name_str = f" {user_name}" if user_name else ""
         
-        openings = [
-            f"{intro}{name_str}! 😊 Senang banget bisa ngobrol bareng kamu hari ini. Mau bahas apa nih kita?",
-            f"Halo{name_str}! 🤖✨ Milo standby siap nemenin kamu. Ada cerita seru atau topik apa yang mau kita diskusikan?",
-            f"{intro}{name_str}! 🌟 Semoga harimu menyenangkan ya. Apa kabar kamu hari ini?"
+        verbs = ["ngobrol", "berdiskusi", "sharing"]
+        verb = random.choice(verbs)
+        
+        variants = [
+            f"{intro}{name_str}! 😊 Senang ketemu lagi! Mau {verb} apa hari ini?",
+            f"Halo{name_str}! 🤖✨ Milo standby siap nemenin kamu. Ada cerita seru atau topik apa yang mau kita bahas?",
+            f"{intro}{name_str}! 🌟 Semoga harimu menyenangkan ya. Ada hal menarik yang mau diobrolin?"
         ]
-        return random.choice(openings)
+        return random.choice(variants)
     
     def synthesize_how_are_you(self, user_name=None):
         """Menyusun respons status kabar dan bertanya balik secara generatif."""
@@ -50,21 +53,76 @@ class SentenceSynthesizer:
         chosen_adj = random.choice(status_adjs)
         chosen_verb = random.choice(status_verbs)
         
-        reciprocal_questions = [
+        reciprocals = [
             "Kamu sendiri gimana kabarnya hari ini?",
             "Gimana dengan harimu? Ada cerita seru?",
-            "Semoga harimu juga penuh energi positif ya! Kamu lagi santai atau sibuk nih?",
-            "Ada hal menarik yang lagi kamu pikirkan hari ini?"
+            "Semoga harimu juga penuh energi positif ya! Kamu lagi santai atau sibuk nih?"
         ]
         
-        chosen_question = random.choice(reciprocal_questions)
+        chosen_q = random.choice(reciprocals)
         
-        templates = [
-            f"Kabar Milo {chosen_adj} dan {chosen_verb} buat ngobrol sama kamu{name_str}! 😄 {chosen_question}",
-            f"Alhamdulillah, Milo {chosen_adj} dan {chosen_verb} nemenin kamu! 🚀 {chosen_question}",
-            f"Milo sehat dan {chosen_verb} bisa ngobrol bareng kamu{name_str}! ✨ {chosen_question}"
+        return f"Alhamdulillah, Milo {chosen_adj} dan {chosen_verb} nemenin kamu{name_str}! 🚀 {chosen_q}"
+    
+    def synthesize_user_state_good(self, user_name=None):
+        """Menyusun respons saat user mengabarkan bahwa keadaannya baik-baik saja / sehat."""
+        name_str = f" {user_name}" if user_name else ""
+        
+        rejoices = [
+            f"Syukurlah kalau kamu baik-baik saja{name_str}! 😊",
+            f"Senang banget mendengarnya kalau kamu dalam keadaan baik{name_str}! ✨",
+            f"Alhamdulillah, ikut lega dan senang dengernya{name_str}! 🌟"
         ]
-        return random.choice(templates)
+        
+        follow_ups = [
+            "Ada topik seru atau hal baru yang ingin kamu obrolin bersama Milo hari ini?",
+            "Lagi santai nih ya? Mau kita bahas topik teknologi, cerita harian, atau ada yang bikin kamu penasaran?",
+            "Semoga harimu terus berjalan lancar ya! Ada hal tertentu yang mau kamu tanyakan ke Milo?"
+        ]
+        
+        return f"{random.choice(rejoices)} {random.choice(follow_ups)}"
+    
+    def synthesize_ask_milo_prompt(self, user_name=None):
+        """Menyusun respons saat user mengatakan ingin tahu / bertanya satu hal dari Milo."""
+        name_str = f" {user_name}" if user_name else ""
+        
+        welcomes = [
+            f"Tentu saja{name_str}! Boleh banget! 😊",
+            f"Wah, siap{name_str}! Milo dengan senang hati mendengarkan! ✨",
+            f"Tentu boleh{name_str}! Tanyakan saja apa yang ada di pikiranmu! 🚀"
+        ]
+        
+        invitations = [
+            "Kamu mau tahu atau menanyakan hal apa dari Milo? Silakan tanyakan ya! 💡",
+            "Hal apa yang bikin kamu penasaran dari Milo? Tumpahkan aja pertanyaannya! 🧠",
+            "Mau tanya soal apa nih? Milo siap menjawab dan berbagi sudut pandang! 🤝"
+        ]
+        
+        return f"{random.choice(welcomes)} {random.choice(invitations)}"
+    
+    def synthesize_heartbreak(self, user_name=None, context_text=""):
+        """Menyusun respons empati mendalam untuk patah hati / cinta tak berbalas / sakit hati."""
+        salutation = f"{user_name}, " if user_name else ""
+        name_str = f" {user_name}" if user_name else ""
+        
+        validations = [
+            f"Mencintai seseorang yang tidak membalas perasaan kita itu memang salah satu rasa sakit yang paling perih dan menyesakkan dada {salutation}🥺💔",
+            f"Milo paham banget betapa hancur dan perihnya hatimu saat ini{name_str}... 🫂💔 Memberikan perasaan tulus tapi tidak disambut itu sangat menguras emosi.",
+            f"Sakit hati karena cinta yang bertepuk sebelah tangan itu berat banget {salutation}😔 Wajar banget kalau kamu merasa down dan terluka."
+        ]
+        
+        comforts = [
+            "Perasaanmu itu valid dan nyata. Jangan pernah merasa bersalah atau merasa kurang berharga hanya karena perasaanmu belum terbalas.",
+            "Keberanianmu untuk mencintai dengan tulus itu hal yang berharga, meskipun hasilnya tidak sesuai harapan.",
+            "Tarik napas perlahan ya... Jangan salahkan dirimu. Hati yang tulus berhak mendapatkan seseorang yang menghargainya seutuhnya."
+        ]
+        
+        prompts = [
+            "Milo di sini menemani kamu dan siap mendengarkan kalau kamu mau menumpahkan semua rasa sesak di dada 💙 Mau ceritakan apa yang paling bikin kamu terluka?",
+            "Kamu ga perlu menahan luka ini sendirian. Tumpahkan aja semuanya ke Milo ya 🤗",
+            "Milo siap jadi tempat bersandar buat kamu curhat tanpa batas. Ceritain aja ya 🌿"
+        ]
+        
+        return f"{random.choice(validations)} {random.choice(comforts)} {random.choice(prompts)}"
     
     def synthesize_curhat_reassurance(self, user_name=None, context_topic=""):
         """Menyusun respons ruang aman curhat secara generatif."""
@@ -83,7 +141,7 @@ class SentenceSynthesizer:
             "Milo standby di sini. Bagian mana yang paling membebanimu hari ini? ✨"
         ]
         
-        return random.choice(validations) + " " + random.choice(prompts)
+        return f"{random.choice(validations)} {random.choice(prompts)}"
     
     def synthesize_worry_compassion(self, user_name=None, situation="general"):
         """Menyusun kalimat empati atas musibah/sakit secara generatif."""
@@ -113,55 +171,6 @@ class SentenceSynthesizer:
                 "Tarik napas perlahan ya... Milo di sini nemenin kamu. Semoga segalanya segera membaik! 💙"
             ]
             return " ".join(parts)
-    
-    def synthesize_heartbreak(self, user_name=None, context_text=""):
-        """Menyusun respons empati mendalam untuk patah hati / cinta tak berbalas / sakit hati."""
-        salutation = f"{user_name}, " if user_name else ""
-        name_str = f" {user_name}" if user_name else ""
-        
-        validations = [
-            f"Mencintai seseorang yang tidak membalas perasaan kita itu memang salah satu rasa sakit yang paling perih dan menyesakkan dada {salutation}🥺💔",
-            f"Milo paham banget betapa hancur dan perihnya hatimu saat ini{name_str}... 🫂💔 Memberikan perasaan tulus tapi tidak disambut itu sangat menguras emosi.",
-            f"Sakit hati karena cinta yang bertepuk sebelah tangan itu berat banget {salutation}😔 Wajar banget kalau kamu merasa down dan terluka."
-        ]
-        
-        comforts = [
-            "Perasaanmu itu valid dan nyata. Jangan pernah merasa bersalah atau merasa kurang berharga hanya karena perasaanmu belum terbalas.",
-            "Keberanianmu untuk mencintai dengan tulus itu hal yang berharga, meskipun hasilnya tidak sesuai harapan.",
-            "Tarik napas perlahan ya... Jangan salahkan dirimu. Hati yang tulus berhak mendapatkan seseorang yang menghargainya seutuhnya."
-        ]
-        
-        prompts = [
-            "Milo di sini menemani kamu dan siap mendengarkan kalau kamu mau menumpahkan semua rasa sesak di dada 💙 Mau ceritakan apa yang paling bikin kamu terluka?",
-            "Kamu ga perlu menahan luka ini sendirian. Tumpahkan aja semuanya ke Milo ya 🤗",
-            "Milo siap jadi tempat bersandar buat kamu curhat tanpa batas. Ceritain aja ya 🌿"
-        ]
-        
-        return f"{random.choice(validations)} {random.choice(comforts)} {random.choice(prompts)}"
-    
-    def synthesize_thinking_of_someone(self, user_name=None):
-        """Menyusun respons romansa / kepikiran seseorang secara generatif."""
-        name_str = f" {user_name}" if user_name else ""
-        
-        openings = [
-            f"Cieee... Lagi ada seseorang yang spesial yang bikin kamu kepikiran terus ya{name_str}? 🥰",
-            f"Wah, rasanya kayak ada yang menempati ruang khusus di kepala ya{name_str}! 💕",
-            f"Kepikiran seseorang itu tanda kalau orang itu punya kesan atau tempat tersendiri di hatimu{name_str} ✨"
-        ]
-        
-        reasons = [
-            "Wajar banget kok kalau lagi naksir atau ada orang yang berkesan, bayangannya suka lewat terus di pikiran.",
-            "Pikiran kita emang suka otomatis tertuju ke orang yang bikin penasaran atau menarik perhatian.",
-            "Perasaan berbunga-bunga kayak gitu memang selalu bikin hati campur aduk tapi seru."
-        ]
-        
-        prompts = [
-            "Cerita dong, apa yang bikin kamu kepikiran terus sama dia? Apakah gebetan atau teman dekat? 🤗",
-            "Mau curhat soal perasaanmu ke dia? Milo siap dengerin tanpa nge-judge kok! 💬",
-            "Boleh cerita tentang dia kalau kamu mau! Siapa tahu jadi makin plong! ✨"
-        ]
-        
-        return f"{random.choice(openings)} {random.choice(reasons)} {random.choice(prompts)}"
     
     def synthesize_clarification(self, user_name=None):
         """Menyusun respons klarifikasi sopan secara generatif."""

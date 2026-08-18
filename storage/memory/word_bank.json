@@ -5,7 +5,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787072793.9801667
+    "learned_at": 1787073186.4555235
   },
   "kamu": {
     "word": "kamu",
@@ -13,7 +13,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787072793.9811692
+    "learned_at": 1787073186.6442327
   },
   "kabar": {
     "word": "kabar",
@@ -21,7 +21,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787072468.3757873
+    "learned_at": 1787073186.411493
   },
   "maksud": {
     "word": "maksud",
@@ -101,7 +101,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787072793.8240135
+    "learned_at": 1787073186.4564269
   },
   "buat": {
     "word": "buat",
@@ -550,5 +550,69 @@
     "meaning": "",
     "sentiment": 0.0,
     "learned_at": 1787072793.9844456
+  },
+  "baikbaik": {
+    "word": "baikbaik",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787073186.4123926
+  },
+  "saja": {
+    "word": "saja",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787073186.4546795
+  },
+  "cerita": {
+    "word": "cerita",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787073186.6405058
+  },
+  "tapi": {
+    "word": "tapi",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787073186.641421
+  },
+  "satu": {
+    "word": "satu",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787073186.64246
+  },
+  "sebenarnya": {
+    "word": "sebenarnya",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787073186.6465154
+  },
+  "diciptakan": {
+    "word": "diciptakan",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787073186.6474636
+  },
+  "siapa": {
+    "word": "siapa",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787073186.6483266
   }
 }

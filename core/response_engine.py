@@ -14,6 +14,7 @@ from utils.text_utils import TextUtils
 from knowledge.word_bank import WordBank
 from knowledge.web_fetcher import WebFetcher
 from core.sentence_synthesizer import SentenceSynthesizer
+from core.semantic_parser import SemanticParser
 
 
 class ResponseEngine:
@@ -23,6 +24,7 @@ class ResponseEngine:
         self.word_bank = word_bank or WordBank()
         self.web_fetcher = web_fetcher or WebFetcher()
         self.synthesizer = SentenceSynthesizer(self.word_bank)
+        self.semantic_parser = SemanticParser()
         self._stopwords = set()
         self._load_stopwords()
     
@@ -48,41 +50,56 @@ class ResponseEngine:
             user_input = preprocessed.get("original", "")
             user_words = preprocessed.get("tokens_raw", [])
         
+        last_milo_act = context_manager.get_last_milo_act() if context_manager else None
+        parsed = self.semantic_parser.parse(user_input, last_milo_act)
+        
         keywords = self._extract_keywords(user_input, user_words)
         user_name = context.get("user_name") or ""
         salutation = f"{user_name}, " if user_name else ""
         name_suffix = f" {user_name}" if user_name else ""
         
         # === 1. Handle Permintaan Klarifikasi ("maksud kamu gimana?", "maksudnya apa?") ===
-        if intent == "clarification_ask" or self._is_clarification_ask(user_input):
+        if parsed["is_clarification"] or intent == "clarification_ask":
             return self.synthesizer.synthesize_clarification(user_name)
         
         # === 2. Handle Meta-Correction (User mengoreksi pemahaman Milo, misal 'bukan gitu konteksnya') ===
-        if intent == "meta_correction" or self._is_meta_correction(user_input):
+        if parsed["is_meta_correction"] or intent == "meta_correction":
             last_user_msg = context_manager.get_last_user_input() if context_manager else ""
             return self.synthesizer.synthesize_meta_correction(user_name, last_user_msg)
         
-        # === 3. Handle Multi-Segment Compound Inputs (Kalimat Majemuk Panjang Multi-Konteks) ===
+        # === 3. Handle User Menyatakan Ingin Tahu / Bertanya Sesuatu ke Milo ("aku mau tau satu hal dari kamu") ===
+        if parsed["is_asking_milo"]:
+            return self.synthesizer.synthesize_ask_milo_prompt(user_name)
+        
+        # === 4. Handle Respons Keadaan Baik User ("aku baik-baik saja milo", "kabar baik") ===
+        if parsed["is_user_state_good"] and not any(w in user_input.lower() for w in ["sakit", "sedih", "kecewa", "bingung"]):
+            return self.synthesizer.synthesize_user_state_good(user_name)
+        
+        # === 5. Handle Patah Hati & Cinta Tak Berbalas (heartbreak) ===
+        if parsed["is_heartbreak"]:
+            return self.synthesizer.synthesize_heartbreak(user_name, user_input)
+        
+        # === 6. Handle Multi-Segment Compound Inputs (Kalimat Majemuk Panjang Multi-Konteks) ===
         if intent_result.get("is_compound") and len(intent_result.get("segments", [])) >= 2:
             compound_resp = self._handle_compound_input(intent_result, user_input, keywords, context, knowledge_base, memory, context_manager)
             if compound_resp:
                 return self._substitute_variables(compound_resp, context)
         
-        # === 4. Handle Rasa Cemas / Khawatir / Musibah / Sakit (worry_concern_state) ===
+        # === 7. Handle Rasa Cemas / Khawatir / Musibah / Sakit (worry_concern_state) ===
         if intent == "worry_concern_state" or any(w in user_input.lower() for w in ["kecelakaan", "masuk rumah sakit", "kena musibah", "rawat inap", "ruang rawat", "di rumah sakit"]):
             situation = "hospital_rawat_inap" if any(w in user_input.lower() for w in ["rawat inap", "ruang rawat"]) else ("accident_hospital" if any(w in user_input.lower() for w in ["kecelakaan", "rumah sakit"]) else "general")
             return self.synthesizer.synthesize_worry_compassion(user_name, situation)
         
-        # === 5. Handle Kepikiran Seseorang / Naksir / Romansa (thinking_of_someone) ===
+        # === 8. Handle Kepikiran Seseorang / Naksir / Romansa (thinking_of_someone) ===
         if intent == "thinking_of_someone" or self._is_thinking_of_someone(user_input):
             return self.synthesizer.synthesize_thinking_of_someone(user_name)
         
-        # === 6. Handle Pertanyaan Izin / Ragu ("emang boleh ya?") ===
-        if intent == "seeking_permission" or self._is_seeking_permission(user_input):
+        # === 9. Handle Pertanyaan Izin / Ragu ("emang boleh ya?") ===
+        if parsed["is_seeking_permission"] or intent == "seeking_permission":
             return self._handle_seeking_permission(user_input, context, context_manager)
         
-        # === 7. Handle Curhat Emosi & Patah Hati (feeling_sad, feeling_happy, feeling_angry, heartbreak) ===
-        if intent in ("feeling_sad", "feeling_happy", "feeling_angry") or any(w in user_input.lower() for w in ["sakit hati", "patah hati", "mencintai seseorang", "sedih banget", "kecewa berat"]):
+        # === 10. Handle Curhat Emosi (feeling_sad, feeling_happy, feeling_angry) ===
+        if intent in ("feeling_sad", "feeling_happy", "feeling_angry") or any(w in user_input.lower() for w in ["sedih banget", "kecewa berat"]):
             feeling_response = self._handle_feeling(intent, user_input, keywords, context)
             if feeling_response:
                 return self._substitute_variables(feeling_response, context)
@@ -120,7 +137,15 @@ class ResponseEngine:
         if intent == "how_are_you" or any(w in user_input.lower() for w in ["apa kabar", "gimana kabar", "bagaimana kabar", "kabarmu"]):
             return self.synthesizer.synthesize_how_are_you(user_name)
         
-        # === 11. Handle Pertanyaan Sedang Apa (current_activity_ask) ===
+        # === 11. Handle Pertanyaan Pencipta / Pembuat Milo (identity_creator) ===
+        if intent == "identity_creator" or any(w in user_input.lower() for w in ["diciptakan oleh siapa", "siapa penciptamu", "siapa pembuatmu", "siapa yang buat kamu", "siapa yang bikin kamu", "who created you", "diciptakan siapa"]):
+            return "Milo diciptakan dan dikembangkan oleh Mullo, seorang programmer dan kreator hebat yang membangun seluruh arsitektur sistem AI Milo dari nol (scratch) menggunakan Python! 🧠💻✨ Ada yang mau kamu diskusikan lagi soal Milo?"
+        
+        # === 12. Handle Pertanyaan Identitas Milo (identity_ask) ===
+        if intent == "identity_ask" or any(w in user_input.lower() for w in ["siapa kamu", "kamu siapa", "who are you"]):
+            return f"Halo{name_suffix}! Aku adalah Milo, sistem AI percakapan pintar yang dibangun dari scratch menggunakan Python tanpa pustaka AI pihak ketiga! Milo siap menemani kamu ngobrol, berdiskusi, dan belajar bersama! 🤖🚀"
+        
+        # === 13. Handle Pertanyaan Sedang Apa (current_activity_ask) ===
         if intent == "current_activity_ask" or any(w in user_input.lower() for w in ["lagi apa", "lagi ngapain", "sedang apa"]):
             return self._handle_current_activity(context)
         
@@ -152,7 +177,7 @@ class ResponseEngine:
                 return self._substitute_variables(profile_resp, context)
         
         # === 18. Handle Curhat & Kebutuhan Cerita (curhat_need) ===
-        if intent == "curhat_need" or self._is_curhat_intent(user_input):
+        if (intent == "curhat_need" or self._is_curhat_intent(user_input)) and not parsed["has_no_story"] and not parsed["is_asking_milo"]:
             return self.synthesizer.synthesize_curhat_reassurance(user_name)
         
         # === 19. Handle Kondisi Bingung / Overthinking (confused_state) ===
