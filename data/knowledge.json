@@ -1,0 +1,67 @@
+{
+  "categories": {
+    "tentang_milo": {
+      "description": "Informasi tentang Milo AI",
+      "entries": {
+        "nama": "Milo",
+        "versi": "1.0.0",
+        "bahasa": "Python",
+        "tipe": "AI Percakapan (Conversational AI)",
+        "metode": "Pattern Matching + TF-IDF + Context Awareness",
+        "fitur": [
+          "Percakapan natural bilingual (ID/EN)",
+          "Context-aware responses",
+          "Memory system (short-term & long-term)",
+          "Personality & emotion simulation",
+          "Slang/abbreviation understanding"
+        ]
+      }
+    },
+    "pengetahuan_umum": {
+      "description": "Pengetahuan umum",
+      "entries": {
+        "indonesia": {
+          "ibukota": "Jakarta",
+          "bahasa_resmi": "Bahasa Indonesia",
+          "mata_uang": "Rupiah (IDR)",
+          "pulau_terbesar": "Kalimantan",
+          "jumlah_provinsi": "38 provinsi"
+        },
+        "planet": {
+          "bumi": "Planet ke-3 dari matahari, satu-satunya planet yang diketahui memiliki kehidupan",
+          "mars": "Planet ke-4 dari matahari, disebut juga Planet Merah",
+          "jupiter": "Planet terbesar di tata surya kita"
+        },
+        "teknologi": {
+          "ai": "Artificial Intelligence, teknologi yang memungkinkan mesin untuk belajar dan berpikir",
+          "python": "Bahasa pemrograman populer yang sering digunakan untuk AI dan data science",
+          "internet": "Jaringan komputer global yang menghubungkan miliaran perangkat"
+        }
+      }
+    },
+    "quotes_motivasi": {
+      "description": "Kutipan motivasi",
+      "entries": [
+        "Setiap hari adalah kesempatan baru untuk menjadi lebih baik! 🌟",
+        "Kegagalan bukan akhir, tapi awal dari pembelajaran baru! 💪",
+        "Bermimpilah besar, bekerjalah keras, tetaplah rendah hati! ✨",
+        "Kamu lebih kuat dari yang kamu pikirkan! 🔥",
+        "Langkah kecil hari ini bisa jadi lompatan besar esok hari! 🚀",
+        "Jangan bandingkan prosesmu dengan orang lain. Setiap orang punya timeline sendiri! 🕐",
+        "Yang penting bukan seberapa cepat, tapi seberapa konsisten! 💫"
+      ]
+    },
+    "fakta_menarik": {
+      "description": "Fakta-fakta menarik",
+      "entries": [
+        "Gurita punya 3 jantung! 🐙",
+        "Madu tidak pernah basi, bahkan yang berumur ribuan tahun! 🍯",
+        "Sidik jari koala hampir identik dengan sidik jari manusia! 🐨",
+        "Otak manusia bisa menyimpan informasi setara 2.5 juta GB! 🧠",
+        "Lebah bisa mengenali wajah manusia! 🐝",
+        "Lumba-lumba tidur dengan satu mata terbuka! 🐬",
+        "Indonesia punya lebih dari 17.000 pulau! 🏝️"
+      ]
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "stopwords": [
+    "yang", "dan", "di", "ke", "dari", "ini", "itu", "dengan", "untuk",
+    "pada", "adalah", "akan", "juga", "sudah", "telah", "oleh", "saat",
+    "dalam", "ada", "mereka", "atau", "seperti", "lagi", "bisa", "hanya",
+    "lebih", "sedang", "serta", "antara", "setelah", "karena", "secara",
+    "tentang", "sebelum", "maka", "tersebut", "ketika", "sehingga",
+    "bahwa", "namun", "tetapi", "masih", "belum", "pernah", "hingga",
+    "terhadap", "melalui", "sampai", "tanpa", "setiap", "selama",
+    "the", "a", "an", "is", "are", "was", "were", "be", "been", "being",
+    "have", "has", "had", "do", "does", "did", "will", "would", "could",
+    "should", "may", "might", "shall", "can", "of", "in", "to", "for",
+    "with", "on", "at", "by", "from", "as", "into", "through", "during",
+    "before", "after", "above", "below", "between", "under", "again",
+    "further", "then", "once", "here", "there", "when", "where", "why",
+    "how", "all", "both", "each", "few", "more", "most", "other", "some",
+    "such", "no", "nor", "not", "only", "own", "same", "so", "than",
+    "too", "very", "just", "about", "also"
+  ]
+}

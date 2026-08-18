@@ -1,0 +1,491 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": [
+        "hai",
+        "halo",
+        "hello",
+        "hi",
+        "hey",
+        "selamat pagi",
+        "selamat siang",
+        "selamat sore",
+        "selamat malam",
+        "pagi",
+        "siang",
+        "sore",
+        "malam",
+        "apa kabar",
+        "gimana kabarnya",
+        "hei",
+        "yo",
+        "woi",
+        "assalamualaikum",
+        "salam",
+        "permisi",
+        "hallo",
+        "haloo",
+        "good morning",
+        "good afternoon",
+        "good evening",
+        "whats up",
+        "howdy"
+      ],
+      "context": []
+    },
+    {
+      "tag": "farewell",
+      "patterns": [
+        "bye",
+        "goodbye",
+        "sampai jumpa",
+        "dadah",
+        "dah",
+        "see you",
+        "see ya",
+        "selamat tinggal",
+        "pamit",
+        "cabut dulu",
+        "duluan ya",
+        "pergi dulu",
+        "udahan",
+        "udah dulu",
+        "bye bye",
+        "later",
+        "sampai nanti",
+        "good night",
+        "selamat tidur",
+        "tidur dulu",
+        "off dulu",
+        "gw pergi dulu",
+        "aku pergi dulu"
+      ],
+      "context": []
+    },
+    {
+      "tag": "thanks",
+      "patterns": [
+        "terima kasih",
+        "makasih",
+        "thanks",
+        "thank you",
+        "thx",
+        "tq",
+        "tengkyu",
+        "nuhun",
+        "matur nuwun",
+        "trims",
+        "makasi",
+        "terimakasih",
+        "thank u",
+        "sankyu",
+        "arigatou"
+      ],
+      "context": []
+    },
+    {
+      "tag": "identity_ask",
+      "patterns": [
+        "siapa kamu",
+        "kamu siapa",
+        "siapa namamu",
+        "nama kamu siapa",
+        "who are you",
+        "what is your name",
+        "whats your name",
+        "kamu ini apa",
+        "apa kamu",
+        "kamu itu siapa",
+        "lo siapa",
+        "elu siapa",
+        "namamu siapa",
+        "perkenalkan diri",
+        "kenalan dong",
+        "kenalin dong",
+        "siapa sih kamu"
+      ],
+      "context": []
+    },
+    {
+      "tag": "identity_creator",
+      "patterns": [
+        "siapa yang buat kamu",
+        "siapa penciptamu",
+        "siapa yang bikin kamu",
+        "who created you",
+        "who made you",
+        "siapa developermu",
+        "dibuat oleh siapa",
+        "kamu dibuat siapa",
+        "yang ngebuat kamu siapa",
+        "pembuat kamu siapa",
+        "creator kamu siapa"
+      ],
+      "context": []
+    },
+    {
+      "tag": "how_are_you",
+      "patterns": [
+        "apa kabar",
+        "gimana kabar",
+        "kabar baik",
+        "how are you",
+        "how do you do",
+        "gimana",
+        "baik-baik aja",
+        "sehat",
+        "kamu sehat",
+        "lu sehat",
+        "sehat ga",
+        "kabarmu gimana",
+        "gmn kabarnya",
+        "hows it going",
+        "how you doing"
+      ],
+      "context": []
+    },
+    {
+      "tag": "feeling_happy",
+      "patterns": [
+        "aku senang",
+        "aku bahagia",
+        "senang banget",
+        "happy",
+        "lagi seneng",
+        "lagi happy",
+        "gue seneng",
+        "aku suka",
+        "aku gembira",
+        "senang sekali",
+        "bahagia banget",
+        "im happy",
+        "yeay",
+        "hore",
+        "asik",
+        "seru",
+        "mantap",
+        "keren"
+      ],
+      "context": []
+    },
+    {
+      "tag": "feeling_sad",
+      "patterns": [
+        "aku sedih",
+        "sedih banget",
+        "aku galau",
+        "lagi sedih",
+        "lagi galau",
+        "aku nangis",
+        "pengen nangis",
+        "im sad",
+        "gue sedih",
+        "patah hati",
+        "sakit hati",
+        "kecewa",
+        "aku kecewa",
+        "down banget",
+        "gue galau",
+        "lagi baper",
+        "bete",
+        "bosan",
+        "suntuk",
+        "stress",
+        "depresi"
+      ],
+      "context": []
+    },
+    {
+      "tag": "feeling_angry",
+      "patterns": [
+        "aku marah",
+        "kesel banget",
+        "emosi",
+        "lagi emosi",
+        "gue marah",
+        "bete banget",
+        "sebel",
+        "jengkel",
+        "aku kesal",
+        "im angry",
+        "nyebelin",
+        "bikin kesel",
+        "gue sebel",
+        "geram",
+        "gondok",
+        "dongkol"
+      ],
+      "context": []
+    },
+    {
+      "tag": "joke",
+      "patterns": [
+        "ceritain joke",
+        "cerita lucu",
+        "joke dong",
+        "lawak dong",
+        "bikin ketawa",
+        "tell me a joke",
+        "humor dong",
+        "becanda dong",
+        "cerita yang lucu",
+        "ada lelucon",
+        "lelucon dong",
+        "lucuin dong",
+        "receh dong",
+        "joke receh"
+      ],
+      "context": []
+    },
+    {
+      "tag": "compliment",
+      "patterns": [
+        "kamu pintar",
+        "kamu hebat",
+        "kamu keren",
+        "kamu bagus",
+        "kamu baik",
+        "youre smart",
+        "youre great",
+        "good job",
+        "kamu lucu",
+        "kamu gokil",
+        "mantap kamu",
+        "jago kamu",
+        "keren banget",
+        "pinter banget",
+        "top",
+        "amazing"
+      ],
+      "context": []
+    },
+    {
+      "tag": "insult",
+      "patterns": [
+        "kamu bodoh",
+        "kamu jelek",
+        "dasar bodoh",
+        "goblok",
+        "tolol",
+        "bego",
+        "youre stupid",
+        "idiot",
+        "kamu payah",
+        "kamu buruk",
+        "ga guna",
+        "sampah",
+        "kamu lemot"
+      ],
+      "context": []
+    },
+    {
+      "tag": "age_ask",
+      "patterns": [
+        "berapa umurmu",
+        "umur kamu berapa",
+        "kamu umur berapa",
+        "how old are you",
+        "what is your age",
+        "tahun berapa kamu lahir",
+        "kapan kamu dibuat",
+        "sudah berapa lama kamu ada"
+      ],
+      "context": []
+    },
+    {
+      "tag": "capability_ask",
+      "patterns": [
+        "kamu bisa apa",
+        "apa yang bisa kamu lakukan",
+        "kemampuan kamu apa",
+        "what can you do",
+        "fitur kamu apa",
+        "kamu bisa ngapain aja",
+        "apa aja yang bisa kamu lakuin",
+        "bisa apa aja kamu",
+        "skill kamu apa",
+        "kamu jago apa"
+      ],
+      "context": []
+    },
+    {
+      "tag": "weather",
+      "patterns": [
+        "cuaca hari ini",
+        "gimana cuacanya",
+        "hows the weather",
+        "cuaca sekarang",
+        "hari ini hujan ga",
+        "panas ga hari ini",
+        "mendung ga",
+        "cerah ga hari ini",
+        "ramalan cuaca",
+        "prediksi cuaca",
+        "cuaca besok gimana"
+      ],
+      "context": []
+    },
+    {
+      "tag": "time_ask",
+      "patterns": [
+        "jam berapa sekarang",
+        "sekarang jam berapa",
+        "what time is it",
+        "jam brp",
+        "pukul berapa",
+        "waktunya berapa",
+        "tanggal berapa",
+        "hari ini hari apa",
+        "hari apa sekarang",
+        "tanggal berapa hari ini"
+      ],
+      "context": []
+    },
+    {
+      "tag": "help",
+      "patterns": [
+        "tolong",
+        "help",
+        "bantu",
+        "bantuin dong",
+        "help me",
+        "bisa bantu",
+        "minta tolong",
+        "butuh bantuan",
+        "aku butuh bantuan",
+        "gimana caranya",
+        "cara",
+        "ajarin",
+        "ajarin dong",
+        "ajarkan",
+        "bagaimana caranya"
+      ],
+      "context": []
+    },
+    {
+      "tag": "smalltalk_hobby",
+      "patterns": [
+        "hobi kamu apa",
+        "kamu suka apa",
+        "whats your hobby",
+        "kegiatan favorit kamu",
+        "kamu ngapain aja",
+        "suka ngapain",
+        "ada hobi ga",
+        "hobi lu apa"
+      ],
+      "context": []
+    },
+    {
+      "tag": "smalltalk_food",
+      "patterns": [
+        "kamu suka makan apa",
+        "makanan favorit kamu",
+        "favorite food",
+        "suka makanan apa",
+        "lagi makan apa",
+        "udah makan belum",
+        "makan apa hari ini",
+        "lapar ga"
+      ],
+      "context": []
+    },
+    {
+      "tag": "smalltalk_music",
+      "patterns": [
+        "suka musik apa",
+        "musik favorit kamu",
+        "lagu favorit",
+        "dengerin lagu apa",
+        "favorite song",
+        "suka genre apa",
+        "band favorit kamu",
+        "penyanyi favorit"
+      ],
+      "context": []
+    },
+    {
+      "tag": "philosophy",
+      "patterns": [
+        "apa arti hidup",
+        "apa tujuan hidup",
+        "what is the meaning of life",
+        "kenapa kita hidup",
+        "apa itu kebahagiaan",
+        "apa itu cinta",
+        "what is love",
+        "arti kehidupan",
+        "makna hidup"
+      ],
+      "context": []
+    },
+    {
+      "tag": "user_name_tell",
+      "patterns": [
+        "nama saya",
+        "namaku",
+        "nama gue",
+        "panggil aku",
+        "panggil saya",
+        "my name is",
+        "call me"
+      ],
+      "context": [
+        "awaiting_name"
+      ]
+    },
+    {
+      "tag": "affirmative",
+      "patterns": [
+        "ya",
+        "iya",
+        "yes",
+        "yep",
+        "yup",
+        "benar",
+        "betul",
+        "oke",
+        "ok",
+        "okay",
+        "tentu",
+        "pasti",
+        "setuju",
+        "sure",
+        "of course",
+        "boleh",
+        "siap",
+        "ayo",
+        "gas",
+        "lets go",
+        "yoi",
+        "yap"
+      ],
+      "context": []
+    },
+    {
+      "tag": "negative",
+      "patterns": [
+        "tidak",
+        "nggak",
+        "ga",
+        "gak",
+        "no",
+        "nope",
+        "engga",
+        "enggak",
+        "jangan",
+        "bukan",
+        "kagak",
+        "ogah",
+        "males",
+        "gamau",
+        "gk",
+        "ndak",
+        "ora",
+        "nein"
+      ],
+      "context": []
+    }
+  ]
+}
