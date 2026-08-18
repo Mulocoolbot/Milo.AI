@@ -252,6 +252,70 @@
       "context": []
     },
     {
+      "tag": "worry_concern_state",
+      "patterns": [
+        "aku cemas",
+        "aku khawatir",
+        "lagi cemas",
+        "lagi khawatir",
+        "khawatir banget",
+        "cemas banget",
+        "kepikiran karena kecelakaan",
+        "kepikiran karena sakit",
+        "masuk rumah sakit",
+        "dia lagi sakit",
+        "kena musibah",
+        "khawatir sama dia",
+        "khawatir sama kondisinya",
+        "kepikiran kondisinya",
+        "cemas mikirin keadaan dia"
+      ],
+      "context": []
+    },
+    {
+      "tag": "thinking_of_someone",
+      "patterns": [
+        "kepikiran seseorang",
+        "lagi kepikiran seseorang",
+        "selalu ada di pikiranku",
+        "selalu ada di pikiran ku",
+        "ada di pikiranku",
+        "kepikiran dia",
+        "kepikiran seseorang terus",
+        "lagi naksir",
+        "ada yang lagi aku pikirin",
+        "ada seseorang yang selalu ada di pikiran",
+        "lagi mikirin seseorang",
+        "suka sama seseorang",
+        "ada orang yang bikin kepikiran",
+        "kepikiran gebetan",
+        "lagi kangen seseorang",
+        "lagi jatuh cinta",
+        "kepikiran terus sama dia"
+      ],
+      "context": []
+    },
+    {
+      "tag": "meta_correction",
+      "patterns": [
+        "bukan gitu",
+        "bukan gitu konteksnya",
+        "bukan gitu konteks kepikirannya",
+        "bukan begitu maksudnya",
+        "bukan itu maksudku",
+        "salah paham",
+        "kamu salah nangkep",
+        "ga gitu maksudnya",
+        "maksudku bukan itu",
+        "salah konteks",
+        "bukan itu yang aku maksud",
+        "kamu keliru",
+        "salah paham kamu",
+        "bukan itu maksud saya"
+      ],
+      "context": []
+    },
+    {
       "tag": "confused_state",
       "patterns": [
         "aku lagi bingung",

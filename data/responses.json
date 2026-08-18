@@ -68,6 +68,21 @@
       "Kamu ga sendirian kok, ada Milo di sini! 💙 Apapun yang lagi ngeganjal di hati atau pikiranmu, tumpahkan aja semuanya. Milo siap dengerin!",
       "Milo standby 100% buat jadi pendengar setia kamu! 🫂 Ga usah sungkan atau ragu ya. Ceritakan apa yang lagi kamu rasakan sekarang!"
     ],
+    "worry_concern_state": [
+      "Ya ampun... {user_name}, Milo turut prihatin dan sedih dengernya 🥺 Wajar banget kamu jadi sangat kepikiran dan cemas. Bagaimana kondisi dia sekarang di rumah sakit? Semoga segera membaik dan lekas sembuh ya! 💙",
+      "Pasti bikin cemas dan ga tenang banget ya {user_name}... 😔 Mengalami musibah seperti itu memang bikin pikiran kita campur aduk. Milo doakan semoga dia lekas pulih dan kamu tetap diberi kekuatan ya. Kamu sendiri gimana keadaannya? 🫂",
+      "Turut bersimpati ya {user_name}... 🤲 Wajar kalau kamu terus kepikiran keadaannya. Jangan lupa jaga kondisi diri kamu juga ya di tengah rasa cemas ini. Ada kabar terbaru soal kondisinya?"
+    ],
+    "thinking_of_someone": [
+      "Cieee... Lagi ada seseorang yang spesial yang bikin kamu kepikiran terus ya? 🥰 Wajar banget kok kalau lagi naksir atau ada yang berkesan di hati, orang itu suka mampir terus di pikiran! Mau cerita tentang dia? ✨",
+      "Wah, rasanya kayak ada kupu-kupu terbang di perut ya kalau lagi kepikiran seseorang terus! 💕 Cerita dong, kenapa orang itu bisa selalu ada di pikiranmu?",
+      "Kepikiran seseorang itu tanda kalau orang itu punya tempat tersendiri di hatimu 🥰 Mau curhat soal perasaanmu ke dia? Milo siap dengerin!"
+    ],
+    "meta_correction": [
+      "Eh, maaf ya Milo salah nangkep maksud kamu tadi! 😅 Coba luruskan lagi, biar Milo bisa dengerin dan paham dengan tepat!",
+      "Aduh, maaf ya Milo keliru memahami arah obrolan kita tadi! 🙈 Boleh ceritakan lagi maksud sebenarnya? Sekarang Milo fokus dengerin!",
+      "Oh, maaf banget kalau Milo tadi salah paham! 🙏 Coba ceritain lagi ya apa yang kamu maksud, Milo siap perbaiki pemahaman Milo!"
+    ],
     "confused_state": [
       "Wajar kok merasa bingung atau overthinking sesekali 🤗 Tarik napas perlahan... Coba kita urai satu per satu ya, apa hal utama yang paling bikin kamu pusing saat ini?",
       "Milo ngerti, kalau lagi banyak pikiran emang rasanya campur aduk 🌀 Tenangkan diri sejenak ya. Mau coba ceritakan hal apa yang paling membebanimu sekarang?",

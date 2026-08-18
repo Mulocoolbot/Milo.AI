@@ -107,8 +107,8 @@ class IntentRecognizer:
             
             # Tentukan primary intent yang paling bernilai aksi (misal: advice, question, curhat, emotion)
             priority_order = [
-                "need_advice", "curhat_need", "confused_state", "knowledge_query",
-                "feeling_sad", "feeling_angry", "feeling_happy", "seeking_permission",
+                "meta_correction", "worry_concern_state", "need_advice", "curhat_need", "confused_state", "knowledge_query",
+                "thinking_of_someone", "feeling_sad", "feeling_angry", "feeling_happy", "seeking_permission",
                 "user_name_tell", "user_name_ask", "how_are_you", "current_activity_ask",
                 "smalltalk_food", "smalltalk_music", "smalltalk_hobby"
             ]
@@ -357,12 +357,23 @@ class IntentRecognizer:
             if not ({"kabar", "kabarmu", "kabarnya"} & word_set or "how are you" in text_lower):
                 return False
         
-        # Guard 6: user_profile_query harus berupa pertanyaan
-        if intent_tag == "user_profile_query":
-            if not (any(w in text_lower for w in ["apa", "dimana", "mana", "ingat", "tahu"]) or "?" in text_lower):
+        # Guard 7: meta_correction vs affirmative / negative
+        if intent_tag in ("affirmative", "negative"):
+            if any(w in text_lower for w in ["bukan gitu", "bukan begitu", "salah paham", "salah konteks", "salah nangkep", "maksudku bukan"]):
                 return False
-            # Jika user sedang menyatakan faktanya (misal "makanan favoritku rendang") bukan menanyakan
-            if not any(q in text_lower for q in ["apa", "mana", "kah", "?"]):
+            if any(w in text_lower for w in ["tahu ga", "tau ga", "tahu nggak", "tau nggak", "kamu tahu ga", "kamu tau ga"]):
+                return False
+            if len(words) > 3 and not any(text_lower.startswith(p) for p in ["tidak", "nggak", "ngga", "bukan", "ga ", "iya", "ya ", "yep", "oke", "ok ", "setuju", "siap", "betul", "benar"]):
+                return False
+        
+        # Guard 8: thinking_of_someone vs knowledge / identity / adversity
+        if intent_tag == "thinking_of_someone":
+            # Jika mengandung musibah/kecelakaan/sakit, bukan naksir/romansa!
+            if any(w in text_lower for w in ["kecelakaan", "rumah sakit", "sakit", "musibah", "operasi", "meninggal", "koma", "celaka", "rawat inap"]):
+                return False
+        
+        if any(w in text_lower for w in ["kepikiran seseorang", "selalu ada di pikiran", "lagi naksir", "ada orang yang"]):
+            if intent_tag in ("user_name_ask", "identity_ask", "knowledge_query"):
                 return False
         
         return True
