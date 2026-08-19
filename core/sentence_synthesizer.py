@@ -803,14 +803,25 @@ class SentenceSynthesizer:
         ]
         return random.choice(options)
     
-    def synthesize_affirmation(self, user_name=None, last_response=""):
-        """Menyusun respons atas persetujuan ('iya', 'setuju') secara generatif."""
+    def synthesize_affirmation(self, user_name=None, last_response="", current_topic=""):
+        """Menyusun respons atas persetujuan ('iya', 'setuju', 'mau') secara generatif dan kontekstual."""
+        name_str = f" {user_name}" if user_name else ""
         salutation = f"{user_name}, " if user_name and random.random() < 0.4 else ""
         
+        # Jika respons sebelumnya berupa penawaran eksplorasi materi/pengetahuan
+        if any(phrase in last_response.lower() for phrase in ["eksplorasi", "tanyakan lebih dalam", "penasaran", "aspek lainnya", "diskusikan lebih dalam", "gambaran yang utuh"]):
+            topic_hint = f" seputar **{current_topic}**" if current_topic else ""
+            options = [
+                f"Keren banget{name_str}! 🚀 Dari bahasan tadi{topic_hint}, bagian mana yang paling menarik perhatianmu? Apakah contoh penerapannya di kehidupan nyata, latar belakang sejarah/ilmiahnya, atau ada hal spesifik yang mau kita kupas bareng? 💡✨",
+                f"Siap, senang banget kamu antusias{name_str}! 📚 Mau kita bedah dari sisi contoh kasus praktisnya, atau ada pertanyaan detail yang lagi terlintas di pikiranmu? Ceritain aja! 🧠✨",
+                f"Mantap{name_str}! Milo siap banget lanjutin penjelasannya! Sisi mana yang paling pengen kamu eksplorasi lebih dalam? 🔬🔥"
+            ]
+            return random.choice(options)
+            
         if "?" in last_response:
             options = [
-                f"{salutation}siap! Senang kita satu pemahaman 👍 Ada yang mau kamu tambahkan atau diskusikan lagi?",
-                f"{salutation}oke siap! Milo senang bisa bantu 😊 Mau lanjut ke topik lain?"
+                f"{salutation}siap! Senang kita satu pemahaman 👍 Ada yang mau kamu tanyakan atau eksplor lebih lanjut?",
+                f"{salutation}mantap! Milo standby buat lanjutin obrolan seru ini! Bagian mana yang mau kita bahas sekarang? ✨"
             ]
         else:
             options = [

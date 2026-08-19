@@ -274,7 +274,8 @@ class ResponseEngine:
         if intent in ("affirmative", "negative"):
             last_response = context_manager.get_last_response() if context_manager else ""
             if intent == "affirmative":
-                return self.synthesizer.synthesize_affirmation(user_name, last_response)
+                current_topic = context.get("current_topic", "")
+                return self.synthesizer.synthesize_affirmation(user_name, last_response, current_topic)
             else:
                 return self.synthesizer.synthesize_negation(user_name, last_response)
         
@@ -309,21 +310,11 @@ class ResponseEngine:
     def _handle_knowledge_query_with_web(self, user_input, keywords, knowledge_base, context):
         """
         Mencari jawaban di basis pengetahuan lokal dan internet secara mendalam (Deep Search).
+        Memprioritaskan pencarian internet real-time multi-sumber untuk jawaban komprehensif.
         """
         user_name = context.get("user_name")
         
-        # 1. Coba cari di Knowledge Base Lokal jika relevansi sangat tinggi
-        if knowledge_base and keywords:
-            results = knowledge_base.search_by_keywords(keywords, max_results=3)
-            if results and results[0].get("score", 0) >= 8:
-                best_match = results[0]
-                val = best_match.get("value")
-                key = best_match.get("key") or ""
-                if isinstance(val, str):
-                    topic_name = key.split(">")[-1].strip().replace("_", " ").title() if key else "itu"
-                    return self.synthesizer.synthesize_knowledge_answer(topic_name, val, user_name)
-                    
-        # 2. Cari secara online via WebSearch multi-source
+        # 1. Cari secara online via WebSearch multi-source (Real-Time & Validated)
         if self.web_search:
             research = self.web_search.deep_research(user_input, context.get("current_topic", ""))
             if research and research.get("validated_points"):
@@ -333,6 +324,17 @@ class ResponseEngine:
                     summary_snippet = " ".join([p.get("description", "") for p in research.get("validated_points", [])[:2]])
                     knowledge_base.add_entry("pengetahuan_umum", topic_title.lower().replace(" ", "_"), summary_snippet)
                 return self.synthesizer.synthesize_explanation_response(topic_title, research, user_name, user_input)
+        
+        # 2. Coba cari di Knowledge Base Lokal jika relevansi sangat tinggi dan berupa deskripsi lengkap
+        if knowledge_base and keywords:
+            results = knowledge_base.search_by_keywords(keywords, max_results=3)
+            if results and results[0].get("score", 0) >= 8:
+                best_match = results[0]
+                val = best_match.get("value")
+                key = best_match.get("key") or ""
+                if isinstance(val, str) and len(val.strip()) >= 25:
+                    topic_name = key.split(">")[-1].strip().replace("_", " ").title() if key else "itu"
+                    return self.synthesizer.synthesize_knowledge_answer(topic_name, val, user_name)
         
         # 3. Fallback ke WebFetcher jika ada
         if self.web_fetcher and keywords:
@@ -359,6 +361,8 @@ class ResponseEngine:
     def _derive_topic_title(self, user_input, keywords, query=""):
         """Menentukan judul topik penjelasan dari input user."""
         text_lower = user_input.lower()
+        if any(w in text_lower for w in ["kemerdekaan", "merdeka", "kedaulatan"]):
+            return "Arti dan Makna Kemerdekaan (Hakikat Kedaulatan & Kebebasan)"
         if any(w in text_lower for w in ["olahraga", "sport", "workout"]) and any(w in text_lower for w in ["gen z", "gen-z", "milenial", "anak muda", "dinikmati", "disukai", "populer"]):
             return "Tren Olahraga yang Paling Diminati dan Populer di Kalangan Gen Z"
         if any(w in text_lower for w in ["ciptakan", "tercipta", "asal usul", "penciptaan", "evolusi"]) and "manusia" in text_lower:

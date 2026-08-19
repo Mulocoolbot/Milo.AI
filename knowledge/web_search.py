@@ -173,7 +173,8 @@ class WebSearch:
             "yah", "cuman", "aja", "kah", "mau", "menjelaskan", "menjelaskannya", "jelaskan",
             "terangkan", "tolong", "coba", "bagaimana", "bagaimanakah", "gimana", "kenapa",
             "mengapa", "mengapakah", "apa", "seperti", "pada", "tentang", "di", "menurut",
-            "cara", "caranya", "sains", "ilmiah", "secara"
+            "cara", "caranya", "sains", "ilmiah", "secara", "arti", "artinya", "makna", "maknanya",
+            "pengertian", "definisi"
         }
         
         short_keep = {"z", "ai", "vr", "ar", "3d", "5g", "4g", "it", "ui", "ux", "dj", "k", "4k", "8k", "ml", "dl"}
@@ -379,6 +380,14 @@ class WebSearch:
                 "Transisi Spesies Genus Homo: Bukti fosil paleoantropologi menunjukkan rantai transisi evolusi dari Australopithecus, Homo habilis (pembuat alat batu pertama), Homo erectus (yang mulai berjalan tegak dan bermigrasi), hingga Homo sapiens di Afrika sekitar 300.000 tahun lalu.",
                 "Seleksi Alam & Perkembangan Otak (Ensefalisasi): Perkembangan kemampuan berdiri tegak (bipedalisme) membebaskan tangan untuk menggunakan perkakas, memicu lonjakan volume otak dan kemampuan kognitif tingkat tinggi.",
                 "Asal Usul Kehidupan Molekuler (Abiogenesis): Pada skala waktu miliaran tahun, seluruh kehidupan di Bumi berakar dari molekul organik sederhana di lautan purba yang berevolusi menjadi sel hidup pertama."
+            ]
+            
+        elif any(w in q_lower for w in ["merdeka", "kemerdekaan", "kedaulatan"]):
+            return [
+                "Hakikat Kedaulatan & Kebebasan Bangsa: Kemerdekaan adalah keadaan suatu bangsa atau negara yang terbebas dari penjajahan, kekuasaan, dan dominasi asing, serta memiliki hak berdaulat penuh untuk mengatur pemerintahan dan menentukan nasibnya sendiri.",
+                "Dimensi Politik & Pemerintahan: Hak masyarakat untuk menyelenggarakan sistem pemerintahan mandiri berlandaskan hukum dan konstitusi tanpa intervensi imperialistik pihak luar.",
+                "Dimensi Ekonomi & Kemandirian: Kedaulatan dalam mengelola sumber daya alam dan mendistribusikan keadilan sosial demi kesejahteraan seluruh rakyat.",
+                "Dimensi Individu & Hak Asasi: Kebebasan setiap warga negara untuk berpikir, berpendapat, berkreasi, dan menentukan pilihan hidup secara merdeka dan bermartabat."
             ]
             
         elif any(w in q_lower for w in ["olahraga", "sport", "workout"]) and any(w in q_lower for w in ["gen z", "gen-z", "milenial", "anak muda", "tren", "populer", "disukai", "diminati", "dinikmati"]):

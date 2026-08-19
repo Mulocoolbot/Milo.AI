@@ -349,7 +349,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787072520.3062606
+    "learned_at": 1787135662.9838836
   },
   "kata": {
     "word": "kata",
@@ -581,7 +581,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787129654.0969028
+    "learned_at": 1787135661.7132652
   },
   "satu": {
     "word": "satu",
@@ -1414,5 +1414,13 @@
     "meaning": "",
     "sentiment": 0.0,
     "learned_at": 1787135205.8089511
+  },
+  "kemerdekaan": {
+    "word": "kemerdekaan",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787135662.9870708
   }
 }
