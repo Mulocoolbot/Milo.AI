@@ -5,7 +5,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787073186.4555235
+    "learned_at": 1787127470.5090618
   },
   "kamu": {
     "word": "kamu",
@@ -13,7 +13,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787073186.6442327
+    "learned_at": 1787127470.5037887
   },
   "kabar": {
     "word": "kabar",
@@ -21,7 +21,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787073186.411493
+    "learned_at": 1787127470.2646892
   },
   "maksud": {
     "word": "maksud",
@@ -101,7 +101,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787073186.4564269
+    "learned_at": 1787127470.8100834
   },
   "buat": {
     "word": "buat",
@@ -141,7 +141,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787072468.8737063
+    "learned_at": 1787127470.8091848
   },
   "ntah": {
     "word": "ntah",
@@ -261,7 +261,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787072793.8270767
+    "learned_at": 1787127470.8127997
   },
   "temen": {
     "word": "temen",
@@ -453,7 +453,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787072793.6126888
+    "learned_at": 1787127470.5918353
   },
   "hati": {
     "word": "hati",
@@ -461,7 +461,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787072793.8280594
+    "learned_at": 1787127470.8137035
   },
   "kondisi": {
     "word": "kondisi",
@@ -469,7 +469,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787072793.6535304
+    "learned_at": 1787127470.6321723
   },
   "dimana": {
     "word": "dimana",
@@ -477,7 +477,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787072793.8209293
+    "learned_at": 1787127470.8074243
   },
   "mencintai": {
     "word": "mencintai",
@@ -485,7 +485,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787072793.8219607
+    "learned_at": 1787127470.8083065
   },
   "sesorang": {
     "word": "sesorang",
@@ -501,7 +501,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787072793.8250775
+    "learned_at": 1787127470.8109722
   },
   "makanya": {
     "word": "makanya",
@@ -509,7 +509,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787072793.8260694
+    "learned_at": 1787127470.8118756
   },
   "menurut": {
     "word": "menurut",
@@ -557,7 +557,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787073186.4123926
+    "learned_at": 1787127470.2656817
   },
   "saja": {
     "word": "saja",
@@ -565,7 +565,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787073186.4546795
+    "learned_at": 1787127470.3101866
   },
   "cerita": {
     "word": "cerita",
@@ -573,7 +573,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787073186.6405058
+    "learned_at": 1787127470.499013
   },
   "tapi": {
     "word": "tapi",
@@ -581,7 +581,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787073186.641421
+    "learned_at": 1787127470.4999194
   },
   "satu": {
     "word": "satu",
@@ -589,7 +589,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787073186.64246
+    "learned_at": 1787127470.5010111
   },
   "sebenarnya": {
     "word": "sebenarnya",
@@ -597,7 +597,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787073186.6465154
+    "learned_at": 1787127470.5063128
   },
   "diciptakan": {
     "word": "diciptakan",
@@ -605,7 +605,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787073186.6474636
+    "learned_at": 1787127470.5073173
   },
   "siapa": {
     "word": "siapa",
@@ -613,6 +613,6 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787073186.6483266
+    "learned_at": 1787127470.5081944
   }
 }

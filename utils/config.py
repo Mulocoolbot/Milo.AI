@@ -18,7 +18,6 @@ class Config:
     
     # === Data Files ===
     INTENTS_FILE = os.path.join(DATA_DIR, "intents.json")
-    RESPONSES_FILE = os.path.join(DATA_DIR, "responses.json")
     KNOWLEDGE_FILE = os.path.join(DATA_DIR, "knowledge.json")
     SLANG_DICT_FILE = os.path.join(DATA_DIR, "slang_dict.json")
     STOPWORDS_FILE = os.path.join(DATA_DIR, "stopwords_id.json")
