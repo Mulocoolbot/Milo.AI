@@ -116,31 +116,43 @@ class WebSearch:
         """Membersihkan kalimat percakapan menjadi search query internet yang tajam."""
         text_lower = text.lower().strip()
         
-        # 1. Handle kasus keterikatan emosional / susah lepas / tempat cerita
+        # 1. Handle kasus sains / biologi / pernapasan / alam
+        if any(w in text_lower for w in ["bernafas", "bernapas", "pernapasan", "respirasi", "paru-paru"]):
+            return "sistem pernapasan manusia proses bernapas"
+        if any(w in text_lower for w in ["fotosintesis"]):
+            return "proses fotosintesis tumbuhan biologi"
+        if any(w in text_lower for w in ["hujan", "siklus air", "hidrologi"]):
+            return "proses terjadinya hujan siklus air"
+        if any(w in text_lower for w in ["pesawat", "aerodinamika"]) and any(w in text_lower for w in ["terbang", "udara"]):
+            return "cara pesawat terbang prinsip aerodinamika"
+        if any(w in text_lower for w in ["langit", "warna langit"]) and any(w in text_lower for w in ["biru", "warna"]):
+            return "kenapa langit berwarna biru hamburan rayleigh"
+            
+        # 2. Handle kasus keterikatan emosional / susah lepas / tempat cerita
         if any(w in text_lower for w in ["terikat", "susah lepas", "sulit lepas", "keterikatan", "attachment"]):
             return "cara melepaskan keterikatan emosional attachment psikologi"
         if any(w in text_lower for w in ["tempat cerita", "tempat curhat", "orang yang kupercayai", "orang yang aku percayai", "satu-satunya tempat"]):
             return "cara menyalurkan emosi kehilangan tempat curhat"
             
-        # 2. Handle kasus move on / mantan / patah hati
+        # 3. Handle kasus move on / mantan / patah hati
         if any(w in text_lower for w in ["move on", "mantan", "pacar baru", "patah hati", "putus cinta"]):
             if "cari pacar" in text_lower or "pacar baru" in text_lower or "rebound" in text_lower:
                 return "tips move on dan apakah perlu cari pacar baru"
             return "cara dan tips move on dari mantan pacar"
             
-        # 3. Handle insomnia / susah tidur
+        # 4. Handle insomnia / susah tidur
         if any(w in text_lower for w in ["tidur", "insomnia", "begadang"]):
             return "cara mengatasi susah tidur insomnia"
             
-        # 4. Handle stres / overthinking / cemas
+        # 5. Handle stres / overthinking / cemas
         if any(w in text_lower for w in ["overthinking", "stres", "stress", "cemas", "anxiety", "khawatir"]):
             return "cara mengatasi overthinking dan stres"
             
-        # 5. Handle belajar koding / programming
+        # 6. Handle belajar koding / programming
         if any(w in text_lower for w in ["koding", "coding", "pemrograman", "programming", "python"]):
             return "tips belajar coding pemrograman pemula"
             
-        # 6. Ekstraksi kata-kata kunci bermakna secara aman berbasis token
+        # 7. Ekstraksi kata-kata kunci bermakna secara aman berbasis token
         clean = re.sub(r'[^\w\s]', ' ', text_lower)
         tokens = clean.split()
         
@@ -149,7 +161,9 @@ class WebSearch:
             "bisa", "dari", "dia", "itu", "ini", "aku", "kamu", "tapi", "soalnya", "kalo",
             "udah", "banget", "nggak", "gak", "tuh", "ada", "tips", "yang", "semua", "dengan",
             "mudah", "apalagi", "tipikal", "orang", "masalahnya", "tidak", "ke", "sembarangan",
-            "dan", "sialnya", "adalah", "satu", "satunya", "jadikan", "yah", "cuman", "aja"
+            "dan", "sialnya", "adalah", "satu", "satunya", "jadikan", "yah", "cuman", "aja",
+            "kah", "mau", "menjelaskan", "jelaskan", "terangkan", "tolong", "coba", "bagaimana",
+            "gimana", "kenapa", "mengapa", "apa", "apakah", "seperti", "pada", "tentang", "di"
         }
         
         meaningful_tokens = [w for w in tokens if w not in query_stopwords and len(w) > 2]
@@ -197,9 +211,8 @@ class WebSearch:
         return sources
     
     def _fetch_wikipedia_id(self, query):
-        """Mencari artikel terkait di Wikipedia Bahasa Indonesia dengan filter bebas film/lagu/biografi."""
+        """Mencari artikel terkait di Wikipedia Bahasa Indonesia dengan filter dan pemeringkatan relevansi."""
         try:
-            # Sesuaikan query agar mencari konsep ensiklopedis
             search_query = query
             if any(w in query.lower() for w in ["move on", "mantan", "pacar", "patah hati"]):
                 search_query = "patah hati psikologi"
@@ -216,24 +229,40 @@ class WebSearch:
                 if resp.status == 200:
                     data = json.loads(resp.read().decode("utf-8", errors="ignore"))
                     pages = data.get("query", {}).get("pages", {})
-                    snippets = []
+                    candidates = []
+                    
+                    q_tokens = set(search_query.lower().split())
                     
                     for pid, pdata in pages.items():
                         title = pdata.get("title", "")
                         extract = pdata.get("extract", "").strip()
+                        index = pdata.get("index", 999)
                         
-                        # Filter artikel hiburan / film / album musik / biografi selebriti
-                        if any(bad in title.lower() for bad in ["(film", "(album", "(lagu", "(grup musik", "(seri televisi", "sinetron", "daftar episode"]):
+                        # Filter artikel hiburan / film / album musik / biografi selebriti / bencana spesifik
+                        if any(bad in title.lower() for bad in ["(film", "(album", "(lagu", "(grup musik", "(seri televisi", "sinetron", "daftar episode", "banjir 20", "gempa 20", "animisme", "pornografi", "aktivitas seksual"]):
                             continue
                         if any(bio in extract.lower() for bio in ["lahir ", "pemeran", "penyanyi", "aktris", "aktor", "selebriti", "jkt48", "grup vokal", "grup musik"]):
                             continue
                             
-                        if len(extract) > 40:
-                            sentences = extract.split(". ")
-                            clean_summary = ". ".join(sentences[:3]) + "."
-                            snippets.append(f"**{title}**: {clean_summary}")
+                        # Bersihkan kebisingan teks Wikipedia (gambar, teks kurung berlebih, dll)
+                        clean_ext = re.sub(r'Gambar\s+[^\n.]*(\n|\.)', ' ', extract)
+                        clean_ext = re.sub(r'Lihat\s+[^\n.]*(\n|\.)', ' ', clean_ext)
+                        clean_ext = re.sub(r'\(bahasa [^)]+\)', '', clean_ext)
+                        clean_ext = re.sub(r'\s+', ' ', clean_ext).strip()
+                        
+                        if len(clean_ext) > 40:
+                            sentences = [s.strip() for s in re.split(r'\.\s+', clean_ext) if len(s.strip()) > 15]
+                            clean_summary = ". ".join(sentences[:2]) + "."
                             
-                    return snippets[:4]
+                            # Hitung skor relevansi judul dengan query
+                            title_tokens = set(title.lower().split())
+                            overlap = len(q_tokens & title_tokens)
+                            score = (overlap * 10) - (index * 0.5)
+                            
+                            candidates.append((score, f"**{title}**: {clean_summary}"))
+                            
+                    candidates.sort(key=lambda x: x[0], reverse=True)
+                    return [c[1] for c in candidates[:3]]
         except Exception:
             pass
         return []
@@ -283,7 +312,7 @@ class WebSearch:
         return []
     
     def _fetch_google_suggestions(self, query):
-        """Mengambil topik-topik dan solusi relevan dari Google Query Suggestions."""
+        """Mengambil topik-topik relevan dari Google Query Suggestions untuk memperkaya analisis konteks."""
         try:
             encoded_query = urllib.parse.quote(query)
             url = f"https://suggestqueries.google.com/complete/search?client=firefox&q={encoded_query}"
@@ -294,8 +323,8 @@ class WebSearch:
                     data = json.loads(resp.read().decode("utf-8", errors="ignore"))
                     if len(data) >= 2 and isinstance(data[1], list):
                         suggestions = data[1][:5]
-                        snippets = [f"Pola pencarian utama yang terbukti efektif: {s}" for s in suggestions if len(s) > 10]
-                        return snippets
+                        # Digunakan murni untuk memperkuat relasi konsep
+                        return [s for s in suggestions if len(s) > 10 and not any(bad in s.lower() for bad in ["lirik", "chord", "mp3", "video", "download"])]
         except Exception:
             pass
         return []
@@ -329,11 +358,38 @@ class WebSearch:
                 "Latihan Pernapasan & Mindfulness: Lakukan teknik pernapasan dalam 4-7-8 untuk meredakan respons fight-or-flight saraf simpatik."
             ]
             
-        elif any(w in q_lower for w in ["tidur", "insomnia"]):
+        elif any(w in q_lower for w in ["bernafas", "bernapas", "pernapasan", "respirasi", "paru"]):
             return [
-                "Jaga Jam Tidur & Bangun Konsisten: Bangun dan tidur di jam yang sama setiap hari untuk menstabilkan ritme sirkadian tubuh.",
-                "Hindari Paparan Blue Light Gadget: Matikan layar smartphone dan laptop 60 menit sebelum waktu tidur karena cahaya biru menghambat melatonin.",
-                "Ciptakan Kamar Tidur yang Dingin & Gelap: Suhu ruangan yang sejuk dan pencahayaan minim membantu otak masuk ke fase deep sleep."
+                "Proses Inspirasi (Menghirup Udara): Udara masuk melalui rongga hidung atau mulut, disaring oleh silia dan lendir, lalu mengalir melalui faring, laring, trakea, dan bronkus menuju paru-paru.",
+                "Kontraksi Otot Diafragma & Tulang Rusuk: Otot diafragma berkontraksi dan mendatar ke bawah, rongga dada membesar sehingga tekanan udara di paru-paru menurun dan menarik udara luar masuk.",
+                "Pertukaran Gas di Alveolus: Di dalam kantung alveolus yang diselimuti kapiler darah, oksigen diserap ke dalam sel darah merah (diikat hemoglobin) dan karbon dioksida dari darah dilepaskan.",
+                "Proses Ekspirasi (Menghembuskan Udara): Diafragma berelaksasi dan melengkung ke atas, volume rongga dada menyusut, dan udara kaya karbon dioksida dihembuskan keluar dari tubuh."
+            ]
+            
+        elif any(w in q_lower for w in ["fotosintesis"]):
+            return [
+                "Penyerapan Energi Cahaya oleh Klorofil: Daun tumbuhan hijau menyerap foton cahaya matahari melalui pigmen klorofil pada kloroplas.",
+                "Reaksi Terang (Fotolisis Air): Energi cahaya memecah molekul air (H2O) menjadi ion hidrogen dan melepaskan gas oksigen (O2) ke udara.",
+                "Reaksi Gelap (Siklus Calvin): Mengikat karbon dioksida (CO2) dari udara dan menggabungkannya dengan hidrogen untuk menghasilkan glukosa (C6H12O6) sebagai sumber energi tumbuhan."
+            ]
+            
+        elif any(w in q_lower for w in ["hujan", "siklus air", "hidrologi"]):
+            return [
+                "Evaporasi & Transpirasi: Panas matahari menguapkan air dari lautan, sungai, dan permukaan daun tumbuhan ke atmosfer.",
+                "Kondensasi (Pembentukan Awan): Uap air yang naik mengalami pendinginan di atmosfer tinggi dan mengembun menjadi tetesan air kecil yang membentuk awan.",
+                "Presipitasi (Turunnya Hujan): Saat butiran air di dalam awan menjadi terlalu berat dan jenuh untuk ditopang arus udara, air jatuh ke bumi sebagai hujan."
+            ]
+            
+        elif any(w in q_lower for w in ["pesawat", "aerodinamika", "terbang"]):
+            return [
+                "Prinsip Bernoulli & Bentuk Sayap (Airfoil): Permukaan atas sayap melengkung membuat aliran udara di atas lebih cepat dan tekanannya lebih rendah dibanding bawah, menciptakan gaya angkat (Lift).",
+                "Keseimbangan 4 Gaya Aerodinamika: Pesawat terbang stabil berkat keseimbangan antara Gaya Angkat (Lift) vs Gravitasi (Weight), serta Gaya Dorong Mesin (Thrust) vs Hambatan Udara (Drag)."
+            ]
+            
+        elif any(w in q_lower for w in ["langit", "warna langit"]) and any(w in q_lower for w in ["biru"]):
+            return [
+                "Fenomena Hamburan Rayleigh: Cahaya matahari yang tampak putih sebenarnya tersusun atas berbagai panjang gelombang warna (pelangi).",
+                "Panjang Gelombang Pendek: Cahaya biru memiliki panjang gelombang lebih pendek dan frekuensi lebih tinggi, sehingga dihamburkan ke segala arah jauh lebih kuat oleh molekul gas atmosfer (nitrogen & oksigen)."
             ]
             
         return []

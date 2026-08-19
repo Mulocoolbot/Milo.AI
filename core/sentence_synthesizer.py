@@ -538,7 +538,16 @@ class SentenceSynthesizer:
                 f"Ada bahasa pemrograman atau proyek yang lagi pengen kamu buat?"
             )
             
-        # 4. Domain Umum / Masalah Lain
+        # 4. Domain Sains / Fenomena / Cara Kerja Mesin & Alam
+        elif any(w in text_lower for w in ["pesawat", "hujan", "langit", "fotosintesis", "bernafas", "bernapas", "roket", "mesin", "alam", "sains", "fisika", "biologi", "bumi", "matahari", "bintang"]):
+            intro_parts.append(
+                f"Berdasarkan prinsip sains dan penelusuran fakta terverifikasi{name_str}, begini penjelasan mengenai cara kerja dan mekanismenya: 🔬💡"
+            )
+            closing = (
+                f"Luar biasa banget ya bagaimana hukum sains dan teknologi bekerja! 🚀 Ada aspek lain yang mau kita diskusikan{name_str}?"
+            )
+            
+        # 5. Domain Umum / Masalah Lain
         else:
             intro_parts.append(
                 f"Berdasarkan riset dan kompilasi solusi terbaik dari internet{name_str}, berikut panduan langkah-langkah yang bisa kamu coba: 💡"
@@ -934,6 +943,45 @@ class SentenceSynthesizer:
         if source:
             return f"{hook}\n{explanation} *(Sumber: {source})*\n\n{closing}"
         return f"{hook} {explanation} {closing}"
+        
+    def synthesize_explanation_response(self, topic_title, research_result, user_name=None, user_input=""):
+        """Menyusun penjelasan ilmiah / pengetahuan umum terstruktur dari hasil riset internet multi-sumber."""
+        name_str = f" {user_name}" if user_name else ""
+        salutation = f"{user_name}, " if user_name else ""
+        
+        openers = [
+            f"Berdasarkan referensi ilmiah dan penelusuran pengetahuan, begini penjelasan mengenai **{topic_title}**{name_str}: 🧠✨",
+            f"Topik yang sangat menarik {salutation}! Ini rangkuman proses dan cara kerja mengenai **{topic_title}**: 🔬💡",
+            f"Berikut penjelasan lengkap bagaimana mekanisme **{topic_title}** berlangsung{name_str}: 📚✨"
+        ]
+        
+        points_str = []
+        points = research_result.get("validated_points", []) if isinstance(research_result, dict) else []
+        
+        if points:
+            for i, p in enumerate(points[:4], 1):
+                title = p.get("title", "").replace("**", "")
+                desc = p.get("description", "")
+                if title and desc and title.lower() not in desc.lower()[:len(title)+5]:
+                    points_str.append(f"{i}. **{title}** — {desc}")
+                elif desc:
+                    points_str.append(f"{i}. {desc}")
+                elif title:
+                    points_str.append(f"{i}. {title}")
+                    
+        if not points_str and isinstance(research_result, dict):
+            summary = research_result.get("summary", "")
+            if summary:
+                points_str.append(summary)
+                
+        closings = [
+            "💡 Menakjubkan banget kan cara kerjanya? Ada bagian yang mau kamu tanyakan lebih dalam?",
+            "🧠✨ Luar biasa bagaimana proses ini berlangsung! Ada hal lain seputar ini yang bikin kamu penasaran?",
+            "🚀 Semoga penjelasan ini memberi gambaran yang utuh ya! Mau bahas aspek lainnya?"
+        ]
+        
+        body = "\n".join(points_str) if points_str else f"Proses **{topic_title}** melibatkan mekanisme terintegrasi yang saling mendukung."
+        return f"{random.choice(openers)}\n\n{body}\n\n{random.choice(closings)}"
     
     def synthesize_open_response(self, user_input, keywords=None, user_name=None):
         """Menyusun respons terbuka dinamis untuk topik umum."""

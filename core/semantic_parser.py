@@ -71,9 +71,14 @@ class SemanticParser:
             text_clean
         ))
         
-        # 8. User menanyakan fakta / pengetahuan
+        # 8. User menanyakan fakta / pengetahuan / penjelasan ilmiah / mekanisme fenomena
         is_concept_query = bool(re.search(
-            r'\bapa (itu|arti|pengertian|definisi|makna|fungsi)\b|\bapa yang dimaksud (dengan)?\b|\bjelaskan tentang\b|\binfo tentang\b',
+            r'\b(apa (itu|arti|pengertian|definisi|makna|fungsi|kegunaan)|apa yang dimaksud (dengan)?)\b'
+            r'|\b(bagaimana|gimana)\s+([a-z0-9_]+\s+)*(bisa|terjadi|bekerja|punah|terbang|bernafas|bernapas|berfungsi|dibuat|terbentuk|cara)\b'
+            r'|\b(kenapa|mengapa)\s+[a-z0-9_]+\b'
+            r'|\b(bisa kah|bisakah|tolong|coba|mau)?\s*(menjelaskan|jelaskan|terangkan|ceritakan)\s+(tentang|bagaimana|proses|cara|kenapa|mengapa|soal)?\b'
+            r'|\b(proses|cara kerja|mekanisme|siklus)\s+([a-z0-9_]+)\b'
+            r'|\b(siapa|kapan|dimana|di mana|berapa|apakah)\s+(presiden|penemu|jarak|kecepatan|jumlah|ibukota|planet|organ|fungsi)\b',
             text_clean
         ))
         

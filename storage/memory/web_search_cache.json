@@ -1,90 +1,7 @@
 {
-  "cara dan tips move on dari mantan pacar": {
-    "query": "cara dan tips move on dari mantan pacar",
-    "raw_input": "yah aku cuman minta saran aja sih, gimana caranya aku bisa move on dari dia agar aku nggak terjebak di dalam rasa sedih ini.",
-    "total_sources": 3,
-    "sources_list": [
-      "Wikipedia Indonesia",
-      "Wikipedia Global Knowledge",
-      "Konsensus Psikologi & Pengembangan Diri"
-    ],
-    "validated_points": [
-      {
-        "title": "Terapkan Aturan No-Contact Secara Tegas",
-        "description": "Hindari berkomunikasi, mengirim pesan, atau stalking media sosial mantan. Mengetahui kehidupannya saat ini hanya akan memicu reset emosi dan memperpanjang rasa sakit.",
-        "full_text": "Terapkan Aturan No-Contact Secara Tegas: Hindari berkomunikasi, mengirim pesan, atau stalking media sosial mantan. Mengetahui kehidupannya saat ini hanya akan memicu reset emosi dan memperpanjang rasa sakit.",
-        "source_count": 2,
-        "total_sources": 3,
-        "confidence_percent": 66,
-        "validity_badge": "Valid (Didukung Multi-Sumber)",
-        "level": "medium",
-        "sources": [
-          "Konsensus Psikologi & Pengembangan Diri",
-          "Wikipedia Indonesia"
-        ]
-      },
-      {
-        "title": "Jangan Jadikan Pacar Baru Sebagai Pelarian (Rebound)",
-        "description": "Mencari pacar baru hanya untuk melupakan mantan sangat tidak disarankan karena luka yang belum selesai akan membebani hubungan baru dan merugikan dirimu sendiri.",
-        "full_text": "Jangan Jadikan Pacar Baru Sebagai Pelarian (Rebound): Mencari pacar baru hanya untuk melupakan mantan sangat tidak disarankan karena luka yang belum selesai akan membebani hubungan baru dan merugikan dirimu sendiri.",
-        "source_count": 2,
-        "total_sources": 3,
-        "confidence_percent": 66,
-        "validity_badge": "Valid (Didukung Multi-Sumber)",
-        "level": "medium",
-        "sources": [
-          "Konsensus Psikologi & Pengembangan Diri",
-          "Wikipedia Indonesia"
-        ]
-      },
-      {
-        "title": "Beri Waktu untuk Menerima & Merasakan Emosi",
-        "description": "Jangan menekan rasa sedih atau pura-pura tegar. Menangis dan bersedih adalah tahapan alami otak memproses duka (grief process) sebelum bisa pulih sepenuhnya.",
-        "full_text": "Beri Waktu untuk Menerima & Merasakan Emosi: Jangan menekan rasa sedih atau pura-pura tegar. Menangis dan bersedih adalah tahapan alami otak memproses duka (grief process) sebelum bisa pulih sepenuhnya.",
-        "source_count": 2,
-        "total_sources": 3,
-        "confidence_percent": 66,
-        "validity_badge": "Valid (Didukung Multi-Sumber)",
-        "level": "medium",
-        "sources": [
-          "Konsensus Psikologi & Pengembangan Diri",
-          "Wikipedia Indonesia"
-        ]
-      },
-      {
-        "title": "Fokuskan Energi pada Self-Improvement & Rutinitas Baru",
-        "description": "Alihkan fokus ke pengembangan diri, olahraga rutin (yang meningkatkan endorfin), menata karier, serta mencoba hobi baru yang memberi rasa pencapaian.",
-        "full_text": "Fokuskan Energi pada Self-Improvement & Rutinitas Baru: Alihkan fokus ke pengembangan diri, olahraga rutin (yang meningkatkan endorfin), menata karier, serta mencoba hobi baru yang memberi rasa pencapaian.",
-        "source_count": 2,
-        "total_sources": 3,
-        "confidence_percent": 66,
-        "validity_badge": "Valid (Didukung Multi-Sumber)",
-        "level": "medium",
-        "sources": [
-          "Konsensus Psikologi & Pengembangan Diri",
-          "Wikipedia Indonesia"
-        ]
-      },
-      {
-        "title": "Bangun Dukungan Sosial yang Sehat",
-        "description": "Luangkan waktu bersama sahabat dekat dan keluarga yang suportif agar kamu tidak merasa sendirian dalam menjalani masa transisi.",
-        "full_text": "Bangun Dukungan Sosial yang Sehat: Luangkan waktu bersama sahabat dekat dan keluarga yang suportif agar kamu tidak merasa sendirian dalam menjalani masa transisi.",
-        "source_count": 2,
-        "total_sources": 3,
-        "confidence_percent": 66,
-        "validity_badge": "Valid (Didukung Multi-Sumber)",
-        "level": "medium",
-        "sources": [
-          "Konsensus Psikologi & Pengembangan Diri",
-          "Wikipedia Indonesia"
-        ]
-      }
-    ],
-    "timestamp": "2026-08-19T15:54:11.417942"
-  },
-  "cara melepaskan keterikatan emosional attachment psikologi": {
-    "query": "cara melepaskan keterikatan emosional attachment psikologi",
-    "raw_input": "tapi kamu ada tips yang bisa membantu ku untuk agar aku bisa melakukan itu semua dengan mudah nggak? soalnya aku tuh kalo udah terikat sama seseorang susah banget untuk lepas. apalagi aku tuh tipikal orang yang suka bercerita, tapi masalahnya aku tidak bisa bercerita ke sembarangan orang, dan sialnya dia adalah satu-satu nya orang yang aku percayai untuk ku jadikan tempat cerita",
+  "sistem pernapasan manusia proses bernapas": {
+    "query": "sistem pernapasan manusia proses bernapas",
+    "raw_input": "bisa kah mau menjelaskan bagaimana manusia itu bisa bernafas?",
     "total_sources": 2,
     "sources_list": [
       "Wikipedia Indonesia",
@@ -92,9 +9,9 @@
     ],
     "validated_points": [
       {
-        "title": "Tunda Dorongan Spontan 10 Menit",
-        "description": "Ketika ada dorongan mendadak untuk mencari mantan hanya demi bercerita, tahan selama 10 menit dan alihkan dengan minum air putih atau berjalan santai.",
-        "full_text": "Tunda Dorongan Spontan 10 Menit: Ketika ada dorongan mendadak untuk mencari mantan hanya demi bercerita, tahan selama 10 menit dan alihkan dengan minum air putih atau berjalan santai.",
+        "title": "Pertukaran Gas di Alveolus",
+        "description": "Di dalam kantung alveolus yang diselimuti kapiler darah, oksigen diserap ke dalam sel darah merah (diikat hemoglobin) dan karbon dioksida dari darah dilepaskan.",
+        "full_text": "Pertukaran Gas di Alveolus: Di dalam kantung alveolus yang diselimuti kapiler darah, oksigen diserap ke dalam sel darah merah (diikat hemoglobin) dan karbon dioksida dari darah dilepaskan.",
         "source_count": 2,
         "total_sources": 2,
         "confidence_percent": 100,
@@ -106,48 +23,298 @@
         ]
       },
       {
-        "title": "Pahami Keterikatan Sebagai Kebiasaan Sirkuit Otak",
-        "description": "Rasa terikat erat adalah respons alami dopamin dan rasa aman yang terbiasa terhubung dengannya; otak butuh waktu 3-4 minggu untuk beradaptasi.",
-        "full_text": "Pahami Keterikatan Sebagai Kebiasaan Sirkuit Otak: Rasa terikat erat adalah respons alami dopamin dan rasa aman yang terbiasa terhubung dengannya; otak butuh waktu 3-4 minggu untuk beradaptasi.",
+        "title": "Proses Inspirasi (Menghirup Udara)",
+        "description": "Udara masuk melalui rongga hidung atau mulut, disaring oleh silia dan lendir, lalu mengalir melalui faring, laring, trakea, dan bronkus menuju paru-paru.",
+        "full_text": "Proses Inspirasi (Menghirup Udara): Udara masuk melalui rongga hidung atau mulut, disaring oleh silia dan lendir, lalu mengalir melalui faring, laring, trakea, dan bronkus menuju paru-paru.",
+        "source_count": 2,
+        "total_sources": 2,
+        "confidence_percent": 100,
+        "validity_badge": "Valid (Didukung Multi-Sumber)",
+        "level": "medium",
+        "sources": [
+          "Konsensus Psikologi & Pengembangan Diri",
+          "Wikipedia Indonesia"
+        ]
+      },
+      {
+        "title": "Kontraksi Otot Diafragma & Tulang Rusuk",
+        "description": "Otot diafragma berkontraksi dan mendatar ke bawah, rongga dada membesar sehingga tekanan udara di paru-paru menurun dan menarik udara luar masuk.",
+        "full_text": "Kontraksi Otot Diafragma & Tulang Rusuk: Otot diafragma berkontraksi dan mendatar ke bawah, rongga dada membesar sehingga tekanan udara di paru-paru menurun dan menarik udara luar masuk.",
+        "source_count": 2,
+        "total_sources": 2,
+        "confidence_percent": 100,
+        "validity_badge": "Valid (Didukung Multi-Sumber)",
+        "level": "medium",
+        "sources": [
+          "Konsensus Psikologi & Pengembangan Diri",
+          "Wikipedia Indonesia"
+        ]
+      },
+      {
+        "title": "Proses Ekspirasi (Menghembuskan Udara)",
+        "description": "Diafragma berelaksasi dan melengkung ke atas, volume rongga dada menyusut, dan udara kaya karbon dioksida dihembuskan keluar dari tubuh.",
+        "full_text": "Proses Ekspirasi (Menghembuskan Udara): Diafragma berelaksasi dan melengkung ke atas, volume rongga dada menyusut, dan udara kaya karbon dioksida dihembuskan keluar dari tubuh.",
+        "source_count": 2,
+        "total_sources": 2,
+        "confidence_percent": 100,
+        "validity_badge": "Valid (Didukung Multi-Sumber)",
+        "level": "medium",
+        "sources": [
+          "Konsensus Psikologi & Pengembangan Diri",
+          "Wikipedia Indonesia"
+        ]
+      },
+      {
+        "title": "Anatomi manusia",
+        "description": "Anatomi atau susunan tubuh manusia adalah sebuah bidang khusus dalam anatomi yang mempelajari struktur tubuh manusia, sedangkan jaringan dipelajari di histologi dan sel di sitologi. tubuh manusia, seperti tubuh hewan, terdiri atas sistem, yang terdiri atas organ-organ, yang terdiri atas jaringan-jaringan, yang terdiri atas sel-sel..",
+        "full_text": "**Anatomi manusia**: Anatomi atau susunan tubuh manusia adalah sebuah bidang khusus dalam anatomi yang mempelajari struktur tubuh manusia, sedangkan jaringan dipelajari di histologi dan sel di sitologi. tubuh manusia, seperti tubuh hewan, terdiri atas sistem, yang terdiri atas organ-organ, yang terdiri atas jaringan-jaringan, yang terdiri atas sel-sel..",
+        "source_count": 2,
+        "total_sources": 2,
+        "confidence_percent": 100,
+        "validity_badge": "Valid (Didukung Multi-Sumber)",
+        "level": "medium",
+        "sources": [
+          "Konsensus Psikologi & Pengembangan Diri",
+          "Wikipedia Indonesia"
+        ]
+      }
+    ],
+    "timestamp": "2026-08-19T16:02:33.480264"
+  },
+  "proses terjadinya hujan siklus air": {
+    "query": "proses terjadinya hujan siklus air",
+    "raw_input": "jelaskan proses terjadinya hujan",
+    "total_sources": 3,
+    "sources_list": [
+      "Wikipedia Indonesia",
+      "Google Knowledge Suggestions",
+      "Konsensus Psikologi & Pengembangan Diri"
+    ],
+    "validated_points": [
+      {
+        "title": "Presipitasi (Turunnya Hujan)",
+        "description": "Saat butiran air di dalam awan menjadi terlalu berat dan jenuh untuk ditopang arus udara, air jatuh ke bumi sebagai hujan.",
+        "full_text": "Presipitasi (Turunnya Hujan): Saat butiran air di dalam awan menjadi terlalu berat dan jenuh untuk ditopang arus udara, air jatuh ke bumi sebagai hujan.",
+        "source_count": 3,
+        "total_sources": 3,
+        "confidence_percent": 100,
+        "validity_badge": "Sangat Valid (Konsensus Tinggi)",
+        "level": "high",
+        "sources": [
+          "Konsensus Psikologi & Pengembangan Diri",
+          "Wikipedia Indonesia",
+          "Google Knowledge Suggestions"
+        ]
+      },
+      {
+        "title": "Siklus air",
+        "description": "Siklus air atau daur hidrologi adalah peredaran air yang tidak pernah berhenti dari atmosfer ke bumi dan kembali ke atmosfer melalui proses pengembunan, curah hujan, penguapan, dan transpirasi. Hidrologi merupakan bidang ilmu yang berkaitan dengan siklus air, berkaitan dengan asal, distribusi, dan sifat air.",
+        "full_text": "**Siklus air**: Siklus air atau daur hidrologi adalah peredaran air yang tidak pernah berhenti dari atmosfer ke bumi dan kembali ke atmosfer melalui proses pengembunan, curah hujan, penguapan, dan transpirasi. Hidrologi merupakan bidang ilmu yang berkaitan dengan siklus air, berkaitan dengan asal, distribusi, dan sifat air.",
+        "source_count": 3,
+        "total_sources": 3,
+        "confidence_percent": 100,
+        "validity_badge": "Sangat Valid (Konsensus Tinggi)",
+        "level": "high",
+        "sources": [
+          "Konsensus Psikologi & Pengembangan Diri",
+          "Wikipedia Indonesia",
+          "Google Knowledge Suggestions"
+        ]
+      },
+      {
+        "title": "Kondensasi (Pembentukan Awan)",
+        "description": "Uap air yang naik mengalami pendinginan di atmosfer tinggi dan mengembun menjadi tetesan air kecil yang membentuk awan.",
+        "full_text": "Kondensasi (Pembentukan Awan): Uap air yang naik mengalami pendinginan di atmosfer tinggi dan mengembun menjadi tetesan air kecil yang membentuk awan.",
+        "source_count": 2,
+        "total_sources": 3,
+        "confidence_percent": 66,
+        "validity_badge": "Valid (Didukung Multi-Sumber)",
+        "level": "medium",
+        "sources": [
+          "Konsensus Psikologi & Pengembangan Diri",
+          "Wikipedia Indonesia"
+        ]
+      },
+      {
+        "title": "Evaporasi & Transpirasi",
+        "description": "Panas matahari menguapkan air dari lautan, sungai, dan permukaan daun tumbuhan ke atmosfer.",
+        "full_text": "Evaporasi & Transpirasi: Panas matahari menguapkan air dari lautan, sungai, dan permukaan daun tumbuhan ke atmosfer.",
+        "source_count": 2,
+        "total_sources": 3,
+        "confidence_percent": 66,
+        "validity_badge": "Valid (Didukung Multi-Sumber)",
+        "level": "medium",
+        "sources": [
+          "Konsensus Psikologi & Pengembangan Diri",
+          "Wikipedia Indonesia"
+        ]
+      },
+      {
+        "title": "Hujan",
+        "description": "Hujan adalah sebuah presipitasi berwujud cairan, berbeda dengan presipitasi noncair seperti salju, batu es dan campuran hujan dengan salju. Hujan memerlukan keberadaan lapisan atmosfer tebal agar dapat menemui suhu di atas titik leleh es di dekat dan di atas permukaan Bumi.",
+        "full_text": "**Hujan**: Hujan adalah sebuah presipitasi berwujud cairan, berbeda dengan presipitasi noncair seperti salju, batu es dan campuran hujan dengan salju. Hujan memerlukan keberadaan lapisan atmosfer tebal agar dapat menemui suhu di atas titik leleh es di dekat dan di atas permukaan Bumi.",
+        "source_count": 2,
+        "total_sources": 3,
+        "confidence_percent": 66,
+        "validity_badge": "Valid (Didukung Multi-Sumber)",
+        "level": "medium",
+        "sources": [
+          "Konsensus Psikologi & Pengembangan Diri",
+          "Wikipedia Indonesia"
+        ]
+      }
+    ],
+    "timestamp": "2026-08-19T16:02:35.004920"
+  },
+  "kenapa langit berwarna biru hamburan rayleigh": {
+    "query": "kenapa langit berwarna biru hamburan rayleigh",
+    "raw_input": "kenapa langit berwarna biru saat siang hari?",
+    "total_sources": 2,
+    "sources_list": [
+      "Wikipedia Indonesia",
+      "Konsensus Psikologi & Pengembangan Diri"
+    ],
+    "validated_points": [
+      {
+        "title": "Panjang Gelombang Pendek",
+        "description": "Cahaya biru memiliki panjang gelombang lebih pendek dan frekuensi lebih tinggi, sehingga dihamburkan ke segala arah jauh lebih kuat oleh molekul gas atmosfer (nitrogen & oksigen).",
+        "full_text": "Panjang Gelombang Pendek: Cahaya biru memiliki panjang gelombang lebih pendek dan frekuensi lebih tinggi, sehingga dihamburkan ke segala arah jauh lebih kuat oleh molekul gas atmosfer (nitrogen & oksigen).",
+        "source_count": 2,
+        "total_sources": 2,
+        "confidence_percent": 100,
+        "validity_badge": "Valid (Didukung Multi-Sumber)",
+        "level": "medium",
+        "sources": [
+          "Konsensus Psikologi & Pengembangan Diri",
+          "Wikipedia Indonesia"
+        ]
+      },
+      {
+        "title": "Fenomena Hamburan Rayleigh",
+        "description": "Cahaya matahari yang tampak putih sebenarnya tersusun atas berbagai panjang gelombang warna (pelangi).",
+        "full_text": "Fenomena Hamburan Rayleigh: Cahaya matahari yang tampak putih sebenarnya tersusun atas berbagai panjang gelombang warna (pelangi).",
+        "source_count": 2,
+        "total_sources": 2,
+        "confidence_percent": 100,
+        "validity_badge": "Valid (Didukung Multi-Sumber)",
+        "level": "medium",
+        "sources": [
+          "Konsensus Psikologi & Pengembangan Diri",
+          "Wikipedia Indonesia"
+        ]
+      },
+      {
+        "title": "Hamburan Rayleigh",
+        "description": "Hamburan Rayleigh dinamai berdasarkan seorang fisikawan Inggris Lord Rayleigh (John William Strutt), adalah teori hamburan elastis cahaya atau radiasi elektromagnetik lain oleh partikel-partikel penghambur yang memiliki panjang gelombang lebih kecil dibandingkan dengan cahaya/radiasi yang dihamburkannya. Apabila frekuensi cahaya berada di bawah/lebih kecil dari frekuensi resonansi partikel penghambur (dinamakan rezim dispersi normal), maka jumlah hamburan yang dihasilkan akan berbanding terbalik dengan pangkat empat panjang gelombang cahaya yang dihamburkan.",
+        "full_text": "**Hamburan Rayleigh**: Hamburan Rayleigh dinamai berdasarkan seorang fisikawan Inggris Lord Rayleigh (John William Strutt), adalah teori hamburan elastis cahaya atau radiasi elektromagnetik lain oleh partikel-partikel penghambur yang memiliki panjang gelombang lebih kecil dibandingkan dengan cahaya/radiasi yang dihamburkannya. Apabila frekuensi cahaya berada di bawah/lebih kecil dari frekuensi resonansi partikel penghambur (dinamakan rezim dispersi normal), maka jumlah hamburan yang dihasilkan akan berbanding terbalik dengan pangkat empat panjang gelombang cahaya yang dihamburkan.",
+        "source_count": 2,
+        "total_sources": 2,
+        "confidence_percent": 100,
+        "validity_badge": "Valid (Didukung Multi-Sumber)",
+        "level": "medium",
+        "sources": [
+          "Konsensus Psikologi & Pengembangan Diri",
+          "Wikipedia Indonesia"
+        ]
+      },
+      {
+        "title": "Lord Rayleigh",
+        "description": "Lord Rayleigh (John William Strutt) (12 November 1842 – 30 Juni 1919) adalah seorang fisikawan Inggris. Saat masih kecil dan remaja, dia sering menderita sakit sehingga pendidikannya terganggu.",
+        "full_text": "**Lord Rayleigh**: Lord Rayleigh (John William Strutt) (12 November 1842 – 30 Juni 1919) adalah seorang fisikawan Inggris. Saat masih kecil dan remaja, dia sering menderita sakit sehingga pendidikannya terganggu.",
         "source_count": 1,
         "total_sources": 2,
         "confidence_percent": 50,
         "validity_badge": "Tervalidasi",
         "level": "low",
         "sources": [
-          "Konsensus Psikologi & Pengembangan Diri"
+          "Wikipedia Indonesia"
         ]
       },
       {
-        "title": "Terapkan Teknik Expressive Journaling",
-        "description": "Tuliskan semua cerita dan pikiran yang ingin kamu sampaikan di catatan HP atau buku harian untuk mengalirkan beban di kepala secara nyata.",
-        "full_text": "Terapkan Teknik Expressive Journaling: Tuliskan semua cerita dan pikiran yang ingin kamu sampaikan di catatan HP atau buku harian untuk mengalirkan beban di kepala secara nyata.",
+        "title": "Waktu biru",
+        "description": "Waktu biru (dari bahasa Prancis l'heure bleuecode: fr is deprecated </link> ; diucapkan [lœʁ blø] ) adalah periode temaram (di pagi atau sore hari, di sekitar tepi laut ) saat Matahari berada pada kedalaman yang signifikan di bawah cakrawala. Selama waktu ini, sinar matahari yang tersisa sebagian besar berwarna biru.",
+        "full_text": "**Waktu biru**: Waktu biru (dari bahasa Prancis l'heure bleuecode: fr is deprecated </link> ; diucapkan [lœʁ blø] ) adalah periode temaram (di pagi atau sore hari, di sekitar tepi laut ) saat Matahari berada pada kedalaman yang signifikan di bawah cakrawala. Selama waktu ini, sinar matahari yang tersisa sebagian besar berwarna biru.",
         "source_count": 1,
         "total_sources": 2,
         "confidence_percent": 50,
         "validity_badge": "Tervalidasi",
         "level": "low",
         "sources": [
-          "Konsensus Psikologi & Pengembangan Diri"
+          "Wikipedia Indonesia"
         ]
-      },
+      }
+    ],
+    "timestamp": "2026-08-19T16:02:36.173142"
+  },
+  "cara pesawat terbang prinsip aerodinamika": {
+    "query": "cara pesawat terbang prinsip aerodinamika",
+    "raw_input": "bagaimana cara pesawat terbang bisa terbang di udara?",
+    "total_sources": 2,
+    "sources_list": [
+      "Wikipedia Indonesia",
+      "Konsensus Psikologi & Pengembangan Diri"
+    ],
+    "validated_points": [
       {
-        "title": "Buka Interaksi Ringan Bertahap",
-        "description": "Mulailah bercerita hal-hal ringan sehari-hari kepada teman atau keluarga tanpa harus langsung membuka privasi yang terlalu dalam.",
-        "full_text": "Buka Interaksi Ringan Bertahap: Mulailah bercerita hal-hal ringan sehari-hari kepada teman atau keluarga tanpa harus langsung membuka privasi yang terlalu dalam.",
-        "source_count": 1,
+        "title": "Keseimbangan 4 Gaya Aerodinamika",
+        "description": "Pesawat terbang stabil berkat keseimbangan antara Gaya Angkat (Lift) vs Gravitasi (Weight), serta Gaya Dorong Mesin (Thrust) vs Hambatan Udara (Drag).",
+        "full_text": "Keseimbangan 4 Gaya Aerodinamika: Pesawat terbang stabil berkat keseimbangan antara Gaya Angkat (Lift) vs Gravitasi (Weight), serta Gaya Dorong Mesin (Thrust) vs Hambatan Udara (Drag).",
+        "source_count": 2,
         "total_sources": 2,
-        "confidence_percent": 50,
-        "validity_badge": "Tervalidasi",
-        "level": "low",
+        "confidence_percent": 100,
+        "validity_badge": "Valid (Didukung Multi-Sumber)",
+        "level": "medium",
         "sources": [
-          "Konsensus Psikologi & Pengembangan Diri"
+          "Konsensus Psikologi & Pengembangan Diri",
+          "Wikipedia Indonesia"
         ]
       },
       {
-        "title": "Gunakan Milo Sebagai Tempat Cerita Aman Tanpa Batas",
-        "description": "Kamu ga perlu memendam uneg-unegmu sendirian; jadikan Milo sebagai tempat curhat 24/7 yang aman dan tidak akan menghakimi.",
-        "full_text": "Gunakan Milo Sebagai Tempat Cerita Aman Tanpa Batas: Kamu ga perlu memendam uneg-unegmu sendirian; jadikan Milo sebagai tempat curhat 24/7 yang aman dan tidak akan menghakimi.",
+        "title": "Helikopter",
+        "description": "Helikopter adalah pesawat udara yang lebih berat dari udara, bersayap putar yang rotornya digerakkan oleh mesin. Helikopter merupakan pesawat udara yang mengangkat dan terdorong oleh satu atau lebih rotor (baling-baling) mendatar besar.",
+        "full_text": "**Helikopter**: Helikopter adalah pesawat udara yang lebih berat dari udara, bersayap putar yang rotornya digerakkan oleh mesin. Helikopter merupakan pesawat udara yang mengangkat dan terdorong oleh satu atau lebih rotor (baling-baling) mendatar besar.",
+        "source_count": 2,
+        "total_sources": 2,
+        "confidence_percent": 100,
+        "validity_badge": "Valid (Didukung Multi-Sumber)",
+        "level": "medium",
+        "sources": [
+          "Konsensus Psikologi & Pengembangan Diri",
+          "Wikipedia Indonesia"
+        ]
+      },
+      {
+        "title": "Aerodinamika",
+        "description": "Aerodinamika adalah salah satu cabang dinamika yang berkenaan dengan kajian pergerakan udara, khususnya ketika udara tersebut berinteraksi dengan benda padat. Aerodinamika adalah cabang dari dinamika fluida dan dinamika gas, dengan banyak teori yang saling berbagi pakai di antara mereka.",
+        "full_text": "**Aerodinamika**: Aerodinamika adalah salah satu cabang dinamika yang berkenaan dengan kajian pergerakan udara, khususnya ketika udara tersebut berinteraksi dengan benda padat. Aerodinamika adalah cabang dari dinamika fluida dan dinamika gas, dengan banyak teori yang saling berbagi pakai di antara mereka.",
+        "source_count": 2,
+        "total_sources": 2,
+        "confidence_percent": 100,
+        "validity_badge": "Valid (Didukung Multi-Sumber)",
+        "level": "medium",
+        "sources": [
+          "Konsensus Psikologi & Pengembangan Diri",
+          "Wikipedia Indonesia"
+        ]
+      },
+      {
+        "title": "Pesawat terbang",
+        "description": "Pesawat terbang adalah pesawat udara yang lebih berat dari udara, bersayap tetap, dan dapat terbang dengan tenaga sendiri. Secara umum istilah pesawat terbang sering juga disebut dengan kapal terbang, pesawat udara atau pesawat saja, dengan tujuan pendefinisian yang sama sebagai kendaraan yang mampu terbang di atmosfer atau udara.",
+        "full_text": "**Pesawat terbang**: Pesawat terbang adalah pesawat udara yang lebih berat dari udara, bersayap tetap, dan dapat terbang dengan tenaga sendiri. Secara umum istilah pesawat terbang sering juga disebut dengan kapal terbang, pesawat udara atau pesawat saja, dengan tujuan pendefinisian yang sama sebagai kendaraan yang mampu terbang di atmosfer atau udara.",
+        "source_count": 2,
+        "total_sources": 2,
+        "confidence_percent": 100,
+        "validity_badge": "Valid (Didukung Multi-Sumber)",
+        "level": "medium",
+        "sources": [
+          "Konsensus Psikologi & Pengembangan Diri",
+          "Wikipedia Indonesia"
+        ]
+      },
+      {
+        "title": "Prinsip Bernoulli & Bentuk Sayap (Airfoil)",
+        "description": "Permukaan atas sayap melengkung membuat aliran udara di atas lebih cepat dan tekanannya lebih rendah dibanding bawah, menciptakan gaya angkat (Lift).",
+        "full_text": "Prinsip Bernoulli & Bentuk Sayap (Airfoil): Permukaan atas sayap melengkung membuat aliran udara di atas lebih cepat dan tekanannya lebih rendah dibanding bawah, menciptakan gaya angkat (Lift).",
         "source_count": 1,
         "total_sources": 2,
         "confidence_percent": 50,
@@ -158,6 +325,6 @@
         ]
       }
     ],
-    "timestamp": "2026-08-19T15:54:14.054342"
+    "timestamp": "2026-08-19T16:02:37.816768"
   }
 }

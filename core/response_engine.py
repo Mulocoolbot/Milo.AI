@@ -106,6 +106,12 @@ class ResponseEngine:
         # === 7. Handle Patah Hati & Cinta Tak Berbalas (heartbreak) ===
         if parsed["is_heartbreak"]:
             return self.synthesizer.synthesize_heartbreak(user_name, user_input)
+            
+        # === 7.5 Handle Pertanyaan Konsep / Penjelasan Ilmiah / Pengetahuan Web ===
+        if (parsed["is_concept_query"] or intent in ("knowledge_query", "concept_query") or self._is_factual_question(user_input)) and not self._is_personal_sharing(user_input):
+            kb_response = self._handle_knowledge_query_with_web(user_input, keywords, knowledge_base, context)
+            if kb_response:
+                return self._substitute_variables(kb_response, context)
         
         # === 8. Handle Multi-Segment Compound Inputs ===
         if intent_result.get("is_compound") and len(intent_result.get("segments", [])) >= 2:
@@ -297,29 +303,33 @@ class ResponseEngine:
     
     def _handle_knowledge_query_with_web(self, user_input, keywords, knowledge_base, context):
         """
-        Mencari jawaban di basis pengetahuan lokal.
-        Jika tidak ada atau relevansinya rendah, otomatis mencari secara online via WebFetcher dan mempelajarinya.
+        Mencari jawaban di basis pengetahuan lokal dan internet secara mendalam (Deep Search).
         """
         user_name = context.get("user_name")
         
-        # 1. Coba cari di Knowledge Base Lokal
+        # 1. Coba cari di Knowledge Base Lokal jika relevansi sangat tinggi
         if knowledge_base and keywords:
             results = knowledge_base.search_by_keywords(keywords, max_results=3)
-            
-            if results and results[0].get("score", 0) >= 6:
+            if results and results[0].get("score", 0) >= 8:
                 best_match = results[0]
                 val = best_match.get("value")
                 key = best_match.get("key") or ""
                 if isinstance(val, str):
                     topic_name = key.split(">")[-1].strip().replace("_", " ").title() if key else "itu"
                     return self.synthesizer.synthesize_knowledge_answer(topic_name, val, user_name)
-                elif isinstance(val, dict):
-                    summary_points = [f"• **{k.replace('_', ' ').title()}**: {v}" for k, v in list(val.items())[:5] if isinstance(v, str)]
-                    topic_name = key.split(">")[-1].strip().replace("_", " ").title() if key else "Topik"
-                    if summary_points:
-                        return f"Berikut rangkuman tentang **{topic_name}** yang Milo ketahui:\n" + "\n".join(summary_points) + "\n\nAda bagian yang ingin kamu diskusikan lebih lanjut? 💬"
+                    
+        # 2. Cari secara online via WebSearch multi-source
+        if self.web_search:
+            research = self.web_search.deep_research(user_input, context.get("current_topic", ""))
+            if research and research.get("validated_points"):
+                topic_title = self._derive_topic_title(user_input, keywords, research.get("query", ""))
+                # Simpan pengetahuan yang dipelajari ke KnowledgeBase
+                if knowledge_base:
+                    summary_snippet = " ".join([p.get("description", "") for p in research.get("validated_points", [])[:2]])
+                    knowledge_base.add_entry("pengetahuan_umum", topic_title.lower().replace(" ", "_"), summary_snippet)
+                return self.synthesizer.synthesize_explanation_response(topic_title, research, user_name, user_input)
         
-        # 2. Jika tidak ada di lokal, cari secara online via WebFetcher
+        # 3. Fallback ke WebFetcher jika ada
         if self.web_fetcher and keywords:
             query_term = " ".join(keywords)
             word_def = self.web_fetcher.fetch_word_definition(query_term)
@@ -340,6 +350,27 @@ class ResponseEngine:
                 return self.synthesizer.synthesize_knowledge_answer(topic_title, concept_summary, user_name, "Web")
                 
         return None
+        
+    def _derive_topic_title(self, user_input, keywords, query=""):
+        """Menentukan judul topik penjelasan dari input user."""
+        text_lower = user_input.lower()
+        if any(w in text_lower for w in ["bernafas", "bernapas", "pernapasan", "respirasi"]):
+            return "Sistem Pernapasan Manusia (Bagaimana Manusia Bernapas)"
+        if "fotosintesis" in text_lower:
+            return "Proses Fotosintesis pada Tumbuhan"
+        if "hujan" in text_lower:
+            return "Proses Terjadinya Hujan (Siklus Air)"
+        if "pesawat" in text_lower:
+            return "Bagaimana Pesawat Terbang Bisa Terbang"
+        if "langit" in text_lower and "biru" in text_lower:
+            return "Mengapa Langit Berwarna Biru"
+            
+        if query:
+            clean_q = re.sub(r'\b(proses|cara|bagaimana|apa|itu|sistem)\b', '', query, flags=re.IGNORECASE).strip()
+            return clean_q.title() if len(clean_q) > 3 else query.title()
+        if keywords:
+            return " ".join(keywords).title()
+        return "Penjelasan Topik Terkait"
     
     def _is_concept_query(self, text):
         """Mengecek apakah kalimat adalah pertanyaan konsep baru."""
