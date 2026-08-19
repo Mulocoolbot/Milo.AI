@@ -87,7 +87,13 @@ class ResponseEngine:
         if parsed["is_user_state_good"] and not any(w in user_input.lower() for w in ["sakit", "sedih", "kecewa", "bingung"]):
             return self.synthesizer.synthesize_user_state_good(user_name)
         
-        # === 5. Handle Permintaan Saran & Solusi dengan Deep Web Search & Cross-Validation ===
+        # === 5. Handle Pertanyaan Konsep / Penjelasan Ilmiah / Tren / Pengetahuan Web ===
+        if (parsed["is_concept_query"] or intent in ("knowledge_query", "concept_query") or self._is_factual_question(user_input)) and not self._is_personal_sharing(user_input):
+            kb_response = self._handle_knowledge_query_with_web(user_input, keywords, knowledge_base, context)
+            if kb_response:
+                return self._substitute_variables(kb_response, context)
+        
+        # === 6. Handle Permintaan Saran & Solusi dengan Deep Web Search & Cross-Validation ===
         if parsed["is_asking_advice"] or parsed["is_insisting_on_tips"] or parsed["has_specific_dilemma"] or intent == "need_advice":
             # Jika user menegaskan hanya minta tips (misal "cuman minta tips aja", "cuman minta tis")
             if parsed["is_insisting_on_tips"]:
@@ -104,19 +110,13 @@ class ResponseEngine:
                 return self.synthesizer.synthesize_researched_advice(user_name, research, search_input)
             return self.synthesizer.synthesize_need_advice(user_name)
             
-        # === 6. Handle Cerita / Update Situasi Pengguna (is_story_sharing) ===
+        # === 7. Handle Cerita / Update Situasi Pengguna (is_story_sharing) ===
         if parsed["is_story_sharing"]:
             return self.synthesizer.synthesize_story_reflection(user_name, user_input)
             
-        # === 7. Handle Patah Hati & Cinta Tak Berbalas (heartbreak) ===
+        # === 8. Handle Patah Hati & Cinta Tak Berbalas (heartbreak) ===
         if parsed["is_heartbreak"]:
             return self.synthesizer.synthesize_heartbreak(user_name, user_input)
-            
-        # === 7.5 Handle Pertanyaan Konsep / Penjelasan Ilmiah / Pengetahuan Web ===
-        if (parsed["is_concept_query"] or intent in ("knowledge_query", "concept_query") or self._is_factual_question(user_input)) and not self._is_personal_sharing(user_input):
-            kb_response = self._handle_knowledge_query_with_web(user_input, keywords, knowledge_base, context)
-            if kb_response:
-                return self._substitute_variables(kb_response, context)
         
         # === 8. Handle Multi-Segment Compound Inputs ===
         if intent_result.get("is_compound") and len(intent_result.get("segments", [])) >= 2:
@@ -359,6 +359,8 @@ class ResponseEngine:
     def _derive_topic_title(self, user_input, keywords, query=""):
         """Menentukan judul topik penjelasan dari input user."""
         text_lower = user_input.lower()
+        if any(w in text_lower for w in ["olahraga", "sport", "workout"]) and any(w in text_lower for w in ["gen z", "gen-z", "milenial", "anak muda", "dinikmati", "disukai", "populer"]):
+            return "Tren Olahraga yang Paling Diminati dan Populer di Kalangan Gen Z"
         if any(w in text_lower for w in ["ciptakan", "tercipta", "asal usul", "penciptaan", "evolusi"]) and "manusia" in text_lower:
             return "Asal Usul dan Pembentukan Manusia Menurut Sains (Teori Evolusi Biologi)"
         if "asma" in text_lower:
@@ -386,15 +388,9 @@ class ResponseEngine:
         return "Penjelasan Topik Terkait"
     
     def _is_concept_query(self, text):
-        """Mengecek apakah kalimat adalah pertanyaan konsep baru."""
-        text_lower = text.lower()
-        patterns = [
-            r"\bapa (itu|arti|pengertian|definisi|makna)\b",
-            r"\bapa yang dimaksud\b",
-            r"\bjelaskan tentang\b",
-            r"\binfo tentang\b"
-        ]
-        return any(re.search(p, text_lower) for p in patterns)
+        """Mengecek apakah kalimat adalah pertanyaan pengetahuan/konsep/fakta/tren."""
+        parsed = self.semantic_parser.parse(text)
+        return parsed.get("is_concept_query", False)
     
     def _handle_compound_input(self, intent_result, user_input, keywords, context, knowledge_base, memory, context_manager):
         """Menyusun respons terpadu untuk kalimat majemuk panjang multi-konteks."""

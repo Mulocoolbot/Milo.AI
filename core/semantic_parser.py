@@ -71,10 +71,13 @@ class SemanticParser:
             text_clean
         ))
         
-        # 8. User menanyakan fakta / pengetahuan / penjelasan ilmiah / mekanisme fenomena / medis & penyakit
+        # 8. User menanyakan fakta / pengetahuan / penjelasan ilmiah / tren / hobi / fenomena / medis & penyakit
         is_concept_query = bool(re.search(
             r'\b(apa (itu|arti|pengertian|definisi|makna|fungsi|kegunaan)|apa yang dimaksud (dengan)?)\b'
             r'|\bapa yang terjadi (di saat|saat|ketika|jika|pada)\b'
+            r'|\b([a-z0-9_]+)\s+apa\s+(yang|paling|bisa|cocok|bagus|terbaik|terkenal|populer|diminati|disukai|dinikmati)\b'
+            r'|\b(olahraga|makanan|minuman|musik|lagu|game|teknologi|wisata|kuliner|pekerjaan|jurusan|hobi|buku|film|baju|pakaian)\s+(apa|mana|terbaik|populer|favorit|tren|trend)\b'
+            r'|\b(siapa|kapan|dimana|di mana|ke mana|kemana|dari mana|darimana|berapa|seberapa|apakah|manakah|adakah|apa saja|sebutkan|rekomendasi)\b'
             r'|\b(penciptaan|diciptakan|tercipta|asal usul|evolusi)\s+(manusia|kehidupan|alam semesta|bumi|makhluk hidup|[a-z0-9_]+)\b'
             r'|\b(mengidap|menderita|terkena|gejala|penyebab|dampak|akibat)\s+(penyakit|gangguan|sindrom|virus|bakteri|[a-z0-9_]+)\b'
             r'|\b(penyakit|sindrom|gangguan|virus|bakteri)\s+[a-z0-9_]+\b'
@@ -82,19 +85,19 @@ class SemanticParser:
             r'|\b(kenapa|mengapa)\s+[a-z0-9_]+\b'
             r'|\b(bisa kah|bisakah|tolong|coba|mau)?\s*(menjelaskan|jelaskan|terangkan|ceritakan)\s+(tentang|bagaimana|proses|cara|kenapa|mengapa|soal)?\b'
             r'|\b(proses|cara kerja|mekanisme|siklus)\s+([a-z0-9_]+)\b'
-            r'|\b(siapa|kapan|dimana|di mana|berapa|apakah)\s+(presiden|penemu|jarak|kecepatan|jumlah|ibukota|planet|organ|fungsi)\b',
+            r'|\b(tren|trend|populer|favorit|disukai|diminati|dinikmati)\s+([a-z0-9_]+\s+)*(gen z|milenial|anak muda|orang|masyarakat)\b',
             text_clean
-        )) and not bool(re.search(r'\b(kenapa|mengapa|kok)\s+(ada|bisa ada|nyambung ke|muncul)\b|\bapa hubungannya\b', text_clean))
+        )) and not bool(re.search(r'\b(kenapa|mengapa|kok)\s+(ada|bisa ada|nyambung ke|muncul)\b|\bapa hubungannya\b', text_clean)) and not is_clarification and not is_seeking_permission and not is_meta_correction
         
         # 9. User meminta saran / solusi / langkah praktis ("memberiku saran", "harus gimana", "gimana caranya", "tips belajar")
         is_asking_advice = bool(re.search(
             r'\b(memberi(ku)?|kasih(kan)?|butuh|minta)?\s*(saran|solusi|tips|masukan|langkah|panduan|nasehat)\b'
-            r'|\b(apa yang harus|harus gimana|gimana caranya|bagaimana cara|apa aku harus|apakah harus|menurut (kamu|mu) gimana)\b'
+            r'|\b(apa yang harus|harus gimana|gimana caranya|apa aku harus|apakah harus|menurut (kamu|mu) gimana)\b'
             r'|\b(nggak tau|ga tau|bingung) (caranya|harus gimana|langkahnya)\b'
             r'|\bgimana (ya|sih|dong)?\s*(cara|caranya|tips)\b'
             r'|\b(ada )?tips (belajar|mengatasi|cara|untuk|koding|coding|pemrograman|tidur|kesehatan)\b',
             text_clean
-        ))
+        )) and not is_concept_query
         
         # 10. User sedang menceritakan peristiwa / update situasi ("aku baru saja mendapat kabar kalau mantan...")
         is_story_sharing = bool(re.search(

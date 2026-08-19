@@ -110,8 +110,6 @@ class WebSearch:
         self._cache[cache_key] = result
         self._save_cache()
         
-        return result
-    
     def _clean_search_query(self, text):
         """Membersihkan kalimat percakapan menjadi search query internet yang tajam."""
         text_lower = text.lower().strip()
@@ -133,6 +131,10 @@ class WebSearch:
             return "cara pesawat terbang prinsip aerodinamika"
         if any(w in text_lower for w in ["langit", "warna langit"]) and any(w in text_lower for w in ["biru", "warna"]):
             return "kenapa langit berwarna biru hamburan rayleigh"
+            
+        # 1.5 Handle kasus olahraga / tren / Gen Z / lifestyle
+        if any(w in text_lower for w in ["olahraga", "sport", "workout", "lari", "padel", "gym", "fitness"]) and any(w in text_lower for w in ["gen z", "gen-z", "milenial", "anak muda", "tren", "populer", "disukai", "diminati", "dinikmati"]):
+            return "tren olahraga paling populer diminati gen z"
             
         # 2. Handle kasus keterikatan emosional / susah lepas / tempat cerita
         if any(w in text_lower for w in ["terikat", "susah lepas", "sulit lepas", "keterikatan", "attachment"]):
@@ -174,10 +176,11 @@ class WebSearch:
             "cara", "caranya", "sains", "ilmiah", "secara"
         }
         
+        short_keep = {"z", "ai", "vr", "ar", "3d", "5g", "4g", "it", "ui", "ux", "dj", "k", "4k", "8k", "ml", "dl"}
         meaningful_tokens = []
         for w in raw_tokens:
             w_stem = re.sub(r'(kah|lah|pun|nya)$', '', w)
-            if w not in query_stopwords and w_stem not in query_stopwords and len(w_stem) > 2:
+            if w not in query_stopwords and w_stem not in query_stopwords and (len(w_stem) > 2 or w_stem in short_keep):
                 meaningful_tokens.append(w_stem)
         
         if meaningful_tokens:
@@ -376,6 +379,16 @@ class WebSearch:
                 "Transisi Spesies Genus Homo: Bukti fosil paleoantropologi menunjukkan rantai transisi evolusi dari Australopithecus, Homo habilis (pembuat alat batu pertama), Homo erectus (yang mulai berjalan tegak dan bermigrasi), hingga Homo sapiens di Afrika sekitar 300.000 tahun lalu.",
                 "Seleksi Alam & Perkembangan Otak (Ensefalisasi): Perkembangan kemampuan berdiri tegak (bipedalisme) membebaskan tangan untuk menggunakan perkakas, memicu lonjakan volume otak dan kemampuan kognitif tingkat tinggi.",
                 "Asal Usul Kehidupan Molekuler (Abiogenesis): Pada skala waktu miliaran tahun, seluruh kehidupan di Bumi berakar dari molekul organik sederhana di lautan purba yang berevolusi menjadi sel hidup pertama."
+            ]
+            
+        elif any(w in q_lower for w in ["olahraga", "sport", "workout"]) and any(w in q_lower for w in ["gen z", "gen-z", "milenial", "anak muda", "tren", "populer", "disukai", "diminati", "dinikmati"]):
+            return [
+                "Padel Tennis & Pickleball (Olahraga Raket Sosial): Olahraga raket yang sangat meledak di kalangan Gen Z karena aturan mainnya mudah, seru untuk nongkrong dan membangun jejaring pertemanan, serta sangat estetik di media sosial.",
+                "Running Club & Night Run (Lari Komunitas): Tren lari santai 5K hingga 10K bersama komunitas lari pagi atau malam yang memadukan kebugaran kardio dengan interaksi sosial yang dinamis.",
+                "Pound Fit & Pilates (Reformer): Olahraga berbasis ritme musik energik dengan ripstix (poundfit) dan latihan fleksibilitas serta kekuatan core tubuh (pilates) yang digemari untuk meredakan stres mental.",
+                "Gym, Calisthenics & Functional Fitness (Hyrox): Latihan beban mandiri dan functional fitness yang fokus pada pembentukan postur tubuh atletis, disiplin, dan kesehatan jangka panjang.",
+                "Bulu Tangkis (Badminton) & Mini Soccer: Olahraga tim yang tetap menjadi pilihan utama untuk refreshing dan seru-seruan bareng teman sebaya.",
+                "Esports & Active VR Gaming: Kompetisi gaming digital dan simulasi olahraga aktif virtual yang menyatu dengan kultur teknologi generasi digital."
             ]
             
         elif any(w in q_lower for w in ["asma"]):
