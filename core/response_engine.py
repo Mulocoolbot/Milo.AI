@@ -180,9 +180,10 @@ class ResponseEngine:
         if intent == "identity_creator" or any(w in user_input.lower() for w in ["diciptakan oleh siapa", "siapa penciptamu", "siapa pembuatmu", "siapa yang buat kamu", "siapa yang bikin kamu", "who created you", "diciptakan siapa"]):
             return self.synthesizer.synthesize_identity_creator(user_name)
         
-        # === 15. Handle Pertanyaan Identitas Milo (identity_ask) ===
-        if intent == "identity_ask" or any(w in user_input.lower() for w in ["siapa kamu", "kamu siapa", "who are you"]):
-            return self.synthesizer.synthesize_identity_ask(user_name)
+        # === 15. Handle Pertanyaan Identitas / Permintaan Perkenalan Diri Milo (identity_ask) ===
+        if parsed.get("is_introducing_self") or intent in ("identity_ask", "introduce_self") or any(w in user_input.lower() for w in ["perkenalkan diri", "memperkenalkan diri", "kenalkan dirimu", "perkenalkan dirimu", "siapa kamu", "kamu siapa", "who are you", "kenalan dong", "kenalin dong"]):
+            target_person = parsed.get("target_person")
+            return self.synthesizer.synthesize_identity_ask(user_name, target_person)
         
         # === 16. Handle Pertanyaan Sedang Apa (current_activity_ask) ===
         if intent == "current_activity_ask" or any(w in user_input.lower() for w in ["lagi apa", "lagi ngapain", "sedang apa"]):

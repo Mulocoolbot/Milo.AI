@@ -5,7 +5,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787137234.0946543
+    "learned_at": 1787136909.467386
   },
   "kamu": {
     "word": "kamu",
@@ -13,7 +13,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787137248.5340328
+    "learned_at": 1787138845.5041938
   },
   "kabar": {
     "word": "kabar",
@@ -269,7 +269,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787072469.029409
+    "learned_at": 1787138822.378035
   },
   "sekelasku": {
     "word": "sekelasku",
@@ -597,7 +597,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787128899.9052162
+    "learned_at": 1787138822.433768
   },
   "diciptakan": {
     "word": "diciptakan",
@@ -613,7 +613,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787135202.6213987
+    "learned_at": 1787138822.3818345
   },
   "seru": {
     "word": "seru",
@@ -797,7 +797,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787128808.4770784
+    "learned_at": 1787138825.207602
   },
   "memberiku": {
     "word": "memberiku",
@@ -821,7 +821,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787137248.5419896
+    "learned_at": 1787137025.667506
   },
   "mengatasi": {
     "word": "mengatasi",
@@ -877,7 +877,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787128891.386588
+    "learned_at": 1787138845.5063736
   },
   "coding": {
     "word": "coding",
@@ -1125,7 +1125,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787137248.5367823
+    "learned_at": 1787137025.662546
   },
   "bagaimana": {
     "word": "bagaimana",
@@ -1133,7 +1133,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787137248.539321
+    "learned_at": 1787137025.665051
   },
   "manusia": {
     "word": "manusia",
@@ -1349,7 +1349,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787137248.5531363
+    "learned_at": 1787137025.6781063
   },
   "kewirausahaan": {
     "word": "kewirausahaan",
@@ -1469,7 +1469,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787137248.544292
+    "learned_at": 1787137025.6696353
   },
   "roket": {
     "word": "roket",
@@ -1501,7 +1501,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787137248.5305924
+    "learned_at": 1787137025.6567369
   },
   "tata": {
     "word": "tata",
@@ -1549,7 +1549,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787137248.546607
+    "learned_at": 1787137025.6717856
   },
   "waktu": {
     "word": "waktu",
@@ -1557,7 +1557,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787137248.5488372
+    "learned_at": 1787137025.6739104
   },
   "teori": {
     "word": "teori",
@@ -1565,6 +1565,78 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787137248.5511446
+    "learned_at": 1787137025.6760294
+  },
+  "memperkenalkan": {
+    "word": "memperkenalkan",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787138845.499856
+  },
+  "diri": {
+    "word": "diri",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787138845.5021176
+  },
+  "cece": {
+    "word": "cece",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787138845.492614
+  },
+  "coba": {
+    "word": "coba",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787138845.494511
+  },
+  "perkenalkan": {
+    "word": "perkenalkan",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787138822.3098905
+  },
+  "dirimu": {
+    "word": "dirimu",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787138822.3761961
+  },
+  "dong": {
+    "word": "dong",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787138822.3798623
+  },
+  "bikin": {
+    "word": "bikin",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787138845.5695112
+  },
+  "game": {
+    "word": "game",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787138845.571586
   }
 }

@@ -375,6 +375,11 @@ class IntentRecognizer:
             # Jika mengandung musibah/kecelakaan/sakit, bukan naksir/romansa!
             if any(w in text_lower for w in ["kecelakaan", "rumah sakit", "sakit", "musibah", "operasi", "meninggal", "koma", "celaka", "rawat inap"]):
                 return False
+                
+        # Guard 9: confused_state harus memiliki kata penanda kebingungan eksplisit
+        if intent_tag == "confused_state":
+            if not any(w in text_lower for w in ["bingung", "pusing", "buntu", "mentok", "ga ngerti", "nggak ngerti", "ga paham", "nggak paham", "kacau", "overthinking", "bimbang", "mumet"]):
+                return False
         
         if any(w in text_lower for w in ["kepikiran seseorang", "selalu ada di pikiran", "lagi naksir", "ada orang yang"]):
             if intent_tag in ("user_name_ask", "identity_ask", "knowledge_query"):

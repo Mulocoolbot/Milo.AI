@@ -71,6 +71,17 @@ class SemanticParser:
             text_clean
         ))
         
+        # 14. User meminta Milo memperkenalkan diri (ke diri sendiri atau orang lain/pihak ketiga)
+        is_introducing_self = bool(re.search(
+            r'\b(memperkenalkan\s+diri|perkenalkan\s+diri|perkenalkan\s+dirimu|kenalkan\s+dirimu|kenalan\s+dong|kenalin\s+dong|coba\s+kenalan|siapa\s+kamu|kamu\s+siapa|who\s+are\s+you|siapa\s+sih\s+kamu|kamu\s+siapa\s+sih|siapa\s+sebenarnya\s+kamu|siapa\s+kamu\s+sebenarnya|siapa\s+sih\s+kamu\s+sebenarnya)\b',
+            text_clean
+        ))
+        target_person_match = re.search(
+            r'\b(?:ke|sama|kepada)\s+(cece|koko|kakak|adik|adek|teman|temen|sahabat|ibu|mama|ayah|papa|pacar|keluarga)\b',
+            text_clean
+        )
+        target_person = target_person_match.group(1).title() if target_person_match else None
+        
         # 8. User menanyakan fakta / pengetahuan / penjelasan ilmiah / tren / hobi / fenomena / medis & penyakit
         is_concept_query = bool(re.search(
             r'\b(apa (itu|arti|pengertian|definisi|makna|fungsi|kegunaan)|apa yang dimaksud (dengan)?)\b'
@@ -87,7 +98,7 @@ class SemanticParser:
             r'|\b(proses|cara kerja|mekanisme|siklus)\s+([a-z0-9_]+)\b'
             r'|\b(tren|trend|populer|favorit|disukai|diminati|dinikmati)\s+([a-z0-9_]+\s+)*(gen z|milenial|anak muda|orang|masyarakat)\b',
             text_clean
-        )) and not bool(re.search(r'\b(kenapa|mengapa|kok)\s+(ada|bisa ada|nyambung ke|muncul)\b|\bapa hubungannya\b', text_clean)) and not is_clarification and not is_seeking_permission and not is_meta_correction
+        )) and not bool(re.search(r'\b(kenapa|mengapa|kok)\s+(ada|bisa ada|nyambung ke|muncul)\b|\bapa hubungannya\b', text_clean)) and not is_clarification and not is_seeking_permission and not is_meta_correction and not is_introducing_self
         
         # 9. User meminta saran / solusi / langkah praktis ("memberiku saran", "harus gimana", "gimana caranya", "tips belajar")
         is_asking_advice = bool(re.search(
@@ -145,4 +156,6 @@ class SemanticParser:
             "has_specific_dilemma": has_specific_dilemma,
             "is_insisting_on_tips": is_insisting_on_tips,
             "is_discrepancy_query": is_discrepancy_query,
+            "is_introducing_self": is_introducing_self,
+            "target_person": target_person,
         }

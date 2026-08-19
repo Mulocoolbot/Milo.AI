@@ -37,5 +37,44 @@
       }
     ],
     "timestamp": "2026-08-19T18:00:48.520806"
+  },
+  "sebenar": {
+    "query": "sebenar",
+    "raw_input": "siapa sih kamu sebenarnya?",
+    "total_sources": 3,
+    "sources_list": [
+      "Wikipedia Indonesia",
+      "Google Knowledge Suggestions",
+      "Wikipedia Global Knowledge"
+    ],
+    "validated_points": [
+      {
+        "title": "Akurasi dan presisi",
+        "description": "Dalam bidang ilmu pengetahuan, industri rekayasa, dan statistik, kejituan dari suatu sistem pengukuran adalah tingkat kedekatan pengukuran besaran terhadap nilai sebenar. Ketelitian dari suatu sistem pengukuran, disebut juga reproduksibilitas atau keterulangkan , adalah sejauh mana pengulangan pengukuran dalam keadaan yang tidak berubah mendapatkan hasil yang sama. Suatu sistem pengukuran dapat jitu dan teliti, atau jitu tetapi tak teliti, atau teliti tetapi tak jitu, atau tak teliti dan tak jitu.",
+        "full_text": "**Akurasi dan presisi**: Dalam bidang ilmu pengetahuan, industri rekayasa, dan statistik, kejituan dari suatu sistem pengukuran adalah tingkat kedekatan pengukuran besaran terhadap nilai sebenar. Ketelitian dari suatu sistem pengukuran, disebut juga reproduksibilitas atau keterulangkan , adalah sejauh mana pengulangan pengukuran dalam keadaan yang tidak berubah mendapatkan hasil yang sama. Suatu sistem pengukuran dapat jitu dan teliti, atau jitu tetapi tak teliti, atau teliti tetapi tak jitu, atau tak teliti dan tak jitu.",
+        "source_count": 1,
+        "total_sources": 3,
+        "confidence_percent": 33,
+        "validity_badge": "Tervalidasi",
+        "level": "low",
+        "sources": [
+          "Wikipedia Indonesia"
+        ]
+      },
+      {
+        "title": "Hizbul Wathan",
+        "description": "Gerakan Kepanduan Hizbul Wathan, lebih dikenal dengan Hizbul Wathan (disingkat HW) adalah organisasi otonom (ortom) di lingkungan Persyarikatan Muhammadiyah yang bergerak di bidang pendidikan dan pelatihan kepanduan untuk anak, remaja dan pemuda (ARP), mulai dari usia 4 tahun sampai dengan 22 tahun (Hasil Muktamar ke-4 tahun 2023 di Malang) HW didirikan pertama kali di Yogyakarta pada 1336 H (1918 M) atas prakarsa KH Ahmad Dahlan, yang merupakan pendiri Muhammadiyah. Prakarsa itu timbul saat dia selesai memberi pengajian di Solo, dan melihat latihan J.P.O. (Javansche Padvinders Organisatie) di alun-alun Mangkunegaran Solo.",
+        "full_text": "**Hizbul Wathan**: Gerakan Kepanduan Hizbul Wathan, lebih dikenal dengan Hizbul Wathan (disingkat HW) adalah organisasi otonom (ortom) di lingkungan Persyarikatan Muhammadiyah yang bergerak di bidang pendidikan dan pelatihan kepanduan untuk anak, remaja dan pemuda (ARP), mulai dari usia 4 tahun sampai dengan 22 tahun (Hasil Muktamar ke-4 tahun 2023 di Malang) HW didirikan pertama kali di Yogyakarta pada 1336 H (1918 M) atas prakarsa KH Ahmad Dahlan, yang merupakan pendiri Muhammadiyah. Prakarsa itu timbul saat dia selesai memberi pengajian di Solo, dan melihat latihan J.P.O. (Javansche Padvinders Organisatie) di alun-alun Mangkunegaran Solo.",
+        "source_count": 1,
+        "total_sources": 3,
+        "confidence_percent": 33,
+        "validity_badge": "Tervalidasi",
+        "level": "low",
+        "sources": [
+          "Wikipedia Indonesia"
+        ]
+      }
+    ],
+    "timestamp": "2026-08-19T18:26:41.709637"
   }
 }

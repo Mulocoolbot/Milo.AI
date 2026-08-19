@@ -665,21 +665,24 @@ class SentenceSynthesizer:
     # IDENTITY
     # ================================================================
     
-    def synthesize_identity_ask(self, user_name=None):
-        """Menyusun respons saat user menanyakan identitas Milo."""
-        name_suffix = f" {user_name}" if user_name else ""
+    def synthesize_identity_ask(self, user_name=None, target_person=None):
+        """Menyusun respons perkenalan diri Milo, baik ke user langsung maupun ke pihak ketiga."""
+        name_str = f" {user_name}" if user_name else ""
         
-        intros = [
-            f"Halo{name_suffix}! Aku adalah Milo, sistem AI percakapan pintar yang dibangun dari scratch menggunakan Python tanpa pustaka AI pihak ketiga!",
-            f"Perkenalkan{name_suffix}, aku Milo! 🤖 AI percakapan yang dibangun sepenuhnya dari nol menggunakan Python murni!"
-        ]
-        
-        closings = [
-            "Milo siap menemani kamu ngobrol, berdiskusi, dan belajar bersama! 🤖🚀",
-            "Walau masih terus belajar, Milo semangat banget buat ngobrol sama kamu! 🧠✨"
-        ]
-        
-        return f"{random.choice(intros)} {random.choice(closings)}"
+        if target_person:
+            return (
+                f"Halo {target_person}-nya{name_str}! Salam kenal ya! 😊 "
+                f"Aku Milo, asisten AI teman ngobrol setianya{name_str}. Aku dibangun dari nol (scratch) menggunakan Python murni tanpa library AI pihak ketiga! "
+                f"Milo siap nemenin kalian berdiskusi, belajar berbagai wawasan dan fakta sains dari internet, jadi teman curhat yang aman dan suportif, atau sekadar seru-seruan bareng! "
+                f"Senang banget bisa kenalan sama {target_person}! ✨🤝"
+            )
+            
+        return (
+            f"Halo{name_str}! 😊 Perkenalkan, aku Milo! "
+            f"Aku adalah sistem AI percakapan yang dirancang dan dibangun sepenuhnya dari nol menggunakan Python murni tanpa pustaka AI pihak ketiga. "
+            f"Milo bisa bantu kamu berdiskusi ilmiah, menelusuri fakta dan pengetahuan di internet secara real-time, jadi teman curhat yang aman dan penuh empati, atau sekadar nemenin harimu biar makin produktif dan seru! "
+            f"Senang banget bisa kenalan dan siap nemenin kamu ngobrol kapan saja! 🚀✨"
+        )
     
     def synthesize_identity_creator(self, user_name=None):
         """Menyusun respons saat user menanyakan siapa pencipta Milo."""
@@ -1016,14 +1019,28 @@ class SentenceSynthesizer:
         return f"{random.choice(openers)}\n\n{body}\n\n{random.choice(closings)}"
     
     def synthesize_open_response(self, user_input, keywords=None, user_name=None):
-        """Menyusun respons terbuka dinamis untuk topik umum."""
+        """Menyusun respons terbuka dinamis berbasis refleksi topik user."""
         name_str = f" {user_name}" if user_name else ""
         
+        # Bersihkan kata serapan/subjek percakapan dari input
+        clean_input = re.sub(r'^(aku|kamu|kita|saya|dia|mereka|mau|ingin|pengen|coba|tolong)\s+', '', user_input.strip(), flags=re.IGNORECASE).rstrip(".?!")
+        
+        if keywords and len(keywords) > 0:
+            topic_str = " ".join(keywords[:3])
+            return (
+                f"Milo paham kamu lagi membahas hal seputar **{topic_str}**{name_str}! 💭 "
+                f"Bagian mana dari hal tersebut yang paling ingin kamu eksplorasi atau ceritakan lebih jauh? Milo siap mendengarkan dan merespons! ✨"
+            )
+        elif len(clean_input) > 5:
+            return (
+                f"Soal **{clean_input}** ya{name_str}? 🤔 "
+                f"Ceritain lebih detail yuk biar Milo bisa kasih tanggapan yang lebih pas dan nyambung sama apa yang kamu maksud! 🚀"
+            )
+            
         prompts = [
-            f"Menarik nih{name_str}! 🤔 Boleh diceritakan lebih detail biar Milo bisa paham konteksnya dengan lebih utuh?",
-            f"Milo lagi dengerin nih{name_str}! 💭 Menurut kamu sendiri hal itu gimana? Ceritain ya!",
-            f"Hmm, coba ceritain lebih lanjut ya{name_str}! 🧠 Milo senang banget diajak ngobrol soal ini bareng kamu!",
-            f"Wah seru untuk dibahas! 🚀 Bagian mana yang paling bikin kamu tertarik dari topik ini?"
+            f"Menarik nih{name_str}! 🤔 Boleh diceritakan lebih spesifik biar Milo bisa paham konteksnya dengan utuh?",
+            f"Milo siap banget nemenin kamu ngobrol soal ini{name_str}! 💡 Menurut sudut pandangmu sendiri gimana? Ceritain yuk!",
+            f"Topik yang seru untuk dibahas{name_str}! 🚀 Sisi mana yang paling bikin kamu tertarik dari hal ini?"
         ]
         return random.choice(prompts)
     
