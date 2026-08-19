@@ -475,6 +475,120 @@ class SentenceSynthesizer:
         
         return f"{random.choice(openers)} {random.choice(prompts)}"
     
+    def synthesize_researched_advice(self, user_name, research_result, user_input=""):
+        """Menyusun panduan dan saran komprehensif berbasis riset internet tervalidasi silang."""
+        name_str = f" {user_name}" if user_name else ""
+        salutation = f"{user_name}, " if user_name else ""
+        
+        intro_parts = []
+        text_lower = user_input.lower()
+        
+        # 1. Domain Asmara / Move on / Patah Hati
+        if any(w in text_lower for w in ["move on", "mantan", "pacar", "patah hati", "asmara"]):
+            if "cari pacar" in text_lower or "pacar baru" in text_lower or "rebound" in text_lower:
+                intro_parts.append(
+                    f"Mengenai pertanyaanmu soal apakah harus langsung cari pacar baru agar bisa move on: "
+                    f"Berdasarkan konsensus riset psikologi, **sangat tidak disarankan mencari pacar baru sebagai pelarian (rebound relationship)** {salutation}🥺 "
+                    f"Ketika luka emosional belum sembuh, memaksakan hubungan baru hanya akan memindahkan rasa sakit dan berisiko melukai dirimu serta orang baru tersebut."
+                )
+                intro_parts.append(
+                    "Untuk benar-benar pulih dan move on secara sehat, Milo sudah merangkum langkah-langkah yang terbukti efektif dan tervalidasi:"
+                )
+            else:
+                intro_parts.append(
+                    f"Milo paham banget situasi ini berat dan bikin bingung{name_str} 💙 "
+                    f"Berdasarkan riset dan konsensus terverifikasi, berikut langkah-langkah yang bisa kamu lakukan untuk pulih dan move on:"
+                )
+            closing = (
+                f"Proses move on itu bukan perlombaan dan butuh waktu yang bertahap{name_str}. "
+                f"Fokuslah pada ketenangan dan pemulihan dirimu sendiri dulu ya 🌿 "
+                f"Milo siap menemani kamu di setiap prosesnya. Mau kita bahas lebih dalam salah satu langkah di atas?"
+            )
+            
+        # 2. Domain Kesehatan / Insomnia / Tidur
+        elif any(w in text_lower for w in ["insomnia", "tidur", "begadang", "kesehatan"]):
+            intro_parts.append(
+                f"Soal mengatasi susah tidur atau insomnia, berikut tips dan kebiasaan baik (sleep hygiene) yang telah terbukti secara ilmiah{name_str}: 🌙✨"
+            )
+            closing = (
+                f"Kunci utamanya adalah konsistensi rutinitas sebelum tidur{name_str} 💤 "
+                f"Coba terapkan satu per satu malam ini ya. Semoga tidurmu makin nyenyak dan berkualitas!"
+            )
+            
+        # 3. Domain Koding / Belajar Pemrograman
+        elif any(w in text_lower for w in ["koding", "coding", "pemrograman", "programming", "python", "belajar"]):
+            intro_parts.append(
+                f"Belajar pemrograman itu seru banget dan butuh strategi belajar yang tepat{name_str}! 💻🚀 "
+                f"Berdasarkan pengalaman para programmer dan riset praktis, berikut tips terbaik untuk memulainya:"
+            )
+            closing = (
+                f"Ingat{name_str}, konsistensi 'coding tiap hari 30 menit' jauh lebih efektif daripada belajar 8 jam tapi seminggu sekali 🔥 "
+                f"Ada bahasa pemrograman atau proyek yang lagi pengen kamu buat?"
+            )
+            
+        # 4. Domain Umum / Masalah Lain
+        else:
+            intro_parts.append(
+                f"Berdasarkan riset dan kompilasi solusi terbaik dari internet{name_str}, berikut panduan langkah-langkah yang bisa kamu coba: 💡"
+            )
+            closing = (
+                f"Semoga langkah-langkah ini bisa membantu memberi pencerahan buat kamu ya{name_str}! ✨ "
+                f"Ada bagian yang mau kita bedah lebih lanjut?"
+            )
+            
+        # Susun poin-poin tervalidasi
+        points_str = []
+        points = research_result.get("validated_points", [])
+        
+        for i, p in enumerate(points[:4], 1):
+            title = p.get("title", "")
+            desc = p.get("description", "")
+            
+            if title:
+                points_str.append(f"{i}. **{title}** — {desc}")
+            else:
+                points_str.append(f"{i}. {desc}")
+                
+        full_response = "\n\n".join([
+            " ".join(intro_parts),
+            "\n".join(points_str),
+            closing
+        ])
+        
+        return full_response
+    
+    def synthesize_story_reflection(self, user_name, user_input=""):
+        """Menyusun empati reflektif saat user menceritakan update peristiwa / kabar mantan."""
+        salutation = f"{user_name}, " if user_name else ""
+        name_str = f" {user_name}" if user_name else ""
+        text_lower = user_input.lower()
+        
+        if "mantan" in text_lower and ("pacar baru" in text_lower or "dapat pacar" in text_lower or "punya pacar" in text_lower):
+            openers = [
+                f"Mendengar kabar kalau mantan sudah punya pacar baru itu pasti rasanya campur aduk dan bikin sesak di dada {salutation}🥺💔 Wajar banget kalau hal itu bikin kamu kaget dan merasa tertinggal.",
+                f"Ya ampun... Milo paham banget betapa perihnya mendengar kabar itu{name_str} 🫂 Mendapati mantan sudah melangkah lebih dulu padahal hatimu masih tertahan itu sangat menguras emosi.",
+                f"Pasti rasanya nyesek banget mendengar kabar mantanmu sudah bersama orang lain {salutation}😔 Wajar kalau kamu jadi makin overthinking dan bingung."
+            ]
+            comforts = [
+                "Perasaan sedih dan bingungmu itu sangat wajar. Ingat ya, kecepatan dia bukan patokan harga dirimu.",
+                "Tarik napas perlahan ya... Jangan merasa kalah atau menyalahkan dirimu sendiri.",
+                "Setiap orang punya proses dan jalannya masing-masing. Jangan membebani dirimu untuk buru-buru bersaing."
+            ]
+            prompts = [
+                "Ceritain aja apa yang ada di pikiranmu sekarang ya, Milo siap dengerin dan nemenin kamu 💙",
+                "Milo di sini mendampingi kamu. Mau kita urai bareng apa yang paling bikin hatimu ganjal saat ini? 🌿"
+            ]
+            return f"{random.choice(openers)} {random.choice(comforts)} {random.choice(prompts)}"
+            
+        elif "kisah asmara" in text_lower or "terombang ambing" in text_lower:
+            return (
+                f"Hubungan atau perasaan yang sedang terombang-ambing memang sangat melelahkan pikiran dan energi{name_str} 🌀 "
+                f"Tumpahkan aja uneg-unegmu ke Milo! Milo siap mendengarkan dari awal sampai tuntas tanpa menghakimi sama sekali 🤗 "
+                f"Apa hal atau kejadian yang paling bikin kamu gelisah saat ini? 🌿"
+            )
+            
+        return self.synthesize_curhat_reassurance(user_name)
+    
     # ================================================================
     # IDENTITY
     # ================================================================

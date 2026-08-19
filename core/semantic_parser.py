@@ -73,7 +73,30 @@ class SemanticParser:
         
         # 8. User menanyakan fakta / pengetahuan
         is_concept_query = bool(re.search(
-            r'\bapa (itu|arti|pengertian|definisi|makna|fungsi)\b|\bapa yang dimaksud\b|\bjelaskan tentang\b',
+            r'\bapa (itu|arti|pengertian|definisi|makna|fungsi)\b|\bapa yang dimaksud (dengan)?\b|\bjelaskan tentang\b|\binfo tentang\b',
+            text_clean
+        ))
+        
+        # 9. User meminta saran / solusi / langkah praktis ("memberiku saran", "harus gimana", "gimana caranya", "tips belajar")
+        is_asking_advice = bool(re.search(
+            r'\b(memberi(ku)?|kasih(kan)?|butuh|minta)?\s*(saran|solusi|tips|masukan|langkah|panduan|nasehat)\b'
+            r'|\b(apa yang harus|harus gimana|gimana caranya|bagaimana cara|apa aku harus|apakah harus|menurut (kamu|mu) gimana)\b'
+            r'|\b(nggak tau|ga tau|bingung) (caranya|harus gimana|langkahnya)\b'
+            r'|\bgimana (ya|sih|dong)?\s*(cara|caranya|tips)\b'
+            r'|\b(ada )?tips (belajar|mengatasi|cara|untuk|koding|coding|pemrograman|tidur|kesehatan)\b',
+            text_clean
+        ))
+        
+        # 10. User sedang menceritakan peristiwa / update situasi ("aku baru saja mendapat kabar kalau mantan...")
+        is_story_sharing = bool(re.search(
+            r'\b(baru saja|tadi|kemarin|barusan|dapat kabar|denger kabar|ternyata|ceritanya)\b'
+            r'|\b(aku mau cerita|pengen cerita|kisah asmara|tentang mantan|pacar baru)\b',
+            text_clean
+        )) and not is_asking_advice
+        
+        # 11. Pertanyaan spesifik user (misal "apakah harus cari pacar baru?")
+        has_specific_dilemma = bool(re.search(
+            r'\b(apa(kah)? (aku|saya|gue)?\s*(harus|perlu|mesti)?\s*(cari|punya|pacaran|balikan|hubungi|chat|stalking))\b',
             text_clean
         ))
         
@@ -88,4 +111,7 @@ class SemanticParser:
             "is_meta_correction": is_meta_correction,
             "is_seeking_permission": is_seeking_permission,
             "is_concept_query": is_concept_query,
+            "is_asking_advice": is_asking_advice,
+            "is_story_sharing": is_story_sharing,
+            "has_specific_dilemma": has_specific_dilemma,
         }

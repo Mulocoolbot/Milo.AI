@@ -18,6 +18,7 @@ from utils.config import Config
 from utils.text_utils import TextUtils
 from knowledge.word_bank import WordBank
 from knowledge.web_fetcher import WebFetcher
+from knowledge.web_search import WebSearch
 from core.sentence_synthesizer import SentenceSynthesizer
 from core.semantic_parser import SemanticParser
 
@@ -25,9 +26,10 @@ from core.semantic_parser import SemanticParser
 class ResponseEngine:
     """Real-Time Generative Contextual Response Engine — responsif, kontekstual, dan dinamis."""
     
-    def __init__(self, word_bank=None, web_fetcher=None):
+    def __init__(self, word_bank=None, web_fetcher=None, web_search=None):
         self.word_bank = word_bank or WordBank()
         self.web_fetcher = web_fetcher or WebFetcher()
+        self.web_search = web_search or WebSearch()
         self.synthesizer = SentenceSynthesizer(self.word_bank)
         self.semantic_parser = SemanticParser()
         self._stopwords = set()
@@ -80,22 +82,33 @@ class ResponseEngine:
         if parsed["is_user_state_good"] and not any(w in user_input.lower() for w in ["sakit", "sedih", "kecewa", "bingung"]):
             return self.synthesizer.synthesize_user_state_good(user_name)
         
-        # === 5. Handle Patah Hati & Cinta Tak Berbalas (heartbreak) ===
+        # === 5. Handle Permintaan Saran & Solusi dengan Deep Web Search & Cross-Validation ===
+        if parsed["is_asking_advice"] or parsed["has_specific_dilemma"] or intent == "need_advice":
+            research = self.web_search.deep_research(user_input, context.get("current_topic", ""))
+            if research and research.get("validated_points"):
+                return self.synthesizer.synthesize_researched_advice(user_name, research, user_input)
+            return self.synthesizer.synthesize_need_advice(user_name)
+            
+        # === 6. Handle Cerita / Update Situasi Pengguna (is_story_sharing) ===
+        if parsed["is_story_sharing"]:
+            return self.synthesizer.synthesize_story_reflection(user_name, user_input)
+            
+        # === 7. Handle Patah Hati & Cinta Tak Berbalas (heartbreak) ===
         if parsed["is_heartbreak"]:
             return self.synthesizer.synthesize_heartbreak(user_name, user_input)
         
-        # === 6. Handle Multi-Segment Compound Inputs ===
+        # === 8. Handle Multi-Segment Compound Inputs ===
         if intent_result.get("is_compound") and len(intent_result.get("segments", [])) >= 2:
             compound_resp = self._handle_compound_input(intent_result, user_input, keywords, context, knowledge_base, memory, context_manager)
             if compound_resp:
                 return self._substitute_variables(compound_resp, context)
         
-        # === 7. Handle Rasa Cemas / Khawatir / Musibah / Sakit ===
+        # === 9. Handle Rasa Cemas / Khawatir / Musibah / Sakit ===
         if intent == "worry_concern_state" or any(w in user_input.lower() for w in ["kecelakaan", "masuk rumah sakit", "kena musibah", "rawat inap", "ruang rawat", "di rumah sakit"]):
             situation = "hospital_rawat_inap" if any(w in user_input.lower() for w in ["rawat inap", "ruang rawat"]) else ("accident_hospital" if any(w in user_input.lower() for w in ["kecelakaan", "rumah sakit"]) else "general")
             return self.synthesizer.synthesize_worry_compassion(user_name, situation)
         
-        # === 8. Handle Kepikiran Seseorang / Naksir / Romansa ===
+        # === 10. Handle Kepikiran Seseorang / Naksir / Romansa ===
         if intent == "thinking_of_someone" or self._is_thinking_of_someone(user_input):
             return self.synthesizer.synthesize_thinking_of_someone(user_name)
         
@@ -446,7 +459,8 @@ class ResponseEngine:
             "apa", "siapa", "dimana", "kapan", "mengapa", "kenapa", "bagaimana", "gimana",
             "apakah", "berapa", "yang", "kamu", "tahu", "tau", "tentang", "mengenai",
             "tolong", "bisa", "jelaskan", "ceritakan", "kasih", "adalah", "itu", "ini",
-            "arti", "kata", "makna", "maksud", "pengertian", "definisi", "istilah", "info",
+            "arti", "kata", "makna", "maksud", "dimaksud", "pengertian", "definisi", "istilah", "info",
+            "dengan", "artinya", "pengertiannya", "maksudnya", "definisinya",
             "dong", "sih", "kan", "nih", "ya", "deh", "kah", "kok", "aku", "saya", "gue", "gw", "emang", "hai", "halo"
         }
         

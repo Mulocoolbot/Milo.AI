@@ -22,6 +22,7 @@ from knowledge.knowledge_base import KnowledgeBase
 from knowledge.memory import Memory
 from knowledge.word_bank import WordBank
 from knowledge.web_fetcher import WebFetcher
+from knowledge.web_search import WebSearch
 from personality.personality import Personality
 from utils.config import Config
 from utils.logger import MiloLogger
@@ -38,6 +39,7 @@ class Milo:
     - ResponseEngine: menghasilkan respons
     - WordBank: bank kata semantik & WSD
     - WebFetcher: pencari definisi & fakta web real-time
+    - WebSearch: mesin riset internet & validasi silang (cross-validation)
     - ContextManager: mengelola konteks percakapan
     - KnowledgeBase: basis pengetahuan
     - Memory: sistem memori (short-term & long-term)
@@ -52,10 +54,15 @@ class Milo:
         # Inisialisasi modul-modul
         self.word_bank = WordBank()
         self.web_fetcher = WebFetcher()
+        self.web_search = WebSearch()
         self.preprocessor = Preprocessor()
         self.tokenizer = Tokenizer()
         self.intent_recognizer = IntentRecognizer()
-        self.response_engine = ResponseEngine(word_bank=self.word_bank, web_fetcher=self.web_fetcher)
+        self.response_engine = ResponseEngine(
+            word_bank=self.word_bank,
+            web_fetcher=self.web_fetcher,
+            web_search=self.web_search
+        )
         self.context_manager = ContextManager()
         self.knowledge_base = KnowledgeBase()
         self.memory = Memory()

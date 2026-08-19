@@ -5,7 +5,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787127470.5090618
+    "learned_at": 1787128794.0835109
   },
   "kamu": {
     "word": "kamu",
@@ -13,7 +13,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787127470.5037887
+    "learned_at": 1787128899.8301528
   },
   "kabar": {
     "word": "kabar",
@@ -21,7 +21,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787127470.2646892
+    "learned_at": 1787128899.4548051
   },
   "maksud": {
     "word": "maksud",
@@ -37,7 +37,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787072793.9051797
+    "learned_at": 1787128900.4003904
   },
   "nyoba": {
     "word": "nyoba",
@@ -77,7 +77,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787072468.7358422
+    "learned_at": 1787128899.8168063
   },
   "banget": {
     "word": "banget",
@@ -93,7 +93,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787072468.7373266
+    "learned_at": 1787128808.4807253
   },
   "tidak": {
     "word": "tidak",
@@ -101,7 +101,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787127470.8100834
+    "learned_at": 1787128808.279143
   },
   "buat": {
     "word": "buat",
@@ -389,7 +389,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787072469.4127355
+    "learned_at": 1787128899.455942
   },
   "quantum": {
     "word": "quantum",
@@ -445,7 +445,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787072516.6253397
+    "learned_at": 1787128900.396534
   },
   "sedih": {
     "word": "sedih",
@@ -453,7 +453,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787127470.5918353
+    "learned_at": 1787128804.1950996
   },
   "hati": {
     "word": "hati",
@@ -517,7 +517,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787072793.829047
+    "learned_at": 1787128899.8265514
   },
   "harus": {
     "word": "harus",
@@ -525,7 +525,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787072793.9031637
+    "learned_at": 1787128899.8203664
   },
   "move": {
     "word": "move",
@@ -533,7 +533,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787072793.904173
+    "learned_at": 1787128899.8252275
   },
   "sahabat": {
     "word": "sahabat",
@@ -565,7 +565,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787127470.3101866
+    "learned_at": 1787128899.461604
   },
   "cerita": {
     "word": "cerita",
@@ -573,7 +573,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787127470.499013
+    "learned_at": 1787128804.1963654
   },
   "tapi": {
     "word": "tapi",
@@ -597,7 +597,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787127470.5063128
+    "learned_at": 1787128899.9052162
   },
   "diciptakan": {
     "word": "diciptakan",
@@ -605,7 +605,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787127470.5073173
+    "learned_at": 1787128899.906384
   },
   "siapa": {
     "word": "siapa",
@@ -613,6 +613,294 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787127470.5081944
+    "learned_at": 1787128899.9075212
+  },
+  "seru": {
+    "word": "seru",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787128804.1928434
+  },
+  "soalnya": {
+    "word": "soalnya",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787128804.194045
+  },
+  "kisah": {
+    "word": "kisah",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787128804.3068357
+  },
+  "asmara": {
+    "word": "asmara",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787128804.3078868
+  },
+  "terombang": {
+    "word": "terombang",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787128804.3092299
+  },
+  "ambing": {
+    "word": "ambing",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787128804.3104124
+  },
+  "baru": {
+    "word": "baru",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787128899.465203
+  },
+  "mendapat": {
+    "word": "mendapat",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787128899.453672
+  },
+  "mantan": {
+    "word": "mantan",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787128899.4573011
+  },
+  "monica": {
+    "word": "monica",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787128899.458852
+  },
+  "mendapatkan": {
+    "word": "mendapatkan",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787128899.4627662
+  },
+  "pacar": {
+    "word": "pacar",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787128899.8226917
+  },
+  "sedangkan": {
+    "word": "sedangkan",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787128899.4663668
+  },
+  "habis": {
+    "word": "habis",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787128899.4688523
+  },
+  "cari": {
+    "word": "cari",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787128899.8215477
+  },
+  "agar": {
+    "word": "agar",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787128899.8239322
+  },
+  "nurut": {
+    "word": "nurut",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787127949.231685
+  },
+  "pokoknya": {
+    "word": "pokoknya",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787128806.5172846
+  },
+  "caranya": {
+    "word": "caranya",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787128808.280923
+  },
+  "ceritain": {
+    "word": "ceritain",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787128808.2844632
+  },
+  "semua": {
+    "word": "semua",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787128808.4743319
+  },
+  "jadi": {
+    "word": "jadi",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787128808.4753752
+  },
+  "ingin": {
+    "word": "ingin",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787128808.4770784
+  },
+  "memberiku": {
+    "word": "memberiku",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787128808.4794707
+  },
+  "lakukan": {
+    "word": "lakukan",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787128808.4841855
+  },
+  "cara": {
+    "word": "cara",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787128900.4809089
+  },
+  "mengatasi": {
+    "word": "mengatasi",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787128900.482193
+  },
+  "insomnia": {
+    "word": "insomnia",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787128900.4833448
+  },
+  "susah": {
+    "word": "susah",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787128900.4844825
+  },
+  "tidur": {
+    "word": "tidur",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787128900.485625
+  },
+  "dimaksud": {
+    "word": "dimaksud",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787128891.2922106
+  },
+  "tips": {
+    "word": "tips",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787128891.2984588
+  },
+  "belajar": {
+    "word": "belajar",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787128891.386588
+  },
+  "coding": {
+    "word": "coding",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787128891.3877208
+  },
+  "pemrograman": {
+    "word": "pemrograman",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787128891.3888645
+  },
+  "pemula": {
+    "word": "pemula",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787128891.3899913
   }
 }

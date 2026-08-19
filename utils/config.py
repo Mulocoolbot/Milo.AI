@@ -29,7 +29,12 @@ class Config:
     
     # === Web & Lexicon Settings ===
     ENABLE_WEB_SEARCH = True          # Gunakan internet untuk mencari definisi/fakta baru
-    WEB_TIMEOUT = 3.0                 # Timeout (detik) untuk HTTP requests
+    ENABLE_DEEP_SEARCH = True         # Aktifkan riset multi-sumber & validasi silang (cross-validation)
+    WEB_TIMEOUT = 3.5                 # Timeout (detik) untuk HTTP requests standar
+    DEEP_SEARCH_TIMEOUT = 5.0        # Timeout (detik) untuk pencarian mendalam multi-sumber
+    MAX_SEARCH_SOURCES = 5            # Jumlah maksimum sumber yang digali
+    MIN_VALIDATION_SOURCES = 2        # Minimal sumber yang bersepakat untuk konfirmasi validitas tinggi
+    WEB_SEARCH_CACHE_FILE = os.path.join(MEMORY_DIR, "web_search_cache.json")
     
     # === Milo Identity ===
     MILO_NAME = "Milo"
