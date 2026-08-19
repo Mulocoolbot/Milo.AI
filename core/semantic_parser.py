@@ -75,15 +75,16 @@ class SemanticParser:
         is_concept_query = bool(re.search(
             r'\b(apa (itu|arti|pengertian|definisi|makna|fungsi|kegunaan)|apa yang dimaksud (dengan)?)\b'
             r'|\bapa yang terjadi (di saat|saat|ketika|jika|pada)\b'
+            r'|\b(penciptaan|diciptakan|tercipta|asal usul|evolusi)\s+(manusia|kehidupan|alam semesta|bumi|makhluk hidup|[a-z0-9_]+)\b'
             r'|\b(mengidap|menderita|terkena|gejala|penyebab|dampak|akibat)\s+(penyakit|gangguan|sindrom|virus|bakteri|[a-z0-9_]+)\b'
             r'|\b(penyakit|sindrom|gangguan|virus|bakteri)\s+[a-z0-9_]+\b'
-            r'|\b(bagaimana|gimana)\s+([a-z0-9_]+\s+)*(bisa|terjadi|bekerja|punah|terbang|bernafas|bernapas|berfungsi|dibuat|terbentuk|cara)\b'
+            r'|\b(bagaimana|gimana)\s+([a-z0-9_]+\s+)*(bisa|terjadi|bekerja|punah|terbang|bernafas|bernapas|berfungsi|dibuat|terbentuk|diciptakan|cara)\b'
             r'|\b(kenapa|mengapa)\s+[a-z0-9_]+\b'
             r'|\b(bisa kah|bisakah|tolong|coba|mau)?\s*(menjelaskan|jelaskan|terangkan|ceritakan)\s+(tentang|bagaimana|proses|cara|kenapa|mengapa|soal)?\b'
             r'|\b(proses|cara kerja|mekanisme|siklus)\s+([a-z0-9_]+)\b'
             r'|\b(siapa|kapan|dimana|di mana|berapa|apakah)\s+(presiden|penemu|jarak|kecepatan|jumlah|ibukota|planet|organ|fungsi)\b',
             text_clean
-        ))
+        )) and not bool(re.search(r'\b(kenapa|mengapa|kok)\s+(ada|bisa ada|nyambung ke|muncul)\b|\bapa hubungannya\b', text_clean))
         
         # 9. User meminta saran / solusi / langkah praktis ("memberiku saran", "harus gimana", "gimana caranya", "tips belajar")
         is_asking_advice = bool(re.search(
@@ -117,6 +118,14 @@ class SemanticParser:
             text_clean
         ))
         
+        # 13. User mempertanyakan ketidaksesuaian/hubungan topik dari respons sebelumnya ("kenapa ada kewirausahaan?", "apa hubungannya X dengan Y?")
+        is_discrepancy_query = bool(re.search(
+            r'\b(kenapa|mengapa|kok)\s+(ada|bisa ada|nyambung ke|muncul|bahas)\b'
+            r'|\bapa hubungannya\b'
+            r'|\bnggak nyambung\b|\bga nyambung\b|\bapa korelasi\b',
+            text_clean
+        ))
+        
         return {
             "text": text,
             "has_negation": has_negation,
@@ -132,4 +141,5 @@ class SemanticParser:
             "is_story_sharing": is_story_sharing,
             "has_specific_dilemma": has_specific_dilemma,
             "is_insisting_on_tips": is_insisting_on_tips,
+            "is_discrepancy_query": is_discrepancy_query,
         }

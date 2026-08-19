@@ -1,92 +1,7 @@
 {
-  "proses terjadinya hujan siklus air": {
-    "query": "proses terjadinya hujan siklus air",
-    "raw_input": "bisakah anda menjelaskan bagaimana terbentuknya hujan?",
-    "total_sources": 3,
-    "sources_list": [
-      "Wikipedia Indonesia",
-      "Google Knowledge Suggestions",
-      "Konsensus Psikologi & Pengembangan Diri"
-    ],
-    "validated_points": [
-      {
-        "title": "Presipitasi (Turunnya Hujan)",
-        "description": "Saat butiran air di dalam awan menjadi terlalu berat dan jenuh untuk ditopang arus udara, air jatuh ke bumi sebagai hujan.",
-        "full_text": "Presipitasi (Turunnya Hujan): Saat butiran air di dalam awan menjadi terlalu berat dan jenuh untuk ditopang arus udara, air jatuh ke bumi sebagai hujan.",
-        "source_count": 3,
-        "total_sources": 3,
-        "confidence_percent": 100,
-        "validity_badge": "Sangat Valid (Konsensus Tinggi)",
-        "level": "high",
-        "sources": [
-          "Konsensus Psikologi & Pengembangan Diri",
-          "Google Knowledge Suggestions",
-          "Wikipedia Indonesia"
-        ]
-      },
-      {
-        "title": "Siklus air",
-        "description": "Siklus air atau daur hidrologi adalah peredaran air yang tidak pernah berhenti dari atmosfer ke bumi dan kembali ke atmosfer melalui proses pengembunan, curah hujan, penguapan, dan transpirasi. Hidrologi merupakan bidang ilmu yang berkaitan dengan siklus air, berkaitan dengan asal, distribusi, dan sifat air.",
-        "full_text": "**Siklus air**: Siklus air atau daur hidrologi adalah peredaran air yang tidak pernah berhenti dari atmosfer ke bumi dan kembali ke atmosfer melalui proses pengembunan, curah hujan, penguapan, dan transpirasi. Hidrologi merupakan bidang ilmu yang berkaitan dengan siklus air, berkaitan dengan asal, distribusi, dan sifat air.",
-        "source_count": 3,
-        "total_sources": 3,
-        "confidence_percent": 100,
-        "validity_badge": "Sangat Valid (Konsensus Tinggi)",
-        "level": "high",
-        "sources": [
-          "Konsensus Psikologi & Pengembangan Diri",
-          "Google Knowledge Suggestions",
-          "Wikipedia Indonesia"
-        ]
-      },
-      {
-        "title": "Kondensasi (Pembentukan Awan)",
-        "description": "Uap air yang naik mengalami pendinginan di atmosfer tinggi dan mengembun menjadi tetesan air kecil yang membentuk awan.",
-        "full_text": "Kondensasi (Pembentukan Awan): Uap air yang naik mengalami pendinginan di atmosfer tinggi dan mengembun menjadi tetesan air kecil yang membentuk awan.",
-        "source_count": 2,
-        "total_sources": 3,
-        "confidence_percent": 66,
-        "validity_badge": "Valid (Didukung Multi-Sumber)",
-        "level": "medium",
-        "sources": [
-          "Konsensus Psikologi & Pengembangan Diri",
-          "Wikipedia Indonesia"
-        ]
-      },
-      {
-        "title": "Evaporasi & Transpirasi",
-        "description": "Panas matahari menguapkan air dari lautan, sungai, dan permukaan daun tumbuhan ke atmosfer.",
-        "full_text": "Evaporasi & Transpirasi: Panas matahari menguapkan air dari lautan, sungai, dan permukaan daun tumbuhan ke atmosfer.",
-        "source_count": 2,
-        "total_sources": 3,
-        "confidence_percent": 66,
-        "validity_badge": "Valid (Didukung Multi-Sumber)",
-        "level": "medium",
-        "sources": [
-          "Konsensus Psikologi & Pengembangan Diri",
-          "Wikipedia Indonesia"
-        ]
-      },
-      {
-        "title": "Hujan",
-        "description": "Hujan adalah sebuah presipitasi berwujud cairan, berbeda dengan presipitasi noncair seperti salju, batu es dan campuran hujan dengan salju. Hujan memerlukan keberadaan lapisan atmosfer tebal agar dapat menemui suhu di atas titik leleh es di dekat dan di atas permukaan Bumi.",
-        "full_text": "**Hujan**: Hujan adalah sebuah presipitasi berwujud cairan, berbeda dengan presipitasi noncair seperti salju, batu es dan campuran hujan dengan salju. Hujan memerlukan keberadaan lapisan atmosfer tebal agar dapat menemui suhu di atas titik leleh es di dekat dan di atas permukaan Bumi.",
-        "source_count": 2,
-        "total_sources": 3,
-        "confidence_percent": 66,
-        "validity_badge": "Valid (Didukung Multi-Sumber)",
-        "level": "medium",
-        "sources": [
-          "Konsensus Psikologi & Pengembangan Diri",
-          "Wikipedia Indonesia"
-        ]
-      }
-    ],
-    "timestamp": "2026-08-19T16:10:12.871574"
-  },
-  "sistem pernapasan manusia proses bernapas": {
-    "query": "sistem pernapasan manusia proses bernapas",
-    "raw_input": "oke, pertanyaan selanjutnya. bagaimana manusia dapat bernafas?",
+  "evolusi manusia asal usul homo sapiens biologi sains": {
+    "query": "evolusi manusia asal usul homo sapiens biologi sains",
+    "raw_input": "bagaimana cara manusia di ciptakan? bisakah kamu menjelaskannya menurut sains?",
     "total_sources": 2,
     "sources_list": [
       "Wikipedia Indonesia",
@@ -94,9 +9,51 @@
     ],
     "validated_points": [
       {
-        "title": "Pertukaran Gas di Alveolus",
-        "description": "Di dalam kantung alveolus yang diselimuti kapiler darah, oksigen diserap ke dalam sel darah merah (diikat hemoglobin) dan karbon dioksida dari darah dilepaskan.",
-        "full_text": "Pertukaran Gas di Alveolus: Di dalam kantung alveolus yang diselimuti kapiler darah, oksigen diserap ke dalam sel darah merah (diikat hemoglobin) dan karbon dioksida dari darah dilepaskan.",
+        "title": "Asal Usul Kehidupan Molekuler (Abiogenesis)",
+        "description": "Pada skala waktu miliaran tahun, seluruh kehidupan di Bumi berakar dari molekul organik sederhana di lautan purba yang berevolusi menjadi sel hidup pertama.",
+        "full_text": "Asal Usul Kehidupan Molekuler (Abiogenesis): Pada skala waktu miliaran tahun, seluruh kehidupan di Bumi berakar dari molekul organik sederhana di lautan purba yang berevolusi menjadi sel hidup pertama.",
+        "source_count": 2,
+        "total_sources": 2,
+        "confidence_percent": 100,
+        "validity_badge": "Valid (Didukung Multi-Sumber)",
+        "level": "medium",
+        "sources": [
+          "Wikipedia Indonesia",
+          "Konsensus Psikologi & Pengembangan Diri"
+        ]
+      },
+      {
+        "title": "Evolusi Biologis dari Nenek Moyang Bersama (Common Ancestor)",
+        "description": "Menurut sains modern, manusia (Homo sapiens) muncul melalui proses evolusi bertahap jutaan tahun dari garis keturunan primata hominid bersama.",
+        "full_text": "Evolusi Biologis dari Nenek Moyang Bersama (Common Ancestor): Menurut sains modern, manusia (Homo sapiens) muncul melalui proses evolusi bertahap jutaan tahun dari garis keturunan primata hominid bersama.",
+        "source_count": 2,
+        "total_sources": 2,
+        "confidence_percent": 100,
+        "validity_badge": "Valid (Didukung Multi-Sumber)",
+        "level": "medium",
+        "sources": [
+          "Wikipedia Indonesia",
+          "Konsensus Psikologi & Pengembangan Diri"
+        ]
+      },
+      {
+        "title": "Transisi Spesies Genus Homo",
+        "description": "Bukti fosil paleoantropologi menunjukkan rantai transisi evolusi dari Australopithecus, Homo habilis (pembuat alat batu pertama), Homo erectus (yang mulai berjalan tegak dan bermigrasi), hingga Homo sapiens di Afrika sekitar 300.000 tahun lalu.",
+        "full_text": "Transisi Spesies Genus Homo: Bukti fosil paleoantropologi menunjukkan rantai transisi evolusi dari Australopithecus, Homo habilis (pembuat alat batu pertama), Homo erectus (yang mulai berjalan tegak dan bermigrasi), hingga Homo sapiens di Afrika sekitar 300.000 tahun lalu.",
+        "source_count": 2,
+        "total_sources": 2,
+        "confidence_percent": 100,
+        "validity_badge": "Valid (Didukung Multi-Sumber)",
+        "level": "medium",
+        "sources": [
+          "Wikipedia Indonesia",
+          "Konsensus Psikologi & Pengembangan Diri"
+        ]
+      },
+      {
+        "title": "Biologi",
+        "description": "Biologi adalah kajian ilmiah tentang kehidupan dan makhluk hidup. Biologi merupakan salah satu cabang ilmu alam yang luas, mencakup beragam bidang dan prinsip-prinsip pemersatu yang menjelaskan struktur, fungsi, pertumbuhan, asal mula, evolusi, serta persebaran kehidupan.",
+        "full_text": "**Biologi**: Biologi adalah kajian ilmiah tentang kehidupan dan makhluk hidup. Biologi merupakan salah satu cabang ilmu alam yang luas, mencakup beragam bidang dan prinsip-prinsip pemersatu yang menjelaskan struktur, fungsi, pertumbuhan, asal mula, evolusi, serta persebaran kehidupan.",
         "source_count": 2,
         "total_sources": 2,
         "confidence_percent": 100,
@@ -108,51 +65,9 @@
         ]
       },
       {
-        "title": "Proses Inspirasi (Menghirup Udara)",
-        "description": "Udara masuk melalui rongga hidung atau mulut, disaring oleh silia dan lendir, lalu mengalir melalui faring, laring, trakea, dan bronkus menuju paru-paru.",
-        "full_text": "Proses Inspirasi (Menghirup Udara): Udara masuk melalui rongga hidung atau mulut, disaring oleh silia dan lendir, lalu mengalir melalui faring, laring, trakea, dan bronkus menuju paru-paru.",
-        "source_count": 2,
-        "total_sources": 2,
-        "confidence_percent": 100,
-        "validity_badge": "Valid (Didukung Multi-Sumber)",
-        "level": "medium",
-        "sources": [
-          "Konsensus Psikologi & Pengembangan Diri",
-          "Wikipedia Indonesia"
-        ]
-      },
-      {
-        "title": "Kontraksi Otot Diafragma & Tulang Rusuk",
-        "description": "Otot diafragma berkontraksi dan mendatar ke bawah, rongga dada membesar sehingga tekanan udara di paru-paru menurun dan menarik udara luar masuk.",
-        "full_text": "Kontraksi Otot Diafragma & Tulang Rusuk: Otot diafragma berkontraksi dan mendatar ke bawah, rongga dada membesar sehingga tekanan udara di paru-paru menurun dan menarik udara luar masuk.",
-        "source_count": 2,
-        "total_sources": 2,
-        "confidence_percent": 100,
-        "validity_badge": "Valid (Didukung Multi-Sumber)",
-        "level": "medium",
-        "sources": [
-          "Konsensus Psikologi & Pengembangan Diri",
-          "Wikipedia Indonesia"
-        ]
-      },
-      {
-        "title": "Proses Ekspirasi (Menghembuskan Udara)",
-        "description": "Diafragma berelaksasi dan melengkung ke atas, volume rongga dada menyusut, dan udara kaya karbon dioksida dihembuskan keluar dari tubuh.",
-        "full_text": "Proses Ekspirasi (Menghembuskan Udara): Diafragma berelaksasi dan melengkung ke atas, volume rongga dada menyusut, dan udara kaya karbon dioksida dihembuskan keluar dari tubuh.",
-        "source_count": 2,
-        "total_sources": 2,
-        "confidence_percent": 100,
-        "validity_badge": "Valid (Didukung Multi-Sumber)",
-        "level": "medium",
-        "sources": [
-          "Konsensus Psikologi & Pengembangan Diri",
-          "Wikipedia Indonesia"
-        ]
-      },
-      {
-        "title": "Anatomi manusia",
-        "description": "Anatomi atau susunan tubuh manusia adalah sebuah bidang khusus dalam anatomi yang mempelajari struktur tubuh manusia, sedangkan jaringan dipelajari di histologi dan sel di sitologi. tubuh manusia, seperti tubuh hewan, terdiri atas sistem, yang terdiri atas organ-organ, yang terdiri atas jaringan-jaringan, yang terdiri atas sel-sel..",
-        "full_text": "**Anatomi manusia**: Anatomi atau susunan tubuh manusia adalah sebuah bidang khusus dalam anatomi yang mempelajari struktur tubuh manusia, sedangkan jaringan dipelajari di histologi dan sel di sitologi. tubuh manusia, seperti tubuh hewan, terdiri atas sistem, yang terdiri atas organ-organ, yang terdiri atas jaringan-jaringan, yang terdiri atas sel-sel..",
+        "title": "Manusia Solo",
+        "description": "Manusia Solo (Homo erectus soloensis) adalah subspesies dari Homo erectus yang mendiami bantaran Bengawan Solo di Jawa, Indonesia, sekitar 117.000 hingga 108.000 tahun yang lalu pada kala Pleistosen Akhir. Populasi ini merupakan catatan terakhir yang diketahui dari spesies tersebut.",
+        "full_text": "**Manusia Solo**: Manusia Solo (Homo erectus soloensis) adalah subspesies dari Homo erectus yang mendiami bantaran Bengawan Solo di Jawa, Indonesia, sekitar 117.000 hingga 108.000 tahun yang lalu pada kala Pleistosen Akhir. Populasi ini merupakan catatan terakhir yang diketahui dari spesies tersebut.",
         "source_count": 2,
         "total_sources": 2,
         "confidence_percent": 100,
@@ -164,7 +79,7 @@
         ]
       }
     ],
-    "timestamp": "2026-08-19T16:10:14.595183"
+    "timestamp": "2026-08-19T16:17:49.288883"
   },
   "penyakit asma sistem pernapasan gejala penyebab bronkus": {
     "query": "penyakit asma sistem pernapasan gejala penyebab bronkus",
@@ -185,8 +100,8 @@
         "validity_badge": "Valid (Didukung Multi-Sumber)",
         "level": "medium",
         "sources": [
-          "Konsensus Psikologi & Pengembangan Diri",
-          "Wikipedia Indonesia"
+          "Wikipedia Indonesia",
+          "Konsensus Psikologi & Pengembangan Diri"
         ]
       },
       {
@@ -199,8 +114,8 @@
         "validity_badge": "Valid (Didukung Multi-Sumber)",
         "level": "medium",
         "sources": [
-          "Konsensus Psikologi & Pengembangan Diri",
-          "Wikipedia Indonesia"
+          "Wikipedia Indonesia",
+          "Konsensus Psikologi & Pengembangan Diri"
         ]
       },
       {
@@ -246,6 +161,6 @@
         ]
       }
     ],
-    "timestamp": "2026-08-19T16:10:16.011255"
+    "timestamp": "2026-08-19T16:17:51.043244"
   }
 }

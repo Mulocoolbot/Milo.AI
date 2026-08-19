@@ -350,6 +350,28 @@ class SentenceSynthesizer:
             guidance = "Boleh bantu jelaskan lagi maksud sebenarnya biar Milo paham dengan tepat? Sekarang Milo fokus dengerin! ✨"
             
         return f"{random.choice(apologies)} {guidance}"
+        
+    def synthesize_discrepancy_clarification(self, user_name=None, user_input="", last_topic=""):
+        """Merespons ketika user mempertanyakan hubungan/ketidaksesuaian topik dari respons sebelumnya."""
+        name_str = f" {user_name}" if user_name else ""
+        salutation = f"{user_name}, " if user_name else ""
+        
+        apologies = [
+            f"Aduh maaf banget{name_str}! 😅 Tadi hasil penelusuran kata kunci Milo sempat melenceng dan menyertakan poin yang tidak nyambung sama sekali.",
+            f"Wah, kamu benar banget {salutation}! 🙏 Tadi ada kekeliruan pencarian sehingga istilah tersebut sempat muncul padahal sama sekali tidak berhubungan."
+        ]
+        
+        clarification = (
+            "Sama sekali **tidak ada hubungan** antara penciptaan kehidupan manusia secara biologis dengan hal tersebut. "
+            "Konteks yang sebenarnya ingin kita bahas adalah **bagaimana manusia terbentuk menurut sains**, yaitu melalui proses **evolusi biologis bertahap jutaan tahun (spesiasi Homo sapiens dari garis keturunan hominid dan seleksi alam)**."
+        )
+        
+        prompts = [
+            "Mau Milo fokus jelaskan proses tahapan evolusi biologis manusia ini secara runut? 🔬✨",
+            "Yuk kita luruskan kembali pembahasannya ke bukti ilmiah evolusi manusia! Ada bagian tertentu yang paling ingin kamu tahu? 📚💡"
+        ]
+        
+        return f"{random.choice(apologies)}\n\n{clarification}\n\n{random.choice(prompts)}"
     
     # ================================================================
     # FAREWELL, THANKS, PERMISSION

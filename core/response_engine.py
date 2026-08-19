@@ -68,8 +68,13 @@ class ResponseEngine:
         # === 1. Handle Permintaan Klarifikasi ("maksud kamu gimana?", "maksudnya apa?") ===
         if parsed["is_clarification"] or intent == "clarification_ask":
             return self.synthesizer.synthesize_clarification(user_name)
+            
+        # === 2. Handle Pertanyaan Diskrepansi / Ketidaksesuaian Topik ===
+        if parsed["is_discrepancy_query"]:
+            last_topic = context.get("current_topic", "")
+            return self.synthesizer.synthesize_discrepancy_clarification(user_name, user_input, last_topic)
         
-        # === 2. Handle Meta-Correction (User mengoreksi pemahaman Milo) ===
+        # === 2.5 Handle Meta-Correction (User mengoreksi pemahaman Milo) ===
         if parsed["is_meta_correction"] or intent == "meta_correction":
             last_user_msg = context_manager.get_last_user_input() if context_manager else ""
             return self.synthesizer.synthesize_meta_correction(user_name, last_user_msg)
@@ -354,6 +359,8 @@ class ResponseEngine:
     def _derive_topic_title(self, user_input, keywords, query=""):
         """Menentukan judul topik penjelasan dari input user."""
         text_lower = user_input.lower()
+        if any(w in text_lower for w in ["ciptakan", "tercipta", "asal usul", "penciptaan", "evolusi"]) and "manusia" in text_lower:
+            return "Asal Usul dan Pembentukan Manusia Menurut Sains (Teori Evolusi Biologi)"
         if "asma" in text_lower:
             return "Penyakit Asma (Mekanisme, Gejala, dan Dampak pada Saluran Pernapasan)"
         if any(w in text_lower for w in ["bernafas", "bernapas", "pernapasan", "respirasi"]):

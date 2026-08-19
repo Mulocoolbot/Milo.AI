@@ -116,7 +116,11 @@ class WebSearch:
         """Membersihkan kalimat percakapan menjadi search query internet yang tajam."""
         text_lower = text.lower().strip()
         
-        # 1. Handle kasus sains / biologi / pernapasan / alam / medis & penyakit
+        # 1. Handle kasus sains / asal usul / evolusi manusia & alam
+        if any(w in text_lower for w in ["ciptakan", "tercipta", "asal usul", "evolusi", "terbentuk"]) and any(w in text_lower for w in ["manusia", "homo sapiens", "kehidupan"]):
+            return "evolusi manusia asal usul homo sapiens biologi sains"
+        if any(w in text_lower for w in ["alam semesta", "tata surya", "bumi"]) and any(w in text_lower for w in ["ciptakan", "tercipta", "terbentuk", "asal usul"]):
+            return "teori big bang pembentukan alam semesta sains"
         if "asma" in text_lower:
             return "penyakit asma sistem pernapasan gejala penyebab bronkus"
         if any(w in text_lower for w in ["bernafas", "bernapas", "pernapasan", "respirasi", "paru-paru"]):
@@ -154,21 +158,27 @@ class WebSearch:
         if any(w in text_lower for w in ["koding", "coding", "pemrograman", "programming", "python"]):
             return "tips belajar coding pemrograman pemula"
             
-        # 7. Ekstraksi kata-kata kunci bermakna secara aman berbasis token
+        # 7. Ekstraksi kata-kata kunci bermakna secara aman berbasis token & penghapusan imbuhan umum
         clean = re.sub(r'[^\w\s]', ' ', text_lower)
-        tokens = clean.split()
+        raw_tokens = clean.split()
         
         query_stopwords = {
             "sih", "deh", "dong", "ya", "nih", "kok", "kan", "lah", "pun", "agar", "untuk",
-            "bisa", "dari", "dia", "itu", "ini", "aku", "kamu", "tapi", "soalnya", "kalo",
-            "udah", "banget", "nggak", "gak", "tuh", "ada", "tips", "yang", "semua", "dengan",
-            "mudah", "apalagi", "tipikal", "orang", "masalahnya", "tidak", "ke", "sembarangan",
-            "dan", "sialnya", "adalah", "satu", "satunya", "jadikan", "yah", "cuman", "aja",
-            "kah", "mau", "menjelaskan", "jelaskan", "terangkan", "tolong", "coba", "bagaimana",
-            "gimana", "kenapa", "mengapa", "apa", "apakah", "seperti", "pada", "tentang", "di"
+            "bisa", "bisakah", "adakah", "apakah", "dari", "dia", "itu", "ini", "aku", "kamu",
+            "anda", "tapi", "soalnya", "kalo", "udah", "banget", "nggak", "gak", "tuh", "ada",
+            "tips", "yang", "semua", "dengan", "mudah", "apalagi", "tipikal", "orang", "masalahnya",
+            "tidak", "ke", "sembarangan", "dan", "sialnya", "adalah", "satu", "satunya", "jadikan",
+            "yah", "cuman", "aja", "kah", "mau", "menjelaskan", "menjelaskannya", "jelaskan",
+            "terangkan", "tolong", "coba", "bagaimana", "bagaimanakah", "gimana", "kenapa",
+            "mengapa", "mengapakah", "apa", "seperti", "pada", "tentang", "di", "menurut",
+            "cara", "caranya", "sains", "ilmiah", "secara"
         }
         
-        meaningful_tokens = [w for w in tokens if w not in query_stopwords and len(w) > 2]
+        meaningful_tokens = []
+        for w in raw_tokens:
+            w_stem = re.sub(r'(kah|lah|pun|nya)$', '', w)
+            if w not in query_stopwords and w_stem not in query_stopwords and len(w_stem) > 2:
+                meaningful_tokens.append(w_stem)
         
         if meaningful_tokens:
             return " ".join(meaningful_tokens[:5])
@@ -240,10 +250,10 @@ class WebSearch:
                         extract = pdata.get("extract", "").strip()
                         index = pdata.get("index", 999)
                         
-                        # Filter artikel hiburan / film / album musik / biografi selebriti / bencana spesifik
-                        if any(bad in title.lower() for bad in ["(film", "(album", "(lagu", "(grup musik", "(seri televisi", "sinetron", "daftar episode", "banjir 20", "gempa 20", "animisme", "pornografi", "aktivitas seksual"]):
+                        # Filter artikel hiburan / film / album musik / biografi selebriti / bencana / kampus / bisnis
+                        if any(bad in title.lower() for bad in ["(film", "(album", "(lagu", "(grup musik", "(seri televisi", "sinetron", "daftar episode", "banjir 20", "gempa 20", "animisme", "pornografi", "aktivitas seksual", "universitas", "stmik", "akuntansi", "kewirausahaan", "sedulur papat", "revolusi industri", "yayasan"]):
                             continue
-                        if any(bio in extract.lower() for bio in ["lahir ", "pemeran", "penyanyi", "aktris", "aktor", "selebriti", "jkt48", "grup vokal", "grup musik"]):
+                        if any(bio in extract.lower() for bio in ["lahir ", "pemeran", "penyanyi", "aktris", "aktor", "selebriti", "jkt48", "grup vokal", "grup musik", "perguruan tinggi", "kampus"]):
                             continue
                             
                         # Bersihkan kebisingan teks Wikipedia (gambar, teks kurung berlebih, dll)
@@ -358,6 +368,14 @@ class WebSearch:
                 "Pisahkan Lingkaran Kendali: Bedakan dengan jelas mana hal-hal yang berada di bawah kendalimu vs hal yang sepenuhnya di luar kendalimu.",
                 "Terapkan Teknik Journaling: Tuangkan kekhawatiran ke dalam tulisan agar otak tidak terus-menerus memutar skenario buruk yang sama.",
                 "Latihan Pernapasan & Mindfulness: Lakukan teknik pernapasan dalam 4-7-8 untuk meredakan respons fight-or-flight saraf simpatik."
+            ]
+            
+        elif any(w in q_lower for w in ["ciptakan", "tercipta", "asal usul", "evolusi"]) and any(w in q_lower for w in ["manusia", "homo sapiens", "kehidupan"]):
+            return [
+                "Evolusi Biologis dari Nenek Moyang Bersama (Common Ancestor): Menurut sains modern, manusia (Homo sapiens) muncul melalui proses evolusi bertahap jutaan tahun dari garis keturunan primata hominid bersama.",
+                "Transisi Spesies Genus Homo: Bukti fosil paleoantropologi menunjukkan rantai transisi evolusi dari Australopithecus, Homo habilis (pembuat alat batu pertama), Homo erectus (yang mulai berjalan tegak dan bermigrasi), hingga Homo sapiens di Afrika sekitar 300.000 tahun lalu.",
+                "Seleksi Alam & Perkembangan Otak (Ensefalisasi): Perkembangan kemampuan berdiri tegak (bipedalisme) membebaskan tangan untuk menggunakan perkakas, memicu lonjakan volume otak dan kemampuan kognitif tingkat tinggi.",
+                "Asal Usul Kehidupan Molekuler (Abiogenesis): Pada skala waktu miliaran tahun, seluruh kehidupan di Bumi berakar dari molekul organik sederhana di lautan purba yang berevolusi menjadi sel hidup pertama."
             ]
             
         elif any(w in q_lower for w in ["asma"]):
