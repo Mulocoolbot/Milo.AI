@@ -83,10 +83,20 @@ class ResponseEngine:
             return self.synthesizer.synthesize_user_state_good(user_name)
         
         # === 5. Handle Permintaan Saran & Solusi dengan Deep Web Search & Cross-Validation ===
-        if parsed["is_asking_advice"] or parsed["has_specific_dilemma"] or intent == "need_advice":
-            research = self.web_search.deep_research(user_input, context.get("current_topic", ""))
+        if parsed["is_asking_advice"] or parsed["is_insisting_on_tips"] or parsed["has_specific_dilemma"] or intent == "need_advice":
+            # Jika user menegaskan hanya minta tips (misal "cuman minta tips aja", "cuman minta tis")
+            if parsed["is_insisting_on_tips"]:
+                return self.synthesizer.synthesize_practical_micro_tips(user_name)
+                
+            search_input = user_input
+            if len(user_input.split()) <= 4 and context_manager:
+                sub_input = context_manager.get_last_substantial_user_input()
+                if sub_input:
+                    search_input = sub_input
+                    
+            research = self.web_search.deep_research(search_input, context.get("current_topic", ""))
             if research and research.get("validated_points"):
-                return self.synthesizer.synthesize_researched_advice(user_name, research, user_input)
+                return self.synthesizer.synthesize_researched_advice(user_name, research, search_input)
             return self.synthesizer.synthesize_need_advice(user_name)
             
         # === 6. Handle Cerita / Update Situasi Pengguna (is_story_sharing) ===

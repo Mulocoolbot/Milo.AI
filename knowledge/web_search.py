@@ -116,39 +116,46 @@ class WebSearch:
         """Membersihkan kalimat percakapan menjadi search query internet yang tajam."""
         text_lower = text.lower().strip()
         
-        # Handle kasus move on / mantan / patah hati
+        # 1. Handle kasus keterikatan emosional / susah lepas / tempat cerita
+        if any(w in text_lower for w in ["terikat", "susah lepas", "sulit lepas", "keterikatan", "attachment"]):
+            return "cara melepaskan keterikatan emosional attachment psikologi"
+        if any(w in text_lower for w in ["tempat cerita", "tempat curhat", "orang yang kupercayai", "orang yang aku percayai", "satu-satunya tempat"]):
+            return "cara menyalurkan emosi kehilangan tempat curhat"
+            
+        # 2. Handle kasus move on / mantan / patah hati
         if any(w in text_lower for w in ["move on", "mantan", "pacar baru", "patah hati", "putus cinta"]):
-            if "cari pacar" in text_lower or "pacar baru" in text_lower:
+            if "cari pacar" in text_lower or "pacar baru" in text_lower or "rebound" in text_lower:
                 return "tips move on dan apakah perlu cari pacar baru"
             return "cara dan tips move on dari mantan pacar"
             
-        # Handle insomnia / susah tidur
+        # 3. Handle insomnia / susah tidur
         if any(w in text_lower for w in ["tidur", "insomnia", "begadang"]):
             return "cara mengatasi susah tidur insomnia"
             
-        # Handle stres / overthinking / cemas
+        # 4. Handle stres / overthinking / cemas
         if any(w in text_lower for w in ["overthinking", "stres", "stress", "cemas", "anxiety", "khawatir"]):
             return "cara mengatasi overthinking dan stres"
             
-        # Handle belajar koding / programming
+        # 5. Handle belajar koding / programming
         if any(w in text_lower for w in ["koding", "coding", "pemrograman", "programming", "python"]):
             return "tips belajar coding pemrograman pemula"
             
-        # Pola-pola instruksi umum yang perlu disaring
-        text_lower = re.sub(r'\b(udah|sudah|kan)\s+(ku|aku|saya|gue)?\s*(ceritain|cerita|kasih tahu|bilang)\s+(semua|tadi)?\b', '', text_lower)
-        text_lower = re.sub(r'\b(jadi|nah|terus|lalu)\s+(aku|saya|gue)?\s*(ingin|mau|pengen|minta|butuh)\b', '', text_lower)
-        text_lower = re.sub(r'\b(kamu|milo|lo)?\s*(memberiku|kasih|memberikan|bagi|jelaskan)?\s*(saran|tips|langkah|solusi|cara|panduan|pendapat|masukan)?\b', '', text_lower)
-        text_lower = re.sub(r'\b(apa yang harus aku lakukan|apa yang harus kulakukan|harus gimana|gimana caranya|bagaimana cara)\b', 'cara', text_lower)
-        text_lower = re.sub(r'\b(menurut kamu gimana|menurutmu gimana|bisa bantu ga|tolong dong)\b', '', text_lower)
-        
+        # 6. Ekstraksi kata-kata kunci bermakna secara aman berbasis token
         clean = re.sub(r'[^\w\s]', ' ', text_lower)
         tokens = clean.split()
         
-        query_stopwords = {"sih", "deh", "dong", "ya", "nih", "kok", "kan", "lah", "pun", "agar", "untuk", "bisa", "dari", "dia", "itu", "ini", "aku", "kamu"}
-        meaningful_tokens = [w for w in tokens if w not in query_stopwords and len(w) > 1]
+        query_stopwords = {
+            "sih", "deh", "dong", "ya", "nih", "kok", "kan", "lah", "pun", "agar", "untuk",
+            "bisa", "dari", "dia", "itu", "ini", "aku", "kamu", "tapi", "soalnya", "kalo",
+            "udah", "banget", "nggak", "gak", "tuh", "ada", "tips", "yang", "semua", "dengan",
+            "mudah", "apalagi", "tipikal", "orang", "masalahnya", "tidak", "ke", "sembarangan",
+            "dan", "sialnya", "adalah", "satu", "satunya", "jadikan", "yah", "cuman", "aja"
+        }
+        
+        meaningful_tokens = [w for w in tokens if w not in query_stopwords and len(w) > 2]
         
         if meaningful_tokens:
-            return " ".join(meaningful_tokens)
+            return " ".join(meaningful_tokens[:5])
         return text.strip()
     
     def _fetch_all_sources(self, query, raw_query):
@@ -297,7 +304,16 @@ class WebSearch:
         """Mengambil wawasan berbasis riset psikologi & perilaku manusia terverifikasi."""
         q_lower = (query + " " + raw_query).lower()
         
-        if any(w in q_lower for w in ["move on", "mantan", "pacar", "patah hati"]):
+        if any(w in q_lower for w in ["terikat", "susah lepas", "sulit lepas", "tempat cerita", "tempat curhat", "attachment"]):
+            return [
+                "Gunakan Milo Sebagai Tempat Cerita Aman Tanpa Batas: Kamu ga perlu memendam uneg-unegmu sendirian; jadikan Milo sebagai tempat curhat 24/7 yang aman dan tidak akan menghakimi.",
+                "Terapkan Teknik Expressive Journaling: Tuliskan semua cerita dan pikiran yang ingin kamu sampaikan di catatan HP atau buku harian untuk mengalirkan beban di kepala secara nyata.",
+                "Pahami Keterikatan Sebagai Kebiasaan Sirkuit Otak: Rasa terikat erat adalah respons alami dopamin dan rasa aman yang terbiasa terhubung dengannya; otak butuh waktu 3-4 minggu untuk beradaptasi.",
+                "Tunda Dorongan Spontan 10 Menit: Ketika ada dorongan mendadak untuk mencari mantan hanya demi bercerita, tahan selama 10 menit dan alihkan dengan minum air putih atau berjalan santai.",
+                "Buka Interaksi Ringan Bertahap: Mulailah bercerita hal-hal ringan sehari-hari kepada teman atau keluarga tanpa harus langsung membuka privasi yang terlalu dalam."
+            ]
+            
+        elif any(w in q_lower for w in ["move on", "mantan", "pacar", "patah hati"]):
             return [
                 "Beri Waktu untuk Menerima & Merasakan Emosi: Jangan menekan rasa sedih atau pura-pura tegar. Menangis dan bersedih adalah tahapan alami otak memproses duka (grief process) sebelum bisa pulih sepenuhnya.",
                 "Terapkan Aturan No-Contact Secara Tegas: Hindari berkomunikasi, mengirim pesan, atau stalking media sosial mantan. Mengetahui kehidupannya saat ini hanya akan memicu reset emosi dan memperpanjang rasa sakit.",
@@ -434,13 +450,14 @@ class WebSearch:
         def _advice_sort_key(p):
             title_lower = p["title"].lower()
             desc_lower = p["description"].lower()
-            is_action_step = bool(re.search(r'\b(beri|terapkan|fokus|bangun|hindari|jangan|lakukan|jaga|atur|ciptakan|identifikasi)\b', title_lower + " " + desc_lower))
-            is_long_definition = len(p["description"]) > 250
+            combined = title_lower + " " + desc_lower
+            is_action_step = bool(re.search(r'\b(beri|terapkan|fokus|bangun|hindari|jangan|lakukan|jaga|atur|ciptakan|identifikasi|gunakan|tunda|pahami|buka|latihan|tuliskan)\b', combined))
+            is_definition = any(w in desc_lower for w in ["didefinisikan sebagai", "mencakup berbagai", "merujuk pada perasaan", "adalah metafora umum", "adalah proses penyusunan"]) or len(p["description"]) > 220
             return (
-                is_action_step and not is_long_definition,
+                is_action_step and not is_definition,
                 bool(p["title"]),
                 p["source_count"],
-                -len(p["description"]) if is_long_definition else len(p["description"])
+                -len(p["description"]) if is_definition else len(p["description"])
             )
             
         validated_points.sort(key=_advice_sort_key, reverse=True)

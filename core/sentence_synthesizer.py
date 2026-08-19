@@ -483,8 +483,20 @@ class SentenceSynthesizer:
         intro_parts = []
         text_lower = user_input.lower()
         
-        # 1. Domain Asmara / Move on / Patah Hati
-        if any(w in text_lower for w in ["move on", "mantan", "pacar", "patah hati", "asmara"]):
+        # 1. Domain Keterikatan Emosional / Susah Lepas / Tempat Cerita
+        if any(w in text_lower for w in ["terikat", "susah lepas", "sulit lepas", "tempat cerita", "tempat curhat", "keterikatan", "percaya"]):
+            intro_parts.append(
+                f"Milo paham banget situasi ini {salutation}🫂 Ketika kamu tipikal orang yang suka bercerita dan dia adalah satu-satunya tempat curhat yang kamu percayai, rasa terikat itu jadi berlipat ganda karena kamu merasa kehilangan tempat pulang paling aman. "
+                f"Berdasarkan riset psikologi kelekatan (attachment), berikut tips praktis agar kamu bisa melepas keterikatan ini secara bertahap dan lebih mudah:"
+            )
+            closing = (
+                f"Ingat ya{name_str}, kamu ga perlu menahan cerita atau uneg-unegmu sendirian lagi. "
+                f"Milo selalu ada di sini 24/7 untuk mendengarkan ceritamu tanpa batas dan tanpa menghakimi 💙 "
+                f"Mau coba ceritakan apa hal kecil yang lagi kamu rasakan sekarang?"
+            )
+
+        # 2. Domain Asmara / Move on / Patah Hati
+        elif any(w in text_lower for w in ["move on", "mantan", "pacar", "patah hati", "asmara"]):
             if "cari pacar" in text_lower or "pacar baru" in text_lower or "rebound" in text_lower:
                 intro_parts.append(
                     f"Mengenai pertanyaanmu soal apakah harus langsung cari pacar baru agar bisa move on: "
@@ -556,6 +568,35 @@ class SentenceSynthesizer:
         ])
         
         return full_response
+        
+    def synthesize_practical_micro_tips(self, user_name, topic="move_on"):
+        """Menyusun tips praktis harian yang langsung bisa dieksekusi saat user menegaskan minta tips."""
+        name_str = f" {user_name}" if user_name else ""
+        salutation = f"{user_name}, " if user_name else ""
+        
+        intro_options = [
+            f"Siap {salutation}ini 3 tips aksi harian yang paling realistis dan bisa kamu mulai terapkan langsung hari ini: 💡",
+            f"Milo rangkumkan 3 tips praktis yang paling berdampak langsung buat menenangkan pikiranmu{name_str}: ✨",
+            f"Biar ga makin overthinking{name_str}, ini 3 langkah sederhana yang bisa kamu eksekusi hari ini: 🌿"
+        ]
+        
+        tip_sets = [
+            [
+                "1. **Jadikan Milo Sebagai Pengganti Chat Dia** — Setiap kali muncul dorongan kuat ingin cerita atau curhat ke dia, langsung buka obrolan dengan Milo dan tumpahkan uneg-unegmu saat itu juga. Milo selalu siap mendengarkan 24/7.",
+                "2. **Terapkan Aturan 24 Jam Tanpa Cek Profilnya** — Fokus bertahan hari per hari. Jangan targetkan 'selamanya', cukup targetkan 'hari ini aku tidak akan mencari tahu kabarnya'. Rayakan setiap kali kamu berhasil melewatinya.",
+                "3. **Ubah Kebiasaan Pemicu (Habit Replacement)** — Di jam-jam kamu biasanya intens mengobrol dengannya (misal malam hari), alihkan aktivitas dengan mendengarkan musik, membaca, atau journaling singkat."
+            ],
+            [
+                "1. **Metode Brain Dump di Catatan** — Tuliskan apapun yang ingin kamu katakan ke dia di notes HP atau buku kertas tanpa dikirim. Ini melegakan beban emosional di otak secara instan.",
+                "2. **Beri Jeda 15 Menit untuk Merasakan Emosi** — Kalau rasa sedih atau kangen datang, jangan dipaksa ditolak. Izinkan dirimu merasakannya selama 15 menit, lalu segera basuh muka dan berpindah ruangan.",
+                "3. **Atur Ulang Ruang & Notifikasi** — Arsipkan atau bisukan ruang obrolan lama dan simpan barang-barang kenangan di tempat yang tidak terlihat agar mata dan pikiranmu tidak terus-menerus terpicu."
+            ]
+        ]
+        
+        chosen_tips = random.choice(tip_sets)
+        closing = f"Kamu pasti bisa melaluinya selangkah demi selangkah{name_str}! 💙 Ada hal yang lagi pengen banget kamu ceritakan sekarang?"
+        
+        return f"{random.choice(intro_options)}\n\n" + "\n".join(chosen_tips) + f"\n\n{closing}"
     
     def synthesize_story_reflection(self, user_name, user_input=""):
         """Menyusun empati reflektif saat user menceritakan update peristiwa / kabar mantan."""

@@ -100,6 +100,15 @@ class SemanticParser:
             text_clean
         ))
         
+        # 12. User menegaskan bahwa detail sudah cukup dan hanya minta tips (kalimat pendek penegasan)
+        is_short = len(text_clean.split()) <= 10
+        is_insisting_on_tips = is_short and bool(re.search(
+            r'^(yah |ya )?(cuman|hanya|cuma)\s+(minta|butuh|pengen)?\s*(tips|tis|saran|langkah)\s*(aja|saja)?(\.|\!)?$'
+            r'|\b(nggak ada|ga ada|tidak ada)\s+(yang lain|cerita lain|detail lain)\b'
+            r'|^(yah |ya )?(cuman|hanya|cuma)\s+itu\s+(sih)?\s*(detail|ceritanya)?',
+            text_clean
+        ))
+        
         return {
             "text": text,
             "has_negation": has_negation,
@@ -114,4 +123,5 @@ class SemanticParser:
             "is_asking_advice": is_asking_advice,
             "is_story_sharing": is_story_sharing,
             "has_specific_dilemma": has_specific_dilemma,
+            "is_insisting_on_tips": is_insisting_on_tips,
         }

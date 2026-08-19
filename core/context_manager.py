@@ -229,9 +229,17 @@ class ContextManager:
         return None
     
     def get_last_user_input(self):
-        """Mengembalikan input user dari giliran terakhir."""
+        """Mengembalikan input user dari turn terakhir."""
         if self._conversation_history:
             return self._conversation_history[-1].get("user_input", "")
+        return ""
+        
+    def get_last_substantial_user_input(self, min_words=4):
+        """Mengambil input user terakhir dalam riwayat percakapan yang memiliki substansi/cerita bermakna."""
+        for turn in reversed(self._conversation_history):
+            inp = turn.get("user_input", "")
+            if len(inp.split()) >= min_words and not any(phrase in inp.lower() for phrase in ["cuman minta", "minta tips aja", "nggak ada yang lain", "cuman itu"]):
+                return inp
         return ""
     
     def get_last_response(self):
