@@ -1,163 +1,225 @@
 {
-  "kemerdekaan": {
-    "query": "kemerdekaan",
-    "raw_input": "apa arti dari kemerdekaan?",
-    "total_sources": 4,
+  "komputer kuantum": {
+    "query": "komputer kuantum",
+    "raw_input": "apa itu komputer kuantum?",
+    "total_sources": 3,
     "sources_list": [
+      "Wiktionary & KBBI Terbuka",
       "Wikipedia Indonesia",
-      "Google Knowledge Suggestions",
-      "Wikipedia Global Knowledge",
-      "Konsensus Psikologi & Pengembangan Diri"
+      "Google Knowledge Suggestions"
     ],
     "validated_points": [
       {
-        "title": "Hakikat Kedaulatan & Kebebasan Bangsa",
-        "description": "Kemerdekaan adalah keadaan suatu bangsa atau negara yang terbebas dari penjajahan, kekuasaan, dan dominasi asing, serta memiliki hak berdaulat penuh untuk mengatur pemerintahan dan menentukan nasibnya sendiri.",
-        "full_text": "Hakikat Kedaulatan & Kebebasan Bangsa: Kemerdekaan adalah keadaan suatu bangsa atau negara yang terbebas dari penjajahan, kekuasaan, dan dominasi asing, serta memiliki hak berdaulat penuh untuk mengatur pemerintahan dan menentukan nasibnya sendiri.",
-        "source_count": 2,
-        "total_sources": 4,
-        "confidence_percent": 50,
-        "validity_badge": "Valid (Didukung Multi-Sumber)",
-        "level": "medium",
+        "title": "Komputer kuantum",
+        "description": "Komputer kuantum adalah alat hitung yang menggunakan sebuah fenomena mekanika kuantum, misalnya mahaletak dan keterkaitan, untuk melakukan operasi data. Dalam komputasi klasik, jumlah data dihitung dengan bit; dalam komputer kuantum, hal ini dilakukan dengan qubit.",
+        "full_text": "**Komputer kuantum**: Komputer kuantum adalah alat hitung yang menggunakan sebuah fenomena mekanika kuantum, misalnya mahaletak dan keterkaitan, untuk melakukan operasi data. Dalam komputasi klasik, jumlah data dihitung dengan bit; dalam komputer kuantum, hal ini dilakukan dengan qubit.",
+        "source_count": 3,
+        "total_sources": 3,
+        "confidence_percent": 100,
+        "validity_badge": "Sangat Valid (Konsensus Tinggi)",
+        "level": "high",
         "sources": [
-          "Konsensus Psikologi & Pengembangan Diri",
+          "Google Knowledge Suggestions",
+          "Wiktionary & KBBI Terbuka",
           "Wikipedia Indonesia"
         ]
       },
       {
-        "title": "Dimensi Politik & Pemerintahan",
-        "description": "Hak masyarakat untuk menyelenggarakan sistem pemerintahan mandiri berlandaskan hukum dan konstitusi tanpa intervensi imperialistik pihak luar.",
-        "full_text": "Dimensi Politik & Pemerintahan: Hak masyarakat untuk menyelenggarakan sistem pemerintahan mandiri berlandaskan hukum dan konstitusi tanpa intervensi imperialistik pihak luar.",
+        "title": "Komputer",
+        "description": "Komputer adalah sebuah mesin yang dapat diprogram untuk memproses data/informasi—direpresentasikan dalam bentuk yang dipahaminya—berdasarkan aturan aritmetika atau logika (komputasi). Komputer juga dicirikan dengan kemampuannya menyimpan program dan data.",
+        "full_text": "**Komputer**: Komputer adalah sebuah mesin yang dapat diprogram untuk memproses data/informasi—direpresentasikan dalam bentuk yang dipahaminya—berdasarkan aturan aritmetika atau logika (komputasi). Komputer juga dicirikan dengan kemampuannya menyimpan program dan data.",
         "source_count": 2,
-        "total_sources": 4,
-        "confidence_percent": 50,
+        "total_sources": 3,
+        "confidence_percent": 66,
         "validity_badge": "Valid (Didukung Multi-Sumber)",
         "level": "medium",
         "sources": [
-          "Konsensus Psikologi & Pengembangan Diri",
+          "Wiktionary & KBBI Terbuka",
           "Wikipedia Indonesia"
         ]
       },
       {
-        "title": "Kemerdekaan",
-        "description": "Kemerdekaan merupakan keadaan suatu bangsa atau negara yang pemerintahannya diatur oleh bangsanya sendiri tanpa intervensi pihak asing. Kemerdekaan suatu negara erat kaitannya dengan kedaulatan terhadap wilayah teritorial negara..",
-        "full_text": "**Kemerdekaan**: Kemerdekaan merupakan keadaan suatu bangsa atau negara yang pemerintahannya diatur oleh bangsanya sendiri tanpa intervensi pihak asing. Kemerdekaan suatu negara erat kaitannya dengan kedaulatan terhadap wilayah teritorial negara..",
+        "title": "Definisi Komputer",
+        "description": "alat elektronik otomatis yang dapat menghitung atau mengolah data secara cermat menurut yang diinstruksikan, dan memberikan hasil pengolahan, serta dapat menjalankan sistem multimedia (film, musik, televisi, faksimile, dsb.), biasanya terdiri atas unit pemasukan, unit pengeluaran, unit penyimpanan, serta unit pengontrolan",
+        "full_text": "**Definisi Komputer**: alat elektronik otomatis yang dapat menghitung atau mengolah data secara cermat menurut yang diinstruksikan, dan memberikan hasil pengolahan, serta dapat menjalankan sistem multimedia (film, musik, televisi, faksimile, dsb.), biasanya terdiri atas unit pemasukan, unit pengeluaran, unit penyimpanan, serta unit pengontrolan",
         "source_count": 2,
-        "total_sources": 4,
-        "confidence_percent": 50,
+        "total_sources": 3,
+        "confidence_percent": 66,
+        "validity_badge": "Valid (Didukung Multi-Sumber)",
+        "level": "medium",
+        "sources": [
+          "Wiktionary & KBBI Terbuka",
+          "Wikipedia Indonesia"
+        ]
+      },
+      {
+        "title": "Mekanika kuantum",
+        "description": "Mekanika kuantum adalah cabang dasar fisika yang digunakan untuk menjelaskan sistem atom dan subatom. Konsep mekanika kuantum digunakan untuk menggantikan mekanika klasik.",
+        "full_text": "**Mekanika kuantum**: Mekanika kuantum adalah cabang dasar fisika yang digunakan untuk menjelaskan sistem atom dan subatom. Konsep mekanika kuantum digunakan untuk menggantikan mekanika klasik.",
+        "source_count": 1,
+        "total_sources": 3,
+        "confidence_percent": 33,
+        "validity_badge": "Tervalidasi",
+        "level": "low",
+        "sources": [
+          "Wikipedia Indonesia"
+        ]
+      },
+      {
+        "title": "",
+        "description": "komputer kuantum adalah",
+        "full_text": "komputer kuantum adalah",
+        "source_count": 2,
+        "total_sources": 3,
+        "confidence_percent": 66,
         "validity_badge": "Valid (Didukung Multi-Sumber)",
         "level": "medium",
         "sources": [
           "Wikipedia Indonesia",
-          "Konsensus Psikologi & Pengembangan Diri"
+          "Google Knowledge Suggestions"
         ]
-      },
+      }
+    ],
+    "timestamp": "2026-08-19T17:41:12.773592"
+  },
+  "air laut asin": {
+    "query": "air laut asin",
+    "raw_input": "kenapa air laut rasanya asin?",
+    "total_sources": 4,
+    "sources_list": [
+      "Wiktionary & KBBI Terbuka",
+      "Wikipedia Indonesia",
+      "Google Knowledge Suggestions",
+      "Wikipedia Global Knowledge"
+    ],
+    "validated_points": [
       {
-        "title": "Badan Penyelidik Usaha-Usaha Persiapan Kemerdekaan",
-        "description": "Badan Penyelidik Usaha-Usaha Persiapan Kemerdekaan, lebih dikenal sebagai Badan Penyelidik Usaha-Usaha Persiapan Kemerdekaan Indonesia (disingkat BPUPKI), adalah sebuah badan yang dibentuk oleh pemerintah pendudukan balatentara Jepang di Jawa. Pemerintahan militer Jepang yang diwakili oleh komando Angkatan Darat Ke-16 dan Ke-25 menyetujui pembentukan BPUPKI pada 1 Maret 1945.",
-        "full_text": "**Badan Penyelidik Usaha-Usaha Persiapan Kemerdekaan**: Badan Penyelidik Usaha-Usaha Persiapan Kemerdekaan, lebih dikenal sebagai Badan Penyelidik Usaha-Usaha Persiapan Kemerdekaan Indonesia (disingkat BPUPKI), adalah sebuah badan yang dibentuk oleh pemerintah pendudukan balatentara Jepang di Jawa. Pemerintahan militer Jepang yang diwakili oleh komando Angkatan Darat Ke-16 dan Ke-25 menyetujui pembentukan BPUPKI pada 1 Maret 1945.",
-        "source_count": 2,
-        "total_sources": 4,
-        "confidence_percent": 50,
-        "validity_badge": "Valid (Didukung Multi-Sumber)",
-        "level": "medium",
-        "sources": [
-          "Wikipedia Indonesia",
-          "Konsensus Psikologi & Pengembangan Diri"
-        ]
-      },
-      {
-        "title": "Dimensi Individu & Hak Asasi",
-        "description": "Kebebasan setiap warga negara untuk berpikir, berpendapat, berkreasi, dan menentukan pilihan hidup secara merdeka dan bermartabat.",
-        "full_text": "Dimensi Individu & Hak Asasi: Kebebasan setiap warga negara untuk berpikir, berpendapat, berkreasi, dan menentukan pilihan hidup secara merdeka dan bermartabat.",
+        "title": "Air laut",
+        "description": "Air laut adalah air dari laut atau samudra. Air laut memiliki kadar garam rata-rata 3,5%.",
+        "full_text": "**Air laut**: Air laut adalah air dari laut atau samudra. Air laut memiliki kadar garam rata-rata 3,5%.",
         "source_count": 1,
         "total_sources": 4,
         "confidence_percent": 25,
         "validity_badge": "Tervalidasi",
         "level": "low",
         "sources": [
-          "Konsensus Psikologi & Pengembangan Diri"
+          "Wikipedia Indonesia"
+        ]
+      },
+      {
+        "title": "Air asin",
+        "description": "Air asin lebih sering berarti air dari laut dan samudra. Air ini juga disebut air laut.",
+        "full_text": "**Air asin**: Air asin lebih sering berarti air dari laut dan samudra. Air ini juga disebut air laut.",
+        "source_count": 1,
+        "total_sources": 4,
+        "confidence_percent": 25,
+        "validity_badge": "Tervalidasi",
+        "level": "low",
+        "sources": [
+          "Wikipedia Indonesia"
+        ]
+      },
+      {
+        "title": "Intrusi air asin",
+        "description": "Intrusi air asin adalah pergerakan air asin ke akuifer air tawar yang dapat mengkontaminasi sumber air minum. Intrusi air asin dapat terjadi secara alami hingga derajat tertentu pada sebagian besar akuifer pantai, dikarenakan adanya hubungan hidrolik antara air tanah dan air laut.",
+        "full_text": "**Intrusi air asin**: Intrusi air asin adalah pergerakan air asin ke akuifer air tawar yang dapat mengkontaminasi sumber air minum. Intrusi air asin dapat terjadi secara alami hingga derajat tertentu pada sebagian besar akuifer pantai, dikarenakan adanya hubungan hidrolik antara air tanah dan air laut.",
+        "source_count": 1,
+        "total_sources": 4,
+        "confidence_percent": 25,
+        "validity_badge": "Tervalidasi",
+        "level": "low",
+        "sources": [
+          "Wikipedia Indonesia"
         ]
       }
     ],
-    "timestamp": "2026-08-19T17:34:21.700493"
+    "timestamp": "2026-08-19T17:41:15.803539"
   },
-  "iya kemerdekaan": {
-    "query": "iya kemerdekaan",
-    "raw_input": "iya, tapi arti dari kemerdekaan itu apa?",
-    "total_sources": 3,
+  "roket luar angkasa": {
+    "query": "roket luar angkasa",
+    "raw_input": "bagaimana cara kerja roket luar angkasa?",
+    "total_sources": 4,
     "sources_list": [
+      "Wiktionary & KBBI Terbuka",
       "Wikipedia Indonesia",
-      "Wikipedia Global Knowledge",
-      "Konsensus Psikologi & Pengembangan Diri"
+      "Google Knowledge Suggestions",
+      "Wikipedia Global Knowledge"
     ],
     "validated_points": [
       {
-        "title": "Gunung Rinjani",
-        "description": "Gunung Rinjani (Sasak: ᬕᬸᬦ᭄ᬗᬸᬂ᭞ᬭᬶᬦ᭄ᬚᬦᬶcode: sas is deprecated , translit. gunong rinjani) adalah gunung berapi stratovulkano aktif yang terletak di wilayah Lombok Utara, Nusa Tenggara Barat, di pulau Lombok, Indonesia.",
-        "full_text": "**Gunung Rinjani**: Gunung Rinjani (Sasak: ᬕᬸᬦ᭄ᬗᬸᬂ᭞ᬭᬶᬦ᭄ᬚᬦᬶcode: sas is deprecated , translit. gunong rinjani) adalah gunung berapi stratovulkano aktif yang terletak di wilayah Lombok Utara, Nusa Tenggara Barat, di pulau Lombok, Indonesia.",
-        "source_count": 1,
-        "total_sources": 3,
-        "confidence_percent": 33,
-        "validity_badge": "Tervalidasi",
-        "level": "low",
+        "title": "Luar angkasa",
+        "description": "Luar angkasa atau antariksa merujuk pada bagian yang relatif kosong dari jagat raya, di luar atmosfer dari benda \"celestial\". Istilah luar angkasa digunakan untuk membedakannya dengan ruang udara dan lokasi \"terrestrial\".",
+        "full_text": "**Luar angkasa**: Luar angkasa atau antariksa merujuk pada bagian yang relatif kosong dari jagat raya, di luar atmosfer dari benda \"celestial\". Istilah luar angkasa digunakan untuk membedakannya dengan ruang udara dan lokasi \"terrestrial\".",
+        "source_count": 3,
+        "total_sources": 4,
+        "confidence_percent": 75,
+        "validity_badge": "Sangat Valid (Konsensus Tinggi)",
+        "level": "high",
         "sources": [
+          "Google Knowledge Suggestions",
+          "Wiktionary & KBBI Terbuka",
           "Wikipedia Indonesia"
         ]
       },
       {
-        "title": "Hakikat Kedaulatan & Kebebasan Bangsa",
-        "description": "Kemerdekaan adalah keadaan suatu bangsa atau negara yang terbebas dari penjajahan, kekuasaan, dan dominasi asing, serta memiliki hak berdaulat penuh untuk mengatur pemerintahan dan menentukan nasibnya sendiri.",
-        "full_text": "Hakikat Kedaulatan & Kebebasan Bangsa: Kemerdekaan adalah keadaan suatu bangsa atau negara yang terbebas dari penjajahan, kekuasaan, dan dominasi asing, serta memiliki hak berdaulat penuh untuk mengatur pemerintahan dan menentukan nasibnya sendiri.",
-        "source_count": 1,
-        "total_sources": 3,
-        "confidence_percent": 33,
-        "validity_badge": "Tervalidasi",
-        "level": "low",
+        "title": "Definisi Roket",
+        "description": "peluru berbentuk silinder yang digerakkan dengan reaksi motor dan dapat bekerja di luar atmosfer; proyektil “roket” di Kamus Besar Bahasa Indonesia, edisi VI (Daring), Jakarta: Badan Pengembangan dan Pembinaan Bahasa, Kementerian Pendidikan Dasar dan Menengah Republik Indonesia, 2016.",
+        "full_text": "**Definisi Roket**: peluru berbentuk silinder yang digerakkan dengan reaksi motor dan dapat bekerja di luar atmosfer; proyektil “roket” di Kamus Besar Bahasa Indonesia, edisi VI (Daring), Jakarta: Badan Pengembangan dan Pembinaan Bahasa, Kementerian Pendidikan Dasar dan Menengah Republik Indonesia, 2016.",
+        "source_count": 3,
+        "total_sources": 4,
+        "confidence_percent": 75,
+        "validity_badge": "Sangat Valid (Konsensus Tinggi)",
+        "level": "high",
         "sources": [
-          "Konsensus Psikologi & Pengembangan Diri"
-        ]
-      },
-      {
-        "title": "Jawa Timur",
-        "description": "Jawa Timur (diakronimkan sebagai Jatim) adalah sebuah wilayah provinsi yang terletak di bagian timur Pulau Jawa, Indonesia. Ibu kotanya adalah Kota Surabaya.",
-        "full_text": "**Jawa Timur**: Jawa Timur (diakronimkan sebagai Jatim) adalah sebuah wilayah provinsi yang terletak di bagian timur Pulau Jawa, Indonesia. Ibu kotanya adalah Kota Surabaya.",
-        "source_count": 1,
-        "total_sources": 3,
-        "confidence_percent": 33,
-        "validity_badge": "Tervalidasi",
-        "level": "low",
-        "sources": [
+          "Google Knowledge Suggestions",
+          "Wiktionary & KBBI Terbuka",
           "Wikipedia Indonesia"
         ]
       },
       {
-        "title": "Dimensi Politik & Pemerintahan",
-        "description": "Hak masyarakat untuk menyelenggarakan sistem pemerintahan mandiri berlandaskan hukum dan konstitusi tanpa intervensi imperialistik pihak luar.",
-        "full_text": "Dimensi Politik & Pemerintahan: Hak masyarakat untuk menyelenggarakan sistem pemerintahan mandiri berlandaskan hukum dan konstitusi tanpa intervensi imperialistik pihak luar.",
-        "source_count": 1,
-        "total_sources": 3,
-        "confidence_percent": 33,
-        "validity_badge": "Tervalidasi",
-        "level": "low",
+        "title": "Teleskop luar angkasa Kepler",
+        "description": "Misi Kepler (Kepler Mission) menggunakan teleskop luar angkasa NASA yang dirancang untuk mencari planet mirip Bumi yang sedang mengorbit bintang lain. Mengorbit Matahari setidaknya 3,5 tahun, Kepler akan menggunakan fotometer luar angkasa yang dikembangkan NASA, untuk terus memonitor kecemerlangan lebih dari 100.000 bintang yang berada dalam medan pandangnya yang tetap pada satu tempat.",
+        "full_text": "**Teleskop luar angkasa Kepler**: Misi Kepler (Kepler Mission) menggunakan teleskop luar angkasa NASA yang dirancang untuk mencari planet mirip Bumi yang sedang mengorbit bintang lain. Mengorbit Matahari setidaknya 3,5 tahun, Kepler akan menggunakan fotometer luar angkasa yang dikembangkan NASA, untuk terus memonitor kecemerlangan lebih dari 100.000 bintang yang berada dalam medan pandangnya yang tetap pada satu tempat.",
+        "source_count": 2,
+        "total_sources": 4,
+        "confidence_percent": 50,
+        "validity_badge": "Valid (Didukung Multi-Sumber)",
+        "level": "medium",
         "sources": [
-          "Konsensus Psikologi & Pengembangan Diri"
+          "Google Knowledge Suggestions",
+          "Wikipedia Indonesia"
         ]
       },
       {
-        "title": "Dimensi Individu & Hak Asasi",
-        "description": "Kebebasan setiap warga negara untuk berpikir, berpendapat, berkreasi, dan menentukan pilihan hidup secara merdeka dan bermartabat.",
-        "full_text": "Dimensi Individu & Hak Asasi: Kebebasan setiap warga negara untuk berpikir, berpendapat, berkreasi, dan menentukan pilihan hidup secara merdeka dan bermartabat.",
-        "source_count": 1,
-        "total_sources": 3,
-        "confidence_percent": 33,
-        "validity_badge": "Tervalidasi",
-        "level": "low",
+        "title": "Teleskop Luar Angkasa Hubble",
+        "description": "Teleskop luar angkasa Hubble (sering disebut sebagai HST atau Hubble) adalah sebuah teleskop luar angkasa yang diluncurkan ke orbit bumi rendah pada tahun 1990 dan masih beroperasi. Teleskop ini bukanlah teleskop luar angkasa pertama, tetapi merupakan salah satu yang terbesar dan paling serbaguna, terkenal sebagai alat penelitian yang sangat penting dan sebuah anugerah hubungan masyarakat untuk astronomi.",
+        "full_text": "**Teleskop Luar Angkasa Hubble**: Teleskop luar angkasa Hubble (sering disebut sebagai HST atau Hubble) adalah sebuah teleskop luar angkasa yang diluncurkan ke orbit bumi rendah pada tahun 1990 dan masih beroperasi. Teleskop ini bukanlah teleskop luar angkasa pertama, tetapi merupakan salah satu yang terbesar dan paling serbaguna, terkenal sebagai alat penelitian yang sangat penting dan sebuah anugerah hubungan masyarakat untuk astronomi.",
+        "source_count": 2,
+        "total_sources": 4,
+        "confidence_percent": 50,
+        "validity_badge": "Valid (Didukung Multi-Sumber)",
+        "level": "medium",
         "sources": [
-          "Konsensus Psikologi & Pengembangan Diri"
+          "Google Knowledge Suggestions",
+          "Wikipedia Indonesia"
+        ]
+      },
+      {
+        "title": "",
+        "description": "roket luar angkasa tercepat di dunia",
+        "full_text": "roket luar angkasa tercepat di dunia",
+        "source_count": 3,
+        "total_sources": 4,
+        "confidence_percent": 75,
+        "validity_badge": "Sangat Valid (Konsensus Tinggi)",
+        "level": "high",
+        "sources": [
+          "Wiktionary & KBBI Terbuka",
+          "Wikipedia Indonesia",
+          "Google Knowledge Suggestions"
         ]
       }
     ],
-    "timestamp": "2026-08-19T17:34:22.976735"
+    "timestamp": "2026-08-19T17:41:18.474119"
   }
 }

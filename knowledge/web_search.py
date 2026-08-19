@@ -109,58 +109,16 @@ class WebSearch:
         # Simpan ke cache
         self._cache[cache_key] = result
         self._save_cache()
+        return result
         
     def _clean_search_query(self, text):
-        """Membersihkan kalimat percakapan menjadi search query internet yang tajam."""
+        """
+        Membersihkan kalimat percakapan menjadi search query internet yang tajam dan dinamis.
+        Murni berbasis pemrosesan bahasa alami (NLP) dan morfologi tanpa ketergantungan hardcode.
+        """
         text_lower = text.lower().strip()
         
-        # 1. Handle kasus sains / asal usul / evolusi manusia & alam
-        if any(w in text_lower for w in ["ciptakan", "tercipta", "asal usul", "evolusi", "terbentuk"]) and any(w in text_lower for w in ["manusia", "homo sapiens", "kehidupan"]):
-            return "evolusi manusia asal usul homo sapiens biologi sains"
-        if any(w in text_lower for w in ["alam semesta", "tata surya", "bumi"]) and any(w in text_lower for w in ["ciptakan", "tercipta", "terbentuk", "asal usul"]):
-            return "teori big bang pembentukan alam semesta sains"
-        if "asma" in text_lower:
-            return "penyakit asma sistem pernapasan gejala penyebab bronkus"
-        if any(w in text_lower for w in ["bernafas", "bernapas", "pernapasan", "respirasi", "paru-paru"]):
-            return "sistem pernapasan manusia proses bernapas"
-        if any(w in text_lower for w in ["fotosintesis"]):
-            return "proses fotosintesis tumbuhan biologi"
-        if any(w in text_lower for w in ["hujan", "siklus air", "hidrologi"]):
-            return "proses terjadinya hujan siklus air"
-        if any(w in text_lower for w in ["pesawat", "aerodinamika"]) and any(w in text_lower for w in ["terbang", "udara"]):
-            return "cara pesawat terbang prinsip aerodinamika"
-        if any(w in text_lower for w in ["langit", "warna langit"]) and any(w in text_lower for w in ["biru", "warna"]):
-            return "kenapa langit berwarna biru hamburan rayleigh"
-            
-        # 1.5 Handle kasus olahraga / tren / Gen Z / lifestyle
-        if any(w in text_lower for w in ["olahraga", "sport", "workout", "lari", "padel", "gym", "fitness"]) and any(w in text_lower for w in ["gen z", "gen-z", "milenial", "anak muda", "tren", "populer", "disukai", "diminati", "dinikmati"]):
-            return "tren olahraga paling populer diminati gen z"
-            
-        # 2. Handle kasus keterikatan emosional / susah lepas / tempat cerita
-        if any(w in text_lower for w in ["terikat", "susah lepas", "sulit lepas", "keterikatan", "attachment"]):
-            return "cara melepaskan keterikatan emosional attachment psikologi"
-        if any(w in text_lower for w in ["tempat cerita", "tempat curhat", "orang yang kupercayai", "orang yang aku percayai", "satu-satunya tempat"]):
-            return "cara menyalurkan emosi kehilangan tempat curhat"
-            
-        # 3. Handle kasus move on / mantan / patah hati
-        if any(w in text_lower for w in ["move on", "mantan", "pacar baru", "patah hati", "putus cinta"]):
-            if "cari pacar" in text_lower or "pacar baru" in text_lower or "rebound" in text_lower:
-                return "tips move on dan apakah perlu cari pacar baru"
-            return "cara dan tips move on dari mantan pacar"
-            
-        # 4. Handle insomnia / susah tidur
-        if any(w in text_lower for w in ["tidur", "insomnia", "begadang"]):
-            return "cara mengatasi susah tidur insomnia"
-            
-        # 5. Handle stres / overthinking / cemas
-        if any(w in text_lower for w in ["overthinking", "stres", "stress", "cemas", "anxiety", "khawatir"]):
-            return "cara mengatasi overthinking dan stres"
-            
-        # 6. Handle belajar koding / programming
-        if any(w in text_lower for w in ["koding", "coding", "pemrograman", "programming", "python"]):
-            return "tips belajar coding pemrograman pemula"
-            
-        # 7. Ekstraksi kata-kata kunci bermakna secara aman berbasis token & penghapusan imbuhan umum
+        # Bersihkan tanda baca
         clean = re.sub(r'[^\w\s]', ' ', text_lower)
         raw_tokens = clean.split()
         
@@ -174,10 +132,11 @@ class WebSearch:
             "terangkan", "tolong", "coba", "bagaimana", "bagaimanakah", "gimana", "kenapa",
             "mengapa", "mengapakah", "apa", "seperti", "pada", "tentang", "di", "menurut",
             "cara", "caranya", "sains", "ilmiah", "secara", "arti", "artinya", "makna", "maknanya",
-            "pengertian", "definisi"
+            "pengertian", "definisi", "siapa", "kapan", "dimana", "di mana", "berapa", "manakah",
+            "sebutkan", "rasa", "rasanya", "paling", "oleh", "okeh", "dalam", "tubuh", "kerja", "proses"
         }
         
-        short_keep = {"z", "ai", "vr", "ar", "3d", "5g", "4g", "it", "ui", "ux", "dj", "k", "4k", "8k", "ml", "dl"}
+        short_keep = {"z", "ai", "vr", "ar", "3d", "5g", "4g", "it", "ui", "ux", "dj", "k", "4k", "8k", "ml", "dl", "ev", "hp"}
         meaningful_tokens = []
         for w in raw_tokens:
             w_stem = re.sub(r'(kah|lah|pun|nya)$', '', w)
@@ -185,14 +144,22 @@ class WebSearch:
                 meaningful_tokens.append(w_stem)
         
         if meaningful_tokens:
-            return " ".join(meaningful_tokens[:5])
+            return " ".join(meaningful_tokens[:4])
         return text.strip()
     
     def _fetch_all_sources(self, query, raw_query):
-        """Mengambil data dari berbagai sumber independen secara aman."""
+        """Mengambil data dari berbagai sumber internet independen secara real-time."""
         sources = []
         
-        # Sumber 1: Wikipedia Indonesia Batch Articles & Extracts
+        # Sumber 1: Kamus Wiktionary Indonesia (Definisi KBBI Presisi & Cepat)
+        wiktionary_results = self._fetch_wiktionary_id(query)
+        if wiktionary_results:
+            sources.append({
+                "source": "Wiktionary & KBBI Terbuka",
+                "snippets": wiktionary_results
+            })
+            
+        # Sumber 2: Wikipedia Indonesia Batch Articles & Extracts
         wiki_id_results = self._fetch_wikipedia_id(query)
         if wiki_id_results:
             sources.append({
@@ -200,7 +167,7 @@ class WebSearch:
                 "snippets": wiki_id_results
             })
             
-        # Sumber 2: Google Search & Topic Suggestions
+        # Sumber 3: Google Search & Topic Suggestions
         google_suggest_results = self._fetch_google_suggestions(query)
         if google_suggest_results:
             sources.append({
@@ -208,7 +175,7 @@ class WebSearch:
                 "snippets": google_suggest_results
             })
             
-        # Sumber 3: Wikipedia English Encyclopedia (Global Knowledge)
+        # Sumber 4: Wikipedia English Encyclopedia (Global Knowledge)
         wiki_en_results = self._fetch_wikipedia_en(query)
         if wiki_en_results:
             sources.append({
@@ -216,7 +183,7 @@ class WebSearch:
                 "snippets": wiki_en_results
             })
             
-        # Sumber 4: Basis Pengetahuan Terverifikasi & Studi Psikologi
+        # Sumber 5: Panduan Emosi & Psikologi Umum
         expert_results = self._fetch_expert_domain_knowledge(query, raw_query)
         if expert_results:
             sources.append({
@@ -225,6 +192,40 @@ class WebSearch:
             })
             
         return sources
+        
+    def _fetch_wiktionary_id(self, query):
+        """Mengambil definisi kamus presisi dari Wiktionary Bahasa Indonesia."""
+        try:
+            tokens = query.split()
+            candidates = [query]
+            if len(tokens) > 1:
+                candidates.extend(tokens)
+                
+            snippets = []
+            for word in candidates[:2]:
+                enc = urllib.parse.quote(word)
+                url = f"https://id.wiktionary.org/w/api.php?action=query&prop=extracts&explaintext=1&titles={enc}&format=json"
+                req = urllib.request.Request(url, headers={"User-Agent": self._user_agent, "Accept": "application/json"})
+                with urllib.request.urlopen(req, timeout=self._timeout, context=self._ssl_context) as resp:
+                    if resp.status == 200:
+                        data = json.loads(resp.read().decode("utf-8", errors="ignore"))
+                        pages = data.get("query", {}).get("pages", {})
+                        for pid, pdata in pages.items():
+                            ext = pdata.get("extract", "").strip()
+                            if not ext or len(ext) < 20 or "Halaman ini belum ada" in ext:
+                                continue
+                            # Bersihkan tag wiktionary
+                            clean_def = re.sub(r'==[^=]+==', ' ', ext)
+                            clean_def = re.sub(r'\s+', ' ', clean_def).strip()
+                            sentences = [s.strip() for s in re.split(r'(?<=[.!?])\s+', clean_def) if len(s.strip()) > 15]
+                            if sentences:
+                                snippets.append(f"**Definisi {word.title()}**: {' '.join(sentences[:2])}")
+                if snippets:
+                    break
+            return snippets
+        except Exception:
+            pass
+        return []
     
     def _fetch_wikipedia_id(self, query):
         """Mencari artikel terkait di Wikipedia Bahasa Indonesia dengan filter dan pemeringkatan relevansi."""
@@ -372,74 +373,6 @@ class WebSearch:
                 "Pisahkan Lingkaran Kendali: Bedakan dengan jelas mana hal-hal yang berada di bawah kendalimu vs hal yang sepenuhnya di luar kendalimu.",
                 "Terapkan Teknik Journaling: Tuangkan kekhawatiran ke dalam tulisan agar otak tidak terus-menerus memutar skenario buruk yang sama.",
                 "Latihan Pernapasan & Mindfulness: Lakukan teknik pernapasan dalam 4-7-8 untuk meredakan respons fight-or-flight saraf simpatik."
-            ]
-            
-        elif any(w in q_lower for w in ["ciptakan", "tercipta", "asal usul", "evolusi"]) and any(w in q_lower for w in ["manusia", "homo sapiens", "kehidupan"]):
-            return [
-                "Evolusi Biologis dari Nenek Moyang Bersama (Common Ancestor): Menurut sains modern, manusia (Homo sapiens) muncul melalui proses evolusi bertahap jutaan tahun dari garis keturunan primata hominid bersama.",
-                "Transisi Spesies Genus Homo: Bukti fosil paleoantropologi menunjukkan rantai transisi evolusi dari Australopithecus, Homo habilis (pembuat alat batu pertama), Homo erectus (yang mulai berjalan tegak dan bermigrasi), hingga Homo sapiens di Afrika sekitar 300.000 tahun lalu.",
-                "Seleksi Alam & Perkembangan Otak (Ensefalisasi): Perkembangan kemampuan berdiri tegak (bipedalisme) membebaskan tangan untuk menggunakan perkakas, memicu lonjakan volume otak dan kemampuan kognitif tingkat tinggi.",
-                "Asal Usul Kehidupan Molekuler (Abiogenesis): Pada skala waktu miliaran tahun, seluruh kehidupan di Bumi berakar dari molekul organik sederhana di lautan purba yang berevolusi menjadi sel hidup pertama."
-            ]
-            
-        elif any(w in q_lower for w in ["merdeka", "kemerdekaan", "kedaulatan"]):
-            return [
-                "Hakikat Kedaulatan & Kebebasan Bangsa: Kemerdekaan adalah keadaan suatu bangsa atau negara yang terbebas dari penjajahan, kekuasaan, dan dominasi asing, serta memiliki hak berdaulat penuh untuk mengatur pemerintahan dan menentukan nasibnya sendiri.",
-                "Dimensi Politik & Pemerintahan: Hak masyarakat untuk menyelenggarakan sistem pemerintahan mandiri berlandaskan hukum dan konstitusi tanpa intervensi imperialistik pihak luar.",
-                "Dimensi Ekonomi & Kemandirian: Kedaulatan dalam mengelola sumber daya alam dan mendistribusikan keadilan sosial demi kesejahteraan seluruh rakyat.",
-                "Dimensi Individu & Hak Asasi: Kebebasan setiap warga negara untuk berpikir, berpendapat, berkreasi, dan menentukan pilihan hidup secara merdeka dan bermartabat."
-            ]
-            
-        elif any(w in q_lower for w in ["olahraga", "sport", "workout"]) and any(w in q_lower for w in ["gen z", "gen-z", "milenial", "anak muda", "tren", "populer", "disukai", "diminati", "dinikmati"]):
-            return [
-                "Padel Tennis & Pickleball (Olahraga Raket Sosial): Olahraga raket yang sangat meledak di kalangan Gen Z karena aturan mainnya mudah, seru untuk nongkrong dan membangun jejaring pertemanan, serta sangat estetik di media sosial.",
-                "Running Club & Night Run (Lari Komunitas): Tren lari santai 5K hingga 10K bersama komunitas lari pagi atau malam yang memadukan kebugaran kardio dengan interaksi sosial yang dinamis.",
-                "Pound Fit & Pilates (Reformer): Olahraga berbasis ritme musik energik dengan ripstix (poundfit) dan latihan fleksibilitas serta kekuatan core tubuh (pilates) yang digemari untuk meredakan stres mental.",
-                "Gym, Calisthenics & Functional Fitness (Hyrox): Latihan beban mandiri dan functional fitness yang fokus pada pembentukan postur tubuh atletis, disiplin, dan kesehatan jangka panjang.",
-                "Bulu Tangkis (Badminton) & Mini Soccer: Olahraga tim yang tetap menjadi pilihan utama untuk refreshing dan seru-seruan bareng teman sebaya.",
-                "Esports & Active VR Gaming: Kompetisi gaming digital dan simulasi olahraga aktif virtual yang menyatu dengan kultur teknologi generasi digital."
-            ]
-            
-        elif any(w in q_lower for w in ["asma"]):
-            return [
-                "Penyempitan & Pembengkakan Saluran Bronkus (Bronkospasme): Dinding saluran napas mengalami peradangan kronis dan otot polos di sekitarnya menegang (spasme), mempersempit rongga aliran udara secara drastis.",
-                "Hipersekresi Lendir / Mukus Berlebih: Dinding bronkus yang teriritasi memproduksi lendir kental berlebih yang menyumbat jalur pernapasan, menimbulkan suara mengi (wheezing) dan batuk.",
-                "Gejala Sesak Napas & Dada Tertekan: Pasien mengalami kesulitan bernapas akut, rasa berat di dada, serta penurunan suplai oksigen ke paru-paru dan seluruh tubuh.",
-                "Reaktivitas terhadap Faktor Pemicu (Triggers): Saluran napas penderita asma sangat sensitif terhadap alergen seperti debu, bulu hewan, polusi, asap rokok, udara dingin, atau aktivitas fisik berlebih."
-            ]
-            
-        elif any(w in q_lower for w in ["bernafas", "bernapas", "pernapasan", "respirasi", "paru"]):
-            return [
-                "Proses Inspirasi (Menghirup Udara): Udara masuk melalui rongga hidung atau mulut, disaring oleh silia dan lendir, lalu mengalir melalui faring, laring, trakea, dan bronkus menuju paru-paru.",
-                "Kontraksi Otot Diafragma & Tulang Rusuk: Otot diafragma berkontraksi dan mendatar ke bawah, rongga dada membesar sehingga tekanan udara di paru-paru menurun dan menarik udara luar masuk.",
-                "Pertukaran Gas di Alveolus: Di dalam kantung alveolus yang diselimuti kapiler darah, oksigen diserap ke dalam sel darah merah (diikat hemoglobin) dan karbon dioksida dari darah dilepaskan.",
-                "Proses Ekspirasi (Menghembuskan Udara): Diafragma berelaksasi dan melengkung ke atas, volume rongga dada menyusut, dan udara kaya karbon dioksida dihembuskan keluar dari tubuh."
-            ]
-            
-        elif any(w in q_lower for w in ["fotosintesis"]):
-            return [
-                "Penyerapan Energi Cahaya oleh Klorofil: Daun tumbuhan hijau menyerap foton cahaya matahari melalui pigmen klorofil pada kloroplas.",
-                "Reaksi Terang (Fotolisis Air): Energi cahaya memecah molekul air (H2O) menjadi ion hidrogen dan melepaskan gas oksigen (O2) ke udara.",
-                "Reaksi Gelap (Siklus Calvin): Mengikat karbon dioksida (CO2) dari udara dan menggabungkannya dengan hidrogen untuk menghasilkan glukosa (C6H12O6) sebagai sumber energi tumbuhan."
-            ]
-            
-        elif any(w in q_lower for w in ["hujan", "siklus air", "hidrologi"]):
-            return [
-                "Evaporasi & Transpirasi: Panas matahari menguapkan air dari lautan, sungai, dan permukaan daun tumbuhan ke atmosfer.",
-                "Kondensasi (Pembentukan Awan): Uap air yang naik mengalami pendinginan di atmosfer tinggi dan mengembun menjadi tetesan air kecil yang membentuk awan.",
-                "Presipitasi (Turunnya Hujan): Saat butiran air di dalam awan menjadi terlalu berat dan jenuh untuk ditopang arus udara, air jatuh ke bumi sebagai hujan."
-            ]
-            
-        elif any(w in q_lower for w in ["pesawat", "aerodinamika", "terbang"]):
-            return [
-                "Prinsip Bernoulli & Bentuk Sayap (Airfoil): Permukaan atas sayap melengkung membuat aliran udara di atas lebih cepat dan tekanannya lebih rendah dibanding bawah, menciptakan gaya angkat (Lift).",
-                "Keseimbangan 4 Gaya Aerodinamika: Pesawat terbang stabil berkat keseimbangan antara Gaya Angkat (Lift) vs Gravitasi (Weight), serta Gaya Dorong Mesin (Thrust) vs Hambatan Udara (Drag)."
-            ]
-            
-        elif any(w in q_lower for w in ["langit", "warna langit"]) and any(w in q_lower for w in ["biru"]):
-            return [
-                "Fenomena Hamburan Rayleigh: Cahaya matahari yang tampak putih sebenarnya tersusun atas berbagai panjang gelombang warna (pelangi).",
-                "Panjang Gelombang Pendek: Cahaya biru memiliki panjang gelombang lebih pendek dan frekuensi lebih tinggi, sehingga dihamburkan ke segala arah jauh lebih kuat oleh molekul gas atmosfer (nitrogen & oksigen)."
             ]
             
         return []

@@ -157,7 +157,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787135202.2607648
+    "learned_at": 1787136072.7867844
   },
   "orang": {
     "word": "orang",
@@ -821,7 +821,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787135199.2355125
+    "learned_at": 1787136078.480723
   },
   "mengatasi": {
     "word": "mengatasi",
@@ -1133,7 +1133,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787135195.6310432
+    "learned_at": 1787136075.8183937
   },
   "manusia": {
     "word": "manusia",
@@ -1422,5 +1422,77 @@
     "meaning": "",
     "sentiment": 0.0,
     "learned_at": 1787135662.9870708
+  },
+  "komputer": {
+    "word": "komputer",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787135662.9904063
+  },
+  "kuantum": {
+    "word": "kuantum",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787136072.7841356
+  },
+  "laut": {
+    "word": "laut",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787136075.8093293
+  },
+  "rasanya": {
+    "word": "rasanya",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787136075.812527
+  },
+  "asin": {
+    "word": "asin",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787136075.815631
+  },
+  "kerja": {
+    "word": "kerja",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787136078.4835176
+  },
+  "roket": {
+    "word": "roket",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787136078.4861991
+  },
+  "luar": {
+    "word": "luar",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787136078.4887817
+  },
+  "angkasa": {
+    "word": "angkasa",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787136078.4908466
   }
 }
