@@ -5,7 +5,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787129637.9275818
+    "learned_at": 1787136909.4514673
   },
   "kamu": {
     "word": "kamu",
@@ -13,7 +13,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787135199.2464666
+    "learned_at": 1787136907.1338816
   },
   "kabar": {
     "word": "kabar",
@@ -157,7 +157,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787136072.7867844
+    "learned_at": 1787136877.4452832
   },
   "orang": {
     "word": "orang",
@@ -517,7 +517,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787135199.251012
+    "learned_at": 1787136907.1464708
   },
   "harus": {
     "word": "harus",
@@ -821,7 +821,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787136078.480723
+    "learned_at": 1787136903.7645633
   },
   "mengatasi": {
     "word": "mengatasi",
@@ -1125,7 +1125,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787130612.8873322
+    "learned_at": 1787136903.7572486
   },
   "bagaimana": {
     "word": "bagaimana",
@@ -1133,7 +1133,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787136075.8183937
+    "learned_at": 1787136907.1391547
   },
   "manusia": {
     "word": "manusia",
@@ -1141,7 +1141,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787135202.6173182
+    "learned_at": 1787136907.1421242
   },
   "bernafas": {
     "word": "bernafas",
@@ -1157,7 +1157,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787130153.497047
+    "learned_at": 1787136909.4585905
   },
   "proses": {
     "word": "proses",
@@ -1333,7 +1333,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787135199.2415028
+    "learned_at": 1787136907.1444867
   },
   "menjelaskannya": {
     "word": "menjelaskannya",
@@ -1349,7 +1349,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787135199.2532792
+    "learned_at": 1787136907.1483269
   },
   "kewirausahaan": {
     "word": "kewirausahaan",
@@ -1429,7 +1429,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787135662.9904063
+    "learned_at": 1787136909.461897
   },
   "kuantum": {
     "word": "kuantum",
@@ -1437,7 +1437,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787136072.7841356
+    "learned_at": 1787136909.4650075
   },
   "laut": {
     "word": "laut",
@@ -1445,7 +1445,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787136075.8093293
+    "learned_at": 1787136877.4489412
   },
   "rasanya": {
     "word": "rasanya",
@@ -1453,7 +1453,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787136075.812527
+    "learned_at": 1787136877.4518645
   },
   "asin": {
     "word": "asin",
@@ -1461,7 +1461,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787136075.815631
+    "learned_at": 1787136877.454482
   },
   "kerja": {
     "word": "kerja",
@@ -1494,5 +1494,53 @@
     "meaning": "",
     "sentiment": 0.0,
     "learned_at": 1787136078.4908466
+  },
+  "apakah": {
+    "word": "apakah",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787136903.751762
+  },
+  "tata": {
+    "word": "tata",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787136903.7623737
+  },
+  "gravitasi": {
+    "word": "gravitasi",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787136903.7668364
+  },
+  "bekerja": {
+    "word": "bekerja",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787136903.7689874
+  },
+  "halo": {
+    "word": "halo",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787136907.150353
+  },
+  "tolong": {
+    "word": "tolong",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787136909.4548872
   }
 }

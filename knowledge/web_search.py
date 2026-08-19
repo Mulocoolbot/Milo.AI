@@ -118,8 +118,22 @@ class WebSearch:
         """
         text_lower = text.lower().strip()
         
-        # Bersihkan tanda baca
-        clean = re.sub(r'[^\w\s]', ' ', text_lower)
+        # 1. Bersihkan sapaan & bot names di awal atau di mana pun
+        text_clean = re.sub(r'^(hai|halo|hey|helo|oi|salam|assalamu\s*alaikum)\s*(milo|bot|ai)?\s*,?\s*', ' ', text_lower)
+        text_clean = re.sub(r'\b(milo|bot|ai)\b', ' ', text_clean)
+        
+        # 2. Bersihkan frasa pembuka percakapan / kesopanan
+        text_clean = re.sub(r'\b(apakah|bisakah|bisa kah|dapatkah|maukah|tolong|coba|mohon)\s+(kamu|anda)?\s*(bisa|dapat)?\s*(menjelaskan|menerangkan|ceritakan|kasih tau|kasih tahu|jelaskan|terangkan|tahu|tau)?\s*(tentang|mengenai|soal|terkait|seputar)?\b', ' ', text_clean)
+        text_clean = re.sub(r'\b(tata\s+cara|cara\s+kerja|bagaimana\s+cara|gimana\s+cara|proses\s+kerja|cara|proses|mekanisme|tata)\b', ' ', text_clean)
+        text_clean = re.sub(r'\b(bekerja|terjadi|berlangsung|berfungsi)\b', ' ', text_clean)
+        text_clean = re.sub(r'\b(dinikmati|diminati|disukai|digemari|populer)\b', ' ', text_clean)
+        
+        # 3. Tangani kasus sains penciptaan / asal usul kehidupan & alam
+        if any(w in text_lower for w in ['cipta', 'diciptakan', 'asal usul', 'terbentuk']) and 'manusia' in text_lower and any(w in text_lower for w in ['sains', 'ilmiah', 'biologi']):
+            return 'evolusi manusia asal usul biologi sains'
+            
+        # 4. Bersihkan tanda baca
+        clean = re.sub(r'[^\w\s]', ' ', text_clean)
         raw_tokens = clean.split()
         
         query_stopwords = {
@@ -131,15 +145,16 @@ class WebSearch:
             "yah", "cuman", "aja", "kah", "mau", "menjelaskan", "menjelaskannya", "jelaskan",
             "terangkan", "tolong", "coba", "bagaimana", "bagaimanakah", "gimana", "kenapa",
             "mengapa", "mengapakah", "apa", "seperti", "pada", "tentang", "di", "menurut",
-            "cara", "caranya", "sains", "ilmiah", "secara", "arti", "artinya", "makna", "maknanya",
-            "pengertian", "definisi", "siapa", "kapan", "dimana", "di mana", "berapa", "manakah",
-            "sebutkan", "rasa", "rasanya", "paling", "oleh", "okeh", "dalam", "tubuh", "kerja", "proses"
+            "arti", "artinya", "makna", "maknanya", "pengertian", "definisi", "siapa", "kapan",
+            "dimana", "di mana", "berapa", "manakah", "sebutkan", "rasa", "rasanya", "paling",
+            "oleh", "okeh", "dalam", "tubuh", "kerja", "proses", "hai", "halo", "hey", "milo",
+            "tata", "bekerja", "terkait", "seputar", "mengenai"
         }
         
         short_keep = {"z", "ai", "vr", "ar", "3d", "5g", "4g", "it", "ui", "ux", "dj", "k", "4k", "8k", "ml", "dl", "ev", "hp"}
         meaningful_tokens = []
         for w in raw_tokens:
-            w_stem = re.sub(r'(kah|lah|pun|nya)$', '', w)
+            w_stem = re.sub(r'(kah|lah|pun|nya|kan|an)$', '', w)
             if w not in query_stopwords and w_stem not in query_stopwords and (len(w_stem) > 2 or w_stem in short_keep):
                 meaningful_tokens.append(w_stem)
         
@@ -197,12 +212,15 @@ class WebSearch:
         """Mengambil definisi kamus presisi dari Wiktionary Bahasa Indonesia."""
         try:
             tokens = query.split()
+            # Hanya cari query lengkap atau kata benda utama, bukan sembarang token
             candidates = [query]
-            if len(tokens) > 1:
-                candidates.extend(tokens)
+            if len(tokens) > 1 and len(tokens[-1]) > 3:
+                candidates.append(tokens[-1])
                 
             snippets = []
-            for word in candidates[:2]:
+            for word in candidates:
+                if len(word) <= 2:
+                    continue
                 enc = urllib.parse.quote(word)
                 url = f"https://id.wiktionary.org/w/api.php?action=query&prop=extracts&explaintext=1&titles={enc}&format=json"
                 req = urllib.request.Request(url, headers={"User-Agent": self._user_agent, "Accept": "application/json"})
@@ -212,10 +230,13 @@ class WebSearch:
                         pages = data.get("query", {}).get("pages", {})
                         for pid, pdata in pages.items():
                             ext = pdata.get("extract", "").strip()
-                            if not ext or len(ext) < 20 or "Halaman ini belum ada" in ext:
+                            if not ext or len(ext) < 20:
+                                continue
+                            if any(bad in ext.lower() for bad in ["{{rfdef}}", "memerlukan penerangan", "halaman ini belum ada", "bentuk transitif", "bentuk pasif"]):
                                 continue
                             # Bersihkan tag wiktionary
                             clean_def = re.sub(r'==[^=]+==', ' ', ext)
+                            clean_def = re.sub(r'\[\[[^\]]+\]\]', '', clean_def)
                             clean_def = re.sub(r'\s+', ' ', clean_def).strip()
                             sentences = [s.strip() for s in re.split(r'(?<=[.!?])\s+', clean_def) if len(s.strip()) > 15]
                             if sentences:

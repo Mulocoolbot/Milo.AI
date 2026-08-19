@@ -359,37 +359,15 @@ class ResponseEngine:
         return None
         
     def _derive_topic_title(self, user_input, keywords, query=""):
-        """Menentukan judul topik penjelasan dari input user."""
-        text_lower = user_input.lower()
-        if any(w in text_lower for w in ["kemerdekaan", "merdeka", "kedaulatan"]):
-            return "Arti dan Makna Kemerdekaan (Hakikat Kedaulatan & Kebebasan)"
-        if any(w in text_lower for w in ["olahraga", "sport", "workout"]) and any(w in text_lower for w in ["gen z", "gen-z", "milenial", "anak muda", "dinikmati", "disukai", "populer"]):
-            return "Tren Olahraga yang Paling Diminati dan Populer di Kalangan Gen Z"
-        if any(w in text_lower for w in ["ciptakan", "tercipta", "asal usul", "penciptaan", "evolusi"]) and "manusia" in text_lower:
-            return "Asal Usul dan Pembentukan Manusia Menurut Sains (Teori Evolusi Biologi)"
-        if "asma" in text_lower:
-            return "Penyakit Asma (Mekanisme, Gejala, dan Dampak pada Saluran Pernapasan)"
-        if any(w in text_lower for w in ["bernafas", "bernapas", "pernapasan", "respirasi"]):
-            return "Sistem Pernapasan Manusia (Bagaimana Manusia Bernapas)"
-        if "fotosintesis" in text_lower:
-            return "Proses Fotosintesis pada Tumbuhan"
-        if "hujan" in text_lower:
-            return "Proses Terjadinya Hujan (Siklus Air)"
-        if "pesawat" in text_lower:
-            return "Bagaimana Pesawat Terbang Bisa Terbang"
-        if "langit" in text_lower and "biru" in text_lower:
-            return "Mengapa Langit Berwarna Biru"
-            
-        dis_match = re.search(r'\b(penyakit|sindrom|gangguan|virus|bakteri)\s+([a-z0-9_]+)', text_lower)
-        if dis_match:
-            return f"Penjelasan {dis_match.group(1).title()} {dis_match.group(2).title()}"
-            
-        if query:
-            clean_q = re.sub(r'\b(proses|cara|bagaimana|apa|itu|sistem|penjelasan|gejala|penyebab)\b', '', query, flags=re.IGNORECASE).strip()
-            return clean_q.title() if len(clean_q) > 3 else query.title()
+        """Menentukan judul topik penjelasan dari input user secara dinamis."""
+        clean_title = query.strip() if query else " ".join(keywords)
+        if clean_title:
+            clean_title = re.sub(r'\b(hai|halo|hey|milo|bot|ai)\b', '', clean_title, flags=re.IGNORECASE).strip()
+            if clean_title:
+                return clean_title.title()
         if keywords:
             return " ".join(keywords).title()
-        return "Penjelasan Topik Terkait"
+        return "Topik Pengetahuan"
     
     def _is_concept_query(self, text):
         """Mengecek apakah kalimat adalah pertanyaan pengetahuan/konsep/fakta/tren."""
