@@ -126,6 +126,7 @@ class WebSearch:
         text_clean = re.sub(r'\b(apakah|bisakah|bisa kah|dapatkah|maukah|tolong|coba|mohon)\s+(kamu|anda)?\s*(bisa|dapat)?\s*(menjelaskan|menerangkan|ceritakan|kasih tau|kasih tahu|jelaskan|terangkan|tahu|tau)?\s*(tentang|mengenai|soal|terkait|seputar)?\b', ' ', text_clean)
         text_clean = re.sub(r'\b(tata\s+cara|cara\s+kerja|bagaimana\s+cara|gimana\s+cara|proses\s+kerja|cara|proses|mekanisme|tata)\b', ' ', text_clean)
         text_clean = re.sub(r'\b(bekerja|terjadi|berlangsung|berfungsi)\b', ' ', text_clean)
+        text_clean = re.sub(r'\b(secara\s+teori\s+sains|secara\s+teori|secara\s+ilmiah|menurut\s+sains|dalam\s+sains|menurut\s+teori|secara\s+fisika|menurut\s+ahli)\b', ' ', text_clean)
         text_clean = re.sub(r'\b(dinikmati|diminati|disukai|digemari|populer)\b', ' ', text_clean)
         
         # 3. Tangani kasus sains penciptaan / asal usul kehidupan & alam
@@ -148,13 +149,14 @@ class WebSearch:
             "arti", "artinya", "makna", "maknanya", "pengertian", "definisi", "siapa", "kapan",
             "dimana", "di mana", "berapa", "manakah", "sebutkan", "rasa", "rasanya", "paling",
             "oleh", "okeh", "dalam", "tubuh", "kerja", "proses", "hai", "halo", "hey", "milo",
-            "tata", "bekerja", "terkait", "seputar", "mengenai"
+            "tata", "bekerja", "terkait", "seputar", "mengenai", "secara", "teori", "sains"
         }
         
         short_keep = {"z", "ai", "vr", "ar", "3d", "5g", "4g", "it", "ui", "ux", "dj", "k", "4k", "8k", "ml", "dl", "ev", "hp"}
         meaningful_tokens = []
         for w in raw_tokens:
-            w_stem = re.sub(r'(kah|lah|pun|nya|kan|an)$', '', w)
+            # HANYA bersihkan partikel klitik (kah, lah, pun, nya, ku, mu) - JANGAN HAPUS -an / -kan sembarangan!
+            w_stem = re.sub(r'(kah|lah|pun|nya|ku|mu)$', '', w)
             if w not in query_stopwords and w_stem not in query_stopwords and (len(w_stem) > 2 or w_stem in short_keep):
                 meaningful_tokens.append(w_stem)
         
@@ -166,15 +168,7 @@ class WebSearch:
         """Mengambil data dari berbagai sumber internet independen secara real-time."""
         sources = []
         
-        # Sumber 1: Kamus Wiktionary Indonesia (Definisi KBBI Presisi & Cepat)
-        wiktionary_results = self._fetch_wiktionary_id(query)
-        if wiktionary_results:
-            sources.append({
-                "source": "Wiktionary & KBBI Terbuka",
-                "snippets": wiktionary_results
-            })
-            
-        # Sumber 2: Wikipedia Indonesia Batch Articles & Extracts
+        # Sumber 1: Wikipedia Indonesia Batch Articles & Extracts (Utama & Komprehensif)
         wiki_id_results = self._fetch_wikipedia_id(query)
         if wiki_id_results:
             sources.append({
@@ -182,7 +176,7 @@ class WebSearch:
                 "snippets": wiki_id_results
             })
             
-        # Sumber 3: Google Search & Topic Suggestions
+        # Sumber 2: Google Search & Topic Suggestions
         google_suggest_results = self._fetch_google_suggestions(query)
         if google_suggest_results:
             sources.append({
@@ -190,13 +184,22 @@ class WebSearch:
                 "snippets": google_suggest_results
             })
             
-        # Sumber 4: Wikipedia English Encyclopedia (Global Knowledge)
+        # Sumber 3: Wikipedia English Encyclopedia (Global Knowledge)
         wiki_en_results = self._fetch_wikipedia_en(query)
         if wiki_en_results:
             sources.append({
                 "source": "Wikipedia Global Knowledge",
                 "snippets": wiki_en_results
             })
+            
+        # Sumber 4: Kamus Wiktionary (Hanya jika hasil ensiklopedia belum mencukupi atau untuk definisi kata)
+        if len(wiki_id_results) < 2 or any(w in raw_query.lower() for w in ["arti kata", "definisi kata", "apa arti", "apa makna"]):
+            wiktionary_results = self._fetch_wiktionary_id(query)
+            if wiktionary_results:
+                sources.append({
+                    "source": "Wiktionary & KBBI Terbuka",
+                    "snippets": wiktionary_results
+                })
             
         # Sumber 5: Panduan Emosi & Psikologi Umum
         expert_results = self._fetch_expert_domain_knowledge(query, raw_query)
@@ -209,10 +212,9 @@ class WebSearch:
         return sources
         
     def _fetch_wiktionary_id(self, query):
-        """Mengambil definisi kamus presisi dari Wiktionary Bahasa Indonesia."""
+        """Mengambil definisi kamus presisi dari Wiktionary Bahasa Indonesia yang bersih dari etimologi."""
         try:
             tokens = query.split()
-            # Hanya cari query lengkap atau kata benda utama, bukan sembarang token
             candidates = [query]
             if len(tokens) > 1 and len(tokens[-1]) > 3:
                 candidates.append(tokens[-1])
@@ -234,11 +236,14 @@ class WebSearch:
                                 continue
                             if any(bad in ext.lower() for bad in ["{{rfdef}}", "memerlukan penerangan", "halaman ini belum ada", "bentuk transitif", "bentuk pasif"]):
                                 continue
-                            # Bersihkan tag wiktionary
+                            # Bersihkan tag wiktionary dan etimologi Belanda / Latin
                             clean_def = re.sub(r'==[^=]+==', ' ', ext)
+                            clean_def = re.sub(r'\b(Dari bahasa [^.;\n]+[.;\n]|dari late [^.;\n]+[.;\n]|dari bahasa [^.;\n]+[.;\n]|hanzi\s*:[^\n]+)', ' ', clean_def, flags=re.IGNORECASE)
+                            clean_def = re.sub(r'[a-zA-Z]+‧[a-zA-Z‧]+', ' ', clean_def)
+                            clean_def = re.sub(r'\([a-zA-Z\-+]+\s*\+\s*[^)]+\)', ' ', clean_def)
                             clean_def = re.sub(r'\[\[[^\]]+\]\]', '', clean_def)
                             clean_def = re.sub(r'\s+', ' ', clean_def).strip()
-                            sentences = [s.strip() for s in re.split(r'(?<=[.!?])\s+', clean_def) if len(s.strip()) > 15]
+                            sentences = [s.strip() for s in re.split(r'(?<=[.!?])\s+', clean_def) if len(s.strip()) > 15 and not any(bad in s.lower() for bad in ['edisi vi', 'badan pengembangan', 'kementerian pendidikan'])]
                             if sentences:
                                 snippets.append(f"**Definisi {word.title()}**: {' '.join(sentences[:2])}")
                 if snippets:
@@ -289,14 +294,18 @@ class WebSearch:
                         clean_ext = re.sub(r'\s+', ' ', clean_ext).strip()
                         
                         if len(clean_ext) > 40:
-                            sentences = [s.strip() for s in re.split(r'\.\s+', clean_ext) if len(s.strip()) > 15]
-                            clean_summary = ". ".join(sentences[:2]) + "."
+                            sentences = [s.strip() for s in re.split(r'(?<=[.!?])\s+', clean_ext) if len(s.strip()) > 15]
+                            clean_summary = " ".join(sentences[:3])
                             
                             # Hitung skor relevansi judul dengan query
                             title_tokens = set(title.lower().split())
                             overlap = len(q_tokens & title_tokens)
-                            score = (overlap * 10) - (index * 0.5)
-                            
+                            score = (overlap * 15) - (index * 0.5)
+                            if search_query == title.lower():
+                                score += 50
+                            elif search_query in title.lower() or title.lower() in search_query:
+                                score += 30
+                                
                             candidates.append((score, f"**{title}**: {clean_summary}"))
                             
                     candidates.sort(key=lambda x: x[0], reverse=True)
@@ -411,7 +420,7 @@ class WebSearch:
         
         for block in raw_blocks:
             s_clean = block.strip()
-            if len(s_clean) >= 20 and not s_clean.startswith("http") and not any(tag in s_clean.lower() for tag in ["cookie", "privacy policy", "all rights reserved"]):
+            if len(s_clean) >= 35 and len(s_clean.split()) >= 6 and not s_clean.startswith("http") and not any(tag in s_clean.lower() for tag in ["cookie", "privacy policy", "all rights reserved"]):
                 # Filter jika teks dominan Bahasa Inggris
                 en_count = len(re.findall(r'\b(the|is|are|was|were|in|of|and|to|a|an|that|it|for|on|with|as|this|by|at|from|which|relationship|family|breakup)\b', s_clean.lower()))
                 if en_count >= 2:
@@ -451,8 +460,8 @@ class WebSearch:
             text = unit["text"].strip()
             text_lower = text.lower()
             
-            # Filter trivia yang bukan saran/panduan
-            if any(triv in text_lower for triv in ["daftar film", "dosa pokok", "abad ke-", "sm)", "sejak tahun", "album", "sinetron"]):
+            # Filter trivia yang bukan saran/panduan atau artikel fiksi/mitos
+            if any(triv in text_lower for triv in ["daftar film", "dosa pokok", "abad ke-", "sm)", "sejak tahun", "album", "sinetron", "legenda urban", "mitos", "hoaks", "laporan palsu"]):
                 continue
                 
             # Pisahkan format Judul: Uraian jika ada

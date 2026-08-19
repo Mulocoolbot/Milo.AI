@@ -1,214 +1,18 @@
 {
-  "gravitasi": {
-    "query": "gravitasi",
-    "raw_input": "hai milo, apakah kamu bisa menjelaskan tentang bagaimana tata cara gravitasi bekerja?",
-    "total_sources": 4,
+  "perjalanan waktu": {
+    "query": "perjalanan waktu",
+    "raw_input": "hai milo, apakah kamu bisa menjelaskan bagaimana cara kerja perjalanan waktu secara teori sains?",
+    "total_sources": 3,
     "sources_list": [
-      "Wiktionary & KBBI Terbuka",
       "Wikipedia Indonesia",
       "Google Knowledge Suggestions",
       "Wikipedia Global Knowledge"
     ],
     "validated_points": [
       {
-        "title": "Definisi Gravitasi",
-        "description": "(Geo) · kekuatan (gaya) tarik bumi proses gaya tarik bumi gaya berat suatu benda “gravitasi” di Kamus Besar Bahasa Indonesia, edisi VI (Daring), Jakarta: Badan Pengembangan dan Pembinaan Bahasa, Kementerian Pendidikan Dasar dan Menengah Republik Indonesia, 2016.",
-        "full_text": "**Definisi Gravitasi**: (Geo) · kekuatan (gaya) tarik bumi proses gaya tarik bumi gaya berat suatu benda “gravitasi” di Kamus Besar Bahasa Indonesia, edisi VI (Daring), Jakarta: Badan Pengembangan dan Pembinaan Bahasa, Kementerian Pendidikan Dasar dan Menengah Republik Indonesia, 2016.",
-        "source_count": 3,
-        "total_sources": 4,
-        "confidence_percent": 75,
-        "validity_badge": "Sangat Valid (Konsensus Tinggi)",
-        "level": "high",
-        "sources": [
-          "Google Knowledge Suggestions",
-          "Wikipedia Indonesia",
-          "Wiktionary & KBBI Terbuka"
-        ]
-      },
-      {
-        "title": "Gravitasi",
-        "description": "Gravitasi atau gaya berat adalah fenomena alam di mana semua hal yang memiliki massa atau tenaga di alam semesta—termasuk planet, bintang, galaksi, dan bahkan cahaya—saling tarik-menarik satu sama lain. Di bumi, gravitasi menyebabkan benda fisik memiliki berat, gravitasi Bulan menyebabkan air laut pasang laut, dan gravitasi matahari mengakibatkan planet dan beragam objek lainnya berada pada orbitnya masing-masing tata surya.",
-        "full_text": "**Gravitasi**: Gravitasi atau gaya berat adalah fenomena alam di mana semua hal yang memiliki massa atau tenaga di alam semesta—termasuk planet, bintang, galaksi, dan bahkan cahaya—saling tarik-menarik satu sama lain. Di bumi, gravitasi menyebabkan benda fisik memiliki berat, gravitasi Bulan menyebabkan air laut pasang laut, dan gravitasi matahari mengakibatkan planet dan beragam objek lainnya berada pada orbitnya masing-masing tata surya.",
-        "source_count": 3,
-        "total_sources": 4,
-        "confidence_percent": 75,
-        "validity_badge": "Sangat Valid (Konsensus Tinggi)",
-        "level": "high",
-        "sources": [
-          "Google Knowledge Suggestions",
-          "Wikipedia Indonesia",
-          "Wiktionary & KBBI Terbuka"
-        ]
-      },
-      {
-        "title": "Hukum gravitasi universal Newton",
-        "description": "Hukum tarik-menarik gravitasi Newton dalam bidang fisika berarti gaya tarik untuk saling mendekat satu sama lain. Dalam bidang fisika tiap benda dengan massa m1 selalu mempunyai gaya tarik menarik dengan benda lain (dengan massa m2 ).",
-        "full_text": "**Hukum gravitasi universal Newton**: Hukum tarik-menarik gravitasi Newton dalam bidang fisika berarti gaya tarik untuk saling mendekat satu sama lain. Dalam bidang fisika tiap benda dengan massa m1 selalu mempunyai gaya tarik menarik dengan benda lain (dengan massa m2 ).",
-        "source_count": 2,
-        "total_sources": 4,
-        "confidence_percent": 50,
-        "validity_badge": "Valid (Didukung Multi-Sumber)",
-        "level": "medium",
-        "sources": [
-          "Wikipedia Indonesia",
-          "Wiktionary & KBBI Terbuka"
-        ]
-      },
-      {
-        "title": "Hukum gravitasi universal",
-        "description": "Hukum gravitasi universal Newton menyatakan bahwa benda di alam semesta saling tarik menarik dengan gaya yang berbanding lurus dengan hasil dari massa dan berbanding terbalik dengan kuadrat dari jarak antara mereka. (Secara terpisah menunjukkan bahwa besar massa berbentuk bulat simetris tarik-menarik seolah-olah semua massa terkonsentrasi di pusat-pusat mereka.) Ini merupakan hukum fisika umum yang berasal dari pengamatan empiris yang Isaac Newton sebut induksi.",
-        "full_text": "**Hukum gravitasi universal**: Hukum gravitasi universal Newton menyatakan bahwa benda di alam semesta saling tarik menarik dengan gaya yang berbanding lurus dengan hasil dari massa dan berbanding terbalik dengan kuadrat dari jarak antara mereka. (Secara terpisah menunjukkan bahwa besar massa berbentuk bulat simetris tarik-menarik seolah-olah semua massa terkonsentrasi di pusat-pusat mereka.) Ini merupakan hukum fisika umum yang berasal dari pengamatan empiris yang Isaac Newton sebut induksi.",
-        "source_count": 2,
-        "total_sources": 4,
-        "confidence_percent": 50,
-        "validity_badge": "Valid (Didukung Multi-Sumber)",
-        "level": "medium",
-        "sources": [
-          "Wikipedia Indonesia",
-          "Wiktionary & KBBI Terbuka"
-        ]
-      },
-      {
-        "title": "",
-        "description": "gravitasi bumi adalah",
-        "full_text": "gravitasi bumi adalah",
-        "source_count": 3,
-        "total_sources": 4,
-        "confidence_percent": 75,
-        "validity_badge": "Sangat Valid (Konsensus Tinggi)",
-        "level": "high",
-        "sources": [
-          "Google Knowledge Suggestions",
-          "Wiktionary & KBBI Terbuka",
-          "Wikipedia Indonesia"
-        ]
-      }
-    ],
-    "timestamp": "2026-08-19T17:55:03.742439"
-  },
-  "evolusi manusia asal usul biologi sains": {
-    "query": "evolusi manusia asal usul biologi sains",
-    "raw_input": "milo, bisa kah kamu jelaskan bagaimana manusia di ciptakan menurut sains?",
-    "total_sources": 2,
-    "sources_list": [
-      "Wiktionary & KBBI Terbuka",
-      "Wikipedia Indonesia"
-    ],
-    "validated_points": [
-      {
-        "title": "Biologi",
-        "description": "Biologi adalah kajian ilmiah tentang kehidupan dan makhluk hidup. Biologi merupakan salah satu cabang ilmu alam yang luas, mencakup beragam bidang dan prinsip-prinsip pemersatu yang menjelaskan struktur, fungsi, pertumbuhan, asal mula, evolusi, serta persebaran kehidupan.",
-        "full_text": "**Biologi**: Biologi adalah kajian ilmiah tentang kehidupan dan makhluk hidup. Biologi merupakan salah satu cabang ilmu alam yang luas, mencakup beragam bidang dan prinsip-prinsip pemersatu yang menjelaskan struktur, fungsi, pertumbuhan, asal mula, evolusi, serta persebaran kehidupan.",
-        "source_count": 2,
-        "total_sources": 2,
-        "confidence_percent": 100,
-        "validity_badge": "Valid (Didukung Multi-Sumber)",
-        "level": "medium",
-        "sources": [
-          "Wikipedia Indonesia",
-          "Wiktionary & KBBI Terbuka"
-        ]
-      },
-      {
-        "title": "Definisi Sains",
-        "description": "ilmu pengetahuan pada umumnya pengetahuan sistematis tentang alam dan dunia fisik, termasuk di dalamnya, botani, fisika, kimia, geologi, zoologi, dsb.; ilmu pengetahuan alam pengetahuan sistematis yang diperoleh dari sesuatu observasi, penelitian, dan uji coba yang mengarah pada penentuan sifat dasar atau prinsip sesuatu yang sedang diselidiki, dipelajari, dsb. IPA (ilmu pengetahuan alam) “sains” di Kamus Besar Bahasa Indonesia, edisi VI (Daring), Jakarta: Badan Pengembangan dan Pembinaan Bahasa, Kementerian Pendidikan Dasar dan Menengah Republik Indonesia, 2016.",
-        "full_text": "**Definisi Sains**: ilmu pengetahuan pada umumnya pengetahuan sistematis tentang alam dan dunia fisik, termasuk di dalamnya, botani, fisika, kimia, geologi, zoologi, dsb.; ilmu pengetahuan alam pengetahuan sistematis yang diperoleh dari sesuatu observasi, penelitian, dan uji coba yang mengarah pada penentuan sifat dasar atau prinsip sesuatu yang sedang diselidiki, dipelajari, dsb. IPA (ilmu pengetahuan alam) “sains” di Kamus Besar Bahasa Indonesia, edisi VI (Daring), Jakarta: Badan Pengembangan dan Pembinaan Bahasa, Kementerian Pendidikan Dasar dan Menengah Republik Indonesia, 2016.",
-        "source_count": 2,
-        "total_sources": 2,
-        "confidence_percent": 100,
-        "validity_badge": "Valid (Didukung Multi-Sumber)",
-        "level": "medium",
-        "sources": [
-          "Wikipedia Indonesia",
-          "Wiktionary & KBBI Terbuka"
-        ]
-      },
-      {
-        "title": "Evolusi",
-        "description": "Evolusi (dalam kajian biologi) berarti perubahan pada sifat-sifat terwariskan suatu populasi organisme dari satu generasi ke generasi berikutnya. Perubahan-perubahan ini disebabkan oleh kombinasi tiga proses utama: variasi, reproduksi, dan seleksi.",
-        "full_text": "**Evolusi**: Evolusi (dalam kajian biologi) berarti perubahan pada sifat-sifat terwariskan suatu populasi organisme dari satu generasi ke generasi berikutnya. Perubahan-perubahan ini disebabkan oleh kombinasi tiga proses utama: variasi, reproduksi, dan seleksi.",
-        "source_count": 1,
-        "total_sources": 2,
-        "confidence_percent": 50,
-        "validity_badge": "Tervalidasi",
-        "level": "low",
-        "sources": [
-          "Wikipedia Indonesia"
-        ]
-      },
-      {
-        "title": "Pengantar evolusi",
-        "description": "Artikel ini ditujukan sebagai artikel pengenalan non-teknis yang lebih mudah dimengerti. Untuk artikel yang bersifat teknis, lihat Evolusi Evolusi adalah proses perubahan pada seluruh bentuk kehidupan dari satu generasi ke generasi selanjutnya, dan biologi evolusioner mempelajari bagaimana evolusi ini terjadi.",
-        "full_text": "**Pengantar evolusi**: Artikel ini ditujukan sebagai artikel pengenalan non-teknis yang lebih mudah dimengerti. Untuk artikel yang bersifat teknis, lihat Evolusi Evolusi adalah proses perubahan pada seluruh bentuk kehidupan dari satu generasi ke generasi selanjutnya, dan biologi evolusioner mempelajari bagaimana evolusi ini terjadi.",
-        "source_count": 1,
-        "total_sources": 2,
-        "confidence_percent": 50,
-        "validity_badge": "Tervalidasi",
-        "level": "low",
-        "sources": [
-          "Wikipedia Indonesia"
-        ]
-      }
-    ],
-    "timestamp": "2026-08-19T17:55:07.128173"
-  },
-  "komputer kuantum": {
-    "query": "komputer kuantum",
-    "raw_input": "halo milo tolong jelaskan apa itu komputer kuantum?",
-    "total_sources": 3,
-    "sources_list": [
-      "Wiktionary & KBBI Terbuka",
-      "Wikipedia Indonesia",
-      "Google Knowledge Suggestions"
-    ],
-    "validated_points": [
-      {
-        "title": "Komputer kuantum",
-        "description": "Komputer kuantum adalah alat hitung yang menggunakan sebuah fenomena mekanika kuantum, misalnya mahaletak dan keterkaitan, untuk melakukan operasi data. Dalam komputasi klasik, jumlah data dihitung dengan bit; dalam komputer kuantum, hal ini dilakukan dengan qubit.",
-        "full_text": "**Komputer kuantum**: Komputer kuantum adalah alat hitung yang menggunakan sebuah fenomena mekanika kuantum, misalnya mahaletak dan keterkaitan, untuk melakukan operasi data. Dalam komputasi klasik, jumlah data dihitung dengan bit; dalam komputer kuantum, hal ini dilakukan dengan qubit.",
-        "source_count": 3,
-        "total_sources": 3,
-        "confidence_percent": 100,
-        "validity_badge": "Sangat Valid (Konsensus Tinggi)",
-        "level": "high",
-        "sources": [
-          "Google Knowledge Suggestions",
-          "Wikipedia Indonesia",
-          "Wiktionary & KBBI Terbuka"
-        ]
-      },
-      {
-        "title": "Mekanika kuantum",
-        "description": "Mekanika kuantum adalah cabang dasar fisika yang digunakan untuk menjelaskan sistem atom dan subatom. Konsep mekanika kuantum digunakan untuk menggantikan mekanika klasik.",
-        "full_text": "**Mekanika kuantum**: Mekanika kuantum adalah cabang dasar fisika yang digunakan untuk menjelaskan sistem atom dan subatom. Konsep mekanika kuantum digunakan untuk menggantikan mekanika klasik.",
-        "source_count": 2,
-        "total_sources": 3,
-        "confidence_percent": 66,
-        "validity_badge": "Valid (Didukung Multi-Sumber)",
-        "level": "medium",
-        "sources": [
-          "Wikipedia Indonesia",
-          "Wiktionary & KBBI Terbuka"
-        ]
-      },
-      {
-        "title": "Definisi Kuantum",
-        "description": "banyaknya (jumlah) sesuatu bagian dari energi yang tidak dapat dibagi lagi “kuantum” di Kamus Besar Bahasa Indonesia, edisi VI (Daring), Jakarta: Badan Pengembangan dan Pembinaan Bahasa, Kementerian Pendidikan Dasar dan Menengah Republik Indonesia, 2016.",
-        "full_text": "**Definisi Kuantum**: banyaknya (jumlah) sesuatu bagian dari energi yang tidak dapat dibagi lagi “kuantum” di Kamus Besar Bahasa Indonesia, edisi VI (Daring), Jakarta: Badan Pengembangan dan Pembinaan Bahasa, Kementerian Pendidikan Dasar dan Menengah Republik Indonesia, 2016.",
-        "source_count": 2,
-        "total_sources": 3,
-        "confidence_percent": 66,
-        "validity_badge": "Valid (Didukung Multi-Sumber)",
-        "level": "medium",
-        "sources": [
-          "Wikipedia Indonesia",
-          "Wiktionary & KBBI Terbuka"
-        ]
-      },
-      {
-        "title": "Komputer",
-        "description": "Komputer adalah sebuah mesin yang dapat diprogram untuk memproses data/informasi—direpresentasikan dalam bentuk yang dipahaminya—berdasarkan aturan aritmetika atau logika (komputasi). Komputer juga dicirikan dengan kemampuannya menyimpan program dan data.",
-        "full_text": "**Komputer**: Komputer adalah sebuah mesin yang dapat diprogram untuk memproses data/informasi—direpresentasikan dalam bentuk yang dipahaminya—berdasarkan aturan aritmetika atau logika (komputasi). Komputer juga dicirikan dengan kemampuannya menyimpan program dan data.",
+        "title": "Perjalanan waktu",
+        "description": "Perjalanan waktu adalah sebuah konsep berjalan maju atau mundur ke titik berbeda dalam waktu, mirip seperti kita bergerak dalam ruang. Manusia nyatanya selalu berjalan dalam waktu; dalam cara segaris, dari waktu sekarang ke masa depan per satuan waktu sampai kematiannya. Beberapa teori, yang paling terkenal adalah relativitas khusus dan umum, menyarankan bahwa geometri yang tepat dari ruang-waktu, atau beberapa jenis gerakan dalam ruang, dapat memungkinkan kita berjalan ke masa lampau dan masa depan bila geometri atau gerakan ini memungkinkan.",
+        "full_text": "**Perjalanan waktu**: Perjalanan waktu adalah sebuah konsep berjalan maju atau mundur ke titik berbeda dalam waktu, mirip seperti kita bergerak dalam ruang. Manusia nyatanya selalu berjalan dalam waktu; dalam cara segaris, dari waktu sekarang ke masa depan per satuan waktu sampai kematiannya. Beberapa teori, yang paling terkenal adalah relativitas khusus dan umum, menyarankan bahwa geometri yang tepat dari ruang-waktu, atau beberapa jenis gerakan dalam ruang, dapat memungkinkan kita berjalan ke masa lampau dan masa depan bila geometri atau gerakan ini memungkinkan.",
         "source_count": 1,
         "total_sources": 3,
         "confidence_percent": 33,
@@ -219,20 +23,19 @@
         ]
       },
       {
-        "title": "",
-        "description": "komputer kuantum adalah",
-        "full_text": "komputer kuantum adalah",
-        "source_count": 2,
+        "title": "Waktu",
+        "description": "Waktu adalah perkembangan keberadaan yang berkelanjutan yang terjadi dalam urutan yang tampaknya ireversibel dari masa lalu, melalui masa kini, dan menuju masa depan. Waktu menentukan segala bentuk tindakan, usia, dan kausalitas, menjadi besaran komponen dari berbagai pengukuran yang digunakan untuk mengurutkan peristiwa, untuk membandingkan durasi peristiwa (atau interval di antara keduanya), dan untuk mengkuantifikasi laju perubahan besaran dalam realitas material atau dalam pengalaman sadar. Waktu sering disebut sebagai dimensi keempat, bersama dengan tiga dimensi spasial.",
+        "full_text": "**Waktu**: Waktu adalah perkembangan keberadaan yang berkelanjutan yang terjadi dalam urutan yang tampaknya ireversibel dari masa lalu, melalui masa kini, dan menuju masa depan. Waktu menentukan segala bentuk tindakan, usia, dan kausalitas, menjadi besaran komponen dari berbagai pengukuran yang digunakan untuk mengurutkan peristiwa, untuk membandingkan durasi peristiwa (atau interval di antara keduanya), dan untuk mengkuantifikasi laju perubahan besaran dalam realitas material atau dalam pengalaman sadar. Waktu sering disebut sebagai dimensi keempat, bersama dengan tiga dimensi spasial.",
+        "source_count": 1,
         "total_sources": 3,
-        "confidence_percent": 66,
-        "validity_badge": "Valid (Didukung Multi-Sumber)",
-        "level": "medium",
+        "confidence_percent": 33,
+        "validity_badge": "Tervalidasi",
+        "level": "low",
         "sources": [
-          "Google Knowledge Suggestions",
           "Wikipedia Indonesia"
         ]
       }
     ],
-    "timestamp": "2026-08-19T17:55:09.444386"
+    "timestamp": "2026-08-19T18:00:48.520806"
   }
 }

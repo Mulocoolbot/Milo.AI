@@ -5,7 +5,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787136909.4514673
+    "learned_at": 1787137234.0946543
   },
   "kamu": {
     "word": "kamu",
@@ -13,7 +13,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787136907.1338816
+    "learned_at": 1787137248.5340328
   },
   "kabar": {
     "word": "kabar",
@@ -821,7 +821,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787136903.7645633
+    "learned_at": 1787137248.5419896
   },
   "mengatasi": {
     "word": "mengatasi",
@@ -1125,7 +1125,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787136903.7572486
+    "learned_at": 1787137248.5367823
   },
   "bagaimana": {
     "word": "bagaimana",
@@ -1133,7 +1133,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787136907.1391547
+    "learned_at": 1787137248.539321
   },
   "manusia": {
     "word": "manusia",
@@ -1349,7 +1349,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787136907.1483269
+    "learned_at": 1787137248.5531363
   },
   "kewirausahaan": {
     "word": "kewirausahaan",
@@ -1469,7 +1469,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787136078.4835176
+    "learned_at": 1787137248.544292
   },
   "roket": {
     "word": "roket",
@@ -1501,7 +1501,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787136903.751762
+    "learned_at": 1787137248.5305924
   },
   "tata": {
     "word": "tata",
@@ -1542,5 +1542,29 @@
     "meaning": "",
     "sentiment": 0.0,
     "learned_at": 1787136909.4548872
+  },
+  "perjalanan": {
+    "word": "perjalanan",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787137248.546607
+  },
+  "waktu": {
+    "word": "waktu",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787137248.5488372
+  },
+  "teori": {
+    "word": "teori",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787137248.5511446
   }
 }
