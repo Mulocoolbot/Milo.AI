@@ -125,7 +125,7 @@ class ResponseEngine:
             return self.synthesizer.synthesize_worry_compassion(user_name, situation)
         
         # === 10. Handle Kepikiran Seseorang / Naksir / Romansa ===
-        if intent == "thinking_of_someone" or self._is_thinking_of_someone(user_input):
+        if (intent == "thinking_of_someone" and confidence >= 0.70) or self._is_thinking_of_someone(user_input):
             return self.synthesizer.synthesize_thinking_of_someone(user_name)
         
         # === 9. Handle Pertanyaan Izin / Ragu ("emang boleh ya?") ===
@@ -354,6 +354,8 @@ class ResponseEngine:
     def _derive_topic_title(self, user_input, keywords, query=""):
         """Menentukan judul topik penjelasan dari input user."""
         text_lower = user_input.lower()
+        if "asma" in text_lower:
+            return "Penyakit Asma (Mekanisme, Gejala, dan Dampak pada Saluran Pernapasan)"
         if any(w in text_lower for w in ["bernafas", "bernapas", "pernapasan", "respirasi"]):
             return "Sistem Pernapasan Manusia (Bagaimana Manusia Bernapas)"
         if "fotosintesis" in text_lower:
@@ -365,8 +367,12 @@ class ResponseEngine:
         if "langit" in text_lower and "biru" in text_lower:
             return "Mengapa Langit Berwarna Biru"
             
+        dis_match = re.search(r'\b(penyakit|sindrom|gangguan|virus|bakteri)\s+([a-z0-9_]+)', text_lower)
+        if dis_match:
+            return f"Penjelasan {dis_match.group(1).title()} {dis_match.group(2).title()}"
+            
         if query:
-            clean_q = re.sub(r'\b(proses|cara|bagaimana|apa|itu|sistem)\b', '', query, flags=re.IGNORECASE).strip()
+            clean_q = re.sub(r'\b(proses|cara|bagaimana|apa|itu|sistem|penjelasan|gejala|penyebab)\b', '', query, flags=re.IGNORECASE).strip()
             return clean_q.title() if len(clean_q) > 3 else query.title()
         if keywords:
             return " ".join(keywords).title()

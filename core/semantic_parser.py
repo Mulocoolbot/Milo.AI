@@ -71,9 +71,12 @@ class SemanticParser:
             text_clean
         ))
         
-        # 8. User menanyakan fakta / pengetahuan / penjelasan ilmiah / mekanisme fenomena
+        # 8. User menanyakan fakta / pengetahuan / penjelasan ilmiah / mekanisme fenomena / medis & penyakit
         is_concept_query = bool(re.search(
             r'\b(apa (itu|arti|pengertian|definisi|makna|fungsi|kegunaan)|apa yang dimaksud (dengan)?)\b'
+            r'|\bapa yang terjadi (di saat|saat|ketika|jika|pada)\b'
+            r'|\b(mengidap|menderita|terkena|gejala|penyebab|dampak|akibat)\s+(penyakit|gangguan|sindrom|virus|bakteri|[a-z0-9_]+)\b'
+            r'|\b(penyakit|sindrom|gangguan|virus|bakteri)\s+[a-z0-9_]+\b'
             r'|\b(bagaimana|gimana)\s+([a-z0-9_]+\s+)*(bisa|terjadi|bekerja|punah|terbang|bernafas|bernapas|berfungsi|dibuat|terbentuk|cara)\b'
             r'|\b(kenapa|mengapa)\s+[a-z0-9_]+\b'
             r'|\b(bisa kah|bisakah|tolong|coba|mau)?\s*(menjelaskan|jelaskan|terangkan|ceritakan)\s+(tentang|bagaimana|proses|cara|kenapa|mengapa|soal)?\b'

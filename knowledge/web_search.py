@@ -116,7 +116,9 @@ class WebSearch:
         """Membersihkan kalimat percakapan menjadi search query internet yang tajam."""
         text_lower = text.lower().strip()
         
-        # 1. Handle kasus sains / biologi / pernapasan / alam
+        # 1. Handle kasus sains / biologi / pernapasan / alam / medis & penyakit
+        if "asma" in text_lower:
+            return "penyakit asma sistem pernapasan gejala penyebab bronkus"
         if any(w in text_lower for w in ["bernafas", "bernapas", "pernapasan", "respirasi", "paru-paru"]):
             return "sistem pernapasan manusia proses bernapas"
         if any(w in text_lower for w in ["fotosintesis"]):
@@ -356,6 +358,14 @@ class WebSearch:
                 "Pisahkan Lingkaran Kendali: Bedakan dengan jelas mana hal-hal yang berada di bawah kendalimu vs hal yang sepenuhnya di luar kendalimu.",
                 "Terapkan Teknik Journaling: Tuangkan kekhawatiran ke dalam tulisan agar otak tidak terus-menerus memutar skenario buruk yang sama.",
                 "Latihan Pernapasan & Mindfulness: Lakukan teknik pernapasan dalam 4-7-8 untuk meredakan respons fight-or-flight saraf simpatik."
+            ]
+            
+        elif any(w in q_lower for w in ["asma"]):
+            return [
+                "Penyempitan & Pembengkakan Saluran Bronkus (Bronkospasme): Dinding saluran napas mengalami peradangan kronis dan otot polos di sekitarnya menegang (spasme), mempersempit rongga aliran udara secara drastis.",
+                "Hipersekresi Lendir / Mukus Berlebih: Dinding bronkus yang teriritasi memproduksi lendir kental berlebih yang menyumbat jalur pernapasan, menimbulkan suara mengi (wheezing) dan batuk.",
+                "Gejala Sesak Napas & Dada Tertekan: Pasien mengalami kesulitan bernapas akut, rasa berat di dada, serta penurunan suplai oksigen ke paru-paru dan seluruh tubuh.",
+                "Reaktivitas terhadap Faktor Pemicu (Triggers): Saluran napas penderita asma sangat sensitif terhadap alergen seperti debu, bulu hewan, polusi, asap rokok, udara dingin, atau aktivitas fisik berlebih."
             ]
             
         elif any(w in q_lower for w in ["bernafas", "bernapas", "pernapasan", "respirasi", "paru"]):

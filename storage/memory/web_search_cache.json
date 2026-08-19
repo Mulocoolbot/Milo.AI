@@ -1,7 +1,92 @@
 {
+  "proses terjadinya hujan siklus air": {
+    "query": "proses terjadinya hujan siklus air",
+    "raw_input": "bisakah anda menjelaskan bagaimana terbentuknya hujan?",
+    "total_sources": 3,
+    "sources_list": [
+      "Wikipedia Indonesia",
+      "Google Knowledge Suggestions",
+      "Konsensus Psikologi & Pengembangan Diri"
+    ],
+    "validated_points": [
+      {
+        "title": "Presipitasi (Turunnya Hujan)",
+        "description": "Saat butiran air di dalam awan menjadi terlalu berat dan jenuh untuk ditopang arus udara, air jatuh ke bumi sebagai hujan.",
+        "full_text": "Presipitasi (Turunnya Hujan): Saat butiran air di dalam awan menjadi terlalu berat dan jenuh untuk ditopang arus udara, air jatuh ke bumi sebagai hujan.",
+        "source_count": 3,
+        "total_sources": 3,
+        "confidence_percent": 100,
+        "validity_badge": "Sangat Valid (Konsensus Tinggi)",
+        "level": "high",
+        "sources": [
+          "Konsensus Psikologi & Pengembangan Diri",
+          "Google Knowledge Suggestions",
+          "Wikipedia Indonesia"
+        ]
+      },
+      {
+        "title": "Siklus air",
+        "description": "Siklus air atau daur hidrologi adalah peredaran air yang tidak pernah berhenti dari atmosfer ke bumi dan kembali ke atmosfer melalui proses pengembunan, curah hujan, penguapan, dan transpirasi. Hidrologi merupakan bidang ilmu yang berkaitan dengan siklus air, berkaitan dengan asal, distribusi, dan sifat air.",
+        "full_text": "**Siklus air**: Siklus air atau daur hidrologi adalah peredaran air yang tidak pernah berhenti dari atmosfer ke bumi dan kembali ke atmosfer melalui proses pengembunan, curah hujan, penguapan, dan transpirasi. Hidrologi merupakan bidang ilmu yang berkaitan dengan siklus air, berkaitan dengan asal, distribusi, dan sifat air.",
+        "source_count": 3,
+        "total_sources": 3,
+        "confidence_percent": 100,
+        "validity_badge": "Sangat Valid (Konsensus Tinggi)",
+        "level": "high",
+        "sources": [
+          "Konsensus Psikologi & Pengembangan Diri",
+          "Google Knowledge Suggestions",
+          "Wikipedia Indonesia"
+        ]
+      },
+      {
+        "title": "Kondensasi (Pembentukan Awan)",
+        "description": "Uap air yang naik mengalami pendinginan di atmosfer tinggi dan mengembun menjadi tetesan air kecil yang membentuk awan.",
+        "full_text": "Kondensasi (Pembentukan Awan): Uap air yang naik mengalami pendinginan di atmosfer tinggi dan mengembun menjadi tetesan air kecil yang membentuk awan.",
+        "source_count": 2,
+        "total_sources": 3,
+        "confidence_percent": 66,
+        "validity_badge": "Valid (Didukung Multi-Sumber)",
+        "level": "medium",
+        "sources": [
+          "Konsensus Psikologi & Pengembangan Diri",
+          "Wikipedia Indonesia"
+        ]
+      },
+      {
+        "title": "Evaporasi & Transpirasi",
+        "description": "Panas matahari menguapkan air dari lautan, sungai, dan permukaan daun tumbuhan ke atmosfer.",
+        "full_text": "Evaporasi & Transpirasi: Panas matahari menguapkan air dari lautan, sungai, dan permukaan daun tumbuhan ke atmosfer.",
+        "source_count": 2,
+        "total_sources": 3,
+        "confidence_percent": 66,
+        "validity_badge": "Valid (Didukung Multi-Sumber)",
+        "level": "medium",
+        "sources": [
+          "Konsensus Psikologi & Pengembangan Diri",
+          "Wikipedia Indonesia"
+        ]
+      },
+      {
+        "title": "Hujan",
+        "description": "Hujan adalah sebuah presipitasi berwujud cairan, berbeda dengan presipitasi noncair seperti salju, batu es dan campuran hujan dengan salju. Hujan memerlukan keberadaan lapisan atmosfer tebal agar dapat menemui suhu di atas titik leleh es di dekat dan di atas permukaan Bumi.",
+        "full_text": "**Hujan**: Hujan adalah sebuah presipitasi berwujud cairan, berbeda dengan presipitasi noncair seperti salju, batu es dan campuran hujan dengan salju. Hujan memerlukan keberadaan lapisan atmosfer tebal agar dapat menemui suhu di atas titik leleh es di dekat dan di atas permukaan Bumi.",
+        "source_count": 2,
+        "total_sources": 3,
+        "confidence_percent": 66,
+        "validity_badge": "Valid (Didukung Multi-Sumber)",
+        "level": "medium",
+        "sources": [
+          "Konsensus Psikologi & Pengembangan Diri",
+          "Wikipedia Indonesia"
+        ]
+      }
+    ],
+    "timestamp": "2026-08-19T16:10:12.871574"
+  },
   "sistem pernapasan manusia proses bernapas": {
     "query": "sistem pernapasan manusia proses bernapas",
-    "raw_input": "bisa kah mau menjelaskan bagaimana manusia itu bisa bernafas?",
+    "raw_input": "oke, pertanyaan selanjutnya. bagaimana manusia dapat bernafas?",
     "total_sources": 2,
     "sources_list": [
       "Wikipedia Indonesia",
@@ -79,96 +164,11 @@
         ]
       }
     ],
-    "timestamp": "2026-08-19T16:02:33.480264"
+    "timestamp": "2026-08-19T16:10:14.595183"
   },
-  "proses terjadinya hujan siklus air": {
-    "query": "proses terjadinya hujan siklus air",
-    "raw_input": "jelaskan proses terjadinya hujan",
-    "total_sources": 3,
-    "sources_list": [
-      "Wikipedia Indonesia",
-      "Google Knowledge Suggestions",
-      "Konsensus Psikologi & Pengembangan Diri"
-    ],
-    "validated_points": [
-      {
-        "title": "Presipitasi (Turunnya Hujan)",
-        "description": "Saat butiran air di dalam awan menjadi terlalu berat dan jenuh untuk ditopang arus udara, air jatuh ke bumi sebagai hujan.",
-        "full_text": "Presipitasi (Turunnya Hujan): Saat butiran air di dalam awan menjadi terlalu berat dan jenuh untuk ditopang arus udara, air jatuh ke bumi sebagai hujan.",
-        "source_count": 3,
-        "total_sources": 3,
-        "confidence_percent": 100,
-        "validity_badge": "Sangat Valid (Konsensus Tinggi)",
-        "level": "high",
-        "sources": [
-          "Konsensus Psikologi & Pengembangan Diri",
-          "Wikipedia Indonesia",
-          "Google Knowledge Suggestions"
-        ]
-      },
-      {
-        "title": "Siklus air",
-        "description": "Siklus air atau daur hidrologi adalah peredaran air yang tidak pernah berhenti dari atmosfer ke bumi dan kembali ke atmosfer melalui proses pengembunan, curah hujan, penguapan, dan transpirasi. Hidrologi merupakan bidang ilmu yang berkaitan dengan siklus air, berkaitan dengan asal, distribusi, dan sifat air.",
-        "full_text": "**Siklus air**: Siklus air atau daur hidrologi adalah peredaran air yang tidak pernah berhenti dari atmosfer ke bumi dan kembali ke atmosfer melalui proses pengembunan, curah hujan, penguapan, dan transpirasi. Hidrologi merupakan bidang ilmu yang berkaitan dengan siklus air, berkaitan dengan asal, distribusi, dan sifat air.",
-        "source_count": 3,
-        "total_sources": 3,
-        "confidence_percent": 100,
-        "validity_badge": "Sangat Valid (Konsensus Tinggi)",
-        "level": "high",
-        "sources": [
-          "Konsensus Psikologi & Pengembangan Diri",
-          "Wikipedia Indonesia",
-          "Google Knowledge Suggestions"
-        ]
-      },
-      {
-        "title": "Kondensasi (Pembentukan Awan)",
-        "description": "Uap air yang naik mengalami pendinginan di atmosfer tinggi dan mengembun menjadi tetesan air kecil yang membentuk awan.",
-        "full_text": "Kondensasi (Pembentukan Awan): Uap air yang naik mengalami pendinginan di atmosfer tinggi dan mengembun menjadi tetesan air kecil yang membentuk awan.",
-        "source_count": 2,
-        "total_sources": 3,
-        "confidence_percent": 66,
-        "validity_badge": "Valid (Didukung Multi-Sumber)",
-        "level": "medium",
-        "sources": [
-          "Konsensus Psikologi & Pengembangan Diri",
-          "Wikipedia Indonesia"
-        ]
-      },
-      {
-        "title": "Evaporasi & Transpirasi",
-        "description": "Panas matahari menguapkan air dari lautan, sungai, dan permukaan daun tumbuhan ke atmosfer.",
-        "full_text": "Evaporasi & Transpirasi: Panas matahari menguapkan air dari lautan, sungai, dan permukaan daun tumbuhan ke atmosfer.",
-        "source_count": 2,
-        "total_sources": 3,
-        "confidence_percent": 66,
-        "validity_badge": "Valid (Didukung Multi-Sumber)",
-        "level": "medium",
-        "sources": [
-          "Konsensus Psikologi & Pengembangan Diri",
-          "Wikipedia Indonesia"
-        ]
-      },
-      {
-        "title": "Hujan",
-        "description": "Hujan adalah sebuah presipitasi berwujud cairan, berbeda dengan presipitasi noncair seperti salju, batu es dan campuran hujan dengan salju. Hujan memerlukan keberadaan lapisan atmosfer tebal agar dapat menemui suhu di atas titik leleh es di dekat dan di atas permukaan Bumi.",
-        "full_text": "**Hujan**: Hujan adalah sebuah presipitasi berwujud cairan, berbeda dengan presipitasi noncair seperti salju, batu es dan campuran hujan dengan salju. Hujan memerlukan keberadaan lapisan atmosfer tebal agar dapat menemui suhu di atas titik leleh es di dekat dan di atas permukaan Bumi.",
-        "source_count": 2,
-        "total_sources": 3,
-        "confidence_percent": 66,
-        "validity_badge": "Valid (Didukung Multi-Sumber)",
-        "level": "medium",
-        "sources": [
-          "Konsensus Psikologi & Pengembangan Diri",
-          "Wikipedia Indonesia"
-        ]
-      }
-    ],
-    "timestamp": "2026-08-19T16:02:35.004920"
-  },
-  "kenapa langit berwarna biru hamburan rayleigh": {
-    "query": "kenapa langit berwarna biru hamburan rayleigh",
-    "raw_input": "kenapa langit berwarna biru saat siang hari?",
+  "penyakit asma sistem pernapasan gejala penyebab bronkus": {
+    "query": "penyakit asma sistem pernapasan gejala penyebab bronkus",
+    "raw_input": "apa yang terjadi di saat manusia mengidap penyakit asma?",
     "total_sources": 2,
     "sources_list": [
       "Wikipedia Indonesia",
@@ -176,9 +176,9 @@
     ],
     "validated_points": [
       {
-        "title": "Panjang Gelombang Pendek",
-        "description": "Cahaya biru memiliki panjang gelombang lebih pendek dan frekuensi lebih tinggi, sehingga dihamburkan ke segala arah jauh lebih kuat oleh molekul gas atmosfer (nitrogen & oksigen).",
-        "full_text": "Panjang Gelombang Pendek: Cahaya biru memiliki panjang gelombang lebih pendek dan frekuensi lebih tinggi, sehingga dihamburkan ke segala arah jauh lebih kuat oleh molekul gas atmosfer (nitrogen & oksigen).",
+        "title": "Reaktivitas terhadap Faktor Pemicu (Triggers)",
+        "description": "Saluran napas penderita asma sangat sensitif terhadap alergen seperti debu, bulu hewan, polusi, asap rokok, udara dingin, atau aktivitas fisik berlebih.",
+        "full_text": "Reaktivitas terhadap Faktor Pemicu (Triggers): Saluran napas penderita asma sangat sensitif terhadap alergen seperti debu, bulu hewan, polusi, asap rokok, udara dingin, atau aktivitas fisik berlebih.",
         "source_count": 2,
         "total_sources": 2,
         "confidence_percent": 100,
@@ -190,9 +190,9 @@
         ]
       },
       {
-        "title": "Fenomena Hamburan Rayleigh",
-        "description": "Cahaya matahari yang tampak putih sebenarnya tersusun atas berbagai panjang gelombang warna (pelangi).",
-        "full_text": "Fenomena Hamburan Rayleigh: Cahaya matahari yang tampak putih sebenarnya tersusun atas berbagai panjang gelombang warna (pelangi).",
+        "title": "Gejala Sesak Napas & Dada Tertekan",
+        "description": "Pasien mengalami kesulitan bernapas akut, rasa berat di dada, serta penurunan suplai oksigen ke paru-paru dan seluruh tubuh.",
+        "full_text": "Gejala Sesak Napas & Dada Tertekan: Pasien mengalami kesulitan bernapas akut, rasa berat di dada, serta penurunan suplai oksigen ke paru-paru dan seluruh tubuh.",
         "source_count": 2,
         "total_sources": 2,
         "confidence_percent": 100,
@@ -204,9 +204,9 @@
         ]
       },
       {
-        "title": "Hamburan Rayleigh",
-        "description": "Hamburan Rayleigh dinamai berdasarkan seorang fisikawan Inggris Lord Rayleigh (John William Strutt), adalah teori hamburan elastis cahaya atau radiasi elektromagnetik lain oleh partikel-partikel penghambur yang memiliki panjang gelombang lebih kecil dibandingkan dengan cahaya/radiasi yang dihamburkannya. Apabila frekuensi cahaya berada di bawah/lebih kecil dari frekuensi resonansi partikel penghambur (dinamakan rezim dispersi normal), maka jumlah hamburan yang dihasilkan akan berbanding terbalik dengan pangkat empat panjang gelombang cahaya yang dihamburkan.",
-        "full_text": "**Hamburan Rayleigh**: Hamburan Rayleigh dinamai berdasarkan seorang fisikawan Inggris Lord Rayleigh (John William Strutt), adalah teori hamburan elastis cahaya atau radiasi elektromagnetik lain oleh partikel-partikel penghambur yang memiliki panjang gelombang lebih kecil dibandingkan dengan cahaya/radiasi yang dihamburkannya. Apabila frekuensi cahaya berada di bawah/lebih kecil dari frekuensi resonansi partikel penghambur (dinamakan rezim dispersi normal), maka jumlah hamburan yang dihasilkan akan berbanding terbalik dengan pangkat empat panjang gelombang cahaya yang dihamburkan.",
+        "title": "Paru-paru",
+        "description": "Paru-paru (sering disebut dengan \"paru\" saja) merupakan sepasang organ yang memiliki tekstur kenyal dan berisi udara, dibantu oleh trakea dalam penghantaran udara. Paru-paru berfungsi sebagai tempat pertukaran oksigen dari udara dengan karbon dioksida dari darah.",
+        "full_text": "**Paru-paru**: Paru-paru (sering disebut dengan \"paru\" saja) merupakan sepasang organ yang memiliki tekstur kenyal dan berisi udara, dibantu oleh trakea dalam penghantaran udara. Paru-paru berfungsi sebagai tempat pertukaran oksigen dari udara dengan karbon dioksida dari darah.",
         "source_count": 2,
         "total_sources": 2,
         "confidence_percent": 100,
@@ -218,113 +218,34 @@
         ]
       },
       {
-        "title": "Lord Rayleigh",
-        "description": "Lord Rayleigh (John William Strutt) (12 November 1842 – 30 Juni 1919) adalah seorang fisikawan Inggris. Saat masih kecil dan remaja, dia sering menderita sakit sehingga pendidikannya terganggu.",
-        "full_text": "**Lord Rayleigh**: Lord Rayleigh (John William Strutt) (12 November 1842 – 30 Juni 1919) adalah seorang fisikawan Inggris. Saat masih kecil dan remaja, dia sering menderita sakit sehingga pendidikannya terganggu.",
-        "source_count": 1,
+        "title": "Anafilaksis",
+        "description": "Anafilaksis adalah suatu reaksi alergi berat yang terjadi secara tiba-tiba dan dapat menyebabkan kematian. Anafilaksis biasanya ditunjukkan dengan beberapa gejala termasuk di antaranya ruam gatal, pembengkakan tenggorokan, dispnea, muntah, pusing berasa mau pingsan, dan tekanan darah rendah.",
+        "full_text": "**Anafilaksis**: Anafilaksis adalah suatu reaksi alergi berat yang terjadi secara tiba-tiba dan dapat menyebabkan kematian. Anafilaksis biasanya ditunjukkan dengan beberapa gejala termasuk di antaranya ruam gatal, pembengkakan tenggorokan, dispnea, muntah, pusing berasa mau pingsan, dan tekanan darah rendah.",
+        "source_count": 2,
         "total_sources": 2,
-        "confidence_percent": 50,
-        "validity_badge": "Tervalidasi",
-        "level": "low",
+        "confidence_percent": 100,
+        "validity_badge": "Valid (Didukung Multi-Sumber)",
+        "level": "medium",
         "sources": [
+          "Konsensus Psikologi & Pengembangan Diri",
           "Wikipedia Indonesia"
         ]
       },
       {
-        "title": "Waktu biru",
-        "description": "Waktu biru (dari bahasa Prancis l'heure bleuecode: fr is deprecated </link> ; diucapkan [lœʁ blø] ) adalah periode temaram (di pagi atau sore hari, di sekitar tepi laut ) saat Matahari berada pada kedalaman yang signifikan di bawah cakrawala. Selama waktu ini, sinar matahari yang tersisa sebagian besar berwarna biru.",
-        "full_text": "**Waktu biru**: Waktu biru (dari bahasa Prancis l'heure bleuecode: fr is deprecated </link> ; diucapkan [lœʁ blø] ) adalah periode temaram (di pagi atau sore hari, di sekitar tepi laut ) saat Matahari berada pada kedalaman yang signifikan di bawah cakrawala. Selama waktu ini, sinar matahari yang tersisa sebagian besar berwarna biru.",
-        "source_count": 1,
+        "title": "Radang paru-paru",
+        "description": "Radang paru-paru atau pneumonia adalah kondisi inflamasi pada paru—utamanya memengaruhi kantung-kantung udara mikroskopik yang dikenal sebagai alveolus. Kondisi ini biasanya disebabkan oleh infeksi virus atau bakteri dan lebih jarang mikroorganisme lainnya, obat-obatan tertentu, dan kondisi lain seperti penyakit autoimun.",
+        "full_text": "**Radang paru-paru**: Radang paru-paru atau pneumonia adalah kondisi inflamasi pada paru—utamanya memengaruhi kantung-kantung udara mikroskopik yang dikenal sebagai alveolus. Kondisi ini biasanya disebabkan oleh infeksi virus atau bakteri dan lebih jarang mikroorganisme lainnya, obat-obatan tertentu, dan kondisi lain seperti penyakit autoimun.",
+        "source_count": 2,
         "total_sources": 2,
-        "confidence_percent": 50,
-        "validity_badge": "Tervalidasi",
-        "level": "low",
+        "confidence_percent": 100,
+        "validity_badge": "Valid (Didukung Multi-Sumber)",
+        "level": "medium",
         "sources": [
+          "Konsensus Psikologi & Pengembangan Diri",
           "Wikipedia Indonesia"
         ]
       }
     ],
-    "timestamp": "2026-08-19T16:02:36.173142"
-  },
-  "cara pesawat terbang prinsip aerodinamika": {
-    "query": "cara pesawat terbang prinsip aerodinamika",
-    "raw_input": "bagaimana cara pesawat terbang bisa terbang di udara?",
-    "total_sources": 2,
-    "sources_list": [
-      "Wikipedia Indonesia",
-      "Konsensus Psikologi & Pengembangan Diri"
-    ],
-    "validated_points": [
-      {
-        "title": "Keseimbangan 4 Gaya Aerodinamika",
-        "description": "Pesawat terbang stabil berkat keseimbangan antara Gaya Angkat (Lift) vs Gravitasi (Weight), serta Gaya Dorong Mesin (Thrust) vs Hambatan Udara (Drag).",
-        "full_text": "Keseimbangan 4 Gaya Aerodinamika: Pesawat terbang stabil berkat keseimbangan antara Gaya Angkat (Lift) vs Gravitasi (Weight), serta Gaya Dorong Mesin (Thrust) vs Hambatan Udara (Drag).",
-        "source_count": 2,
-        "total_sources": 2,
-        "confidence_percent": 100,
-        "validity_badge": "Valid (Didukung Multi-Sumber)",
-        "level": "medium",
-        "sources": [
-          "Konsensus Psikologi & Pengembangan Diri",
-          "Wikipedia Indonesia"
-        ]
-      },
-      {
-        "title": "Helikopter",
-        "description": "Helikopter adalah pesawat udara yang lebih berat dari udara, bersayap putar yang rotornya digerakkan oleh mesin. Helikopter merupakan pesawat udara yang mengangkat dan terdorong oleh satu atau lebih rotor (baling-baling) mendatar besar.",
-        "full_text": "**Helikopter**: Helikopter adalah pesawat udara yang lebih berat dari udara, bersayap putar yang rotornya digerakkan oleh mesin. Helikopter merupakan pesawat udara yang mengangkat dan terdorong oleh satu atau lebih rotor (baling-baling) mendatar besar.",
-        "source_count": 2,
-        "total_sources": 2,
-        "confidence_percent": 100,
-        "validity_badge": "Valid (Didukung Multi-Sumber)",
-        "level": "medium",
-        "sources": [
-          "Konsensus Psikologi & Pengembangan Diri",
-          "Wikipedia Indonesia"
-        ]
-      },
-      {
-        "title": "Aerodinamika",
-        "description": "Aerodinamika adalah salah satu cabang dinamika yang berkenaan dengan kajian pergerakan udara, khususnya ketika udara tersebut berinteraksi dengan benda padat. Aerodinamika adalah cabang dari dinamika fluida dan dinamika gas, dengan banyak teori yang saling berbagi pakai di antara mereka.",
-        "full_text": "**Aerodinamika**: Aerodinamika adalah salah satu cabang dinamika yang berkenaan dengan kajian pergerakan udara, khususnya ketika udara tersebut berinteraksi dengan benda padat. Aerodinamika adalah cabang dari dinamika fluida dan dinamika gas, dengan banyak teori yang saling berbagi pakai di antara mereka.",
-        "source_count": 2,
-        "total_sources": 2,
-        "confidence_percent": 100,
-        "validity_badge": "Valid (Didukung Multi-Sumber)",
-        "level": "medium",
-        "sources": [
-          "Konsensus Psikologi & Pengembangan Diri",
-          "Wikipedia Indonesia"
-        ]
-      },
-      {
-        "title": "Pesawat terbang",
-        "description": "Pesawat terbang adalah pesawat udara yang lebih berat dari udara, bersayap tetap, dan dapat terbang dengan tenaga sendiri. Secara umum istilah pesawat terbang sering juga disebut dengan kapal terbang, pesawat udara atau pesawat saja, dengan tujuan pendefinisian yang sama sebagai kendaraan yang mampu terbang di atmosfer atau udara.",
-        "full_text": "**Pesawat terbang**: Pesawat terbang adalah pesawat udara yang lebih berat dari udara, bersayap tetap, dan dapat terbang dengan tenaga sendiri. Secara umum istilah pesawat terbang sering juga disebut dengan kapal terbang, pesawat udara atau pesawat saja, dengan tujuan pendefinisian yang sama sebagai kendaraan yang mampu terbang di atmosfer atau udara.",
-        "source_count": 2,
-        "total_sources": 2,
-        "confidence_percent": 100,
-        "validity_badge": "Valid (Didukung Multi-Sumber)",
-        "level": "medium",
-        "sources": [
-          "Konsensus Psikologi & Pengembangan Diri",
-          "Wikipedia Indonesia"
-        ]
-      },
-      {
-        "title": "Prinsip Bernoulli & Bentuk Sayap (Airfoil)",
-        "description": "Permukaan atas sayap melengkung membuat aliran udara di atas lebih cepat dan tekanannya lebih rendah dibanding bawah, menciptakan gaya angkat (Lift).",
-        "full_text": "Prinsip Bernoulli & Bentuk Sayap (Airfoil): Permukaan atas sayap melengkung membuat aliran udara di atas lebih cepat dan tekanannya lebih rendah dibanding bawah, menciptakan gaya angkat (Lift).",
-        "source_count": 1,
-        "total_sources": 2,
-        "confidence_percent": 50,
-        "validity_badge": "Tervalidasi",
-        "level": "low",
-        "sources": [
-          "Konsensus Psikologi & Pengembangan Diri"
-        ]
-      }
-    ],
-    "timestamp": "2026-08-19T16:02:37.816768"
+    "timestamp": "2026-08-19T16:10:16.011255"
   }
 }

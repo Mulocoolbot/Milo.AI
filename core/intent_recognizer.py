@@ -277,7 +277,11 @@ class IntentRecognizer:
                 
                 raw_similarity = TextUtils.cosine_similarity(input_tfidf, pattern_tfidf)
                 
-                common_words = set(words) & set(pattern_words)
+                stopwords = {
+                    "yang", "dan", "di", "ke", "dari", "ini", "itu", "dengan", "untuk", "adalah",
+                    "ada", "saat", "apa", "akan", "pada", "bisa", "atau", "saat", "juga", "oleh"
+                }
+                common_words = (set(words) & set(pattern_words)) - stopwords
                 if common_words:
                     if len(common_words) >= 2:
                         positions = [words.index(w) for w in common_words]

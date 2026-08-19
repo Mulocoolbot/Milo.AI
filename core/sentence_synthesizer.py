@@ -947,11 +947,10 @@ class SentenceSynthesizer:
     def synthesize_explanation_response(self, topic_title, research_result, user_name=None, user_input=""):
         """Menyusun penjelasan ilmiah / pengetahuan umum terstruktur dari hasil riset internet multi-sumber."""
         name_str = f" {user_name}" if user_name else ""
-        salutation = f"{user_name}, " if user_name else ""
         
         openers = [
             f"Berdasarkan referensi ilmiah dan penelusuran pengetahuan, begini penjelasan mengenai **{topic_title}**{name_str}: 🧠✨",
-            f"Topik yang sangat menarik {salutation}! Ini rangkuman proses dan cara kerja mengenai **{topic_title}**: 🔬💡",
+            f"Topik yang sangat menarik{name_str}! Ini rangkuman proses dan cara kerja mengenai **{topic_title}**: 🔬💡",
             f"Berikut penjelasan lengkap bagaimana mekanisme **{topic_title}** berlangsung{name_str}: 📚✨"
         ]
         
