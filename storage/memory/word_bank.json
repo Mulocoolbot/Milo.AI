@@ -13,7 +13,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787138845.5041938
+    "learned_at": 1787139217.7041996
   },
   "kabar": {
     "word": "kabar",
@@ -613,7 +613,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787138822.3818345
+    "learned_at": 1787138881.3221018
   },
   "seru": {
     "word": "seru",
@@ -1125,7 +1125,7 @@
     "domain": "general",
     "meaning": "",
     "sentiment": 0.0,
-    "learned_at": 1787137025.662546
+    "learned_at": 1787139232.872753
   },
   "bagaimana": {
     "word": "bagaimana",
@@ -1638,5 +1638,21 @@
     "meaning": "",
     "sentiment": 0.0,
     "learned_at": 1787138845.571586
+  },
+  "nama": {
+    "word": "nama",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787138845.5736227
+  },
+  "keabadian": {
+    "word": "keabadian",
+    "pos": "noun",
+    "domain": "general",
+    "meaning": "",
+    "sentiment": 0.0,
+    "learned_at": 1787139232.875942
   }
 }

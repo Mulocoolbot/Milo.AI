@@ -287,8 +287,15 @@ class WebSearch:
                         if any(bio in extract.lower() for bio in ["lahir ", "pemeran", "penyanyi", "aktris", "aktor", "selebriti", "jkt48", "grup vokal", "grup musik", "perguruan tinggi", "kampus"]):
                             continue
                             
-                        # Bersihkan kebisingan teks Wikipedia (gambar, teks kurung berlebih, dll)
-                        clean_ext = re.sub(r'Gambar\s+[^\n.]*(\n|\.)', ' ', extract)
+                        # Filter biografi tokoh/orang jika user bertanya tentang konsep/sains/makna
+                        is_bio = bool(re.search(r'\b\d{1,2}\s+[a-zA-Z]+\s+\d{4}\s*[-–]\s*(?:\d{1,2}\s+[a-zA-Z]+\s+)?\d{4}\b', extract)) or any(b in extract.lower() for b in ['adalah seorang', 'adalah salah seorang', 'lahir ', 'menjabat sebagai', 'tokoh pahlawan', 'pemimpin perang'])
+                        if is_bio and not any(w in search_query.lower() for w in ['siapa', 'tokoh', 'pahlawan', 'biografi']):
+                            continue
+                            
+                        # Bersihkan hatnote dan kebisingan teks Wikipedia
+                        clean_ext = re.sub(r'^(?:Untuk\s+[^.\n]+,\s+lihat[^\n.]*(\n|\.)|Artikel\s+ini\s+[^.\n]+(\n|\.))', '', extract, flags=re.IGNORECASE)
+                        clean_ext = re.sub(r'Untuk\s+[^.\n]+,\s+lihat\s*:[^\n.]*(\n|\.)', ' ', clean_ext, flags=re.IGNORECASE)
+                        clean_ext = re.sub(r'Gambar\s+[^\n.]*(\n|\.)', ' ', clean_ext)
                         clean_ext = re.sub(r'Lihat\s+[^\n.]*(\n|\.)', ' ', clean_ext)
                         clean_ext = re.sub(r'\(bahasa [^)]+\)', '', clean_ext)
                         clean_ext = re.sub(r'\s+', ' ', clean_ext).strip()
@@ -461,7 +468,7 @@ class WebSearch:
             text_lower = text.lower()
             
             # Filter trivia yang bukan saran/panduan atau artikel fiksi/mitos
-            if any(triv in text_lower for triv in ["daftar film", "dosa pokok", "abad ke-", "sm)", "sejak tahun", "album", "sinetron", "legenda urban", "mitos", "hoaks", "laporan palsu"]):
+            if any(triv in text_lower for triv in ["daftar film", "dosa pokok", "abad ke-", "sm)", "sejak tahun", "daftar lagu", "sinetron", "legenda urban", "mitos", "hoaks", "laporan palsu"]):
                 continue
                 
             # Pisahkan format Judul: Uraian jika ada

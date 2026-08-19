@@ -1,7 +1,7 @@
 {
-  "perjalanan waktu": {
-    "query": "perjalanan waktu",
-    "raw_input": "hai milo, apakah kamu bisa menjelaskan bagaimana cara kerja perjalanan waktu secara teori sains?",
+  "keabadian": {
+    "query": "keabadian",
+    "raw_input": "bisa kah kamu menjelaskan tentang keabadian?",
     "total_sources": 3,
     "sources_list": [
       "Wikipedia Indonesia",
@@ -10,9 +10,9 @@
     ],
     "validated_points": [
       {
-        "title": "Perjalanan waktu",
-        "description": "Perjalanan waktu adalah sebuah konsep berjalan maju atau mundur ke titik berbeda dalam waktu, mirip seperti kita bergerak dalam ruang. Manusia nyatanya selalu berjalan dalam waktu; dalam cara segaris, dari waktu sekarang ke masa depan per satuan waktu sampai kematiannya. Beberapa teori, yang paling terkenal adalah relativitas khusus dan umum, menyarankan bahwa geometri yang tepat dari ruang-waktu, atau beberapa jenis gerakan dalam ruang, dapat memungkinkan kita berjalan ke masa lampau dan masa depan bila geometri atau gerakan ini memungkinkan.",
-        "full_text": "**Perjalanan waktu**: Perjalanan waktu adalah sebuah konsep berjalan maju atau mundur ke titik berbeda dalam waktu, mirip seperti kita bergerak dalam ruang. Manusia nyatanya selalu berjalan dalam waktu; dalam cara segaris, dari waktu sekarang ke masa depan per satuan waktu sampai kematiannya. Beberapa teori, yang paling terkenal adalah relativitas khusus dan umum, menyarankan bahwa geometri yang tepat dari ruang-waktu, atau beberapa jenis gerakan dalam ruang, dapat memungkinkan kita berjalan ke masa lampau dan masa depan bila geometri atau gerakan ini memungkinkan.",
+        "title": "Keabadian",
+        "description": "Keabadian secara harfiah ialah sebuah satuan waktu yang tidak ada batasnya, atau waktu yang tidak berhingga, seperti yang diungkapkan dalam ungkapan perdamaian yang abadi, atau istirahat yang abadi. Dalam pengertian falsafi dan agama yang dimaksudkan adalah sebuah realitas transendental yang tidak sama dengan realitas yang biasa. Bila kata keabadian diterapkan kepada sifat Ilahi, maka tidaklah cukup hanya pengertiannya sebagai perpanjangan waktu sehingga berlangsung tanpa akhir.",
+        "full_text": "**Keabadian**: Keabadian secara harfiah ialah sebuah satuan waktu yang tidak ada batasnya, atau waktu yang tidak berhingga, seperti yang diungkapkan dalam ungkapan perdamaian yang abadi, atau istirahat yang abadi. Dalam pengertian falsafi dan agama yang dimaksudkan adalah sebuah realitas transendental yang tidak sama dengan realitas yang biasa. Bila kata keabadian diterapkan kepada sifat Ilahi, maka tidaklah cukup hanya pengertiannya sebagai perpanjangan waktu sehingga berlangsung tanpa akhir.",
         "source_count": 1,
         "total_sources": 3,
         "confidence_percent": 33,
@@ -23,9 +23,9 @@
         ]
       },
       {
-        "title": "Waktu",
-        "description": "Waktu adalah perkembangan keberadaan yang berkelanjutan yang terjadi dalam urutan yang tampaknya ireversibel dari masa lalu, melalui masa kini, dan menuju masa depan. Waktu menentukan segala bentuk tindakan, usia, dan kausalitas, menjadi besaran komponen dari berbagai pengukuran yang digunakan untuk mengurutkan peristiwa, untuk membandingkan durasi peristiwa (atau interval di antara keduanya), dan untuk mengkuantifikasi laju perubahan besaran dalam realitas material atau dalam pengalaman sadar. Waktu sering disebut sebagai dimensi keempat, bersama dengan tiga dimensi spasial.",
-        "full_text": "**Waktu**: Waktu adalah perkembangan keberadaan yang berkelanjutan yang terjadi dalam urutan yang tampaknya ireversibel dari masa lalu, melalui masa kini, dan menuju masa depan. Waktu menentukan segala bentuk tindakan, usia, dan kausalitas, menjadi besaran komponen dari berbagai pengukuran yang digunakan untuk mengurutkan peristiwa, untuk membandingkan durasi peristiwa (atau interval di antara keduanya), dan untuk mengkuantifikasi laju perubahan besaran dalam realitas material atau dalam pengalaman sadar. Waktu sering disebut sebagai dimensi keempat, bersama dengan tiga dimensi spasial.",
+        "title": "Persik Keabadian",
+        "description": "Dalam mitologi Tiongkok, Persik Keabadian, juga diterjemahkan sebagai Persik Dewa dan Persik Magis (Hanzi: 仙桃; Pinyin: xiāntáo; Yale (Bahasa Kanton): sīn tòuh atau Hanzi: 蟠桃; Pinyin: pántáo; Yale (Bahasa Kanton): pùhn tòuh) adalah buah yang dikonsumsi oleh para dewa karena kebaikan mistis mereka yang memberikan umur panjang pada semua orang yang memakannya. Persik yang melambangkan keabadian (atau harapan untuk umur yang panjang dan sehat) adalah simbol umum dalam seni Tionghoa, muncul dalam penggambaran atau deskripsi di sejumlah fabel, lukisan, dan bentuk seni lainnya, sering dikaitkan dengan ikonografi yang mirip secara tematik, seperti para dewa atau keabadian tertentu atau simbol umur panjang lainnya, seperti rusa atau bangau.",
+        "full_text": "**Persik Keabadian**: Dalam mitologi Tiongkok, Persik Keabadian, juga diterjemahkan sebagai Persik Dewa dan Persik Magis (Hanzi: 仙桃; Pinyin: xiāntáo; Yale (Bahasa Kanton): sīn tòuh atau Hanzi: 蟠桃; Pinyin: pántáo; Yale (Bahasa Kanton): pùhn tòuh) adalah buah yang dikonsumsi oleh para dewa karena kebaikan mistis mereka yang memberikan umur panjang pada semua orang yang memakannya. Persik yang melambangkan keabadian (atau harapan untuk umur yang panjang dan sehat) adalah simbol umum dalam seni Tionghoa, muncul dalam penggambaran atau deskripsi di sejumlah fabel, lukisan, dan bentuk seni lainnya, sering dikaitkan dengan ikonografi yang mirip secara tematik, seperti para dewa atau keabadian tertentu atau simbol umur panjang lainnya, seperti rusa atau bangau.",
         "source_count": 1,
         "total_sources": 3,
         "confidence_percent": 33,
@@ -36,45 +36,6 @@
         ]
       }
     ],
-    "timestamp": "2026-08-19T18:00:48.520806"
-  },
-  "sebenar": {
-    "query": "sebenar",
-    "raw_input": "siapa sih kamu sebenarnya?",
-    "total_sources": 3,
-    "sources_list": [
-      "Wikipedia Indonesia",
-      "Google Knowledge Suggestions",
-      "Wikipedia Global Knowledge"
-    ],
-    "validated_points": [
-      {
-        "title": "Akurasi dan presisi",
-        "description": "Dalam bidang ilmu pengetahuan, industri rekayasa, dan statistik, kejituan dari suatu sistem pengukuran adalah tingkat kedekatan pengukuran besaran terhadap nilai sebenar. Ketelitian dari suatu sistem pengukuran, disebut juga reproduksibilitas atau keterulangkan , adalah sejauh mana pengulangan pengukuran dalam keadaan yang tidak berubah mendapatkan hasil yang sama. Suatu sistem pengukuran dapat jitu dan teliti, atau jitu tetapi tak teliti, atau teliti tetapi tak jitu, atau tak teliti dan tak jitu.",
-        "full_text": "**Akurasi dan presisi**: Dalam bidang ilmu pengetahuan, industri rekayasa, dan statistik, kejituan dari suatu sistem pengukuran adalah tingkat kedekatan pengukuran besaran terhadap nilai sebenar. Ketelitian dari suatu sistem pengukuran, disebut juga reproduksibilitas atau keterulangkan , adalah sejauh mana pengulangan pengukuran dalam keadaan yang tidak berubah mendapatkan hasil yang sama. Suatu sistem pengukuran dapat jitu dan teliti, atau jitu tetapi tak teliti, atau teliti tetapi tak jitu, atau tak teliti dan tak jitu.",
-        "source_count": 1,
-        "total_sources": 3,
-        "confidence_percent": 33,
-        "validity_badge": "Tervalidasi",
-        "level": "low",
-        "sources": [
-          "Wikipedia Indonesia"
-        ]
-      },
-      {
-        "title": "Hizbul Wathan",
-        "description": "Gerakan Kepanduan Hizbul Wathan, lebih dikenal dengan Hizbul Wathan (disingkat HW) adalah organisasi otonom (ortom) di lingkungan Persyarikatan Muhammadiyah yang bergerak di bidang pendidikan dan pelatihan kepanduan untuk anak, remaja dan pemuda (ARP), mulai dari usia 4 tahun sampai dengan 22 tahun (Hasil Muktamar ke-4 tahun 2023 di Malang) HW didirikan pertama kali di Yogyakarta pada 1336 H (1918 M) atas prakarsa KH Ahmad Dahlan, yang merupakan pendiri Muhammadiyah. Prakarsa itu timbul saat dia selesai memberi pengajian di Solo, dan melihat latihan J.P.O. (Javansche Padvinders Organisatie) di alun-alun Mangkunegaran Solo.",
-        "full_text": "**Hizbul Wathan**: Gerakan Kepanduan Hizbul Wathan, lebih dikenal dengan Hizbul Wathan (disingkat HW) adalah organisasi otonom (ortom) di lingkungan Persyarikatan Muhammadiyah yang bergerak di bidang pendidikan dan pelatihan kepanduan untuk anak, remaja dan pemuda (ARP), mulai dari usia 4 tahun sampai dengan 22 tahun (Hasil Muktamar ke-4 tahun 2023 di Malang) HW didirikan pertama kali di Yogyakarta pada 1336 H (1918 M) atas prakarsa KH Ahmad Dahlan, yang merupakan pendiri Muhammadiyah. Prakarsa itu timbul saat dia selesai memberi pengajian di Solo, dan melihat latihan J.P.O. (Javansche Padvinders Organisatie) di alun-alun Mangkunegaran Solo.",
-        "source_count": 1,
-        "total_sources": 3,
-        "confidence_percent": 33,
-        "validity_badge": "Tervalidasi",
-        "level": "low",
-        "sources": [
-          "Wikipedia Indonesia"
-        ]
-      }
-    ],
-    "timestamp": "2026-08-19T18:26:41.709637"
+    "timestamp": "2026-08-19T18:33:52.861475"
   }
 }
